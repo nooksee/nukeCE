@@ -1,0 +1,28 @@
+
+/************************************************************************/
+/* PHP-NUKE EVOLVED: Web Portal System                                  */
+/* ===========================                                          */
+/*                                                                      */
+/* Copyright (c) 2008 by Kevin Atwood                                   */
+/* http://www.nuke-evolved.com                                          */
+/*                                                                      */
+/* Nuke-Evolution Basic: Enhanced PHP-Nuke Web Portal System            */
+/* ===========================                                          */
+/*                                                                      */
+/* Copyright (c) 2005 by The Nuke-Evolution Team                        */
+/* http://nuke-evolution.com                                            */
+/*                                                                      */
+/* PHP-NUKE: Web Portal System                                          */
+/* ===========================                                          */
+/*                                                                      */
+/* Copyright (c) 2002 by Francisco Burzi                                */
+/* http://phpnuke.org                                                   */
+/*                                                                      */
+/* This program is free software. You can redistribute it and/or modify */
+/* it under the terms of the GNU General Public License as published by */
+/* the Free Software Foundation; either version 2 of the License.       */
+/************************************************************************/
+/*         Additional security & Abstraction layer conversion           */
+/*                     2003, 2004 - 2007 chatserv                       */
+/*      http://www.nukefixes.com -- http://www.nukeresources.com        */
+/************************************************************************/

@@ -1,0 +1,71 @@
+<?php
+
+/**************************************************************************/
+/* PHP-Nuke CE: Web Portal System                                         */
+/* ==============================                                         */
+/*                                                                        */
+/* Copyright (c) 2011 by Kevin Atwood                                     */
+/* http://www.nukece.com                                                  */
+/*                                                                        */
+/* All PHP-Nuke CE code is released under the GNU General Public License. */
+/* See CREDITS.txt, COPYRIGHT.txt and LICENSE.txt.                        */
+/**************************************************************************/
+
+if(!defined('NUKE_CE')) exit;
+
+global $cookie, $prefix, $multilingual, $currentlang, $db, $user, $userinfo;
+
+$querylang = ($multilingual) ? "AND (alanguage='$currentlang' OR alanguage='')" : '';
+
+$today = getdate();
+$day = $today['mday'];
+if ($day < 10) {
+    $day = "0$day";
+}
+$month = $today['mon'];
+if ($month < 10) {
+    $month = "0$month";
+}
+$year = $today['year'];
+$tdate = "$year-$month-$day";
+list($sid, $title) = $db->sql_ufetchrow("SELECT sid, title FROM ".$prefix."_stories WHERE (time LIKE '%$tdate%') $querylang ORDER BY counter DESC LIMIT 0,1", SQL_NUM);
+$fsid = intval($sid);
+$ftitle = stripslashes($title);
+$content = "
+            <span class=\"content\">
+            <div align=\"center\">
+           ";
+if ((!$fsid) AND (!$ftitle)) {
+    $content .= "
+                     "._NOBIGSTORY."
+                 </span>
+                 </div>
+                ";
+} else {
+    $content .= "
+                     "._BIGSTORY."
+                     <br /><br />
+                ";
+    if (!isset($mode) OR empty($mode)) {
+        $mode = (!empty($userinfo['umode'])) ? $userinfo['umode'] : "thread";
+    }
+    if (!isset($order) OR empty($order)) {
+        $order = (!empty($userinfo['uorder'])) ? $userinfo['uorder'] : 0;
+    }
+    if (!isset($thold) OR empty($thold)) {
+        $thold = (!empty($userinfo['thold'])) ? $userinfo['thold'] : 0;
+    }
+    $r_options = '';
+    $r_options .= "&amp;mode=".$mode;
+    $r_options .= "&amp;order=".$order;
+    $r_options .= "&amp;thold=".$thold;
+    $content .= "
+                     <a href=\"modules.php?name=News&amp;file=article&amp;sid=$fsid$r_options\">
+                         $ftitle
+                     </a>
+                 </span>
+                 </div>
+                ";
+}
+
+?>

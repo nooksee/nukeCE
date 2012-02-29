@@ -1,0 +1,1228 @@
+PHP-Nuke
+Version:                7.6
+Author:                 Francisco Burzi
+Website:                phpnuke.org
+GPL:                    Yes
+Notes:                  None
+---------------------------------------------------------------
+PHP-Nuke Patched 
+Version:                3.0b & 3.1
+Author:                 chatserv, Quake, & Evaders99
+Website:                nukefixes.com
+GPL:                    Yes
+Notes:                  http://www.nukefixes.com/forum-44.html
+---------------------------------------------------------------
+phpBB (BBtoNuke)
+Version:                2.0.21
+Author:                 AcydBurn
+Website:                phpbb.com
+GPL:                    Yes
+Notes:                  None
+---------------------------------------------------------------
+NukeSentinel
+Version:                2.5.03
+Author:                 NukeScripts Network
+Website:                nukescripts.net
+GPL:                    No (See included Nuke Sentinel license file)
+Notes:                  Slightly adjusted by Quake
+---------------------------------------------------------------
+Quake Base Functions
+Version:                4.0.0
+Author:                 Quake
+Website:                www.nuke-evolution.com
+GPL:                    Yes
+Notes:                  v1: http://www.nukefixes.com/ftopicp-5550.html, more at nuke-evolution.com
+---------------------------------------------------------------
+Language Selector
+Version:                3.0.0
+Author:                 Quake
+Website:                www.nuke-evolution.com
+GPL:                    Yes
+Notes:                  Automatically tracks the user's preferred language and selects it. Borrowed from DragonFly CMS
+---------------------------------------------------------------
+PHP Input Filter
+Version:                1.2.2
+Author:                 Daniel Morris
+Website:                www.cyberai.com/inputfilter
+GPL:                    Yes
+Notes:                  Filters out bad HTML tags
+---------------------------------------------------------------
+HTML Parser
+Version:                1.2.0
+Author:                 jhsolorz
+Website:                php-html.sourceforge.net
+GPL:                    Yes
+Notes:                  Parses HTML
+---------------------------------------------------------------
+Caching System
+Version:                2.0.0
+Author:                 JeFFb68CAM
+Website:                http://www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  Caches fetched database arrays to reduce queries. Comes with two options, file cache or SQL cache.
+---------------------------------------------------------------
+Module Simplifications
+Version:                1.0.0
+Author:                 JeFFb68CAM, Quake
+Website:                http://Evo-Mods.com
+GPL:                    Yes
+Notes:                  Adds a few new functions that can make handling modules a whole lot easier
+---------------------------------------------------------------
+Auto Optimize
+Version:                1.0.0
+Author:                 JeFFb68CAM
+Website:                http://Evo-Mods.com
+GPL:                    Yes
+Notes:                  Automatically optimizes the database every day
+---------------------------------------------------------------
+Evolution Functions
+Version:                1.5.0
+Author:                 JeFFb68CAM
+Website:                http://Evo-Mods.com
+GPL:                    Yes
+Notes:                  Functions made to optimize performance (Saved AT LEAST 60 queries)
+---------------------------------------------------------------
+Theme Management
+Version:                1.0.2
+Author:                 JeFFb68CAM
+Website:                http://Evo-Mods.com
+GPL:                    Yes
+Notes:                  Nuke's first ever completely manageable theme system. Allows admin to activate, install, deactivate, and set permissions for themes.
+---------------------------------------------------------------
+Advanced Security Extension
+Version:                1.0.0
+Author:                 Quake
+Website:                http://www.nuke-evolution.com
+GPL:                    Yes
+Notes:                  Adds more security to Nuke-Evolution. It tracks down Search Bots, It has a better IP Tracker and it check's SELECT queries for UNION attacks. If there is an UNION attack, then it will rewrite UNION to UNI0N (a zero).
+---------------------------------------------------------------
+PhpCaptcha
+Version:                1.0.0
+Author:                 Edward Eliot
+Website:                http://www.ejeliot.com/pages/2
+GPL:                    No (BSD License)
+Notes:                  An improved Captcha
+---------------------------------------------------------------
+
+Administration
+Version:                1.0.0
+Author:                 Technocrat
+Website:                www.platinummods.com
+GPL:                    Yes
+Notes:                  A better administration block
+---------------------------------------------------------------
+Google
+Version:                1.5.0
+Author:                 Rodmar
+Website:                www.evolved-systems.net
+GPL:                    Yes
+Notes:                  Let's you search on the internet as well as on your own domain
+---------------------------------------------------------------
+Enhanced Forums Block
+Version:                3.0
+Author:                 JeFFb68CAM
+Website:                www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  This is an enhanced forums block that includes a cache for optimum performance
+
+Admin Icon/Link Pos
+Version:                1.0.0
+Author:                 Technocrat
+Website:                Platinummods.com
+GPL:                    Yes
+Notes:                  Allows admin the ability to display the admin icons/links either above or below
+---------------------------------------------------------------
+Admin Tracker
+Version:                1.0.1
+Author:                 Technocrat
+Website:                Platinummods.com
+GPL:                    Yes
+Notes:                  Writes to a log file when someone tried to login to the admin area and fails
+---------------------------------------------------------------
+Custom Language File
+Version:                1.0.0
+Author:                 Technocrat
+Website:                Platinummods.com
+GPL:                    Yes
+Notes:                  Allows the use of custom language defines with out changing the real langauge file
+---------------------------------------------------------------
+Custom Icons
+Version:                1.0.0
+Author:                 Technocrat
+Website:                Platinummods.com
+GPL:                    Yes
+Notes:                  Allows people to add in custom icons with their themes
+---------------------------------------------------------------
+Attachment Mod
+Version:                2.4.5
+Author:                 Acyd Burn & Mighty_Y
+Website:                phpbb.com
+GPL:                    Yes
+Notes:                  Allows attachments in the forums
+---------------------------------------------------------------
+Advanced Username Color
+Version:                1.0.5
+Author:                 aUsTiN
+Website:                phpbb-tweaks.com
+GPL:                    Yes
+Notes:                  Allows forum admins to change a user's name to a different color. Changed to allow custom admin and moderator types
+---------------------------------------------------------------
+Admin Userlist
+Version:                2.0.2
+Author:                 wGEric
+Website:                mods.best-dev.com
+GPL:                    Yes
+Notes:                  Lets you view all of you members and various information about them in the Admin Control Panel.  From the list, you can perform various actions on multiple users
+---------------------------------------------------------------
+SN Dynamic Titles
+Version:                1.0.0
+Author:                 Greg Schoper, Francisco Burzi
+Website:                nuke.schoper.net, phpnuke.org
+GPL:                    Yes
+Notes:                  Creates dynamic <TITLE> tags for your Site based on the page a visitor is currrently viewing. Having these content based <TITLE> tags can help improve your site's visibility, and in some cases ranking, in search engine results as well as provide a navigation aid to your visitors
+---------------------------------------------------------------
+DHTML Slide Menu for ACP
+Version:                1.0.0
+Author:                 markus_petrux
+Website:                www.phpmix.com
+GPL:                    Yes
+Notes:                  Makes a roll-in, roll-out effect on Forum Admin menu.
+---------------------------------------------------------------
+Recent Topics (with AUC)
+Version:                1.2.4
+Author:                 Acid 
+Website:                N/A
+GPL:                    Yes
+Notes:                  Shows recent topics on an extra site (today, yesterday, last 24 hour, last week, last x days)
+---------------------------------------------------------------
+At a Glance Mod
+Version:                2.2.1
+Author:                 blulegend, netclectic
+Website:                www.phpbb.com, www.netclectic.com
+GPL:                    Yes
+Notes:                  Show latest news and recent topics on any page. Customizable to show only news, only recent topics or both. Will check the authorization of users and only show allowed topics
+---------------------------------------------------------------
+Simply Merge Threads
+Version:                1.0.1
+Author:                 Ptirhiik < ptirhiik@clanmckeen.com > (Pierre)
+Website:                www.rpgnet-fr.com
+GPL:                    Yes
+Notes:                  Allows to merge topics in forums
+---------------------------------------------------------------
+Advanced BBCode Box
+Version:                5.0.0a
+Author:                 Disturbed One & AL Tnen
+Website:                www.hvmdesign.com
+GPL:                    Yes
+Notes:                  This will change bbcode buttons in posting_body with images and add a lot of new and useful bbcodes.
+---------------------------------------------------------------
+Global Announcement
+Version:                1.2.8
+Author:                 Niels
+Website:                mods.db9.dk
+GPL:                    Yes
+Notes:                  Makes it possible to post global announcements viewable in all forums
+---------------------------------------------------------------
+Super Quick Reply
+Version:                1.3.2
+Author:                 hayk
+Website:                hayk.a13n.org
+GPL:                    Yes
+Notes:                  The mod allows those who have Reply access to use the same quick reply form as the one accessible upon pressing Reply. In turn, the Admin can enable or disable the quick reply form globally, which each user is capable of setting whether or not to display it
+---------------------------------------------------------------
+Select Expand BBcodes / Select Expand BBcodes PHP add-on
+Version:                1.0.2
+Author:                 markus_petrux
+Website:                www.phpmix.com
+GPL:                    Yes
+Notes:                  DHTML add-on for the Code and Quote BBCodes. It adds a couple of commands next to the BBCode block title. First one, allows you to Select its contents for easier copy/paste actions. Second one, allows you to Expand or Contract the BBCode block. It has been coded to degrade correctly even if the browser does not support the required features (please, read author notes for further information)
+---------------------------------------------------------------
+Report Posts
+Version:                1.2.3
+Author:                 wGEric
+Website:                mods.best-dev.com
+GPL:                    Yes
+Notes:                  Allows registered users to report posts to moderators. Adds a page where all reports can be displayed and the option to email the moderators when a report is made
+---------------------------------------------------------------
+Smilies in Topic Titles
+Version:                1.0.0
+Author:                 Suisse
+Website:                www.techno-revelation.com
+GPL:                    Yes
+Notes:                  Shows smilies in topic titles
+---------------------------------------------------------------
+View Topic Name While Posting
+Version:                1.0.5
+Author:                 GPHemsley
+Website:                www.lttp.net
+GPL:                    Yes
+Notes:                  This will allow you to see what topic you are replying to when you are posting a reply
+---------------------------------------------------------------
+Topic Cement!
+Version:                1.0.3
+Author:                 Renegade88 < renegade88@marino.st >
+Website:                www.marino.st
+GPL:                    Yes
+Notes:                  Allows you to prioritize topics in the forum moderator control panned
+---------------------------------------------------------------
+Cache phpBB version in ACP
+Version:                1.0.0
+Author:                 Ptirhiik < ptirhiik@clanmckeen.com > (Pierre)
+Website:                rpgnet.clanmckeen.com
+GPL:                    Yes
+Notes:                  Prevent the admin index to verify at each hit the last phpBB version number, but only once a day
+---------------------------------------------------------------
+Topic display order
+Version:                1.0.2
+Author:                 Ptirhiik < ptirhiik@clanmckeen.com > (Pierre)
+Website:                rpgnet.clanmckeen.com
+GPL:                    Yes
+Notes:                  Allows you to sort the forum posts
+---------------------------------------------------------------
+Search Title Only
+Version:                0.9.1
+Author:                 Niels < ncr@db9.dk >
+Website:                mods.db9.dk
+GPL:                    Yes
+Notes:                  Allows you to search the post titles only
+---------------------------------------------------------------
+Resize Posted Images
+Version:                2.4.5
+Author:                 Christian Fecteau < webmaster@christianfecteau.com >
+Website:                portfolio.christianfecteau.com
+Modified:               Technocrat
+GPL:                    No (see: http://creativecommons.org/licenses/by-nc-sa/2.0)
+Notes:                  Resizes images within posts to make it so they don't break your layout. Images resized are made clickable and openable in a popup in full-size. You can specify a different max width for each of your themes. Images that do not exceed the max width are left as is
+---------------------------------------------------------------
+View/Disable Avatars/Signatures
+Version:                1.1.3
+Author:                 r6untouchable < admin@throttlejunkies.com >
+Website:                N/A
+GPL:                    Yes
+Notes:                  Allows users to enable and disable viewing avatars and signatures
+---------------------------------------------------------------
+Quick Search
+Version:                3.0.1
+Author:                 Fountain of Apples < webmacster87@webmacster87.info > (Douglas Bell)
+Website:                www.webmacster87.info
+GPL:                    Yes
+Notes:                  Adds a search field to the overall header, which by default searches your board. You can also allow it to search for an unlimited number of other search tools using a simple ACP panel to manage them. A drop-down menu in the search field will allow the end user to specify which tool to use
+---------------------------------------------------------------
+Advance Signature Divider Control
+Version:                1.0.0
+Author:                 crxgames <crxgames@gmail.com>
+Website:                www.crxgames.com
+GPL:                    Yes
+Notes:                  This mod allows you control what divides a user's signature from the post. The one in phpbb is __________ with this mod change it to what ever you want, even html.
+---------------------------------------------------------------
+Evolution Version Checker
+Version:                1.0.0
+Author:                 Technocrat
+Website:                www.platinummods.com
+GPL:                    Yes
+Notes:                  This mod allows evolution admins to check for new version
+---------------------------------------------------------------
+Lock/Unlock in Posting Body
+Version:                1.0.1
+Author:                 Acyd Burn < acyd.burn@gmx.de > Meik Sievertsen
+Website:                phpbb.com
+GPL:                    Yes
+Notes:                  This Hack allows the Admin/Mod to lock/unlock a topic direct after submitting the post
+---------------------------------------------------------------
+Spambot Killer
+Version:                1.0.0
+Author:                 Unknown
+Website:                Unknown
+GPL:                    Yes
+Notes:                  Spambots often get your email by harvesting it from your website. This script feeds them tons of fake emails until they crash, loading their database with fake emails that will bounce when spammed! This script has been designed for deadliness. It attracts spambots with advertising keywords (you must link to it first), generates about 300+ fake emails and 10 links back to it (with a slightly different URL each time), several kilobytes of random ASCII to confuse the spambot, a limit on the number of times the page is retrieved by a spambot (to limit bandwidth consumption), and then sends the spambots to dozens of other similar deathtraps! (So the spambot still receives tons of fake emails, but the bandwidth consumed is not all yours!)
+---------------------------------------------------------------
+Anti-Spam
+Version:                1.1.0
+Author:                 Unknown
+Website:                Unknown
+GPL:                    Yes
+Notes:                  Rewrites email addresses to spam proved form. I. e. test@test.com -> test [at] test [dot] com
+---------------------------------------------------------------
+AUC Groups
+Version:                1.0.0
+Author:                 Technocrat
+Website:                www.platinummods.com
+GPL:                    Yes
+Notes:                  Adds the ability to add forum groups to AUC groups
+---------------------------------------------------------------
+Signature Editor/Preview Deluxe
+Version:                1.0.0
+Author:                 EGO2000
+Website:                N/A
+GPL:                    Yes
+Notes:                  Allows users to make and preview their signatures
+---------------------------------------------------------------
+Count PM
+Version:                1.0.1
+Author:                 emrag < emrah987@hotmail.com > (Emrah Türkmen)
+Website:                www.canver.net
+GPL:                    Yes
+Notes:                  Shows how many messages are there in inbox, outbox, sentbox and savebox
+---------------------------------------------------------------
+IE PNG Fix
+Version:                1.0.1
+Author:                 bobosola
+Website:                homepage.ntlworld.com/bobosola
+GPL:                    Yes
+Notes:                  The fix allows IE to properly render PNG alpha transparency
+---------------------------------------------------------------
+Allow multiple spaces in posts
+Version:                1.0.0
+Author:                 chris_blessing < webguy@330i.net > (Chris Blessing)
+Website:                forums.330i.net
+GPL:                    Yes
+Notes:                  Allows users to use multiple spaces in their posts by replacing the spaces with the &nbsp; entity as necessary
+---------------------------------------------------------------
+Ranks summarize
+Version:                1.0.4
+Author:                 Ptirhiik < renegade88@marino.st >
+Website:                rpgnet.clanmckeen.com
+GPL:                    Yes
+Notes:                  Displays all the ranks available on your board
+---------------------------------------------------------------
+Number Format Total Posts
+Version:                1.0.0
+Author:                 Acyd Burn < acyd.burn@gmx.de > Meik Sievertsen
+Website:                phpbb.com
+GPL:                    Yes
+Notes:                  Formats the total posts on your board with grouped thousands
+---------------------------------------------------------------
+Separate Announcements & Sticky
+Version:                2.0.0a
+Author:                 Aiencran < cranportal@katamail.com >
+Website:                N/A
+GPL:                    Yes
+Notes:                  Separates Global Announcements, Announcements and Sticky Topics from other topics in viewforum page
+---------------------------------------------------------------
+Staff Site
+Version:                2.0.3
+Author:                 Acyd Burn < acyd.burn@gmx.de > Meik Sievertsen
+Website:                phpbb.com
+GPL:                    Yes
+Notes:                  Displays who is Mod (or Super Mod) or Admin (or Junior Admin) at your board
+---------------------------------------------------------------
+Goto specific page
+Version:                1.0.0
+Author:                 mkiefer < mkiefer@earthlink.net >
+Website:                N/A
+GPL:                    Yes
+Notes:                  Adds a drop-down list to the pagination whenever more than 5 pages are available. 
+---------------------------------------------------------------
+Better Session Handling
+Version:                1.0.0
+Author:                 aUsTiN < austin_inc@hotmail.com >
+Website:                phpbb-tweaks.com
+GPL:                    Yes
+Notes:                  A much more detailed Whos Where system 
+---------------------------------------------------------------
+AUC modifications
+Version:                1.0.1
+Author:                 Technocrat, Rodmar, JeFFb68CAM
+Website:                www.platinummods.com, www.evolved-systems.net, Evo-Mods.com
+GPL:                    Yes
+Notes:                  Allows the use of AUC almost everywhere ;)
+---------------------------------------------------------------
+Admin Topic Shadow Manager
+Version:                2.13
+Author:                 Nivisec < support@nivisec.com > (Billy Sauls)
+Website:                www.nivisec.com
+GPL:                    Yes
+Notes:                  Admin Control Panel Plug-in to let you view all shadow topic links, some info about them, and optionally remove any or all. You can also delete any before a certain date as well
+---------------------------------------------------------------
+Admin Private Message Manager
+Version:                1.6.0
+Author:                 Nivisec < support@nivisec.com > (Billy Sauls)
+Website:                www.nivisec.com
+GPL:                    Yes
+Notes:                  An Admin panel plug-in that allows the management of Private Messages on the board. You may sort by a variety of options, delete any PMs you choose, or optionally archive them for later use
+---------------------------------------------------------------
+Forum ACP Administration Links
+Version:                1.0.0
+Author:                 Rodmar, Nazgul
+Website:                www.evolved-systems.net, www.evo-files.com
+GPL:                    Yes
+Notes:                  Adds a link to the home page and Nuke Administration in the Forum ACP under Administration
+---------------------------------------------------------------
+adminHtml
+Version:                1.0.3
+Author:                 trof (Alexey Trofimov)
+Website:                www.TimberFrog.com
+GPL:                    Yes
+Notes:                  Allows admins to use any HTML/javascript tags in posts
+---------------------------------------------------------------
+FAQ Manager
+Version:                1.0.0b
+Author:                 Verteron < verteron@verteron.net >
+Website:                www.verteron.net
+GPL:                    Yes
+Notes:                  Allows the administrator to edit and re-arrange their FAQ and BBCode Guide through an admin control panel module
+---------------------------------------------------------------
+Board Rules
+Version:                2.0.0
+Author:                 Dimitri Seitz
+Website:                N/A
+GPL:                    Yes
+Notes:                  Adds a site with a list of configurable rules to your board (Addon for Faq Manager)
+---------------------------------------------------------------
+Forum Top Navigation Links
+Version:                1.0.0
+Author:                 Rodmar
+Website:                www.evolved-systems.net
+GPL:                    Yes
+Notes:                  Adds Forum Index links with an image to the Forum Top Navigation
+---------------------------------------------------------------
+Finished Redirection
+Version:                1.0.0
+Author:                 Technocrat
+Website:                www.platinummods.com
+GPL:                    Yes
+Notes:                  Makes the Your Account module redirect to the home page if the registration was completed successfully
+---------------------------------------------------------------
+Default avatar
+Version:                1.1.0
+Author:                 Manipe < admin@manipef1.com >
+Website:                www.manipef1.com
+GPL:                    Yes
+Notes:                  Lets the administrator choose a default avatar, if a user hasn't already selected one. The default avatar can be changed through the ACP. You can also select whether you want to display the default avatar for guests, registered users or both, and choose a different default avatar for guests and users
+---------------------------------------------------------------
+Custom mass PM
+Version:                1.4.7
+Author:                 Niels < ncr@db9.dk > (Niels Chr. Rød)
+Website:                mods.db9.dk
+GPL:                    Yes
+Notes:                  1. Add mass PM functionnality to group members (or all forums members) for authorized users. 2. Add the possibility for all users to send ordinary PM to multiple users (usernames separated by a semi-colon)
+---------------------------------------------------------------
+CNBYA Modifications
+Version:                1.0.0
+Author:                 Rodmar
+Website:                www.evolved-systems.net
+GPL:                    Yes
+Notes:                  Converts various features to work with CNB Your Account
+---------------------------------------------------------------
+Disable Board Message
+Version:                1.0.0
+Author:                 Sko22 < sko22@quellicheilpc.com > (Gianluca Scerni)
+Website:                www.quellicheilpc.com
+GPL:                    Yes
+Notes:                  Customize disable board message
+---------------------------------------------------------------
+Disable Board Admin Override
+Version:                0.1.1
+Author:                 Erisar < erisar@bellsouth.net > (Eric)
+Website:                N/A
+GPL:                    Yes
+Notes:                  Places an option in the Administration Panel which allows you to select whether or not Administrators can view the board when it is disabled
+---------------------------------------------------------------
+Bottom aligned signature
+Version:                1.2.0
+Author:                 -=ET=-, AbelaJohnB
+Website:                http://www.golfexpert.net/phpbb
+GPL:                    Yes
+Notes:                  Aligns signatures at the bottom of posts
+---------------------------------------------------------------
+Memberlist Find User
+Version:                1.0.0
+Author:                 Sko22 < sko22@quellicheilpc.com > (Gianluca Scerni)
+Website:                www.quellicheilpc.com
+GPL:                    Yes
+Notes:                  Search a username in Memberlist
+---------------------------------------------------------------
+Greeting Users
+Version:                1.0.0
+Author:                 Rodmar
+Website:                www.evolved-systems.net
+GPL:                    Yes
+Notes:                  Greets a user on the Login block(s)
+---------------------------------------------------------------
+FAQ Admin Addon
+Version:                1.0.0
+Author:                 Rodmar
+Website:                www.evolved-systems.net
+GPL:                    Yes
+Notes:                  Lets you directly jump to the FAQ Attachment and Site Rules from within the Forum ACP's FAQ Admin
+---------------------------------------------------------------
+PHP Syntax Highlighter BBCode
+Version:                3.0.7
+Author:                 Fubonis < php_fubonis@yahoo.com > (JW Frazier)
+Website:                www.fubonis.com
+GPL:                    Yes
+Notes:                  Highlights PHP specific code when used
+---------------------------------------------------------------
+Topic Text Reply Email 
+Version:                1.0.0
+Author:                 Technocrat
+Website:                www.platinummods.com
+GPL:                    Yes
+Notes:                  Show the text of a topic reply in the email
+---------------------------------------------------------------
+Password Strength Meter 
+Version:                1.0.0
+Author:                 Technocrat
+Website:                www.platinummods.com
+GPL:                    Yes
+Notes:                  Show the strength of a users password while typing it in (Code was taken and modified from http://www.experts-exchange.com/Web/Web_Languages/JavaScript/Q_21443973.html)
+---------------------------------------------------------------
+Content BBCodes
+Version:                1.0.1
+Author:                 DJ Maze
+Website:                www.cpgnuke.com
+GPL:                    Yes
+Notes:                  Allows user to use the BBCode Box mod also in the Content module. See nbbcode
+---------------------------------------------------------------
+Printer Topic
+Version:                1.0.8
+Author:                 Svyatozar < svyatozar@pochtamt.ru >
+Website:                N/A
+GPL:                    Yes
+Notes:                  Allows printing of a topic in the forums
+---------------------------------------------------------------
+PM threshold
+Version:                1.0.0
+Author:                 Ptirhiik < ptirhiik@clanmckeen.com > (Pierre)
+Website:                rpgnet.clanmckeen.com
+GPL:                    Yes
+Notes:                  Adds a minimum posts threshold before allowing PM's
+---------------------------------------------------------------
+Admin Voting
+Version:                1.1.8
+Author:                 ErDrRon < ErDrRon@aol.com >
+Website:                www.ErDrRon.com/phpBB2
+GPL:                    Yes
+Notes:                  Allows forum administrators, via the Admin Control Panel, to see who voted in a poll and, optionally, HOW they voted
+---------------------------------------------------------------
+Limit smilies per post
+Version:                1.0.2
+Author:                 OXPUS < webmaster@oxpus.de > (Karsten Ude)
+Website:                www.oxpus.de
+GPL:                    Yes
+Notes:                  Admin can set per ACP, how many smilies a user can use per post
+---------------------------------------------------------------
+Forum Statistics Mod
+Version:                3.0.0 BETA
+Author:                 Acyd Burn < acyd.burn@gmx.de > Meik Sievertsen
+Website:                phpbb.com
+GPL:                    Yes
+Notes:                  The Forum Statistics Mod is a complete statistics core for your phpBB 2 board. It is module driven, every module is one statistic
+---------------------------------------------------------------
+Advanced Time Management
+Version:                2.2.1
+Author:                 -=ET=- < n/a > (n/a) 
+Website:                http://www.golfexpert.net/phpbb
+GPL:                    Yes
+Notes:                  This MOD allow the board administrator(s) and each user to manage the times displayed on the board.
+---------------------------------------------------------------
+Forum Logout
+Version:                1.0.0
+Author:                 Technocrat
+Website:                platinummods.com
+GPL:                    Yes
+Notes:                  Allows you to logout of nuke and phpbb correctly
+---------------------------------------------------------------
+User Administration Link on Profile
+Version:                1.0.0
+Author:                 Matthijs van de Water < matthijs@vandewater.tk >
+Website:                N/A
+GPL:                    Yes
+Notes:                  This will add a link to the User Administration of the Administrator Control Panel on the 'view profile' page. Will only display the link when user is ADMIN
+---------------------------------------------------------------
+Advance Admin Index Stats
+Version:                1.0.0
+Author:                 Civphp 
+Website:                http://www.civphpbb.net
+GPL:                    Yes
+Notes:                  Adds more statistics to your Admin Index Page
+---------------------------------------------------------------
+Must first vote to see results (Optional)
+Version:                1.0.0
+Author:                 JeFFb68CAM
+Website:                Evo-Mods.com
+GPL:                    Yes
+Notes:                  Allows poster to choose whether user has to vote before viewing poll results.
+---------------------------------------------------------------
+Lock Modules
+Version:                1.0.0
+Author:                 Technocrat
+Website:                Platinummods.com
+GPL:                    Yes
+Notes:                  Forces users to login before they can do anything on the site
+---------------------------------------------------------------
+Newsletter Optout
+Version:                1.0.0
+Author:                 Technocrat
+Website:                Platinummods.com
+GPL:                    Yes
+Notes:                  Give an actual link that will allow users to quickly optout of the newsletter
+---------------------------------------------------------------
+Log Actions MOD
+Version:                1.1.6
+Author:                 morpheus2matrix
+Website:                morpheus.2037.biz
+GPL:                    Yes
+Notes:                  This MOD will allow administrators to log actions done by moderators and other administrators. 
+---------------------------------------------------------------
+XData (Custom Profile) Mod
+Version:                1.0.3
+Author:                 zayin
+Website:                http://www.phpbb.com/phpBB/viewtopic.php?p=2271346#2271346
+GPL:                    Yes
+Notes:                  The mod allows admins to create custom fields in the user profiles
+---------------------------------------------------------------
+View Sig
+Version:                1.0.0
+Author:                 Technocrat
+Website:                Platinummods.com
+GPL:                    Yes
+Notes:                  Allows the ability to view a users sig in their profile
+---------------------------------------------------------------
+Collapsing Blocks
+Version:                1.0.0
+Author:                 DJMaze, Viperal, & Shedrock
+Website:                www.lorkan.com
+GPL:                    Yes
+Notes:                  Allows the ability to shrink and expand blocks
+---------------------------------------------------------------
+At a Glance Options
+Version:                1.0.0
+Author:                 JeFFb68CAM
+Website:                Evo-Mods.com
+GPL:                    Yes
+Notes:                  Allows the admin to turn on or off the At a Glance module for different sections.
+---------------------------------------------------------------
+Extended Quote Tags
+Version:                1.0.0
+Author:                 Acyd Burn
+Website:                http://www.opentools.de/
+GPL:                    Yes
+Notes:                  This Mod adds an extended functionality on the [quote] BBCode Tag.
+---------------------------------------------------------------
+At a Glance Cement
+Version:                1.0.0
+Author:                 JeFFb68CAM
+Website:                Evo-Mods.com
+GPL:                    Yes
+Notes:                  Allows the admin to cement posts in at a glance
+---------------------------------------------------------------
+Reviews BBCodes
+Version:                1.0.0
+Author:                 Rodmar
+Website:                www.evolved-systems.net
+GPL:                    Yes
+Notes:                  Adds the BBCode box also to the Reviews Module as well as code optimizations. See nbbcode
+---------------------------------------------------------------
+News BBCodes
+Version:                1.0.0
+Author:                 Technocrat
+Website:                Platinummods.com
+GPL:                    Yes
+Notes:                  Adds the BBCode box also to the News Module as well as code optimizations. See nbbcode
+---------------------------------------------------------------
+Online/Offline/Hidden
+Version:                2.2.7
+Author:                 kooky < kooky@altern.org > 
+Website:                www.myphpbb.zaup.org
+GPL:                    Yes
+Notes:                  Shows the Online status of a user, stating if he is Online, Offline or Hidden with text within viewtopic as well his profile, in memberlist, groupcp etc.
+---------------------------------------------------------------
+Hidden Status Viewing
+Version:                1.0.0
+Author:                 kooky < kooky@altern.org > 
+Website:                www.myphpbb.zaup.org
+GPL:                    Yes
+Notes:                  allow hidden users (without ADMIN level) to view    their username in viewonline and viewonline block (on index)
+---------------------------------------------------------------
+Online Time
+Version:                1.0.0
+Author:                 kooky < kooky@altern.org > 
+Website:                www.myphpbb.zaup.org
+GPL:                    Yes
+Notes:                  This mod will base online time in index and viewonline on the online status time
+---------------------------------------------------------------
+Selection Order for the Online/Offline/Hidden
+Version:                1.0.0
+Author:                 kooky < kooky@altern.org > 
+Website:                www.myphpbb.zaup.org
+GPL:                    Yes
+Notes:                  This mod will add selection order for Online Status in memberlist
+---------------------------------------------------------------
+'View Newest Post'-Fix
+Version:                1.0.2
+Author:                 Acyd Burn < acyd.burn@gmx.de > Meik Sievertsen
+Website:                www.opentools.de
+GPL:                    Yes
+Notes:                  This Mod is more a 'bugfix' for phpBB 2.0.x. At some circumstances, the Newest Post Icon in Forums View (if you have all topics listed) does not work properly. For example, if you have visited a thread before and haven't logged out of the board, another person writes a reply and the thread becomes this little orange icon again. But when you click on it now, it brings you to the post where you have looked before.
+---------------------------------------------------------------
+Select Expand & Extended Quote Tag
+Version:                1.0.0
+Author:                 Rodmar
+Website:                www.evolved-systems.net
+GPL:                    Yes
+Notes:                  Integrates the Extended Quote Tag Mod with the Select Expand Mod
+---------------------------------------------------------------
+Auto Admin Login
+Version:                1.1.0
+Author:                 Quake
+Website:                www.nuke-evolution.com
+GPL:                    Yes
+Notes:                  Automatically logs the admin in when the first user is being created
+---------------------------------------------------------------
+Initial Usergroups
+Version:                1.0.1
+Author:                 diediedie
+Website:                www.platinummods.com
+GPL:                    Yes
+Notes:                  Adds new users directly to the initial group set in forum admin
+---------------------------------------------------------------
+phpBB User Groups Integration
+Version:                1.1.0
+Author:                 Quake
+Website:                www.nuke-evolution.com
+GPL:                    Yes
+Notes:                  Integrates phpBB Groups with Nuke Groups
+---------------------------------------------------------------
+External Admin Index
+Version:                1.0.0
+Author:                 Quake
+Website:                www.nuke-evolution.com
+GPL:                    Yes
+Notes:                  Makes an admin module of the function adminMain()
+---------------------------------------------------------------
+Auto First User Login
+Version:                1.0.0
+Author:                 Quake
+Website:                www.nuke-evolution.com
+GPL:                    Yes
+Notes:                  Automatically logs you in as user when first user is being created
+---------------------------------------------------------------
+Persistent Admin Login
+Version:                2.0.0
+Author:                 Quake
+Website:                www.nuke-evolution.com
+GPL:                    Yes
+Notes:                  Lets the admin choose if he wants to let him be remembered as logged in
+---------------------------------------------------------------
+Group Colors
+Version:                1.0.0
+Author:                 JeFFb68CAM
+Website:                www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  Lets the admin choose an AUC color group that will be assigned to any user that is added to that group
+---------------------------------------------------------------
+Group Ranks
+Version:                1.0.0
+Author:                 JeFFb68CAM
+Website:                www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  Lets the admin choose a rank that will be assigned to any user that is added to that group
+---------------------------------------------------------------
+Report Post to Quote Show Post
+Version:                1.0.0
+Author:                 JeFFb68CAM
+Website:                www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  Integrated Report Post and View Post (Extended Quote Tag)
+---------------------------------------------------------------
+Automatic subject to quick reply
+Version:                1.0.0
+Author:                 JeFFb68CAM
+Website:                www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  Adds a subject automatically to the quick reply
+---------------------------------------------------------------
+Lock/Unlock to quick reply
+Version:                1.0.0
+Author:                 JeFFb68CAM
+Website:                www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  Adds the option to lock / unlock a topic in Quick Reply
+---------------------------------------------------------------
+Hide Images and Links to guests
+Version:                1.0.0
+Author:                 JeFFb68CAM
+Website:                www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  Gives the admin the ability to show images and links to guests or not
+---------------------------------------------------------------
+Hide Images Option (User Profile Option)
+Version:                1.0.0
+Author:                 JeFFb68CAM
+Website:                www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  Gives the user the ability to choose whether to show images in the forums or not
+---------------------------------------------------------------
+DHTML Forum Config Admin
+Version:                1.0.0
+Author:                 JeFFb68CAM
+Website:                www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  Makes it so that the Forum Config in the admin panel collapses
+---------------------------------------------------------------
+Toggle for DHTML Forum Config Admin
+Version:                1.0.0
+Author:                 JeFFb68CAM
+Website:                www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  Gives the admin the ability to disable the DHTML menu
+---------------------------------------------------------------
+Profile Module
+Version:                1.0.0
+Author:                 JeFFb68CAM
+Website:                www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  Makes the phpBB profile page its own module
+---------------------------------------------------------------
+Customized Topic View
+Version:                1.0.2
+Author:                 JeFFb68CAM
+Website:                www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  Allows admin to control through the config panel what he wants each topic type to look like
+---------------------------------------------------------------
+Advanced Installer
+Version:                1.0.5
+Author:                 JeFFb68CAM
+Website:                www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  An Advanced Installer MADE FOR EVO that will chmod files, config your site, and install SQL in just a few easy steps.
+---------------------------------------------------------------
+AUC on quoted username
+Version:                1.0.2
+Author:                 JeFFb68CAM
+Website:                www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  Shows the quoted username's color in his AUC color on quotes
+---------------------------------------------------------------
+Suppress Popup
+Version:                1.0.0
+Author:                 Technocrat
+Website:                www.platinummods.com
+GPL:                    Yes
+Notes:                  Allows the ability to suppress the PM popup on email links
+---------------------------------------------------------------
+Log Actions Mod - Topic View
+Version:                2.0.0
+Author:                 JeFFb68CAM
+Website:                www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  Displays any action done to a topic by a moderator in a clean why and gives you options to display it and who to display it to in the forum admin.
+---------------------------------------------------------------
+RSS Improvements
+Version:                2.5.0
+Author:                 Rodmar, Quake
+Website:                www.evolved-systems.net, www.Nuke-Evolution.com
+GPL:                    Yes
+Notes:                  RSS improvements for Nuke-Evolution based upon NSN News backend file. Contains RSS 2.0 files for NSN News, Forums, Downloads and Web Links.
+---------------------------------------------------------------
+Forum Admin Style Selection
+Version:                1.0.0
+Author:                 JeFFb68CAM
+Website:                Evo-Mods.com
+Notes:                  Allows admin to choose whether to use the site's theme or default for the forum admin style.
+---------------------------------------------------------------
+No Flood Control For Mods And Admins
+Version:                1.0.0
+Author:                 Cyberwizzard < phpbb@cyberwizzard.tmfweb.nl > (Berend Dekens)
+Website:                N/A
+GPL:                    Yes
+Notes:                  This mod disables the flood control for admins and moderators
+---------------------------------------------------------------
+Display Writes
+Version:                1.0.0
+Author:                 Technocrat
+Website:                www.platinummods.com
+GPL:                    Yes
+Notes:                  This mod allows the disabling of the admin writes "" in the news
+---------------------------------------------------------------
+Censor
+Version:                1.0.0
+Author:                 Technocrat
+Website:                www.platinummods.com
+GPL:                    Yes
+Notes:                  This mod allows the ability to customize the censoring of words
+---------------------------------------------------------------
+Extended PM Notification
+Version:                1.1.5
+Author:                 Mac (Y.C. LIN) < ycl6@users.sourceforge.net >
+Website:                macphpbbmod.sourceforge.net
+GPL:                    Yes
+Notes:                  Allows receiver who enables e-mail notification when receiving new private message to have sender's username and message content included in the e-mail
+---------------------------------------------------------------
+nbbcode
+Version:                9.21.0
+Author:                 djmaze
+Website:                www.cpgnuke.com
+GPL:                    Yes
+Notes:                  Allows bbcode to be used outside of the forums.    See: Content BBCodes, News BBCodes, Message BBCodes, and Review BBCodes
+---------------------------------------------------------------
+Remote Avatar Resize
+Version:                2.0.0
+Author:                 (unknown)
+Website:                (unknown)
+GPL:                    Yes
+Notes:                  Allows remote avatars to be resized
+---------------------------------------------------------------
+FCK Editor
+Version:                2.2.0
+Author:                 Frederico Caldeira Knabben
+Website:                www.fckeditor.net
+GPL:                    Yes
+Notes:                  HTML WYSIWYG editor for text areas
+---------------------------------------------------------------
+Custom Text Area
+Version:                1.0.0
+Author:                 Technocrat
+Website:                www.platinummods.com
+GPL:                    Yes
+Notes:                  Allows text area to have FCK, bbcode, or none
+---------------------------------------------------------------
+External Admin Functions
+Version:                1.0.0
+Author:                 Quake
+Website:                www.nuke-evolution.com
+GPL:                    Yes
+Notes:                  Moves all admin file functions to /admin/functions.php. It cleans up the admin file.
+---------------------------------------------------------------
+Edit User Post Count
+Version:                1.0.0
+Author:                 JeFFb68CAM
+Website:                www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  Simple mod to allow admin to edit a users post count
+---------------------------------------------------------------
+Advanced Security Code Control
+Version:                1.0.0
+Author:                 Quake, JeFFb68CAM
+Website:                www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  Now you have complete control over the way the security images show up.
+---------------------------------------------------------------
+
+Fancy Newsletter
+Version:                2.5.1
+Author:                 (See included Fancy Newsletter credit file)
+Website:                sourceforge.net/projects/fancynl/
+GPL:                    Yes
+Notes:                  Allows admins to make nice looking newsletters
+---------------------------------------------------------------
+NSN News
+Version:                770 1.1.6 pl2
+Author:                 NukeScripts Network
+Website:                www.nukescripts.net
+GPL:                    No (See included NSN News license file)
+Notes:                  None
+---------------------------------------------------------------
+NSN Supporters
+Version:                75-77 1.3.0
+Author:                 NukeScripts Network
+Website:                www.nukescripts.net
+GPL:                    No (See included NSN Supporters license file)
+Notes:                  Allows the users and admins to add supporters to their site
+---------------------------------------------------------------
+Legal Docs
+Version:                1.0.0
+Author:                 DJ Maze
+Website:                www.cpgnuke.com
+GPL:                    Yes
+Notes:                  Module to have your Website documents in one place. You have a custom About Us page, a site Privacy Statement, and a site Disclaimer statement. The only configuration is typing in what you want the About Us statement to say
+---------------------------------------------------------------
+MetOpen Home Page
+Version:                2.0.1
+Author:                 Heshy Shayovitz
+Website:                metopen.com
+GPL:                    Yes
+Notes:                  A supplementary add-on that allows you to change the way news looks
+---------------------------------------------------------------
+phpBB Groups Module
+Version:                1.0.0
+Author:                 Quake
+Website:                www.nuke-evolution.com
+GPL:                    Yes
+Notes:                  Made an own module out of groupcp.php from the Forums module
+---------------------------------------------------------------
+Topics
+Version:                1.0.0
+Author:                 Quake
+Website:                www.nukefixes.com
+GPL:                    Yes
+Notes:                  Made for PHP-Nuke Patched, optimized topics module
+---------------------------------------------------------------
+Credit Module
+Version:                1.0.0
+Author:                 JeFFb68CAM
+Website:                www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  Created a credits module that would read all the credits from txt file (this one.)
+---------------------------------------------------------------
+phpBB Profile Module
+Version:                1.0.0
+Author:                 JeFFb68CAM
+Website:                www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  Made an own module out of profile.php from the Forums module
+---------------------------------------------------------------
+Spambot Killer
+Version:                2.0.0
+Author:                 N/A
+Website:                N/A
+GPL:                    Yes
+Notes:                  Floods spambots with useless emails
+---------------------------------------------------------------
+Site Map
+Version:                4.0.0
+Author:                 www.techg3n.net
+Website:                techg3n.net
+GPL:                    Yes
+Notes:                  Enhanced Site Map module generates a list with useful links from your website. Also generates an XML sitemap for search engines
+
+DB Free Resource
+Version:                1.0.0
+Author:                 Technocrat
+Website:                platinummods.com
+GPL:                    N/A
+Notes:                  When a query is run the results stay in memory until it’s released.  With most SQL systems this is done 1 of 2 ways.  The first is done by the server when the connection is closed or a timeout has occurred.  Generally this is referred to as a garbage collector.  The second can be done by the programmer, by calling a function to handle the release. In an attempt to be more OOP standard compliant with this distro we are trying to handle these types of situations ourselves without using the garbage collector.
+---------------------------------------------------------------
+DB Connector
+Version:                1.0.0
+Author:                 EvolutionCrazy
+Website:                N/A
+GPL:                    N/A
+Notes:                  Attempts to make Nuke more OOP standard complaint by forcing the DB connector to close http://www.nukefixes.com/ftopic-1397.html
+---------------------------------------------------------------
+Queries Count
+Version:                2.0.0
+Author:                 Technocrat, Quake
+Website:                platinummods.com, www.nuke-evolution.com
+GPL:                    N/A
+Notes:                  To show the number of queries a page uses go to admin panel and set it. This will then show a query count in the foot of each page. For some reason every class had a counter variable but it wasn’t used for anything.
+---------------------------------------------------------------
+Admin Field Size
+Version:                1.0.0
+Author:                 Technocrat
+Website:                platinummods.com
+GPL:                    N/A
+Notes:                  The password and username field size for creating the admin account is set to odd size. So I set them to be a the standard 20
+---------------------------------------------------------------
+Need To Delete
+Version:                1.0.0
+Author:                 Technocrat
+Website:                platinummods.com
+GPL:                    N/A
+Notes:                  Forces the site admin to delete install.php and the install folder
+---------------------------------------------------------------
+W3C HTML
+Version:                4.01
+Author:                 The Nuke-Evolution Team
+Website:                Nuke-Evolution.com
+GPL:                    N/A
+Notes:                  Making everything 4.01 complaint
+---------------------------------------------------------------
+News Fix
+Version:                1.0.0
+Author:                 Technocrat
+Website:                www.platinummods.com
+GPL:                    N/A
+Notes:                  Put the current news articles in the news admin area
+---------------------------------------------------------------
+YA Forum Sig
+Version:                1.0.0
+Author:                 Technocrat
+Website:                www.platinummods.com
+GPL:                    N/A
+Notes:                  Change the Your Account signature area to go to the forum sig
+---------------------------------------------------------------
+Date Fix
+Version:                1.0.0
+Author:                 Manuel
+Website:                N/A
+GPL:                    N/A
+Notes:                  Cleans up the date code. http://www.nukefixes.com/ftopicp-5353.html#5353
+---------------------------------------------------------------
+Review Background Color Fix
+Version:                1.0.0
+Author:                 Evaders99
+Website:                N/A
+GPL:                    N/A
+Notes:                  Fixes the hard coded background color in reviews. http://www.nukefixes.com/modules.php?name=Forums&file=viewtopic&t=1401
+---------------------------------------------------------------
+URL Check
+Version:                1.0.0
+Author:                 Technocrat
+Website:                www.platinummods.com
+GPL:                    Yes
+Notes:                  Checks to make sure that the URL is valid
+---------------------------------------------------------------
+Theme Simplifications
+Version:                1.0.0
+Author:                 Rodmar
+Website:                www.evolved-systems.net
+GPL:                    Yes
+Notes:                  It simplifies the theme edits regarding the Forum Top Navigation Links and makes all URL's, image paths and language definition variables
+---------------------------------------------------------------
+Admin Password Confirm
+Version:                1.0.0
+Author:                 Technocrat
+Website:                www.platinummods.com
+GPL:                    Yes
+Notes:                  Forces password confirmation when making the admin
+---------------------------------------------------------------
+Cookie Checker
+Version:                1.0.0
+Author:                 Technocrat
+Website:                www.platinummods.com
+GPL:                    Yes
+Notes:                  Checks the forum cookie settings
+---------------------------------------------------------------
+4nWhoIsOnline
+Version:                0.9.1
+Author:                 Jack Kozbial
+Website:                www.internetintl.com
+GPL:                    Yes
+Notes:                  This administrator add-on/module shows the current visitors on your site with resolved DNS lookup and the ability to manage the users directly
+---------------------------------------------------------------
+Extended Surveys Admin Interface
+Version:                2.0.0
+Author:                 Quake
+Website:                www.nuke-evolution.com
+GPL:                    Yes
+Notes:                  Extended administration for Surveys module. Improved look & feel, added some new options and optimized the code.
+---------------------------------------------------------------
+Database Driven TOS for CNBYA (Your_Account)
+Version:                1.0.0
+Author:                 JeFFb68CAM
+Website:                www.Evo-Mods.com
+GPL:                    Yes
+Notes:                  Allows admin to edit the TOS from the CNBYA admin panel
+---------------------------------------------------------------
+PHP Input Filter
+Version:                1.2.2
+Author:                 Daniel Morris
+Website:                www.cyberai.com/inputfilter
+GPL:                    Yes
+Notes:                  Filters out bad HTML tags
+---------------------------------------------------------------
+Admin IP Lock
+Version:                2.1.0
+Author:                 Technocrat
+Website:                www.platinummods.com
+GPL:                    Yes
+Notes:                  Allows admins to lock the admin file by IP address
+---------------------------------------------------------------
+User IP Lock
+Version:                2.1.0
+Author:                 Technocrat
+Website:                www.platinummods.com
+GPL:                    Yes
+Notes:                  Allows admins to lock certain user accounts by IP address
+---------------------------------------------------------------
+
+Effectica
+Website:                effectica.com
+Notes:                  Created and donated the theme "chromo" for Nuke-Evolution.
+---------------------------------------------------------------
+SlashDot
+Website:                sddesign.biz
+Notes:                  Created and donated the theme "3com" for Nuke-Evolution.
