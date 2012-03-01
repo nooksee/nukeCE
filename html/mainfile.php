@@ -4,7 +4,7 @@
 /* PHP-Nuke CE: Web Portal System                                         */
 /* ==============================                                         */
 /*                                                                        */
-/* Copyright (c) 2011 by Kevin Atwood                                     */
+/* Copyright (c) 2012 by Kevin Atwood                                     */
 /* http://www.nukece.com                                                  */
 /*                                                                        */
 /* All PHP-Nuke CE code is released under the GNU General Public License. */
