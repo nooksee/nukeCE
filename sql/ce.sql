@@ -4143,10 +4143,7 @@ CREATE TABLE `nuke_themes` (
 --
 
 INSERT INTO `nuke_themes` (`theme_name`, `groups`, `permissions`, `custom_name`, `active`, `theme_info`) VALUES
-('subSilver', '', 1, 'subSilver', 1, 'index.php:::Home:::modules.php?name=Forums:::Forums:::modules.php?name=Downloads:::Downloads:::modules.php?name=Your_Account:::Account:::#e5e5e5:::#D1D7DC:::#DEE3E7:::#EFEFEF:::#000000:::#000000'),
-('Chromo', '', 1, 'Chromo', 0, 'index.php:::HOME:::modules.php?name=Forums:::FORUMS:::modules.php?name=Downloads:::DOWNLOAD:::modules.php?name=Your_Account:::ACCOUNT:::#e6e6e6:::#878C92:::#F0F0F0:::#F3F4FF:::#FFFFFF:::#D59E00'),
-('XHalo', '', 1, 'XHalo', 0, 'index.php:::HOME:::modules.php?name=Forums:::FORUMS:::modules.php?name=Downloads:::DOWNLOAD:::modules.php?name=Your_Account:::ACCOUNT:::#1C1E2C:::#1C1E2C:::#5B5C6A:::#1C1E2C:::#FFFFFF:::#FFFFFF'),
-('T-Platinum', '', 1, 'T-Platinum', 0, 'index.php:::Home:::modules.php?name=Forums:::Forums:::modules.php?name=Downloads:::Downloads:::modules.php?name=Your_Account:::Account:::#F3F4FF:::#F3F4FF:::#A1A3B1:::#F3F4FF:::#666980:::#666980');
+('subSilver', '', 1, 'subSilver', 1, 'index.php:::Home:::modules.php?name=Forums:::Forums:::modules.php?name=Downloads:::Downloads:::modules.php?name=Your_Account:::Account:::#e5e5e5:::#D1D7DC:::#DEE3E7:::#EFEFEF:::#000000:::#000000');
 
 -- --------------------------------------------------------
 
