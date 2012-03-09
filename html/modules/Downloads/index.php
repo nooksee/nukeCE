@@ -16,17 +16,20 @@ if (!defined('MODULE_FILE')) {
 }
 
 global $module_name;
+
 if(!isset($module_name) || empty($module_name)){
     $module_name = basename(dirname(__FILE__));
 }
+
 get_lang($module_name);
 define('INDEX_FILE', true);
 define('IN_DOWNLOADS', true);
 include_once(NUKE_MODULES_DIR.$module_name.'/includes/functions.php');
 $result1 = $db->sql_query("SELECT * FROM ".$prefix."_downloads_config");
 $dl_config = downloads_get_configs();
+
 if (!$dl_config OR empty($dl_config)) {
-include_once(NUKE_BASE_DIR.'header.php');
+    include_once(NUKE_BASE_DIR.'header.php');
     title(_DL_DBCONFIG);
     include_once(NUKE_BASE_DIR.'footer.php');
     exit;
@@ -57,7 +60,7 @@ switch($op) {
     case "TermsUseUp":
     case "TermsUse":
     case "SubmitDownloads":
-        include_once(NUKE_MODULES_DIR.$module_name."/public/SubmitDownloads.php");
+    include_once(NUKE_MODULES_DIR.$module_name."/public/SubmitDownloads.php");
     break;
 }
 
