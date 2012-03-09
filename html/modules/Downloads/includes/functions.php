@@ -281,7 +281,7 @@ function popgraphic($hits) {
 }
 
 function DLadminmain() {
-    global $admin_file, $module_name, $prefix, $db, $textcolor1, $bgcolor1, $bgcolor2;
+    global $admin_file;
     OpenTable();
     echo "<table align='center' cellpadding='2' cellspacing='2' border='0' width='100%'>\n";
 
@@ -310,6 +310,23 @@ function DLadminmain() {
     echo "</tr>\n";
     echo "</table>\n";
     CloseTable();
+    echo '
+          <br />
+         ';
+}
+
+function DLsub() {
+    global $admin_file;
+    OpenTable();
+    echo "
+          <table align='center' cellpadding='2' cellspacing='2' border='0' width='100%'>
+              <tr>
+                  <td align='center' colspan='3'><a href=\"$admin_file.php?op=DLMain\"><strong>" . _DOWNLOADSADMIN . "</strong></a></td>
+              </tr>
+          </table>
+         ";
+    CloseTable();
+    echo '<br />';
 }
 
 function convertorderbyin($orderby) {
