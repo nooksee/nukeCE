@@ -28,15 +28,15 @@ if ($cid == 0) {
   menu(1);
   $cidinfo = $db->sql_fetchrow($db->sql_query("SELECT * FROM ".$prefix."_downloads_categories WHERE cid=$cid AND active>'0'"));
   $title = getparentlink($cidinfo['parentid'], $cidinfo['title']);
-  $title = "<a href=modules.php?name=$module_name>"._MAIN."</a> -&gt; $title";
+  $title = "<a href=modules.php?name=$module_name>"._MAIN."</a>/$title";
 }
-echo "<br />";
+
 OpenTable();
-echo "<table align='center'><tr><td><span class='option'><strong>"._CATEGORY.": $title</strong></span></td></tr></table>";
+    echo "<center><font class=\"option\"><b>"._CATEGORY.": $title</b></font></center><br>";
 $result2 = $db->sql_query("SELECT * FROM ".$prefix."_downloads_categories WHERE parentid=$cid ORDER BY title");
 $numrows2 = $db->sql_numrows($result2);
 if ($numrows2 > 0) {
-  echo "<table align='center' border='0' cellpadding='10' cellspacing='1' width='100%'>\n";
+  echo "<table border=\"0\" cellspacing=\"10\" cellpadding=\"0\" align=\"center\"><tr>";
   $count = 0;
   while($cidinfo2 = $db->sql_fetchrow($result2)) {
     if ($count == 0) { echo "<tr>\n"; }
@@ -47,13 +47,10 @@ if ($numrows2 > 0) {
     } else {
       $cnumm = "";
     }
-    echo "<td valign='top' width='33%'><span class='option'>";
-    $myimage = myimage("icon-.png");
-    echo "<img align='top' src='$myimage' border='0' alt='' title=''>&nbsp;";
-    echo "<a href='modules.php?name=$module_name&amp;cid=".$cidinfo2['cid']."'><strong>".$cidinfo2['title']."</strong></a>$cnumm</span>";
+    echo "<td valign=\"top\"><font class=\"option\"><strong><big>&middot;</big></strong> <a href='modules.php?name=$module_name&amp;cid=".$cidinfo2['cid']."'><b>".$cidinfo2['title']."</b></a></font> $cnumm</span>";
     newcategorygraphic($cidinfo2['cid']);
     if ($cidinfo2['cdescription']) {
-      echo "<span class='content'>".$cidinfo2['cdescription']."</span><br />";
+      echo "<font class=\"content\">".$cidinfo2['cdescription']."</font><br>";
     } else {
       echo "<br />";
     }
@@ -67,32 +64,28 @@ if ($numrows2 > 0) {
       } else {
         $cnum = "";
       }
-      $myimage = myimage("icon-plus.png");
-      echo "&nbsp;&nbsp;<img align='top' src='$myimage' border='0' alt='' title=''>&nbsp;";
-      echo "<span class='content'><a href='modules.php?name=$module_name&amp;cid=".$cidinfo3['cid']."'>".$cidinfo3['title']."</a>$cnum</span>";
+      echo "<font class=\"content\"><a href='modules.php?name=$module_name&amp;cid=".$cidinfo3['cid']."'>".$cidinfo3['title']."</a>$cnum</font>";
       newcategorygraphic($cidinfo3['cid']);
-      echo "<br />\n";
       $space++;
     }
-    echo "</td>\n";
-    if ($count < 2) { $dum = 1; }
+    if ($count < 2) { echo "</td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>"; $dum = 1; }
     $count++;
-    if ($count == 3) { echo "</tr>\n"; $count = 0; $dum = 0; }
+    if ($count == 3) { echo "</td></tr><tr>"; $count = 0; $dum = 0; }
   }
   if ($dum == 1 && $count == 2) {
-    echo "<td>&nbsp;</td>\n</tr>\n</table>\n";
+    echo "</tr></table>";
   } elseif ($dum == 1 && $count == 1) {
     echo "<td>&nbsp;</td>\n<td>&nbsp;</td>\n</tr>\n</table>\n";
   } elseif ($dum == 0) {
-    echo "</tr>\n</table>\n";
+    echo "<td></td></tr></table>";
   }
 }
-$listrows = $db->sql_numrows($db->sql_query("SELECT * FROM ".$prefix."_downloads_downloads WHERE active>'0' AND cid='$cid'"));
+echo "<hr noshade size=\"1\">";
+    $listrows = $db->sql_numrows($db->sql_query("SELECT * FROM ".$prefix."_downloads_downloads WHERE active>'0' AND cid='$cid'"));
 if ($listrows > 0) {
   $op = $query = "";
   $orderbyTrans = convertorderbytrans($orderby);
   echo "<table border='0' cellpadding='0' cellspacing='4' width='100%'>";
-  echo "<tr><td colspan='2'><hr noshade size='1'></td></tr>";
   echo "<tr><td align='center' colspan='2'><span class='content'>"._SORTDOWNLOADSBY.": ";
   echo ""._TITLE." (<a href='modules.php?name=$module_name&amp;cid=$cid&amp;orderby=titleA'>A</a>\<a href='modules.php?name=$module_name&amp;cid=$cid&amp;orderby=titleD'>D</a>) ";
   echo ""._DATE." (<a href='modules.php?name=$module_name&amp;cid=$cid&amp;orderby=dateA'>A</a>\<a href='modules.php?name=$module_name&amp;cid=$cid&amp;orderby=dateD'>D</a>) ";

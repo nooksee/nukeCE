@@ -98,7 +98,7 @@ define("_DL_DBCONFIG","Database Error. Please notify the webmaster to run their 
 define("_DL_DEACTIVATE","Deactivate");
 define("_DL_DELETE","Delete");
 define("_DL_DENIED","File Access Denied");
-define("_DL_DIRECTIONS","<strong>DIRECTIONS:</strong>");
+define("_DL_DIRECTIONS","<strong>Directions:</strong>");
 define("_DL_DLNOTES1","To download the file \"<strong>");
 define("_DL_DLNOTES2","</strong>\", you may need to retype the displayed passcode, and click the button below. In a few moments you will receive the download dialog or you will be directed to the appropriate site.");
 define("_DL_DN","Downloads");
@@ -112,7 +112,7 @@ define("_DL_FILESDL","files downloaded");
 define("_DL_FLAGGED","This download has been automatically flagged for review by the webmaster.");
 define("_DL_FNF","File Not Found:");
 define("_DL_FNFREASON","It could be because the person hosting the download removed or renamed the file.");
-define("_DL_GOGET","Go Get It");
+define("_DL_GOGET","Download this file Now!");
 define("_DL_INVALIDPASS","You have entered an invalid Passcode.");
 define("_DL_INVALIDURL","An invalid url has been passed to the script.");
 define("_DL_LEGEND","Legend of Symbols");

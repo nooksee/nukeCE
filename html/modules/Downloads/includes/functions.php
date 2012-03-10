@@ -35,7 +35,7 @@ function myimage($imgfile) {
     if (file_exists("themes/$ThemeSel/images/$imgfile")) {
         $myimage = "themes/$ThemeSel/images/$imgfile";
     } else {
-        $myimage = "modules/$module_name/images/$imgfile";
+        $myimage = "images/$imgfile";
     }
     return($myimage);
 }
@@ -174,7 +174,7 @@ function getparentlink($parentid,$title) {
     global $prefix, $db, $module_name;
     $parentid = intval($parentid);
     $cidinfo = $db->sql_fetchrow($db->sql_query("SELECT * FROM ".$prefix."_downloads_categories WHERE cid=$parentid"));
-    if ($cidinfo['title'] != "") $title = "<a href='modules.php?name=$module_name&amp;cid=".$cidinfo['cid']."'>".$cidinfo['title']."</a> -&gt; ".$title;
+    if ($cidinfo['title'] != "") $title = "<a href='modules.php?name=$module_name&amp;cid=".$cidinfo['cid']."'>".$cidinfo['title']."</a>/".$title;
     if ($cidinfo['parentid'] != 0) { $title = getparentlink($cidinfo['parentid'],$title); }
     return $title;
 }
@@ -230,14 +230,14 @@ function newdownloadgraphic($datetime, $time) {
     while ($count <= 14) {
         $daysold = date("d-M-Y", $startdate);
         if ($daysold == $datetime) {
-            $myimage = myimage("new_01.png");
-            if ($count<=1) { echo "<img align='middle' src='$myimage' alt='"._NEWTODAY."' title='"._NEWTODAY."'>"; }
-            $myimage = myimage("new_03.png");
-            if ($count<=3 && $count>1) { echo "<img align='middle' src='$myimage' alt='"._NEWLAST3DAYS."' title='"._NEWLAST3DAYS."'>"; }
-            $myimage = myimage("new_07.png");
-            if ($count<=7 && $count>3) { echo "<img align='middle' src='$myimage' alt='"._NEWTHISWEEK."' title='"._NEWTHISWEEK."'>"; }
-            $myimage = myimage("new_14.png");
-            if ($count<=14 && $count>7) { echo "<img align='middle' src='$myimage' alt='"._NEWLAST2WEEKS."' title='"._NEWLAST2WEEKS."'>"; }
+            $myimage = myimage("new_1.gif");
+            if ($count<=1) { echo "<img align='top' src='$myimage' alt='"._NEWTODAY."' title='"._NEWTODAY."'>"; }
+            $myimage = myimage("new_7.gif");
+            if ($count<=3 && $count>1) { echo "<img align='top' src='$myimage' alt='"._NEWLAST3DAYS."' title='"._NEWLAST3DAYS."'>"; }
+            $myimage = myimage("new-english.gif");
+            if ($count<=7 && $count>3) { echo "<img align='top' src='$myimage' alt='"._NEWTHISWEEK."' title='"._NEWTHISWEEK."'>"; }
+            $myimage = myimage("new_3.gif");
+            if ($count<=14 && $count>7) { echo "<img align='top' src='$myimage' alt='"._NEWLAST2WEEKS."' title='"._NEWLAST2WEEKS."'>"; }
         }
         $count++;
         $startdate = (time()-(86400 * $count));
@@ -259,13 +259,13 @@ function newcategorygraphic($cat) {
     while ($count <= 14) {
         $daysold = date("d-M-Y", $startdate);
         if ("$daysold" == "$datetime") {
-            $myimage = myimage("new_01.png");
+            $myimage = myimage("new_1.gif");
             if ($count<=1) { echo "<img align='top' src='$myimage' alt='"._DCATNEWTODAY."' title='"._DCATNEWTODAY."'>"; }
-            $myimage = myimage("new_03.png");
+            $myimage = myimage("new_7.gif");
             if ($count<=3 && $count>1) { echo "<img align='top' src='$myimage' alt='"._DCATLAST3DAYS."' title='"._DCATLAST3DAYS."'>"; }
-            $myimage = myimage("new_07.png");
+            $myimage = myimage("new-english.gif");
             if ($count<=7 && $count>3) { echo "<img align='top' src='$myimage' alt='"._DCATTHISWEEK."' title='"._DCATTHISWEEK."'>"; }
-            $myimage = myimage("new_14.png");
+            $myimage = myimage("new_3.gif");
             if ($count<=14 && $count>7) { echo "<img align='top' src='$myimage' alt='"._DCATLAST2WEEKS."' title='"._DCATLAST2WEEKS."'>"; }
         }
         $count++;
@@ -276,8 +276,8 @@ function newcategorygraphic($cat) {
 function popgraphic($hits) {
     global $module_name, $dl_config;
     $hits = intval($hits);
-    $myimage = myimage("popular.png");
-    if ($hits >= $dl_config['popular']) { echo "&nbsp;<img align='top' src='$myimage' alt='"._POPULAR."' title='"._POPULAR."'>"; }
+    $myimage = myimage("popular.gif");
+    if ($hits >= $dl_config['popular']) { echo "&nbsp;<img align='middle' src='$myimage' alt='"._POPULAR."' title='"._POPULAR."'>"; }
 }
 
 function DLadminmain() {
@@ -375,28 +375,21 @@ function menu($maindownload) {
     CloseTable();
 
     echo "<br />\n";
-    OpenTable();
-    echo "<table align='center' cellpadding='2' cellspacing='2' border='0' width='100%'>\n";
-    echo "<tr><td align='center' colspan='3'><strong>"._DL_LEGEND."</strong></td></tr>\n";
-    echo "<tr>\n";
-    $myimage = myimage("new_01.png");
-    echo "<td align='center' width='33%'><img align='middle' src='$myimage' alt='' title=''> = "._NEWTODAY."</td>\n";
-    $myimage = myimage("new_03.png");
-    echo "<td align='center' width='34%'><img align='middle' src='$myimage' alt='' title=''> = "._NEWLAST3DAYS."</td>\n";
-    $myimage = myimage("new_07.png");
-    echo "<td align='center' width='33%'><img align='middle' src='$myimage' alt='' title=''> = "._NEWTHISWEEK."</td>\n";
-    echo "</tr>\n";
-    echo "<tr>\n";
-    $myimage = myimage("new_14.png");
-    echo "<td align='center' width='33%'><img align='middle' src='$myimage' alt='' title=''> = "._NEWLAST2WEEKS."</td>\n";
-    echo "<td align='center' width='34%'>&nbsp;</td>\n";
-    $myimage = myimage("popular.png");
-    echo "<td align='center' width='33%'><img align='middle' src='$myimage' alt='' title=''> = "._POPULAR."</td>\n";
-    echo "</tr>\n";
-    echo "</table>\n";
-    CloseTable();
 }
 // GUI TWEAK BY phoenix-cms
+
+function downloadinfomenu($lid) {
+    global $module_name, $user, $admin_file;
+    echo "<br><font class=\"content\">[ "
+	."<a href='modules.php?name=$module_name&amp;op=modifydownloadrequest&amp;lid=$lid'>"._MODIFY."</a>";
+    if (is_user($user)) {
+	echo " | <a href=\"modules.php?name=$module_name&amp;d_op=brokendownload&amp;lid=$lid\">"._REPORTBROKEN."</a>";
+    }
+    if(is_mod_admin($module_name)) {
+	echo " | <a href='" . $admin_file . ".php?op=DownloadModify&amp;lid=$lid'>"._EDIT."</a>";
+    }
+    echo " ]</font><br><br>";
+}
 
 function SearchForm() {
     global $module_name, $query;
@@ -421,13 +414,13 @@ function showlisting($lid) {
         $lidinfo['title'] = stripslashes($lidinfo['title']);
         $lidinfo['description'] = stripslashes($lidinfo['description']);
         if (is_mod_admin($module_name)) {
-            $myimage = myimage("edit.png");
-            echo "<a href='".$admin_file.".php?op=DownloadModify&amp;lid=$lid' target='$lid'><img align='middle' src='$myimage' border='0' alt='"._DL_EDIT."'></a>&nbsp;";
+            $myimage = myimage("folders.gif");
+            echo "<a href='".$admin_file.".php?op=DownloadModify&amp;lid=$lid' target='$lid'><img align='top' src='$myimage' border='0' alt='"._DL_EDIT."'></a>&nbsp;";
         } else {
-            $myimage = myimage("show.png");
-            echo "<img align='middle' src='$myimage' border='0' alt=''>&nbsp;";
+            $myimage = myimage("folders.gif");
+            echo "<img align='top' src='$myimage' border='0' alt=''>&nbsp;";
         }
-        echo "<a href='modules.php?name=$module_name&amp;op=getit&amp;lid=$lid'><strong>".$lidinfo['title']."</strong></a>";
+        echo "<a href='modules.php?name=$module_name&amp;op=getit&amp;lid=$lid'><b>".$lidinfo['title']."</b></a>";
         newdownloadgraphic($datetime, $lidinfo['date']);
         popgraphic($lidinfo['hits']);
         echo "<br />";
@@ -472,16 +465,16 @@ function showresulting($lid) {
         $lidinfo['title'] = stripslashes($lidinfo['title']);
         $lidinfo['description'] = stripslashes($lidinfo['description']);
         if (is_mod_admin($module_name)) {
-            $myimage = myimage("edit.png");
-            echo "<a href='".$admin_file.".php?op=DownloadModify&amp;lid=$lid' target='$lid'><img align='middle' src='$myimage' border='0' alt='"._DL_EDIT."' title='"._DL_EDIT."'></a>&nbsp;";
+            $myimage = myimage("folders.gif");
+            echo "<a href='".$admin_file.".php?op=DownloadModify&amp;lid=$lid' target='$lid'><img align='top' src='$myimage' border='0' alt='"._DL_EDIT."' title='"._DL_EDIT."'></a>&nbsp;";
         } else {
-            $myimage = myimage("show.png");
-            echo "<img align='middle' src='$myimage' border='0' alt='' title=''>&nbsp;";
+            $myimage = myimage("folders.gif");
+            echo "<img align='top' src='$myimage' border='0' alt='' title=''>&nbsp;";
         }
-        echo "<a href='modules.php?name=$module_name&amp;op=getit&amp;lid=$lid'><strong>".$lidinfo['title']."</strong></a>";
+        echo "<a href='modules.php?name=$module_name&amp;op=getit&amp;lid=$lid'><b>".$lidinfo['title']."</b></a>";
         newdownloadgraphic($datetime, $lidinfo['date']);
         popgraphic($lidinfo['hits']);
-        echo "<br />\n";
+        echo "<br />";
         if ($lidinfo['sid'] == 0) {
             $who_view = _DL_ALL;
         } elseif ($lidinfo['sid'] == 1) {
