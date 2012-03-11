@@ -15,7 +15,7 @@
 /* Based on NSN GR Downloads                            */
 /* By: NukeScripts Network (webmaster@nukescripts.net)  */
 /* http://www.nukescripts.net                           */
-/* Copyright (c) 2000-2005 by NukeScripts Network         */
+/* Copyright (c) 2000-2005 by NukeScripts Network       */
 /********************************************************/
 
 if(!defined('IN_DOWNLOADS')) {
@@ -37,10 +37,6 @@ if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user())  || ($lidinfo
         $fetchid = base64_encode($lidinfo['url']);
         $title = stripslashes($lidinfo['title']);
         menu(1);
-        if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user())  || ($lidinfo['sid'] == 2 AND is_mod_admin($module_name)) || ($lidinfo['sid'] > 2 AND of_group($priv))) {
-            $message = "<b>"._DL_DIRECTIONS."</b>&nbsp;"._DL_DLNOTES1."$title"._DL_DLNOTES2."<br>";
-            info_box("caution", $message);
-        }
         OpenTable();
         echo "<center><font class=\"option\"><b>"._DOWNLOADPROFILE.": $title</b></font><br><br>";
         downloadinfomenu($lid);
@@ -73,6 +69,10 @@ if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user())  || ($lidinfo
             echo "<a href='".$lidinfo['homepage']."' target='new'>".$lidinfo['homepage']."</a>";
         }
         echo "<br /><br />";
+        if ($dl_config['usegfxcheck'] == 1) {
+            $message = "<b>"._DL_DIRECTIONS."</b>&nbsp;"._DL_DLNOTES1."$title"._DL_DLNOTES2."<br>";
+            info_box("caution", $message);
+        }
         if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user())  || ($lidinfo['sid'] == 2 AND is_mod_admin($module_name)) || ($lidinfo['sid'] > 2 AND of_group($priv))) {
             echo "
                   <center>
@@ -87,11 +87,12 @@ if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user())  || ($lidinfo
             }
             echo "
                         <tr>
-                            <td colspan='2' align='center'><input type='submit' name='"._DL_GOGET."' value='"._DL_GOGET."'></td>
+                            <td colspan='2' align='center'><br /><input type='submit' name='"._DL_GOGET."' value='"._DL_GOGET."'></td>
                         </tr>
                     </form>
                     </table>
                   </center>
+                  <br />
                  ";
         } else {
             restricted($lidinfo['sid']);

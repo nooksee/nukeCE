@@ -100,7 +100,7 @@ define("_DL_DELETE","Delete");
 define("_DL_DENIED","File Access Denied");
 define("_DL_DIRECTIONS","<strong>Directions:</strong>");
 define("_DL_DLNOTES1","To download the file \"<strong>");
-define("_DL_DLNOTES2","</strong>\", you may need to retype the displayed passcode, and click the button below. In a few moments you will receive the download dialog or you will be directed to the appropriate site.");
+define("_DL_DLNOTES2","</strong>\", you need to retype the displayed passcode, and click the button below. In a few moments you will receive the download dialog or you will be directed to the appropriate site.");
 define("_DL_DN","Downloads");
 define("_DL_EDIT","Edit");
 define("_DL_ERROR","Error");

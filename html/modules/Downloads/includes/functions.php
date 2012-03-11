@@ -1,18 +1,25 @@
 <?php
 
 /**************************************************************************/
-/* PHP-EVOLVED: Web Portal System                                         */
-/* ===========================                                            */
+/* PHP-Nuke CE: Web Portal System                                         */
+/* ==============================                                         */
 /*                                                                        */
-/* Copyright (c) 2011 by Kevin Atwood                                     */
-/* http://www.php-evolved.com                                             */
+/* Copyright (c) 2012 by Kevin Atwood                                     */
+/* http://www.nukece.com                                                  */
 /*                                                                        */
-/* All PHP-EVOLVED code is released under the GNU General Public License. */
+/* All PHP-Nuke CE code is released under the GNU General Public License. */
 /* See CREDITS.txt, COPYRIGHT.txt and LICENSE.txt.                        */
 /**************************************************************************/
 
+/********************************************************/
+/* Based on NSN GR Downloads                            */
+/* By: NukeScripts Network (webmaster@nukescripts.net)  */
+/* http://www.nukescripts.net                           */
+/* Copyright (c) 2000-2005 by NukeScripts Network       */
+/********************************************************/
+
 if(!defined('IN_DOWNLOADS')) {
-  exit('Access Denied');
+    exit('Access Denied');
 }
 
 function of_group($gid) {
@@ -48,24 +55,24 @@ function downloads_get_configs(){
     static $config;
     if(isset($config)) return $config;
 /*****[BEGIN]******************************************
- [ Base:    Caching System                     v3.0.0 ]
- ******************************************************/
+[ Base:    Caching System                     v3.0.0 ]
+******************************************************/
     if(($config = $cache->load('downloads', 'config')) === false) {
 /*****[END]********************************************
- [ Base:    Caching System                     v3.0.0 ]
- ******************************************************/
+[ Base:    Caching System                     v3.0.0 ]
+******************************************************/
         $configresult = $db->sql_query("SELECT config_name, config_value FROM ".$prefix."_downloads_config");
         while (list($config_name, $config_value) = $db->sql_fetchrow($configresult)) {
             $config[$config_name] = $config_value;
         }
 /*****[BEGIN]******************************************
- [ Base:    Caching System                     v3.0.0 ]
- ******************************************************/
+[ Base:    Caching System                     v3.0.0 ]
+******************************************************/
         $cache->save('downloads', 'config', $config);
-    }
+        }
 /*****[END]********************************************
- [ Base:    Caching System                     v3.0.0 ]
- ******************************************************/
+[ Base:    Caching System                     v3.0.0 ]
+******************************************************/
     return $config;
 }
 
@@ -75,13 +82,13 @@ function downloads_get_configs(){
 function downloads_save_config($config_name, $config_value){
     global $prefix, $db, $cache;
     $db->sql_query("UPDATE ".$prefix."_downloads_config SET config_value='$config_value' WHERE config_name='$config_name'");
-/*****[BEGIN]******************************************
- [ Base:    Caching System                     v3.0.0 ]
- ******************************************************/
+    /*****[BEGIN]******************************************
+    [ Base:    Caching System                     v3.0.0 ]
+    ******************************************************/
     $cache->delete('downloads', 'config');
-/*****[END]********************************************
- [ Base:    Caching System                     v3.0.0 ]
- ******************************************************/
+    /*****[END]********************************************
+    [ Base:    Caching System                     v3.0.0 ]
+    ******************************************************/
 }
 
 // Copyright (c) 2003 --- NukeScripts Network ---
@@ -194,10 +201,17 @@ function restricted($perm) {
         $who_view = $who_view." "._DL_ONLY;
     }
     $myimage = myimage("restricted.png");
-    echo "<center><img src='$myimage' alt=''></center><br />\n";
-    echo "<center>"._DL_DENIED."!</center><br />\n";
-    echo "<center>"._DL_CANBEDOWN." $who_view</center><br />\n";
-    echo "<center>"._GOBACK."</center>\n";
+    echo "
+          <br />
+          <center><img src='$myimage' alt=''></center>
+          <br />
+          <center>"._DL_DENIED."!</center>
+          <br />
+          <center>"._DL_CANBEDOWN." $who_view</center>
+          <br />
+          <center>"._GOBACK."</center>
+          <br />
+         ";
 }
 
 // Copyright (c) 2003 --- NukeScripts Network ---
@@ -214,19 +228,19 @@ function restricted2($perm) {
         list($who_view) = $db->sql_fetchrow($db->sql_query("SELECT group_name FROM ".$prefix."_bbgroups WHERE group_id=$newView"));
         $who_view = $who_view." "._DL_ONLY;
     }
-    echo "<center>"._DL_DENIED."!<br />\n";
-    echo ""._DL_CANBEVIEW."<br /><strong>$who_view</strong></center>\n";
+    echo "<center>"._DL_DENIED."!<br />"._DL_CANBEVIEW."<br /><strong>$who_view</strong></center>";
 }
 
 function newdownloadgraphic($datetime, $time) {
     global $module_name;
-    echo "&nbsp;";
     setlocale (LC_TIME, $locale);
     ereg ("([0-9]{4})-([0-9]{1,2})-([0-9]{1,2}) ([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2})", $time, $datetime);
     $datetime = strftime(""._LINKSDATESTRING."", mktime($datetime[4],$datetime[5],$datetime[6],$datetime[2],$datetime[3],$datetime[1]));
     $datetime = ucfirst($datetime);
     $startdate = time();
     $count = 0;
+    
+    echo "&nbsp;";
     while ($count <= 14) {
         $daysold = date("d-M-Y", $startdate);
         if ($daysold == $datetime) {
@@ -249,13 +263,14 @@ function newcategorygraphic($cat) {
     $cat = intval($cat);
     $newresult = $db->sql_query("SELECT date FROM ".$prefix."_downloads_downloads WHERE cid=$cat ORDER BY date DESC LIMIT 1");
     list($time)=$db->sql_fetchrow($newresult);
-    echo "&nbsp;";
     setlocale (LC_TIME, $locale);
     ereg ("([0-9]{4})-([0-9]{1,2})-([0-9]{1,2}) ([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2})", $time, $datetime);
     $datetime = strftime(""._LINKSDATESTRING."", mktime($datetime[4],$datetime[5],$datetime[6],$datetime[2],$datetime[3],$datetime[1]));
     $datetime = ucfirst($datetime);
     $startdate = time();
     $count = 0;
+    
+    echo "&nbsp;";
     while ($count <= 14) {
         $daysold = date("d-M-Y", $startdate);
         if ("$daysold" == "$datetime") {
@@ -283,36 +298,35 @@ function popgraphic($hits) {
 function DLadminmain() {
     global $admin_file;
     OpenTable();
-    echo "<table align='center' cellpadding='2' cellspacing='2' border='0' width='100%'>\n";
-
-    echo "<tr>\n";
-    echo "<td align='center' colspan='3'><a href=\"$admin_file.php?op=DLMain\"><strong>" . _DOWNLOADSADMIN . "</strong></a></td>\n";
-    echo "</tr>\n";
-    echo "<tr>\n";
-    echo "<td align='center' width='33%'><a href='".$admin_file.".php?op=DownloadAdd'>"._ADDDOWNLOAD."</a></td>\n";
-    echo "<td align='center' width='33%'><a href='".$admin_file.".php?op=CategoryAdd'>"._ADDCATEGORY."</a></td>\n";
-    echo "<td align='center' width='33%'><a href='".$admin_file.".php?op=ExtensionAdd'>"._ADDEXTENSION."</a></td>\n";
-    echo "</tr>\n";
-    echo "<tr>\n";
-    echo "<td align='center' width='33%'><a href='".$admin_file.".php?op=Downloads'>"._DOWNLOADSLIST."</a></td>\n";
-    echo "<td align='center' width='33%'><a href='".$admin_file.".php?op=Categories'>"._CATEGORIESLIST."</a></td>\n";
-    echo "<td align='center' width='33%'><a href='".$admin_file.".php?op=Extensions'>"._EXTENSIONSLIST."</a></td>\n";
-    echo "</tr>\n";
-    echo "<tr>\n";
-    echo "<td align='center' width='33%'><a href='".$admin_file.".php?op=DownloadCheck'>"._VALIDATEDOWNLOADS."</a></td>\n";
-    echo "<td align='center' width='33%'><a href='".$admin_file.".php?op=CategoryTransfer'>"._CATTRANS."</a></td>\n";
-    echo "<td align='center' width='33%'><a href='".$admin_file.".php?op=DLConfig'>"._DOWNCONFIG."</a></td>\n";
-    echo "</tr>\n";
-    echo "<tr>\n";
-    echo "<td align='center' width='33%'><a href='".$admin_file.".php?op=FilesizeCheck'>"._VALIDATESIZES."</a></td>\n";
-    echo "<td align='center' width='33%'>&nbsp;</td>\n";
-    echo "<td align='center' width='33%'>&nbsp;</td>\n";
-    echo "</tr>\n";
-    echo "</table>\n";
+    echo "
+          <table align='center' cellpadding='2' cellspacing='2' border='0' width='100%'>
+               <tr>
+                   <td align='center' colspan='3'><a href=\"$admin_file.php?op=DLMain\"><strong>" . _DOWNLOADSADMIN . "</strong></a></td>
+               </tr>
+               <tr>
+                   <td align='center' width='33%'><a href='".$admin_file.".php?op=DownloadAdd'>"._ADDDOWNLOAD."</a></td>
+                   <td align='center' width='33%'><a href='".$admin_file.".php?op=CategoryAdd'>"._ADDCATEGORY."</a></td>
+                   <td align='center' width='33%'><a href='".$admin_file.".php?op=ExtensionAdd'>"._ADDEXTENSION."</a></td>
+               </tr>
+               <tr>
+                   <td align='center' width='33%'><a href='".$admin_file.".php?op=Downloads'>"._DOWNLOADSLIST."</a></td>
+                   <td align='center' width='33%'><a href='".$admin_file.".php?op=Categories'>"._CATEGORIESLIST."</a></td>
+                   <td align='center' width='33%'><a href='".$admin_file.".php?op=Extensions'>"._EXTENSIONSLIST."</a></td>
+               </tr>
+               <tr>
+                   <td align='center' width='33%'><a href='".$admin_file.".php?op=DownloadCheck'>"._VALIDATEDOWNLOADS."</a></td>
+                   <td align='center' width='33%'><a href='".$admin_file.".php?op=CategoryTransfer'>"._CATTRANS."</a></td>
+                   <td align='center' width='33%'><a href='".$admin_file.".php?op=DLConfig'>"._DOWNCONFIG."</a></td>
+               </tr>
+               <tr>
+                   <td align='center' width='33%'><a href='".$admin_file.".php?op=FilesizeCheck'>"._VALIDATESIZES."</a></td>
+                   <td align='center' width='33%'>&nbsp;</td>
+                   <td align='center' width='33%'>&nbsp;</td>
+               </tr>
+           </table>
+          ";
     CloseTable();
-    echo '
-          <br />
-         ';
+    echo '<br />';
 }
 
 function DLsub() {
@@ -320,9 +334,9 @@ function DLsub() {
     OpenTable();
     echo "
           <table align='center' cellpadding='2' cellspacing='2' border='0' width='100%'>
-              <tr>
-                  <td align='center' colspan='3'><a href=\"$admin_file.php?op=DLMain\"><strong>" . _DOWNLOADSADMIN . "</strong></a></td>
-              </tr>
+            <tr>
+                <td align='center' colspan='3'><a href=\"$admin_file.php?op=DLMain\"><strong>" . _DOWNLOADSADMIN . "</strong></a></td>
+            </tr>
           </table>
          ";
     CloseTable();
@@ -363,41 +377,54 @@ function menu($maindownload) {
     global $prefix, $user_adddownload, $ThemeSel, $module_name, $query;
     OpenTable();
     $ThemeSel = get_theme();
-    if (@file_exists('themes/'.$ThemeSel.'/images/down-logo.gif')) echo '<br /><center><a href="modules.php?name='.$module_name.'"><img src="themes/'.$ThemeSel.'/images/down-logo.gif" border="0" alt="" /></a><br /><br />';
-    else echo '<br><center><a href="modules.php?name='.$module_name.'"><img src="modules/'.$module_name.'/images/down-logo.gif" border="0" alt="" /></a><br /><br />';
+    if (@file_exists('themes/'.$ThemeSel.'/images/down-logo.gif'))
+    echo '
+          <br />
+          <center>
+            <a href="modules.php?name='.$module_name.'"><img src="themes/'.$ThemeSel.'/images/down-logo.gif" border="0" alt="" /></a>
+          <br /><br />
+         ';
+    else echo '
+               <br>
+               <center>
+                <a href="modules.php?name='.$module_name.'"><img src="modules/'.$module_name.'/images/down-logo.gif" border="0" alt="" /></a>
+               <br /><br />
+              ';
     SearchForm();
     echo '<font class="content"><br />[ ';
-    if ($maindownload>0) echo '<a href="modules.php?name='.$module_name.'">'._DOWNLOADSMAIN.'</a> | ';
+    if ($maindownload>0)
+    echo '<a href="modules.php?name='.$module_name.'">'._DOWNLOADSMAIN.'</a> | ';
     echo '<a href="modules.php?name='.$module_name.'&amp;op=SubmitDownloads">'._ADDDOWNLOAD.'</a>'.' | ';
-    echo  '<a href="modules.php?name='.$module_name.'&amp;d_op=NewDownloads">'._NEW.'</a>'
-        .' | <a href="modules.php?name='.$module_name.'&amp;d_op=MostPopular">'._POPULAR.'</a> ]'
-    ."</font></center>";
+    echo '<a href="modules.php?name='.$module_name.'&amp;d_op=NewDownloads">'._NEW.'</a>';
+    echo ' | <a href="modules.php?name='.$module_name.'&amp;d_op=MostPopular">'._POPULAR.'</a> ]';
+    echo ' </font></center>';
     CloseTable();
-
-    echo "<br />\n";
+    echo "<br />";
 }
-// GUI TWEAK BY phoenix-cms
 
 function downloadinfomenu($lid) {
     global $module_name, $user, $admin_file;
-    echo "<br><font class=\"content\">[ "
-	."<a href='modules.php?name=$module_name&amp;op=modifydownloadrequest&amp;lid=$lid'>"._MODIFY."</a>";
+    echo "<br><font class=\"content\">[ <a href='modules.php?name=$module_name&amp;op=modifydownloadrequest&amp;lid=$lid'>"._MODIFY."</a>";
     if (is_user($user)) {
-	echo " | <a href=\"modules.php?name=$module_name&amp;d_op=brokendownload&amp;lid=$lid\">"._REPORTBROKEN."</a>";
+        echo " | <a href=\"modules.php?name=$module_name&amp;d_op=brokendownload&amp;lid=$lid\">"._REPORTBROKEN."</a>";
     }
     if(is_mod_admin($module_name)) {
-	echo " | <a href='" . $admin_file . ".php?op=DownloadModify&amp;lid=$lid'>"._EDIT."</a>";
+        echo " | <a href='" . $admin_file . ".php?op=DownloadModify&amp;lid=$lid'>"._EDIT."</a>";
     }
     echo " ]</font><br><br>";
 }
 
 function SearchForm() {
     global $module_name, $query;
-    echo "<form action='modules.php?name=$module_name&amp;op=search&amp;query=$query' method='post'>\n";
-    echo "<table border='0' cellspacing='0' cellpadding='0' align='center'>\n";
-    echo "<tr><td><span class='content'><input type='text' size='25' name='query' value='$query'> <input type='submit' value='"._DL_SEARCH."'></span></td></tr>\n";
-    echo "</table>\n";
-    echo "</form>\n";
+    echo "
+          <table border='0' cellspacing='0' cellpadding='0' align='center'>
+          <form action='modules.php?name=$module_name&amp;op=search&amp;query=$query' method='post'>
+              <tr>
+                <td><span class='content'><input type='text' size='25' name='query' value='$query'> <input type='submit' value='"._DL_SEARCH."'></span></td>
+              </tr>
+          </form>
+          </table>
+         ";
 }
 
 // Copyright (c) 2003 --- NukeScripts Network ---
@@ -435,12 +462,14 @@ function showlisting($lid) {
             list($who_view) = $db->sql_fetchrow($db->sql_query("SELECT group_name FROM ".$prefix."_bbgroups WHERE group_id=$newView"));
             $who_view = $who_view." "._DL_ONLY;
         }
-        echo "<strong>"._DL_PERM.":</strong> $who_view<br />\n";
-        echo "<strong>"._VERSION.":</strong> ".$lidinfo['version']."<br />\n";
-        echo "<strong>"._FILESIZE.":</strong> ".CoolSize($lidinfo['filesize'])."<br />\n";
-        echo "<strong>"._ADDEDON.":</strong> ".CoolDate($lidinfo['date'])."<br />\n";
-        echo "<strong>"._DOWNLOADS.":</strong> ".$lidinfo['hits']."<br />\n";
-        echo "<strong>"._HOMEPAGE.":</strong> ";
+        echo "
+              <strong>"._DL_PERM.":</strong> $who_view<br />
+              <strong>"._VERSION.":</strong> ".$lidinfo['version']."<br />
+              <strong>"._FILESIZE.":</strong> ".CoolSize($lidinfo['filesize'])."<br />
+              <strong>"._ADDEDON.":</strong> ".CoolDate($lidinfo['date'])."<br />
+              <strong>"._DOWNLOADS.":</strong> ".$lidinfo['hits']."<br />
+              <strong>"._HOMEPAGE.":</strong>
+             ";
         if (empty($lidinfo['homepage']) || $lidinfo['homepage'] == "http://") {
             echo _DL_NOTLIST;
         } else {
@@ -486,12 +515,14 @@ function showresulting($lid) {
             list($who_view) = $db->sql_fetchrow($db->sql_query("SELECT group_name FROM ".$prefix."_bbgroups WHERE group_id=$newView"));
             $who_view = $who_view." "._DL_ONLY;
         }
-        echo "<strong>"._DL_PERM.":</strong> $who_view<br />\n";
-        echo "<strong>"._VERSION.":</strong> ".$lidinfo['version']."<br />\n";
-        echo "<strong>"._FILESIZE.":</strong> ".CoolSize($lidinfo['filesize'])."<br />\n";
-        echo "<strong>"._ADDEDON.":</strong> ".CoolDate($lidinfo['date'])."<br />\n";
-        echo "<strong>"._DOWNLOADS.":</strong> ".$lidinfo['hits']."<br />\n";
-        echo "<strong>"._HOMEPAGE.":</strong> ";
+        echo "
+              <strong>"._DL_PERM.":</strong> $who_view<br />
+              <strong>"._VERSION.":</strong> ".$lidinfo['version']."<br />
+              <strong>"._FILESIZE.":</strong> ".CoolSize($lidinfo['filesize'])."<br />
+              <strong>"._ADDEDON.":</strong> ".CoolDate($lidinfo['date'])."<br />
+              <strong>"._DOWNLOADS.":</strong> ".$lidinfo['hits']."<br />
+              <strong>"._HOMEPAGE.":</strong>
+             ";
         if (empty($lidinfo['homepage']) || $lidinfo['homepage'] == "http://") {
             echo _DL_NOTLIST."<br />\n";
         } else {
@@ -531,13 +562,13 @@ function pagenums_admin($op, $totalselected, $perpage, $max) {
             $cpage = $counter;
             $mintemp = ($perpage * $counter) - $perpage;
             if ($counter == $currentpage) {
-                echo "<option selected>$counter</option>\n";
+            echo "<option selected>$counter</option>\n";
             } else {
-                echo "<option value='".$admin_file.".php?op=$op&amp;min=$mintemp";
-                if ($op > "" ) { echo "&amp;op=$op"; }
-                if ($query > "") { echo "&amp;query=$query"; }
-                if (isset($cid)) { echo "&amp;cid=$cid"; }
-                echo "'>$counter</option>\n";
+            echo "<option value='".$admin_file.".php?op=$op&amp;min=$mintemp";
+            if ($op > "" ) { echo "&amp;op=$op"; }
+            if ($query > "") { echo "&amp;query=$query"; }
+            if (isset($cid)) { echo "&amp;cid=$cid"; }
+            echo "'>$counter</option>\n";
             }
             $counter++;
         }
@@ -583,4 +614,5 @@ function pagenums($cid, $query, $orderby, $op, $totalselected, $perpage, $max) {
         echo "</table>\n";
     }
 }
+
 ?>

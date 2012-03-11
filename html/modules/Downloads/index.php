@@ -11,6 +11,13 @@
 /* See CREDITS.txt, COPYRIGHT.txt and LICENSE.txt.                        */
 /**************************************************************************/
 
+/********************************************************/
+/* Based on NSN GR Downloads                            */
+/* By: NukeScripts Network (webmaster@nukescripts.net)  */
+/* http://www.nukescripts.net                           */
+/* Copyright (c) 2000-2005 by NukeScripts Network       */
+/********************************************************/
+
 if (!defined('MODULE_FILE')) {
     die('You can\'t access this file directly...');
 }
