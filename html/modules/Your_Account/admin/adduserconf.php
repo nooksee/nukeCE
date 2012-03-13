@@ -32,6 +32,7 @@ if(is_mod_admin($module_name)) {
         DisplayErrorReturn(_EMAILDIFFERENT, 1);
         exit;
     }
+    
     $add_email = strtolower($add_email);
     ya_userCheck($add_uname);
     ya_mailCheck($add_email);
@@ -53,6 +54,7 @@ if(is_mod_admin($module_name)) {
     $add_user_viewemail = intval($add_user_viewemail);
     $add_newsletter = intval($add_newsletter);
     $user_points = intval($user_points);
+    
     if (empty($stop)) {
         $user_password = $add_pass;
         $add_pass = md5($add_pass);
