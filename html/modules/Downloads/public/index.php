@@ -43,7 +43,7 @@ echo "<center><font class=\"option\"><b>"._CATEGORY.": $title</b></font></center
 $result2 = $db->sql_query("SELECT * FROM ".$prefix."_downloads_categories WHERE parentid=$cid ORDER BY title");
 $numrows2 = $db->sql_numrows($result2);
 if ($numrows2 > 0) {
-    echo "<table border=\"0\" cellspacing=\"10\" cellpadding=\"0\" align=\"center\"><tr>";
+    echo "<table border=\"0\" cellspacing=\"8\" cellpadding=\"0\" align=\"center\"><tr>";
     $count = 0;
     while($cidinfo2 = $db->sql_fetchrow($result2)) {
         if ($count == 0) { echo "<tr>\n"; }

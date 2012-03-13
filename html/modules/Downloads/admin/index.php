@@ -42,6 +42,7 @@ if(is_mod_admin($module_name)) {
     case "DownloadActivate":include_once(NUKE_MODULES_DIR.$module_name."/admin/DownloadActivate.php");break;
     case "DownloadAdd":include_once(NUKE_MODULES_DIR.$module_name."/admin/DownloadAdd.php");break;
     case "DownloadAddSave":include_once(NUKE_MODULES_DIR.$module_name."/admin/DownloadAddSave.php");break;
+    case "DownloadRequestSave":include_once(NUKE_MODULES_DIR.$module_name."/admin/DownloadRequestSave.php");break;
     case "DownloadBroken":include_once(NUKE_MODULES_DIR.$module_name."/admin/DownloadBroken.php");break;
     case "DownloadBrokenDelete":include_once(NUKE_MODULES_DIR.$module_name."/admin/DownloadBrokenDelete.php");break;
     case "DownloadBrokenIgnore":include_once(NUKE_MODULES_DIR.$module_name."/admin/DownloadBrokenIgnore.php");break;

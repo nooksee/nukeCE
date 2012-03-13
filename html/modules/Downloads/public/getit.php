@@ -60,7 +60,7 @@ if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user())  || ($lidinfo
         echo "
               <br><b>"._AUTHOR.":</b> ".$lidinfo['name']."<br>
               <b>"._VERSION.":</b> ".$lidinfo['version']." <b>"._FILESIZE.":</b> ".CoolSize($lidinfo['filesize'])."<br>
-              <b>"._ADDEDON.":</b> ".CoolDate($lidinfo['date'])."<br> <b>"._DOWNLOADS.":</b> ".$lidinfo['hits']."<br>
+              <b>"._ADDEDON.":</b> ".CoolDate($lidinfo['date'])."<br>
               <b>"._HOMEPAGE.":</b></font>
              ";
         if (empty($lidinfo['homepage']) || $lidinfo['homepage'] == "http://") {
@@ -69,7 +69,7 @@ if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user())  || ($lidinfo
             echo "<a href='".$lidinfo['homepage']."' target='new'>".$lidinfo['homepage']."</a>";
         }
         echo "<br /><br />";
-        if ($dl_config['usegfxcheck'] == 1) {
+        if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user())  || ($lidinfo['sid'] == 2 AND is_mod_admin($module_name)) || ($lidinfo['sid'] > 2 AND of_group($priv))) {
             $message = "<b>"._DL_DIRECTIONS."</b>&nbsp;"._DL_DLNOTES1."$title"._DL_DLNOTES2."<br>";
             info_box("caution", $message);
         }

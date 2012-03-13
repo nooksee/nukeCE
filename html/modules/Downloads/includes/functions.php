@@ -172,7 +172,7 @@ function getparent($parentid,$title) {
     global $prefix,$db;
     $result = $db->sql_query("SELECT * FROM ".$prefix."_downloads_categories WHERE cid='$parentid'");
     $cidinfo = $db->sql_fetchrow($result);
-    if ($cidinfo['title'] != "") $title = $cidinfo['title']." -> ".$title;
+    if ($cidinfo['title'] != "") $title = $cidinfo['title']."/".$title;
     if ($cidinfo['parentid'] != 0) { $title=getparent($cidinfo['parentid'], $title); }
     return $title;
 }
@@ -414,6 +414,19 @@ function downloadinfomenu($lid) {
     echo " ]</font><br><br>";
 }
 
+
+function infomenu($lid) {
+    global $module_name, $user, $admin_file;
+    echo "<span class=\"tiny\"><a href='modules.php?name=$module_name&amp;op=modifydownloadrequest&amp;lid=$lid'>"._MODIFY."</a>";
+    if (is_user($user)) {
+        echo " | <a href=\"modules.php?name=$module_name&amp;d_op=brokendownload&amp;lid=$lid\">"._REPORTBROKEN."</a>";
+    }
+    if(is_mod_admin($module_name)) {
+        echo " | <a href='" . $admin_file . ".php?op=DownloadModify&amp;lid=$lid'>"._EDIT."</a>";
+    }
+    echo " | <a href=\"modules.php?name=$module_name&amp;d_op=viewdownloaddetails&amp;lid=$lid\">"._DETAILS."</a></span>";
+}
+
 function SearchForm() {
     global $module_name, $query;
     echo "
@@ -447,10 +460,10 @@ function showlisting($lid) {
             $myimage = myimage("folders.gif");
             echo "<img align='top' src='$myimage' border='0' alt=''>&nbsp;";
         }
-        echo "<a href='modules.php?name=$module_name&amp;op=getit&amp;lid=$lid'><b>".$lidinfo['title']."</b></a>";
+        echo "<a href='modules.php?name=$module_name&amp;op=getit&amp;lid=$lid'>".$lidinfo['title']."</a>";
         newdownloadgraphic($datetime, $lidinfo['date']);
         popgraphic($lidinfo['hits']);
-        echo "<br />";
+        echo "<br /><font class=\"content\">";
         if ($lidinfo['sid'] == 0) {
             $who_view = _DL_ALL;
         } elseif ($lidinfo['sid'] == 1) {
@@ -463,18 +476,20 @@ function showlisting($lid) {
             $who_view = $who_view." "._DL_ONLY;
         }
         echo "
-              <strong>"._DL_PERM.":</strong> $who_view<br />
-              <strong>"._VERSION.":</strong> ".$lidinfo['version']."<br />
-              <strong>"._FILESIZE.":</strong> ".CoolSize($lidinfo['filesize'])."<br />
-              <strong>"._ADDEDON.":</strong> ".CoolDate($lidinfo['date'])."<br />
-              <strong>"._DOWNLOADS.":</strong> ".$lidinfo['hits']."<br />
-              <strong>"._HOMEPAGE.":</strong>
+              <b>"._DL_PERM.":</b> $who_view<br />
+              <b>"._VERSION.":</b> ".$lidinfo['version']."<br />
+              <b>"._FILESIZE.":</b> ".CoolSize($lidinfo['filesize'])."<br />
+              <b>"._ADDEDON.":</b> ".CoolDate($lidinfo['date'])."<br />
+              <b>"._DOWNLOADS.":</b> ".$lidinfo['hits']."<br />
+              <b>"._HOMEPAGE.":</b>
              ";
         if (empty($lidinfo['homepage']) || $lidinfo['homepage'] == "http://") {
             echo _DL_NOTLIST;
         } else {
             echo "<a href='".$lidinfo['homepage']."' target='new'>".$lidinfo['homepage']."</a>";
         }
+        echo "</font><br />";
+        infomenu($lid);
     } else {
         restricted2($lidinfo['sid']);
     }
@@ -500,10 +515,10 @@ function showresulting($lid) {
             $myimage = myimage("folders.gif");
             echo "<img align='top' src='$myimage' border='0' alt='' title=''>&nbsp;";
         }
-        echo "<a href='modules.php?name=$module_name&amp;op=getit&amp;lid=$lid'><b>".$lidinfo['title']."</b></a>";
+        echo "<a href='modules.php?name=$module_name&amp;op=getit&amp;lid=$lid'>".$lidinfo['title']."</a>";
         newdownloadgraphic($datetime, $lidinfo['date']);
         popgraphic($lidinfo['hits']);
-        echo "<br />";
+        echo "<br /><font class=\"content\">";
         if ($lidinfo['sid'] == 0) {
             $who_view = _DL_ALL;
         } elseif ($lidinfo['sid'] == 1) {
@@ -516,12 +531,12 @@ function showresulting($lid) {
             $who_view = $who_view." "._DL_ONLY;
         }
         echo "
-              <strong>"._DL_PERM.":</strong> $who_view<br />
-              <strong>"._VERSION.":</strong> ".$lidinfo['version']."<br />
-              <strong>"._FILESIZE.":</strong> ".CoolSize($lidinfo['filesize'])."<br />
-              <strong>"._ADDEDON.":</strong> ".CoolDate($lidinfo['date'])."<br />
-              <strong>"._DOWNLOADS.":</strong> ".$lidinfo['hits']."<br />
-              <strong>"._HOMEPAGE.":</strong>
+              <b>"._DL_PERM.":</b> $who_view<br />
+              <b>"._VERSION.":</b> ".$lidinfo['version']."<br />
+              <b>"._FILESIZE.":</b> ".CoolSize($lidinfo['filesize'])."<br />
+              <b>"._ADDEDON.":</b> ".CoolDate($lidinfo['date'])."<br />
+              <b>"._DOWNLOADS.":</b> ".$lidinfo['hits']."<br />
+              <b>"._HOMEPAGE.":</b>
              ";
         if (empty($lidinfo['homepage']) || $lidinfo['homepage'] == "http://") {
             echo _DL_NOTLIST."<br />\n";
@@ -532,7 +547,9 @@ function showresulting($lid) {
         $cidinfo = $db->sql_fetchrow($result2);
         $cidinfo['title'] = "<a href=modules.php?name=$module_name&amp;cid=".$lidinfo['cid'].">".$cidinfo['title']."</a>";
         $cidinfo['title'] = getparentlink($cidinfo['parentid'], $cidinfo['title']);
-        echo "<strong>"._CATEGORY.":</strong> ".$cidinfo['title']."\n";
+        echo "<b>"._CATEGORY.":</b> ".$cidinfo['title']."\n";
+        echo "</font><br />";
+        infomenu($lid);
     } else {
         restricted2($lidinfo['sid']);
     }

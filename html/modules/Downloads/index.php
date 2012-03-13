@@ -36,9 +36,7 @@ $result1 = $db->sql_query("SELECT * FROM ".$prefix."_downloads_config");
 $dl_config = downloads_get_configs();
 
 if (!$dl_config OR empty($dl_config)) {
-    include_once(NUKE_BASE_DIR.'header.php');
-    title(_DL_DBCONFIG);
-    include_once(NUKE_BASE_DIR.'footer.php');
+    DisplayError(_DL_DBCONFIG, 1);
     exit;
 }
 

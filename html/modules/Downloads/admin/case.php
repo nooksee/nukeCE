@@ -36,6 +36,7 @@ switch ($op) {
     case "DownloadActivate":
     case "DownloadAdd":
     case "DownloadAddSave":
+    case "DownloadRequestSave":
     case "DownloadBroken":
     case "DownloadBrokenDelete":
     case "DownloadBrokenIgnore":

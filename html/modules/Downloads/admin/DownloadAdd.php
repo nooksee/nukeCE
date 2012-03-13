@@ -15,7 +15,7 @@
 /* Based on NSN GR Downloads                            */
 /* By: NukeScripts Network (webmaster@nukescripts.net)  */
 /* http://www.nukescripts.net                           */
-/* Copyright (c) 2000-2005 by NukeScripts Network         */
+/* Copyright (c) 2000-2005 by NukeScripts Network       */
 /********************************************************/
 
 if(is_mod_admin($module_name)) {
@@ -30,14 +30,14 @@ if(is_mod_admin($module_name)) {
                 <span class='option'>" . _ADDDOWNLOAD . "&nbsp;</span>
             </legend>
             <table cellpadding=\"0\" cellspacing=\"8\" border=\"0\">
-            <form action='".$admin_file.".php' method='post'>
+            <form method='post' action='".$admin_file.".php' enctype='multipart/form-data'>
                 <tr>
                     <td>"._TITLE.":</td>
                     <td><input type='text' name='title' size='50' maxlength='100'></td>
                 </tr>
                 <tr>
                     <td>"._URL.":</td>
-                    <td><input type='text' name='url' size='50' maxlength='255' value='http://'></td>
+                    <td><input type='file' name='url' size='50' maxlength='255' value='http://'></td>
                 </tr>
                 <tr>
                     <td>"._CATEGORY.":</td>

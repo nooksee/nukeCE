@@ -67,7 +67,7 @@ if ($numrows>0) {
     echo "<input type='hidden' name='hits' value='0'>\n";
     echo "<input type='hidden' name='lid' value='".$lidinfo['lid']."'>\n";
     echo "<input type='hidden' name='submitter' value='".$lidinfo['submitter']."'>\n";
-    echo "<input type='hidden' name='op' value='DownloadAddSave'>\n";
+    echo "<input type='hidden' name='op' value='DownloadRequestSave'>\n";
     echo "<input type='hidden' name='xop' value='$op'>\n";
     echo "<tr><td align='center' colspan='2'><input type='submit' value='"._ADDDOWNLOAD."'></td></tr>\n";
     echo "</form>\n";
