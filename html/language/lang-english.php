@@ -27,6 +27,7 @@ define("_NICKNAME","Nickname");
 define("_PASSWORD","Password");
 define("_WELCOMETO","Welcome to");
 define("_EDIT","Edit");
+define("_DETAILS","Details");
 define("_DELETE","Delete");
 define("_POSTEDBY","Posted by");
 define("_READS","reads");
