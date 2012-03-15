@@ -47,7 +47,7 @@ if(is_god($_COOKIE['admin'])) {
     }
     $pagetitle = _AB_SENTINEL.": "._AB_SCANADMINS;
     include(NUKE_BASE_DIR."header.php");
-    sentinel_header();
+    GraphicAdmin();
     DisplayErrorReturn(_AB_SCANADMINSDONE, 1);
 }
 

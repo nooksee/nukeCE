@@ -112,6 +112,7 @@ switch($op) {
 
     case "login":
         global $nsnst_const, $user_prefix;
+        $pagetitle = _USERREGLOGIN;
         if(!compare_ips($username)) {
             DisplayError('Your IP is not valid for this user!', 1);
             exit;
@@ -344,6 +345,7 @@ switch($op) {
     break;
 
     case "savehome":
+        $pagetitle = _USERREGLOGIN;
         if (is_user()) {
             include(NUKE_MODULES_DIR.$module_name.'/public/savehome.php');
         } else {
@@ -352,6 +354,7 @@ switch($op) {
     break;
 
     case "savetheme":
+        $pagetitle = _USERREGLOGIN;
         if (is_user()) {
             if ($ya_config['allowusertheme']==0) {
                 include(NUKE_MODULES_DIR.$module_name.'/public/savetheme.php');

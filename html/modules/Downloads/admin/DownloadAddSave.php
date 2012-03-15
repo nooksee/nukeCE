@@ -19,10 +19,10 @@
 /********************************************************/
 
 if(is_mod_admin($module_name)) {
+    $pagetitle = _DOWNLOADSADMIN;
     $numrows = $db->sql_numrows($db->sql_query("SELECT url FROM ".$prefix."_downloads_downloads WHERE url='$url'"));
     if ($numrows>0) {
-        $pagetitle = ": "._DOWNLOADSADMIN;
-        DisplayError(_ERRORURLEXIST, 1);
+        DisplayError(_ERRORURLEXIST);
         die();
     } else {
         $cidinfo = $db->sql_fetchrow($db->sql_query("SELECT * FROM ".$prefix."_downloads_categories WHERE cid='$cat'"));
@@ -35,37 +35,31 @@ if(is_mod_admin($module_name)) {
         $folder = dirname(dirname(__FILE__)) . '/files' . $cidinfo['uploaddir'];
         $url_folder = 'modules/'.basename(dirname(dirname(__FILE__))).'/files'. $cidinfo['uploaddir'];
         if(substr($imageurl_name,0,1) == '/') {
-            $pagetitle = ": "._DOWNLOADSADMIN;
-            DisplayErrorReturn(_DL_SLASH, 1);
+            DisplayErrorReturn(_DL_SLASH);
             exit;
         }
         if (file_exists($folder."/$imageurl_name")) {
-            $pagetitle = ": "._DOWNLOADSADMIN;
-            DisplayErrorReturn(_DL_FILEEXIST, 1);
+            DisplayErrorReturn(_DL_FILEEXIST);
             exit;
         } elseif (move_uploaded_file($imageurl_temp, $folder."/$imageurl_name")) {
             chmod ($folder."/$imageurl_name", $file_mode);
             $url = $url_folder."/$imageurl_name";
         } else {
-            $pagetitle = ": "._DOWNLOADSADMIN;
-            DisplayErrorReturn(_DL_NOUPLOAD, 1);
+            DisplayErrorReturn(_DL_NOUPLOAD);
             exit;
         }
         $filesize = sprintf("%u", filesize($url));        
         if ($url=="" OR $url=="http;//") {
-            $pagetitle = ": "._DOWNLOADSADMIN;
-            DisplayErrorReturn(_DOWNLOADNOURL, 1);
+            DisplayErrorReturn(_DOWNLOADNOURL);
             exit;
         }
         if ($title=="" || $description=="") {
             if($title=="") {
-                $pagetitle = ": "._DOWNLOADSADMIN;
-                DisplayErrorReturn(_ERRORNOTITLE, 1);
+                DisplayErrorReturn(_ERRORNOTITLE);
                 return;
             }
             if($description=="") {
-                $pagetitle = ": "._DOWNLOADSADMIN;
-                DisplayErrorReturn(_ERRORNODESCRIPTION, 1);
+                DisplayErrorReturn(_ERRORNODESCRIPTION);
                 return;
             }
         }

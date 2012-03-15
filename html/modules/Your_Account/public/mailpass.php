@@ -22,6 +22,8 @@ if(!defined('IN_YA')) {
     exit('Access Denied');
 }
 
+$pagetitle = _USERREGLOGIN;
+    
 if (!empty($username) AND empty($user_email)) {
     $sql = "SELECT username, user_email, user_password, user_level FROM ".$user_prefix."_users WHERE username='$username'";
 } elseif (empty($username) AND !empty($user_email)) {

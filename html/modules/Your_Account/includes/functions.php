@@ -24,6 +24,7 @@ if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
 
 function ya_userCheck($username) {
     global $stop, $user_prefix, $db, $ya_config, $prefix;
+    $pagetitle = _USERAPPINFO;
     if(!Validate($username, 'username', '', 1, 1)) {
         $stop = DisplayErrorReturn(_ERRORINVNICK, 1);
     }
@@ -62,12 +63,13 @@ function ya_mail($email, $subject, $message, $from) {
 
 function ya_mailCheck($user_email) {
     global $stop, $user_prefix, $db, $ya_config;
+    $pagetitle = _USERAPPINFO;
     $user_email = strtolower($user_email);
     if ((!$user_email) || (empty($user_email)) || (!eregi("^[_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,6}$",$user_email))) $stop = DisplayErrorReturn(_ERRORINVEMAIL, 1);
     if ($ya_config['bad_mail'] > "") {
         $BadMailList = explode("\r\n",$ya_config['bad_mail']);
         for ($i=0; $i < count($BadMailList); $i++) {
-            if (eregi($BadMailList[$i], $user_email)) $stop = DisplayErrorReturn(""._MAILBLOCKED." ".$BadMailList[$i]."", 1);
+            if (eregi($BadMailList[$i], $user_email)) $stop = DisplayError(""._MAILBLOCKED." ".$BadMailList[$i]."", 1);
         }
     }
     if (strrpos($user_email,' ') > 0) $stop = DisplayErrorReturn(_ERROREMAILSPACES, 1);
@@ -79,6 +81,7 @@ function ya_mailCheck($user_email) {
 
 function ya_passCheck($user_pass1, $user_pass2) {
     global $stop, $ya_config;
+    $pagetitle = _USERAPPINFO;
     if (strlen($user_pass1) > $ya_config['pass_max']) $stop = "Password must be ".$ya_config['pass_min']." to ".$ya_config['pass_max']." characters long!";
     if (strlen($user_pass1) < $ya_config['pass_min']) $stop = "Password must be ".$ya_config['pass_min']." to ".$ya_config['pass_max']." characters long!";
     if ($user_pass1 != $user_pass2) $stop = DisplayErrorReturn(_PASSWDNOMATCH, 1);

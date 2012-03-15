@@ -16,6 +16,7 @@ if (!defined('ADMIN_FILE')) {
 }
 
 global $prefix, $db, $admin_file, $cache;
+$pagetitle = _BLOCKSADMIN;
 
 if(!is_mod_admin('super')) {
     echo "Access Denied";

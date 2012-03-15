@@ -44,13 +44,12 @@ $module_name = basename(dirname(dirname(__FILE__)));
 if(is_mod_admin($module_name)) {
 
     switch($op) {
-    
         case "forums":
         redirect("modules/$module_name/admin/index.php");
     }
 
 } else {
-    DisplayErrorReturn(""._ERROR.": You do not have administration permission for module \"$module_name\"");
+    DisplayError(""._ERROR.": You do not have administration permission for module \"$module_name\"");
 }
 
 ?>

@@ -48,6 +48,7 @@ if (is_mod_admin()) {
             redirect($admin_file.'.php?op=newsletter');
         } elseif (isset($_POST['send'])) {
             global $aid;
+            $pagetitle = _NEWSLETTER;
             $row = $db->sql_ufetchrow('SELECT `adminmail` FROM `'.$prefix.'_config');
             $admin_email = $row[0];
             $admin_name = $aid;
@@ -95,6 +96,7 @@ if (is_mod_admin()) {
              DisplayError(_NEWSLETTERSENT);
         }
 
+        $pagetitle = _NEWSLETTER;
         $title = _NEWSLETTER;
         $preview = $notes = $submit = '';
         if (isset($_POST['preview'])) {

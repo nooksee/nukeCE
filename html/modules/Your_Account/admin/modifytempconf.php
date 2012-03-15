@@ -23,6 +23,7 @@ if(!defined('IN_YA')) {
 }
 
 if(is_mod_admin($module_name)) {
+    $pagetitle = _USERADMIN;
     $stop = "";
     if ($chng_uname != $old_uname) { ya_userCheck($chng_uname); }
     if ($chng_email != $old_email) { ya_mailCheck($chng_email); }
@@ -31,7 +32,6 @@ if(is_mod_admin($module_name)) {
         $db->sql_query("UPDATE ".$user_prefix."_users_temp SET username='$chng_uname', realname='$chng_realname',  user_email='$chng_email' WHERE user_id='$chng_uid'");
         redirect($admin_file.".php?op=listpending");
     } else {
-        $pagetitle = ": "._USERADMIN;
         DisplayErrorReturn($stop);
         return;
     }

@@ -26,7 +26,7 @@ global $file_mode;
 
 switch($op) {
     default:
-    $pagetitle = _DOWNLOADS.": "._ADDADOWNLOAD;
+    $pagetitle = _ADDADOWNLOAD;
     include_once(NUKE_BASE_DIR.'header.php');
     $maindownload = 1;
     menu(1);
@@ -111,7 +111,7 @@ switch($op) {
     break;
 
     case "Input":
-    $pagetitle = _DOWNLOADS.": "._ADDADOWNLOAD;
+    $pagetitle = _ADDADOWNLOAD;
     include_once(NUKE_BASE_DIR.'header.php');
     $maindownload = 1;
     menu(1);
@@ -269,7 +269,7 @@ switch($op) {
     break;
 
     case "Add":
-    $pagetitle = _DOWNLOADS.": "._ADDADOWNLOAD;
+    $pagetitle = _ADDADOWNLOAD;
     if ($tou > 0) {
         $cat = intval($cat);
         $cidinfo = $db->sql_fetchrow($db->sql_query("SELECT * FROM ".$prefix."_downloads_categories WHERE cid='$cat'"));
@@ -291,36 +291,29 @@ switch($op) {
                 $folder = dirname(dirname(__FILE__)) . '/files' . $cidinfo['uploaddir'];
                 $url_folder = 'modules/'.basename(dirname(dirname(__FILE__))).'/files'. $cidinfo['uploaddir'];
                 if(substr($imageurl_name,0,1) == '/') {
-                    $pagetitle = ": "._ADDADOWNLOAD;
                     DisplayErrorReturn(_DL_SLASH, 1);
                     exit;
                 }
                 if (!in_array($ext,$limitedext)) {
-                    $pagetitle = ": "._ADDADOWNLOAD;
                     DisplayErrorReturn(_DL_BADEXT, 1);
                 } elseif (file_exists($folder."/$imageurl_name")) {
-                    $pagetitle = ": "._ADDADOWNLOAD;
                     DisplayErrorReturn(_DL_FILEEXIST, 1);
                 } elseif (move_uploaded_file($imageurl_temp, $folder."/$imageurl_name")) {
                     chmod ($folder."/$imageurl_name", $file_mode);
                     $url = $url_folder."/$imageurl_name";
                 } else {
-                    $pagetitle = ": "._ADDADOWNLOAD;
                     DisplayErrorReturn(_DL_NOUPLOAD, 1);
                 }
                 $filesize = sprintf("%u", filesize($url));
             } else {
                 if ($url=="" OR $url=="http;//") {
-                    $pagetitle = ": "._ADDADOWNLOAD;
                     DisplayErrorReturn(_DOWNLOADNOURL, 1);
                 }
             }
             if ($title=="") {
-                $pagetitle = ": "._ADDADOWNLOAD;
                 DisplayErrorReturn(DOWNLOADNOTITLE, 1);
             }
             if ($description=="") {
-                $pagetitle = ": "._ADDADOWNLOAD;
                 DisplayErrorReturn(_DOWNLOADNODESC, 1);
             }
 
@@ -342,7 +335,6 @@ switch($op) {
 
             $db->sql_query("INSERT INTO ".$prefix."_downloads_new VALUES (NULL, $cat, 0, '$title', '$url', '$description', now(), '$auth_name', '$email', '$submitter', '$sub_ip', $filesize, '$version', '$homepage')");
             include_once(NUKE_BASE_DIR.'header.php');
-            $pagetitle = ": "._ADDADOWNLOAD;
             OpenTable();
             echo "
                   <div align=\"center\">
@@ -373,11 +365,9 @@ switch($op) {
             nuke_mail($to, $subject, $msg, $mailheaders);
 
         } else {
-            $pagetitle = ": "._ADDADOWNLOAD;
             DisplayError(_DL_CANTADD, 1);
         }
     } else {
-        $pagetitle = ": "._ADDADOWNLOAD;
         DisplayErrorReturn(_DL_TOUMUST, 1);
     }
     break;

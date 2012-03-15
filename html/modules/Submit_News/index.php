@@ -110,6 +110,7 @@ function defaultDisplay() {
 
 function PreviewStory($name, $address, $subject, $story, $storyext, $topic, $alanguage, $posttype) {
     global $user, $cookie, $bgcolor1, $bgcolor2, $anonymous, $prefix, $multilingual, $AllowableHTML, $db, $module_name, $tipath, $userinfo;
+    $pagetitle = _NEWSUBPREVIEW;
     include_once(NUKE_BASE_DIR.'header.php');
     $subject = stripslashes(check_html($subject, 'nohtml'));
     $story = stripslashes($story);

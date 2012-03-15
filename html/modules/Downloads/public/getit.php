@@ -25,13 +25,13 @@ if(!defined('IN_DOWNLOADS')) {
 $lid = intval($lid);
 $result = $db->sql_query("SELECT * FROM ".$prefix."_downloads_downloads WHERE lid=$lid AND active>'0'");
 $lidinfo = $db->sql_fetchrow($result);
-$pagetitle = "- "._DOWNLOADPROFILE.": ".stripslashes($lidinfo['title']);
+$pagetitle = ""._DOWNLOADPROFILE.": ".stripslashes($lidinfo['title']);
 include_once(NUKE_BASE_DIR.'header.php');
 $priv = $lidinfo['sid'] - 2;
 
 if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user())  || ($lidinfo['sid'] == 2 AND is_mod_admin($module_name)) || ($lidinfo['sid'] > 2 AND of_group($priv)) || $dl_config['show_download'] == '1') {
     if (empty($lidinfo['lid']) OR $lidinfo['active'] == 0) {
-        DisplayErrorReturn(_INVALIDDOWNLOAD, 1);
+        DisplayError(_INVALIDDOWNLOAD, 1);
         exit;
     } else {
         $fetchid = base64_encode($lidinfo['url']);
@@ -58,7 +58,8 @@ if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user())  || ($lidinfo
             }
         }
         echo "
-              <br><b>"._AUTHOR.":</b> ".$lidinfo['name']."<br>
+              <br>
+              <b>"._AUTHOR.":</b> ".$lidinfo['name']."<br>
               <b>"._VERSION.":</b> ".$lidinfo['version']." <b>"._FILESIZE.":</b> ".CoolSize($lidinfo['filesize'])."<br>
               <b>"._ADDEDON.":</b> ".CoolDate($lidinfo['date'])."<br>
               <b>"._HOMEPAGE.":</b></font>

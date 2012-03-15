@@ -1303,7 +1303,7 @@ if(is_mod_admin($module_name)) {
     }
 
 } else {
-    DisplayErrorReturn(""._ERROR.": You do not have administration permission for module \"$module_name\"");
+    DisplayError(""._ERROR.": You do not have administration permission for module \"$module_name\"");
 }
 
 ?>

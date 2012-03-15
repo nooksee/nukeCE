@@ -135,6 +135,7 @@ define('_AB_IPADDRESS','IP Address');
 define('_AB_IPADDRESSES','IP Addresses');
 define('_AB_IPBLOCKED','Blocked IP');
 define('_AB_IPERROR','The IP <b>MUST BE</b> numeric with each octet between 0 and 255!');
+define('_AB_ERROR','Input Error');
 define('_AB_IPFULL','Full IP (127.2.3.4)');
 define('_AB_IPLOOKUPSITE','IP Lookup Site');
 define('_AB_IPRANGE','IP Range (127.*.*.*)');

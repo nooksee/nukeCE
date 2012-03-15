@@ -4,7 +4,7 @@
 /* PHP-Nuke CE: Web Portal System                                         */
 /* ==============================                                         */
 /*                                                                        */
-/* Copyright (c) 2011 by Kevin Atwood                                     */
+/* Copyright (c) 2012 by Kevin Atwood                                     */
 /* http://www.nukece.com                                                  */
 /*                                                                        */
 /* All PHP-Nuke CE code is released under the GNU General Public License. */
@@ -56,6 +56,7 @@ function get_user_field($field_name, $user, $is_name = false) {
 function get_admin_field($field_name, $admin) {
     global $prefix, $db, $debugger;
     static $fields = array();
+    
     if (!$admin) {
         return array();
     }
@@ -81,7 +82,6 @@ function get_admin_field($field_name, $admin) {
 // is_mod_admin function by Quake
 // queries: 1;
 function is_mod_admin($module_name='super') {
-
     global $db, $prefix, $aid, $admin;
     static $auth = array();
 
@@ -117,6 +117,7 @@ function is_mod_admin($module_name='super') {
 function load_nukeconfig() {
     global $prefix, $db, $cache, $debugger;
     static $nukeconfig;
+    
     if(isset($nukeconfig) && is_array($nukeconfig)) { return $nukeconfig; }
 /*****[BEGIN]******************************************
 [ Base:    Caching System                     v3.0.0 ]
@@ -157,6 +158,7 @@ function load_nukeconfig() {
 function load_board_config() {
     global $db, $prefix, $debugger, $currentlang, $cache;
     static $board_config;
+    
     if(isset($board_config) && is_array($board_config)) { return $board_config; }
     /*****[END]********************************************
     [ Base:    phpBB Merge                        v1.0.0 ]
@@ -195,6 +197,7 @@ function load_board_config() {
 function load_sysconfig() {
     global $db, $prefix, $cache, $debugger;
     static $sysconfig;
+    
     if(isset($sysconfig) && is_array($sysconfig)) { return $sysconfig; }
     /*****[BEGIN]******************************************
     [ Base:    Caching System                     v3.0.0 ]
@@ -232,6 +235,7 @@ function load_sysconfig() {
 function main_module() {
     global $db, $prefix, $cache;
     static $main_module;
+    
     if (isset($main_module)) { return $main_module; }
     /*****[BEGIN]******************************************
     [ Base:    Caching System                     v3.0.0 ]
@@ -257,6 +261,7 @@ function update_modules() {
     // New funtion to add new modules and delete old ones
     global $db, $prefix, $cache;
     static $updated;
+    
     if(isset($updated)) { return $updated; }
     //Here we will pull all currently installed modules from the database
     $result = $db->sql_query("SELECT title FROM ".$prefix."_modules", true);
@@ -291,8 +296,7 @@ function update_modules() {
     //Now we will run a check to make sure all installed modules still exist
     for($i=0, $maxi=count($modules);$i<$maxi;$i++){
         $module = $modules[$i];
-        if (!in_array($module, $modlist))
-        {
+        if (!in_array($module, $modlist)) {
             $db->sql_query("DELETE FROM ".$prefix."_modules WHERE title='$module'");
             $result = $db->sql_query("OPTIMIZE TABLE `".$prefix."_modules`");
             $db->sql_freeresult($result);
@@ -379,11 +383,7 @@ function UpdateCookie() {
 function GetColorGroups($in_admin = false) {
     global $db, $prefix;
 
-    $q = "SELECT *
-          FROM ". $prefix . "_bbadvanced_username_color
-          WHERE group_id > '0'
-          ORDER BY group_weight ASC";
-    //$r = $db->sql_query($q);
+    $q = "SELECT * FROM ". $prefix . "_bbadvanced_username_color WHERE group_id > '0' ORDER BY group_weight ASC";
     $coloring = $db->sql_ufetchrowset($q, SQL_ASSOC);
     $data = '';
     $back = ($in_admin) ? "&menu=1" : "";
@@ -419,22 +419,18 @@ function avatar_resize($avatar_url) {
     if($avatar_width > $board_config['avatar_max_width'] && $avatar_height <= $board_config['avatar_max_height']) {
         $cons_width = $board_config['avatar_max_width'];
         $cons_height = round((($board_config['avatar_max_width'] * $avatar_height) / $avatar_width), 0);
-    }
-    elseif($avatar_width <= $board_config['avatar_max_width'] && $avatar_height > $board_config['avatar_max_height']) {
+    } elseif($avatar_width <= $board_config['avatar_max_width'] && $avatar_height > $board_config['avatar_max_height']) {
         $cons_width = round((($board_config['avatar_max_height'] * $avatar_width) / $avatar_height), 0);
         $cons_height = $board_config['avatar_max_height'];
-    }
-    elseif($avatar_width > $board_config['avatar_max_width'] && $avatar_height > $board_config['avatar_max_height']) {
+    } elseif($avatar_width > $board_config['avatar_max_width'] && $avatar_height > $board_config['avatar_max_height']) {
         if($avatar_width >= $avatar_height) {
             $cons_width = $board_config['avatar_max_width'];
             $cons_height = round((($board_config['avatar_max_width'] * $avatar_height) / $avatar_width), 0);
-        }
-        elseif($avatar_width < $avatar_height) {
+        } elseif($avatar_width < $avatar_height) {
             $cons_width = round((($board_config['avatar_max_height'] * $avatar_width) / $avatar_height), 0);
             $cons_height = $board_config['avatar_max_height'];
         }
-    }
-    else {
+    } else {
         $cons_width = $avatar_width;
         $cons_height = $avatar_height;
     }
@@ -490,114 +486,110 @@ if(!function_exists('html_entity_decode')) {
 }
 
 // EvoDate function by JeFFb68CAM (based off phpBB mod)
-// Changed for internatinal users by ReOrGaNiSaTiOn
-function NukeDate($format, $gmepoch, $tz)
-{
+// Changed for international users by ReOrGaNiSaTiOn
+function NukeDate($format, $gmepoch, $tz) {
 /*****[BEGIN]******************************************
- [ Mod:    Advanced Time Management            v2.2.0 ]
- ******************************************************/
+[ Mod:    Advanced Time Management            v2.2.0 ]
+******************************************************/
     global $board_config, $lang, $userdata, $pc_dateTime, $userinfo;
-	getusrinfo();
-	static $translate;
-	    if ( empty($translate) && $board_config['default_lang'] != 'english' )
-    {
-    		@include(NUKE_FORUMS_DIR.'language/lang_'.$lang.'/lang_time.php');
-    		if (!(empty($langtime['datetime'])))
-    		{
-        	while ( list($match, $replace) = @each($langtime['datetime']) )
-        	{
-            $translate[$match] = $replace;
-        	}
+    getusrinfo();
+    static $translate;
+    
+    if ( empty($translate) && $board_config['default_lang'] != 'english' ) {
+        @include(NUKE_FORUMS_DIR.'language/lang_'.$lang.'/lang_time.php');
+        if (!(empty($langtime['datetime']))) {
+            while ( list($match, $replace) = @each($langtime['datetime']) ) {
+                $translate[$match] = $replace;
+            }
         }
     }
-	if ( $userinfo['user_id'] != 1 )
-	{
-		switch ( $userinfo['user_time_mode'] )
-		{
-			case MANUAL_DST:
-				$dst_sec = $userinfo['user_dst_time_lag'] * 60;
-				return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + (3600 * $tz) + $dst_sec), $translate) : @gmdate($format, $gmepoch + (3600 * $tz) + $dst_sec);
-				break;
-			case SERVER_SWITCH:
-				$dst_sec = date('I', $gmepoch) * $userdata['user_dst_time_lag'] * 60;
-				return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + (3600 * $tz) + $dst_sec), $translate) : @gmdate($format, $gmepoch + (3600 * $tz) + $dst_sec);
-				break;
-			case FULL_SERVER:
-				return ( !empty($translate) ) ? strtr(@date($format, $gmepoch), $translate) : @date($format, $gmepoch);
-				break;
-			case SERVER_PC:
-				if ( isset($pc_dateTime['pc_timezoneOffset']) )
-				{
-					$tzo_sec = $pc_dateTime['pc_timezoneOffset'];
-				} else
-				{
-					$user_pc_timeOffsets = explode("/", $userinfo['user_pc_timeOffsets']);
-					$tzo_sec = $user_pc_timeOffsets[0];
-				}
-				return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + $tzo_sec), $translate) : @gmdate($format, $gmepoch + $tzo_sec);
-				break;
-			case FULL_PC:
-				if ( isset($pc_dateTime['pc_timeOffset']) )
-				{
-					$tzo_sec = $pc_dateTime['pc_timeOffset'];
-				} else
-				{
-					$user_pc_timeOffsets = explode("/", $userinfo['user_pc_timeOffsets']);
-					$tzo_sec = $user_pc_timeOffsets[1];
-				}
-				return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + $tzo_sec), $translate) : @gmdate($format, $gmepoch + $tzo_sec);
-				break;
-			default:
-				return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + (3600 * $tz)), $translate) : @gmdate($format, $gmepoch + (3600 * $tz));
-				break;
-		}
-	} else
-	{
-		switch ( $board_config['default_time_mode'] )
-		{
-			case MANUAL_DST:
-				$dst_sec = $board_config['default_dst_time_lag'] * 60;
-				return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + (3600 * $tz) + $dst_sec), $translate) : @gmdate($format, $gmepoch + (3600 * $tz) + $dst_sec);
-				break;
-			case SERVER_SWITCH:
-				$dst_sec = date('I', $gmepoch) * $board_config['default_dst_time_lag'] * 60;
-				return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + (3600 * $tz) + $dst_sec), $translate) : @gmdate($format, $gmepoch + (3600 * $tz) + $dst_sec);
-				break;
-			case FULL_SERVER:
-				return ( !empty($translate) ) ? strtr(@date($format, $gmepoch), $translate) : @date($format, $gmepoch);
-				break;
-			case SERVER_PC:
-				if ( isset($pc_dateTime['pc_timezoneOffset']) )
-				{
-					$tzo_sec = $pc_dateTime['pc_timezoneOffset'];
-				} else
-				{
-					$tzo_sec = 0;
-				}
-				return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + $tzo_sec), $translate) : @gmdate($format, $gmepoch + $tzo_sec);
-				break;
-			case FULL_PC:
-				if ( isset($pc_dateTime['pc_timeOffset']) )
-				{
-					$tzo_sec = $pc_dateTime['pc_timeOffset'];
-				} else
-				{
-					$tzo_sec = 0;
-				}
-				return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + $tzo_sec), $translate) : @gmdate($format, $gmepoch + $tzo_sec);
-				break;
-			default:
-				return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + (3600 * $tz)), $translate) : @gmdate($format, $gmepoch + (3600 * $tz));
-				break;
-		}
-	}
+    if ( $userinfo['user_id'] != 1 ) {
+        switch ( $userinfo['user_time_mode'] ) {
+            case MANUAL_DST:
+            $dst_sec = $userinfo['user_dst_time_lag'] * 60;
+            return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + (3600 * $tz) + $dst_sec), $translate) : @gmdate($format, $gmepoch + (3600 * $tz) + $dst_sec);
+            break;
+            
+            case SERVER_SWITCH:
+            $dst_sec = date('I', $gmepoch) * $userdata['user_dst_time_lag'] * 60;
+            return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + (3600 * $tz) + $dst_sec), $translate) : @gmdate($format, $gmepoch + (3600 * $tz) + $dst_sec);
+            break;
+            
+            case FULL_SERVER:
+            return ( !empty($translate) ) ? strtr(@date($format, $gmepoch), $translate) : @date($format, $gmepoch);
+            break;
+        
+            case SERVER_PC:
+            if ( isset($pc_dateTime['pc_timezoneOffset']) ) {
+                $tzo_sec = $pc_dateTime['pc_timezoneOffset'];
+            } else {
+                $user_pc_timeOffsets = explode("/", $userinfo['user_pc_timeOffsets']);
+                $tzo_sec = $user_pc_timeOffsets[0];
+            }
+            return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + $tzo_sec), $translate) : @gmdate($format, $gmepoch + $tzo_sec);
+            break;
+            
+            case FULL_PC:
+            if ( isset($pc_dateTime['pc_timeOffset']) ) {
+                $tzo_sec = $pc_dateTime['pc_timeOffset'];
+            } else {
+                $user_pc_timeOffsets = explode("/", $userinfo['user_pc_timeOffsets']);
+                $tzo_sec = $user_pc_timeOffsets[1];
+            }
+            return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + $tzo_sec), $translate) : @gmdate($format, $gmepoch + $tzo_sec);
+            break;
+            
+            default:
+            return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + (3600 * $tz)), $translate) : @gmdate($format, $gmepoch + (3600 * $tz));
+            break;
+        }
+    } else {
+        switch ( $board_config['default_time_mode'] ) {
+            case MANUAL_DST:
+            $dst_sec = $board_config['default_dst_time_lag'] * 60;
+            return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + (3600 * $tz) + $dst_sec), $translate) : @gmdate($format, $gmepoch + (3600 * $tz) + $dst_sec);
+            break;
+        
+            case SERVER_SWITCH:
+            $dst_sec = date('I', $gmepoch) * $board_config['default_dst_time_lag'] * 60;
+            return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + (3600 * $tz) + $dst_sec), $translate) : @gmdate($format, $gmepoch + (3600 * $tz) + $dst_sec);
+            break;
+        
+            case FULL_SERVER:
+            return ( !empty($translate) ) ? strtr(@date($format, $gmepoch), $translate) : @date($format, $gmepoch);
+            break;
+        
+            case SERVER_PC:
+            if ( isset($pc_dateTime['pc_timezoneOffset']) ) {
+                $tzo_sec = $pc_dateTime['pc_timezoneOffset'];
+            } else {
+                $tzo_sec = 0;
+            }
+            return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + $tzo_sec), $translate) : @gmdate($format, $gmepoch + $tzo_sec);
+            break;
+            
+            case FULL_PC:
+            if ( isset($pc_dateTime['pc_timeOffset']) ) {
+                $tzo_sec = $pc_dateTime['pc_timeOffset'];
+            } else {
+                $tzo_sec = 0;
+            }
+            return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + $tzo_sec), $translate) : @gmdate($format, $gmepoch + $tzo_sec);
+            break;
+            
+            default:
+            return ( !empty($translate) ) ? strtr(@gmdate($format, $gmepoch + (3600 * $tz)), $translate) : @gmdate($format, $gmepoch + (3600 * $tz));
+            break;
+        }
+    }
 /*****[END]********************************************
- [ Mod:    Advanced Time Management            v2.2.0 ]
- ******************************************************/
+[ Mod:    Advanced Time Management            v2.2.0 ]
+******************************************************/
 }
 
 function group_selectbox($fieldname, $current=0, $mvanon=false, $all=true) {
     static $groups;
+    
     if (!isset($groups)) {
         global $db, $prefix;
         $groups = array(0=>_MVALL, 1=>_MVUSERS, 2=>_MVADMIN, 3=>_MVANON);
@@ -660,23 +652,15 @@ function confirm_msg($msg, $yes, $no, $special=0) {
         $content = "
                     <table class=\"forumline\" width=\"100%\" cellspacing=\"1\" cellpadding=\"3\" border=\"0\">
                         <tr>
-                            <th class=\"thHead\" height=\"25\" valign=\"middle\">
-                                <span class=\"tableTitle\">
-                                    Confirm
-                                </span>
-                            </th>
+                            <th class=\"thHead\" height=\"25\" valign=\"middle\"><span class=\"tableTitle\">Confirm</span></th>
                         </tr>
                         <tr>
                             <td class=\"row1\" align=\"center\">
                                 <span class=\"gen\">
-                                    <br />
-                                    $msg
-                                    <br />
-                                    <br />
+                                    <br />$msg<br /><br />
                                     <input type=\"button\" name=\"yes\" value=\""._YES."\" class=\"mainoption\" onclick=\"window.location = '".$yes."' \" />
                                     <input type=\"button\" name=\"cancel\" value=\""._NO."\" class=\"liteoption\" onclick=\"window.location = '".$no."' \" />
-                                    <br />
-                                    <br />
+                                    <br /><br />
                                 </span>
                             </td>
                         </tr>
@@ -700,13 +684,7 @@ function DisplayError($msg, $special=0) {
         OpenTable();
         echo "
               <div align=\"center\">
-                  <span class=\"option\">
-                     <b>
-                         <em>
-                             $msg
-                         </em>
-                     </b>
-                  </span>        
+                  <span class=\"option\"><b><em>$msg</em></b></span>        
               </div>
              ";
 	CloseTable();
@@ -715,6 +693,7 @@ function DisplayError($msg, $special=0) {
 }
 
 function DisplayErrorReturn($msg, $special=0) {
+    global $pagetitle;
     if (defined('FORUM_ADMIN') || defined('IN_PHPBB') && function_exists('message_die') && !$special) {
         message_die(GENERAL_ERROR, $msg);
     } else {
@@ -722,19 +701,12 @@ function DisplayErrorReturn($msg, $special=0) {
         if (defined('ADMIN_FILE') && is_admin() && !$special) {
             GraphicAdmin();
         }
+        title($pagetitle);
         OpenTable();
         echo "
               <div align=\"center\">
-                  <span class=\"option\">
-                     <b>
-                         <em>
-                             $msg
-                         </em>
-                     </b>
-                  </span>        
-                  <br />
-                  <br />
-                  "._GOBACK."        
+                  <span class=\"option\"><b><em>$msg</em></b></span>        
+                  <br /><br />"._GOBACK."        
               </div>
              ";
 	CloseTable();
@@ -751,16 +723,8 @@ function ErrorReturn($msg, $special=0) {
         }
         echo "
               <div align=\"center\">
-                  <span class=\"option\">
-                     <b>
-                         <em>
-                             $msg
-                         </em>
-                     </b>
-                  </span>        
-                  <br />
-                  <br />
-                  "._GOBACK."        
+                  <span class=\"option\"><b><em>$msg</em></b></span>        
+                  <br /><br />"._GOBACK."        
               </div>
              ";
         if (defined('ADMIN_FILE') && is_admin() && $special) {
@@ -804,6 +768,7 @@ function ValidateURL($url, $type, $where) {
 ******************************************************/
 function security_code($gfxchk, $size='normal', $force=0) {
     global $sysconfig;
+    
     if(intval($gfxchk) == 0) {
         return '';
     }
@@ -819,191 +784,143 @@ function security_code($gfxchk, $size='normal', $force=0) {
     if (defined('CAPTCHA')) {
         switch($size) {
             case 'large':
-                $code .= "
-                          <tr>
-                              <td>
-                                  "._SECURITYCODE.":
-                              </td>
-                              <td>
-                                  <img src='includes/captcha.php?size=large' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'>
-                              </td>
-                          </tr>
-                          <tr>
-                              <td>
-                                  "._TYPESECCODE.":
-                              </td>
-                              <td>
-                                  <input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\">
-                              </td>
-                          </tr>
-                         ";
+            $code .= "
+                      <tr>
+                          <td>"._SECURITYCODE.":</td>
+                          <td><img src='includes/captcha.php?size=large' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'></td>
+                      </tr>
+                      <tr>
+                          <td>"._TYPESECCODE.":</td>
+                          <td><input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\"></td>
+                      </tr>
+                     ";
             break;
         
             case 'normal':
-                $code .= "
-                          <tr>
-                              <td>
-                                  "._SECURITYCODE.":
-                              </td>
-                              <td>
-                                  <img src='includes/captcha.php?size=normal' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'>
-                              </td>
-                          </tr>
-                          <tr>
-                              <td>
-                                  "._TYPESECCODE.":
-                              </td>
-                              <td>
-                                  <input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\">
-                              </td>
-                          </tr>
-                         ";
+            $code .= "
+                      <tr>
+                          <td><font class='content'><b>"._SECURITYCODE.":</b></font></td>
+                          <td><img src='includes/captcha.php?size=normal' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'></td>
+                      </tr>
+                      <tr>
+                          <td><font class='content'><b>"._TYPESECCODE.":</b></font></td>
+                          <td><input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\"></td>
+                      </tr>
+                     ";
             break;
         
             case 'small':
-                $code .= "
-                          "._SECURITYCODE.":
-                          <img src='includes/captcha.php?size=small' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'>
-                          "._TYPESECCODE.":
-                          <input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\">
-                         ";
+            $code .= "
+                      "._SECURITYCODE.":
+                      <img src='includes/captcha.php?size=small' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'>
+                      "._TYPESECCODE.":
+                      <input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\">
+                     ";
             break;
         
             case 'stacked':
-                $code .= "
-                          "._SECURITYCODE."
-                          <br />
-                          <img src='includes/captcha.php?size=normal' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'>
-                          <br />
-                          "._TYPESECCODE."
-                          <br />
-                          <input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\">
-                          <br />
-                         ";
+            $code .= "
+                      "._SECURITYCODE."
+                      <br />
+                      <img src='includes/captcha.php?size=normal' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'>
+                      <br />
+                      "._TYPESECCODE."
+                      <br />
+                      <input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\">
+                      <br />
+                     ";
             break;
         
             case 'demo':
-                $code .= "<img src='includes/captcha.php?size=large' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'>";
+            $code .= "<img src='includes/captcha.php?size=large' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'>";
             break;
         
             case 'block':
-                $code .= "
-                          <tr>
-                              <td align=\"center\">
-                                  "._SECURITYCODE.":
-                              </td>
-                          </tr>
-                          <tr>
-                              <td align=\"center\">
-                                  <img src='includes/captcha.php?size=normal' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'>
-                             </td>
-                         </tr>
-                         <tr>
-                             <td align=\"center\">
-                                 "._TYPESECCODE.":
-                             </td>
-                         </tr>
-                         <tr>
-                             <td align=\"center\">
-                                 <input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\">
-                             </td>
-                         </tr>
-                        ";
+            $code .= "
+                      <tr>
+                          <td align=\"center\">"._SECURITYCODE.":</td>
+                      </tr>
+                      <tr>
+                          <td align=\"center\"><img src='includes/captcha.php?size=normal' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'></td>
+                      </tr>
+                      <tr>
+                          <td align=\"center\">"._TYPESECCODE.":</td>
+                      </tr>
+                      <tr>
+                          <td align=\"center\"><input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\"></td>
+                      </tr>
+                     ";
             break;
         }
     } else {
         $code = "";
         switch($size) {
             case 'large':
-                $code .= "
-                          <tr>
-                              <td>
-                                  "._SECURITYCODE.":
-                              </td>
-                              <td>
-                                  <img src='index.php?op=gfx' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'>
-                              </td>
-                          </tr>
-                          <tr>
-                              <td>
-                                  "._TYPESECCODE.":
-                              </td>
-                              <td>
-                                  <input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\">
-                              </td>
-                          </tr>
-                         ";
+            $code .= "
+                      <tr>
+                          <td> "._SECURITYCODE.":</td>
+                          <td><img src='index.php?op=gfx' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'></td>
+                      </tr>
+                      <tr>
+                          <td>"._TYPESECCODE.":</td>
+                          <td> <input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\"></td>
+                      </tr>
+                     ";
             break;
         
             case 'normal':
-                $code .= "
-                          <tr>
-                              <td>
-                                  "._SECURITYCODE.":
-                              </td>
-                              <td>
-                                  <img src='index.php?op=gfx' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'>
-                              </td>
-                          </tr>
-                          <tr>
-                              <td>
-                                  "._TYPESECCODE.":
-                              </td>
-                              <td>
-                                  <input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\">
-                              </td>
-                          </tr>
-                         ";
+            $code .= "
+                      <tr>
+                          <td>"._SECURITYCODE.":</td>
+                          <td><img src='index.php?op=gfx' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'></td>
+                      </tr>
+                      <tr>
+                          <td>"._TYPESECCODE.":</td>
+                          <td><input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\"></td>
+                      </tr>
+                     ";
             break;
         
             case 'small':
-                $code .= "
-                          "._SECURITYCODE.":
-                          <img src='index.php?op=gfx' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'>
-                          "._TYPESECCODE.":
-                          <input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\">
-                         ";
+            $code .= "
+                      "._SECURITYCODE.":
+                      <img src='index.php?op=gfx' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'>
+                      "._TYPESECCODE.":
+                      <input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\">
+                     ";
             break;
         
             case 'stacked':
-                $code .= "
-                          "._SECURITYCODE."
-                          <br />
-                          <img src='index.php?op=gfx' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'>
-                          <br />
-                          "._TYPESECCODE."
-                          <br />
-                          <input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\">
-                         ";
+            $code .= "
+                      "._SECURITYCODE."
+                      <br />
+                      <img src='index.php?op=gfx' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'>
+                      <br />
+                      "._TYPESECCODE."
+                      <br />
+                      <input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\">
+                     ";
             break;
         
             case 'demo':
-                $code .= "<img src='index.php?op=gfx' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'>";
+            $code .= "<img src='index.php?op=gfx' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'>";
             break;
         
             case 'block':
-                $code .= "
-                          <tr>
-                              <td align=\"center\">
-                                  "._SECURITYCODE.":
-                              </td>
-                          </tr>
-                          <tr>
-                              <td align=\"center\">
-                                  <img src='index.php?op=gfx' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'>
-                              </td>
-                          </tr>
-                          <tr>
-                              <td align=\"center\">
-                                  "._TYPESECCODE.":
-                              </td>
-                          </tr>
-                          <tr>
-                              <td align=\"center\">
-                                  <input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\">
-                              </td>
-                          </tr>
-                         ";
+            $code .= "
+                      <tr>
+                          <td align=\"center\">"._SECURITYCODE.":</td>
+                      </tr>
+                      <tr>
+                          <td align=\"center\"><img src='index.php?op=gfx' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'></td>
+                      </tr>
+                      <tr>
+                          <td align=\"center\">"._TYPESECCODE.":</td>
+                      </tr>
+                      <tr>
+                          <td align=\"center\"><input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\"></td>
+                      </tr>
+                     ";
             break;
         }
     }
@@ -1012,6 +929,7 @@ function security_code($gfxchk, $size='normal', $force=0) {
 
 function security_code_check($gfx_code, $gfxchk) {
     global $sysconfig;
+    
     if (!GDSUPPORT) {
         return true;
     }
@@ -1102,6 +1020,7 @@ function compare_ips($username) {
 function GetRank($user_id) {
     global $db, $prefix, $user_prefix;
     static $rankData = array();
+    
     if(is_array($rankData[$user_id])) { return $rankData[$user_id]; }
 
     list($user_rank, $user_posts) = $db->sql_ufetchrow("SELECT user_rank, user_posts FROM " . $user_prefix . "_users WHERE user_id = '" . $user_id . "'", SQL_NUM);
@@ -1128,6 +1047,7 @@ function GetRank($user_id) {
 // redirect function by Quake
 function redirect($url) {
     global $db, $cache;
+    
     if(is_object($cache)) $cache->resync();
     if(is_object($db)) $db->sql_close();
     $type = preg_match('/IIS|Microsoft|WebSTAR|Xitami/', $_SERVER['SERVER_SOFTWARE']) ? 'Refresh: 0; URL=' : 'Location: ';
@@ -1145,6 +1065,7 @@ include_once(NUKE_INCLUDE_DIR.'functions_deprecated.php');
 
 function nuke_img_tag_to_resize($text) {
     global $img_resize;
+    
     if(!$img_resize) return $text;
     if(empty($text)) return $text;
     if(preg_match('/<NO RESIZE>/',$text)) {
@@ -1210,6 +1131,7 @@ function add_group_attributes($user_id, $group_id) {
         $row_color = $db->sql_fetchrow($result_color);
         $db->sql_freeresult($result_color);
     }
+    
     $sql_rank = "SELECT `group_rank` FROM `" . $prefix . "_bbgroups` WHERE `group_id` = '$group_id'";
     $result_rank = $db->sql_query($sql_rank);
     $row_rank = $db->sql_fetchrow($result_rank);
@@ -1217,28 +1139,22 @@ function add_group_attributes($user_id, $group_id) {
     if(isset($row_rank['group_rank']) && !isset($row_color['group_color'])) {
         $sql = "`user_rank` = '".$row_rank['group_rank']."'";
     }elseif(isset($row_color['group_color']) && !isset($row_rank['group_rank'])) {
-        $sql = "`user_color_gc` = '".$row_color['group_color']."',
-              `user_color_gi`  = '--".$row_color['group_id']."--'";
+        $sql = "`user_color_gc` = '".$row_color['group_color']."', `user_color_gi`  = '--".$row_color['group_id']."--'";
     } elseif (isset($row_color['group_color']) && isset($row_rank['group_rank'])) {
-        $sql = "`user_rank` = '".$row_rank['group_rank']."',
-            `user_color_gc` = '".$row_color['group_color']."',
-            `user_color_gi`  = '--".$row_color['group_id']."--'";
+        $sql = "`user_rank` = '".$row_rank['group_rank']."', `user_color_gc` = '".$row_color['group_color']."', `user_color_gi`  = '--".$row_color['group_id']."--'";
     } else {
         $sql = "";
     }
 
     if (!empty($sql)) {
-        $sql = "UPDATE `" . $prefix . "_users`
-            SET " . $sql . "
-            WHERE user_id = " . $user_id;
-        if ( !$db->sql_query($sql) )
-        {
+        $sql = "UPDATE `" . $prefix . "_users` SET " . $sql . " WHERE user_id = " . $user_id;
+        if ( !$db->sql_query($sql) ) {
             return false;
         }
 /*****[BEGIN]******************************************
 [ Base:    Caching System                     v3.0.0 ]
 ******************************************************/
-         $cache->delete('UserColors', 'config');
+        $cache->delete('UserColors', 'config');
 /*****[END]********************************************
 [ Base:    Caching System                     v3.0.0 ]
 ******************************************************/
@@ -1256,11 +1172,7 @@ function remove_group_attributes($user_id, $group_id) {
         }
         $cache->delete('UserColors', 'config');
     } else if (!empty($user_id) && $user_id >= 3) {
-        $sql = "UPDATE `" . $prefix . "_users`
-                SET `user_color_gc` = '',
-                `user_color_gi`  = '',
-                `user_rank` = 0
-                WHERE `user_id` = ".$user_id;
+        $sql = "UPDATE `" . $prefix . "_users` SET `user_color_gc` = '', `user_color_gi`  = '', `user_rank` = 0 WHERE `user_id` = ".$user_id;
         $db->sql_query($sql);
     }
 
@@ -1293,7 +1205,7 @@ function nuke_mail($to, $subject, $content, $header='', $params='', $batch=false
     require_once (NUKE_INCLUDE_DIR.'mail/Swift/Connection/NativeMail.php');
 
     if (!isset($nukeconfig['adminmail']) || empty($nukeconfig['adminmail']) || $nukeconfig['adminmail'] == 'webmaster@------.---') {
-        if (!isset($board_config['board_email']) || empty($board_config['board_email']) || $board_config['board_email'] == 'Webmaster@MySite.com') {
+        if (!isset($board_config['board_email']) || empty($board_config['board_email']) || $board_config['board_email'] == 'Webmaster@example.com') {
             $from = '';
         } else {
             $from = $board_config['board_email'];

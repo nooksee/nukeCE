@@ -9,7 +9,7 @@
 /********************************************************/
 
 if(($xip[0] < 0 OR $xip[0] > 255 OR (!is_numeric($xip[0]) AND $xip[0] != "*")) OR ($xip[1] < 0 OR $xip[1] > 255 OR (!is_numeric($xip[1]) AND $xip[1] != "*")) OR ($xip[2] < 0 OR $xip[2] > 255 OR (!is_numeric($xip[2]) AND $xip[2] != "*")) OR ($xip[3] < 0 OR $xip[3] > 255 OR (!is_numeric($xip[3]) AND $xip[3] != "*"))) {
-    $pagetitle = _AB_SENTINEL.": "._AB_ADDRANGEERROR;
+    $pagetitle = _AB_SENTINEL.": "._AB_ERROR;
     DisplayErrorReturn(_AB_IPERROR);
     die();
 }

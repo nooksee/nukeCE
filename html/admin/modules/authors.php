@@ -16,6 +16,7 @@ if (!defined('ADMIN_FILE')) {
 }
 
 global $prefix, $db;
+$pagetitle = _AUTHORSADMIN;
 
 if (is_mod_admin()) {
 
@@ -359,17 +360,11 @@ if (is_mod_admin()) {
             OpenTable();
             echo "
                   <div align=\"center\">
-                      <font class=\"title\">
-                          <a href=\"$admin_file.php?op=mod_authors\">
-                              "._AUTHORSADMIN."
-                          </a>
-                      </font>
+                      <font class=\"title\"><a href=\"$admin_file.php?op=mod_authors\">"._AUTHORSADMIN."</a></font>
                   </div>
                  ";
             CloseTable();
-            echo "
-                  <br />
-                 ";
+            echo "<br />";
             OpenTable();
 
             $adm_aid = $chng_aid;
@@ -388,48 +383,33 @@ if (is_mod_admin()) {
             echo "
                   <fieldset>
                       <legend>
-                          <span class='option'>
-                              " . _MODIFYINFO . "
-                              &nbsp;
-                          </span>
+                          <span class='option'>" . _MODIFYINFO . "&nbsp;</span>
                       </legend>
                       <table cellpadding=\"0\" cellspacing=\"8\" border=\"0\">
                       <form action=\"".$admin_file.".php\" method=\"post\" name=\"newauthor\">
                           <tr>
-                              <td>
-                                  " . _NAME . ":
-                              </td>
+                              <td>" . _NAME . ":&nbsp;</td>
                               <td colspan=\"3\">
                                   <input type=\"hidden\" name=\"chng_name\" value=\"$chng_name\">
                                   <input type=\"text\" value=\"$chng_name\" size=\"30\" disabled=\"disabled\">
                               </td>
                           </tr>
                           <tr>
-                              <td>
-                                  " . _NICKNAME . ":
-                              </td>
+                              <td>" . _NICKNAME . ":&nbsp;</td>
                               <td colspan=\"3\">
                                   <input type=\"text\" name=\"chng_aid\" value=\"$chng_aid\" size=\"30\" maxlength=\"25\">
-                                  <span class=\"tiny\">
-                                      " . _REQUIRED . "
-                                  </span>
+                                  <span class=\"tiny\">" . _REQUIRED . "</span>
                               </td>
                           </tr>
                           <tr>
-                              <td>
-                                  " . _EMAIL . ":
-                              </td>
+                              <td>" . _EMAIL . ":&nbsp;</td>
                               <td colspan=\"3\">
                                   <input type=\"text\" name=\"chng_email\" value=\"$chng_email\" size=\"30\" maxlength=\"60\">
-                                  <span class=\"tiny\">
-                                      " . _REQUIRED . "
-                                  </span>
+                                  <span class=\"tiny\">" . _REQUIRED . "</span>
                               </td>
                           </tr>
                           <tr>
-                              <td>
-                                  " . _URL . ":
-                              </td>
+                              <td>" . _URL . ":&nbsp;</td>
                               <td colspan=\"3\">
                                   <input type=\"text\" name=\"chng_url\" value=\"$chng_url\" size=\"30\" maxlength=\"60\">
                               </td>
@@ -438,9 +418,7 @@ if (is_mod_admin()) {
             if ($multilingual == 1) {
                 echo "
                       <tr>
-                          <td>
-                              " . _LANGUAGE . ":
-                          </td>
+                          <td> " . _LANGUAGE . ":&nbsp;</td>
                           <td colspan=\"3\">
                               <select name=\"chng_admlanguage\">
                      ";
@@ -464,15 +442,11 @@ if (is_mod_admin()) {
                       </tr>
                      ";
             } else {
-                echo "
-                      <input type=\"hidden\" name=\"chng_admlanguage\" value=\"\">
-                     ";
+                echo "<input type=\"hidden\" name=\"chng_admlanguage\" value=\"\">";
             }
             echo "
                   <tr>
-                      <td>
-                          " . _PERMISSIONS . ":
-                      </td>
+                      <td>" . _PERMISSIONS . ":&nbsp;</td>
                  ";
             if ($row['name'] != 'God') {
                 $result = $db->sql_query("SELECT mid, title, admins FROM ".$prefix."_modules ORDER BY title ASC");
@@ -488,20 +462,13 @@ if (is_mod_admin()) {
                                 }
                             }
                         }
-                        echo "
-                              <td>
-                                  <input type=\"checkbox\" name=\"auth_modules[]\" value=\"".intval($row['mid'])."\" $sel> 
-                                      $title
-                              </td>
-                             ";
+                        echo "<td><input type=\"checkbox\" name=\"auth_modules[]\" value=\"".intval($row['mid'])."\" $sel> $title</td>";
                         $sel = "";
                         if ($a == 2) {
                             echo "
                                   </tr>
                                   <tr>
-                                      <td>
-                                          &nbsp;
-                                      </td>
+                                      <td>&nbsp;</td>
                                  ";
                             $a = 0;
                         } else {
@@ -516,9 +483,7 @@ if (is_mod_admin()) {
                 echo "
                       </tr>
                       <tr>
-                          <td>
-                              &nbsp;
-                          </td>
+                          <td>&nbsp;</td>
                      ";
             } else {
                 echo "
@@ -529,74 +494,38 @@ if (is_mod_admin()) {
             echo "
                               <td>
                                   <input type=\"checkbox\" name=\"chng_radminsuper\" value=\"1\" $sel1> 
-                                  <strong>
-                                      " . _SUPERUSER . "
-                                  </strong>
+                                  <strong>" . _SUPERUSER . "</strong>
                               </td>
                           </tr>
                           <tr>
-                              <td>
-                                  &nbsp;
-                              </td>
+                              <td>&nbsp;</td>
                               <td colspan=\"3\">
-                                  <span class=\"tiny\">
-                                      <i>
-                                          " . _SUPERWARNING . "
-                                      </i>
-                                  </span>
+                                  <span class=\"tiny\"><i>" . _SUPERWARNING . "</i></span>
                               </td>
                           </tr>
                           <tr>
-                              <td valign='top'>
-                                  " . _PASSWORD . ":
-                              </td>
+                              <td valign='top'>" . _PASSWORD . ":&nbsp;</td>
                               <td colspan=\"3\">
                                   <input type=\"password\" name=\"chng_pwd\" size=\"12\" maxlength=\"40\" onkeyup='chkpwd(newauthor.chng_pwd.value)' onblur='chkpwd(newauthor.chng_pwd.value)' onmouseout='chkpwd(newauthor.chng_pwd.value)'>
-                                  <span class=\"tiny\">
-                                      " . _FORCHANGES . "
-                                  </span>
-                                  </br>
-                                  </br>
+                                  <span class=\"tiny\">" . _FORCHANGES . "</span>
+                                  </br></br>
                                   <table width='300' cellpadding='2' cellspacing='0' border='1' bgcolor='#EBEBEB' style='border-collapse: collapse;'>
                                       <tr>
-                                          <td id='td1' width='100' align='center'>
-                                              <div ID='div1'>
-                                              </div>
-                                          </td>
-                                          <td id='td2' width='100' align='center'>
-                                              <div ID='div2'>
-                                              </div>
-                                          </td>
-                                          <td id='td3' width='100' align='center'>
-                                              <div ID='div3'>
-                                                  "._PSM_NOTRATED."
-                                              </div>
-                                          </td>
-                                          <td id='td4' width='100' align='center'>
-                                              <div ID='div4'>
-                                              </div>
-                                          </td>
-                                          <td id='td5' width='100' align='center'>
-                                              <div ID='div5'>
-                                              </div>
-                                          </td>
+                                          <td id='td1' width='100' align='center'><div ID='div1'></div></td>
+                                          <td id='td2' width='100' align='center'><div ID='div2'></div></td>
+                                          <td id='td3' width='100' align='center'><div ID='div3'>"._PSM_NOTRATED."</div></td>
+                                          <td id='td4' width='100' align='center'><div ID='div4'></div></td>
+                                          <td id='td5' width='100' align='center'><div ID='div5'></div></td>
                                       </tr>
                                   </table>
-                                  <div ID='divTEMP'>
-                                  </div>
+                                  <div ID='divTEMP'></div>
                                   "._PSM_CLICK." 
-                                  <a href=\"javascript:strengthhelp()\">
-                                      "._PSM_HERE."
-                                  </a> 
+                                  <a href=\"javascript:strengthhelp()\">"._PSM_HERE."</a> 
                                   "._PSM_HELP."
                                   <br />
                           <tr>
-                              <td>
-                                  " . _RETYPEPASSWD . ":
-                              </td>
-                              <td colspan=\"3\">
-                                  <input type=\"password\" name=\"chng_pwd2\" size=\"12\" maxlength=\"40\">
-                              </td>
+                              <td>" . _RETYPEPASSWD . ":&nbsp;</td>
+                              <td colspan=\"3\"><input type=\"password\" name=\"chng_pwd2\" size=\"12\" maxlength=\"40\"></td>
                           </tr>
                       </table>
                   </fieldset>
@@ -619,11 +548,11 @@ if (is_mod_admin()) {
     function updateadmin($chng_aid, $chng_name, $chng_email, $chng_url, $chng_radminsuper, $chng_pwd, $chng_pwd2, $chng_admlanguage, $adm_aid, $auth_modules) {
         global $admin, $prefix, $db, $admin_file;
         if (is_admin()) {
-            Validate($chng_aid, 'username', 'Modify Authors', 0, 1, 0, 2, 'Nickname:', '<br /><div align=\"center\">'. _GOBACK .'</div>');
-            Validate($chng_url, 'url', 'Modify Authors', 0, 0, 0, 0, '', '<br /><div align=\"center\">'. _GOBACK .'</div>');
-            Validate($chng_email, 'email', 'Modify Authors', 0, 1, 0, 0, '', '<br /><div align=\"center\">'. _GOBACK .'</div>');
+            Validate($chng_aid, 'username', 'Modify Authors', 0, 1, 0, 2, 'Nickname:', '</span></b></em><br /><div align=\"center\">'. _GOBACK .'</div>');
+            Validate($chng_url, 'url', 'Modify Authors', 0, 0, 0, 0, '', '</span></b></em><br /><div align=\"center\">'. _GOBACK .'</div>');
+            Validate($chng_email, 'email', 'Modify Authors', 0, 1, 0, 0, '', '</span></b></em><br /><div align=\"center\">'. _GOBACK .'</div>');
             if (!empty($chng_pwd2)) {
-                Validate($chng_pwd, '', 'Modify Authors', 0, 1, 0, 2, 'password', '<br /><div align=\"center\">'. _GOBACK .'</div>');
+                Validate($chng_pwd, '', 'Modify Authors', 0, 1, 0, 2, 'password', '</span></b></em><br /><div align=\"center\">'. _GOBACK .'</div>');
                 if($chng_pwd != $chng_pwd2) {
                     DisplayErrorReturn(_PASSWDNOMATCH);
                 }
@@ -778,28 +707,18 @@ if (is_mod_admin()) {
                     OpenTable();
                     echo "
                           <div align=\"center\">
-                              <font class=\"title\">
-                                  <a href=\"$admin_file.php?op=mod_authors\">
-                                      "._AUTHORSADMIN."
-                                  </a>
-                              </font>
+                              <font class=\"title\"><a href=\"$admin_file.php?op=mod_authors\">"._AUTHORSADMIN."</a></font>
                           </div>
                          ";
                     CloseTable();
-                    echo "
-                          <br />
-                         ";
+                    echo "<br />";
                     OpenTable();
                     echo "
                           <div align=\"center\">
-                              <span class=\"option\">
-                                  " . _PUBLISHEDSTORIES . "
-                              </span>
-                              <br />
-                              <br />
+                              <span class=\"option\">" . _PUBLISHEDSTORIES . "</span>
+                              <br /><br />
                               ". _SELECTNEWADMIN . ":
-                              <br />
-                              <br />
+                              <br /><br />
                          ";
                     $result3 = $db->sql_query("SELECT aid from " . $prefix . "_authors where aid!='$del_aid'");
                     echo "
@@ -860,11 +779,11 @@ if (is_mod_admin()) {
             global $admin_file;
             $add_aid = substr($add_aid, 0,25);
             $add_name = substr($add_name, 0,25);
-            Validate($add_aid, 'username', 'Add Authors', 0, 1, 0, 2, 'Nickname:', '<br /><div align=\"center\">'. _GOBACK .'</div>');
-            Validate($add_name, 'username', 'Add Authors', 0, 1, 0, 2, 'Name:', '<br /><div align=\"center\">'. _GOBACK .'</div>');
-            Validate($add_url, 'url', 'Add Authors', 0, 0, 0, 0, '', '<br /><div align=\"center\">'. _GOBACK .'</div>');
-            Validate($add_email, 'email', 'Add Authors', 0, 1, 0, 0, '', '<br /><div align=\"center\">'. _GOBACK .'</div>');
-            Validate($add_pwd, '', 'Add Authors', 0, 1, 0, 2, 'password', '<br /><div align=\"center\">'. _GOBACK .'</div>');
+            Validate($add_aid, 'username', 'Add Authors', 0, 1, 0, 2, 'Nickname:', '</span></b></em><br /><div align=\"center\">'. _GOBACK .'</div>');
+            Validate($add_name, 'username', 'Add Authors', 0, 1, 0, 2, 'Name:', '</span></b></em><br /><div align=\"center\">'. _GOBACK .'</div>');
+            Validate($add_url, 'url', 'Add Authors', 0, 0, 0, 0, '', '</span></b></em><br /><div align=\"center\">'. _GOBACK .'</div>');
+            Validate($add_email, 'email', 'Add Authors', 0, 1, 0, 0, '', '</span></b></em><br /><div align=\"center\">'. _GOBACK .'</div>');
+            Validate($add_pwd, '', 'Add Authors', 0, 1, 0, 2, 'password', '</span></b></em><br /><div align=\"center\">'. _GOBACK .'</div>');
             $add_pwd = md5($add_pwd);
             for ($i=0,$maxi=count($auth_modules); $i < $maxi; $i++) {
                 $row = $db->sql_fetchrow($db->sql_query("SELECT admins FROM ".$prefix."_modules WHERE mid='".intval($auth_modules[$i])."'"));

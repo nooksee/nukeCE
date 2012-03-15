@@ -17,13 +17,14 @@ if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
 
 function create_first($name, $url, $email, $pwd, $user_new, $cpwd) {
     global $prefix, $db, $user_prefix, $admin_file, $language, $cache, $Default_Theme;
+    $pagetitle = _ADMINLOGIN;
     if($cpwd != $pwd) {
         DisplayErrorReturn(""._ERROR.": "._PASS_NOT_MATCH."");
     }
     
-    Validate($email, 'email', 'Admin Setup', 0, 1, 0, 0, '', '<br /><div align=\"center\">'. _GOBACK .'</div>');
-    Validate($name, 'username', 'Admin Setup', 0, 1, 0, 2, 'Nickname:', '<br /><div align=\"center\">'. _GOBACK .'</div>');
-    Validate($url, 'url', 'Admin Setup', 0, 0, 0, 0, '', '<br /><div align=\"center\">'. _GOBACK .'</div>');
+    Validate($email, 'email', 'Admin Setup', 0, 1, 0, 0, '', '</span></b></em><br /><div align=\"center\">'. _GOBACK .'</div>');
+    Validate($name, 'username', 'Admin Setup', 0, 1, 0, 2, 'Nickname:', '</span></b></em><br /><div align=\"center\">'. _GOBACK .'</div>');
+    Validate($url, 'url', 'Admin Setup', 0, 0, 0, 0, '', '</span></b></em><br /><div align=\"center\">'. _GOBACK .'</div>');
     log_write('admin', 'God Admin (' . $name . ') was created', 'General Information');
     
     list($first) = $db->sql_fetchrow($db->sql_query("SELECT COUNT(*) FROM `".$prefix."_authors`"));

@@ -21,24 +21,20 @@
 $pagetitle = _DOWNLOADSADMIN;
 $numrows = $db->sql_numrows($db->sql_query("SELECT url FROM ".$prefix."_downloads_downloads WHERE url='$url'"));
 if ($numrows>0) {
-    $pagetitle = ": "._DOWNLOADSADMIN;
-    DisplayError(_ERRORURLEXIST, 1);
+    DisplayError(_ERRORURLEXIST);
     die();
 } else {
     if ($title=="" || $url=="" || $description=="") {
         if($title=="") {
-            $pagetitle = ": "._DOWNLOADSADMIN;
-            DisplayErrorReturn(_ERRORNOTITLE, 1);
+            DisplayErrorReturn(_ERRORNOTITLE);
             return;
         }
         if($url=="") {
-            $pagetitle = ": "._DOWNLOADSADMIN;
-            DisplayErrorReturn(_ERRORNOURL, 1);
+            DisplayErrorReturn(_ERRORNOURL);
             return;
         }
         if($description=="") {
-            $pagetitle = ": "._DOWNLOADSADMIN;
-            DisplayErrorReturn(_ERRORNODESCRIPTION, 1);
+            DisplayErrorReturn(_ERRORNODESCRIPTION);
             return;
         }
     }

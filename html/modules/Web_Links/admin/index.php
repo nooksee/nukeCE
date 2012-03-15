@@ -1487,7 +1487,7 @@ switch ($op) {
 }
 
 } else {
-    DisplayErrorReturn(""._ERROR.": You do not have administration permission for module \"$module_name\"");
+    DisplayError(""._ERROR.": You do not have administration permission for module \"$module_name\"");
 }
 
 ?>

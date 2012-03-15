@@ -26,6 +26,7 @@ require_once("mainfile.php");
 require_once(NUKE_MODULES_DIR.'Web_Links/l_config.php');
 
 include_once(NUKE_BASE_DIR.'header.php');
+$pagetitle = _USERREGLOGIN;
 title(_USERREGLOGIN);
 OpenTable();
 echo "

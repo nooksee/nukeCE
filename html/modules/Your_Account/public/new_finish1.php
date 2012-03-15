@@ -22,6 +22,7 @@ if(!defined('IN_YA')) {
     exit('Access Denied');
 }
 
+$pagetitle = _USERAPPLOGIN;
 include_once(NUKE_BASE_DIR.'header.php');
 $ya_user_email = strtolower($ya_user_email);
 ya_userCheck($ya_username);

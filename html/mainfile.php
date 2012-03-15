@@ -334,15 +334,11 @@ function title($text) {
     OpenTable();
     echo '
           <div class="title" style="text-align: center">
-              <strong>
-                  '.$text.'
-              </strong>
+              <strong>'.$text.'</strong>
           </div>
          ';
     CloseTable();
-    echo '
-          <br />
-         ';
+    echo '<br />';
 }
 
 function is_active($module) {
@@ -916,7 +912,7 @@ function removecrlf($str) {
 
 function validate_mail($email) {
     if(strlen($email) < 7 || !preg_match('/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/', $email)) {
-        DisplayErrorReturn(_ERRORINVEMAIL);
+        DisplayError(_ERRORINVEMAIL);
         return false;
     } else {
         return $email;

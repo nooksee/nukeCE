@@ -22,6 +22,7 @@ if(!defined('IN_YA')) {
     exit('Access Denied');
 }
 
+$pagetitle = _USERAPPLOGIN;
 include_once(NUKE_BASE_DIR.'header.php');
 
 // menelaos: makes the 'realname' field a required field

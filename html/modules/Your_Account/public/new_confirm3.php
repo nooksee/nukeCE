@@ -28,6 +28,8 @@ if (!isset($_SESSION['YA1']) || isset($_SESSION['YA2'])) {
     $debugger->handle_error('Session not valid for user: Name - '.Fix_Quotes($ya_username).' Email - '.Fix_Quotes($femail), 'Error');
     redirect('modules.php?name='.$module_name.'&op=new_user');
 }
+
+$pagetitle = _USERAPPLOGIN;
 $_SESSION['YA2'] = true;
 define_once('XDATA', true);
 include_once(NUKE_MODULES_DIR.'Your_Account/public/custom_functions.php');

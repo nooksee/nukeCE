@@ -27,8 +27,8 @@ include(NUKE_MODULES_DIR.$module_name.'/public/custom_functions.php');
 include(NUKE_FORUMS_DIR.'includes/constants.php');
 
 if(is_mod_admin($module_name)) {
+    $pagetitle = _USERADMIN;
     if ($add_email != $add_email2) {
-        $pagetitle = ": "._USERADMIN;
         DisplayErrorReturn(_EMAILDIFFERENT, 1);
         exit;
     }
@@ -64,7 +64,6 @@ if(is_mod_admin($module_name)) {
         $sql = "INSERT INTO ".$user_prefix."_users (user_id, name, username, user_email, femail, user_website, user_regdate, user_icq, user_aim, user_yim, user_msnm, user_from, user_occ, user_interests, user_viewemail, user_avatar, user_avatar_type, user_sig, user_password, newsletter, broadcast, popmeson) VALUES ('$new_uid', '$add_name', '$add_uname', '$add_email', '$add_femail', '$add_url', '$user_regdate', '$add_user_icq', '$add_user_aim', '$add_user_yim', '$add_user_msnm', '$add_user_from', '$add_user_occ', '$add_user_intrest', '$add_user_viewemail', 'gallery/blank.png', '3', '$add_user_sig', '$add_pass', '$add_newsletter', '1', '0')";
         $result = $db->sql_query($sql);
         if (!$result) {
-            $pagetitle = ": "._USERADMIN;
             DisplayError(_ERRORSQL, 1);
             return;
         } else {
@@ -85,7 +84,6 @@ if(is_mod_admin($module_name)) {
             redirect($admin_file.".php?op=addUser"."$xxop"."$xmin");
         }
     } else {
-        $pagetitle = ": "._USERADMIN;
         DisplayErrorReturn($stop, 1);
         return;
     }

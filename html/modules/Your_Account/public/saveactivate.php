@@ -22,6 +22,7 @@ if(!defined('IN_YA')) {
     exit('Access Denied');
 }
 
+$pagetitle = _ACTIVATIONYES;
 $ya_username = trim(check_html($ya_username, 'nohtml'));
 $check_num = trim(check_html($check_num, 'nohtml'));
 $ya_time = intval($ya_time);

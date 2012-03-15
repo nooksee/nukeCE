@@ -253,6 +253,7 @@ function display_main() {
 
 function uninstalled_theme() {
     global $admin_file, $db, $prefix, $bgcolor, $bgcolor1, $bgcolor2, $bgcolor3;
+    $pagetitle = _THEMES_HEADER;
     $uninstalled_themes = get_themes('uninstalled');
     if(count($uninstalled_themes) == 0) {
         DisplayErrorReturn(_THEMES_NOUNINSTALL, 1);
@@ -708,6 +709,7 @@ function theme_install($theme_name) {
 
 function update_theme($post) {
     global $db, $prefix, $user_prefix, $admin_file, $cache;
+    $pagetitle = _THEMES_HEADER;
     $error = false;
     if(is_array($post['groups'])) {
         $post['groups'] = implode('-', $post['groups']);
@@ -742,12 +744,13 @@ function update_theme($post) {
     if(!$error) {
         DisplayError(_THEMES_UPDATED, 1);
     } else {
-        DisplayErrorReturn(_THEMES_UPDATEFAILED, 1);
+        DisplayError(_THEMES_UPDATEFAILED, 1);
     }
 }
 
 function install_save($post) {
     global $db, $prefix, $admin_file;
+    $pagetitle = _THEMES_HEADER;
     $post['groups'] = (is_array($post['groups'])) ? implode('-', $post['groups']) : '';
 
     $theme_info = "";
@@ -767,13 +770,12 @@ function install_save($post) {
     if($db->sql_query($sql)) {
         DisplayError(_THEMES_THEME_INSTALLED, 1);
     } else {
-        DisplayErrorReturn(_THEMES_THEME_INSTALLED_FAILED, 1);
+        DisplayError(_THEMES_THEME_INSTALLED_FAILED, 1);
     }
 }
 
 function uninstall_theme($theme) {
     global $db, $prefix, $user_prefix, $admin_file;
-
     if(!$_POST['confirm']) {
         echo "
               <table class=\"forumline\" width=\"100%\" cellspacing=\"1\" cellpadding=\"3\" border=\"0\">
@@ -813,11 +815,11 @@ function uninstall_theme($theme) {
             }
         }
         theme_header3();
-        DisplayErrorReturn(_THEMES_THEME_UNINSTALLED_FAILED, 1);
+        DisplayError(_THEMES_THEME_UNINSTALLED_FAILED, 1);
         return false;
     }
     theme_header3();
-    DisplayErrorReturn(_THEMES_THEME_UNINSTALLED_FAILED, 1);
+    DisplayError(_THEMES_THEME_UNINSTALLED_FAILED, 1);
     return false;
 }
 
@@ -881,7 +883,7 @@ function theme_deactivate($theme) {
             }
         }
         theme_header3();
-        DisplayErrorReturn(_THEMES_THEME_DEACTIVATED_FAILED, 1);
+        DisplayError(_THEMES_THEME_DEACTIVATED_FAILED, 1);
         return false;
     }
 }

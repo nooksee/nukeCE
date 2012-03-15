@@ -22,6 +22,8 @@ if(!defined('IN_YA')) {
     exit('Access Denied');
 }
 
+$pagetitle = _YA_COOKIEINFO;
+    
 function yacookiecheck(){
     global $ya_config;
     setcookie("YA_CE1","value1"); 
@@ -39,115 +41,57 @@ function yacookiecheckresults(){
         OpenTable();
     }
     
-    $debugcookie = "
-                    <table align=\"center\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\" width=\"70%\">
-                   ";
+    $debugcookie = "<table align=\"center\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\" width=\"70%\">";
     if($_COOKIE ['YA_CE1'] == "value1") {
         $debugcookie = "
                         <tr>
-                            <td>
-                                1: setcookie('YA_CE1','value1';)
-                            </td>
-                            <td>
-                                <font color=\"#009933\">
-                                    <strong>
-                                        "._YA_COOKIEOK."
-                                    </strong>
-                                </font>
-                            </td>
+                            <td>1: setcookie('YA_CE1','value1';)</td>
+                            <td><font color=\"#009933\"><strong>"._YA_COOKIEOK."</strong></font></td>
                         </tr>
                        "; 
     } else {
         $debugcookie = "
                         <tr>
-                            <td>
-                                1: setcookie('YA_CE1','value1';)
-                            </td>
-                            <td>
-                                <font color=\"#FF3333\">
-                                    <strong>
-                                        "._YA_COOKIEFAIL."
-                                    </strong>
-                                </font>
-                            </td>
+                            <td>1: setcookie('YA_CE1','value1';)</td>
+                            <td><font color=\"#FF3333\"><strong>"._YA_COOKIEFAIL."</strong></font></td>
                         </tr>
                        "; 
     }
     if($_COOKIE ['YA_CE2'] == "value2") {
         $debugcookie = "
                         <tr>
-                            <td>
-                                2: setcookie('YA_CE2','value2',time()+120)
-                            </td>
-                            <td>
-                                <font color=\"#009933\">
-                                    <strong>
-                                        "._YA_COOKIEOK."
-                                    </strong>
-                                </font>
-                            </td>
+                            <td>2: setcookie('YA_CE2','value2',time()+120)</td>
+                            <td><font color=\"#009933\"><strong>"._YA_COOKIEOK."</strong></font></td>
                         </tr>
                        "; 
     } else {
         $debugcookie = "
                         <tr>
-                            <td>
-                                2: setcookie('YA_CE2','value2',time()+120)
-                            </td>
-                            <td>
-                                <font color=\"#FF3333\">
-                                    <strong>
-                                        "._YA_COOKIEFAIL."
-                                    </strong>
-                                </font>
-                            </td>
+                            <td>2: setcookie('YA_CE2','value2',time()+120)</td>
+                            <td><font color=\"#FF3333\"><strong>"._YA_COOKIEFAIL."</strong></font></td>
                         </tr>
                        "; 
     }
     if($_COOKIE ['YA_CE3'] == "value3") {
         $debugcookie = "
                         <tr>
-                            <td>
-                                3: setcookie('YA_CE3','value3',time()+120,'/')
-                            </td>
-                            <td>
-                                <font color=\"#009933\">
-                                    <strong>
-                                        "._YA_COOKIEOK."
-                                    </strong>
-                                </font>
-                            </td>
+                            <td>3: setcookie('YA_CE3','value3',time()+120,'/')</td>
+                            <td><font color=\"#009933\"><strong>"._YA_COOKIEOK."</strong></font></td>
                         </tr>
                        "; 
     } else {
         $debugcookie = "
                         <tr>
-                            <td>
-                                3: setcookie('YA_CE3','value3',time()+120,'/')
-                            </td>
-                            <td>
-                                <font color=\"#FF3333\">
-                                    <strong>
-                                        "._YA_COOKIEFAIL."
-                                    </strong>
-                                </font>
-                            </td>
+                            <td>3: setcookie('YA_CE3','value3',time()+120,'/')</td>
+                            <td><font color=\"#FF3333\"><strong>"._YA_COOKIEFAIL."</strong></font></td>
                         </tr>
                        "; 
     }
     if($_COOKIE ['YA_CE4'] == "value4") {
         $debugcookie = "
                         <tr>
-                            <td>
-                                4: setcookie('YA_CE4','value4',time()+120,'$ya_config[cookiepath]')
-                            </td>
-                            <td>
-                                <font color=\"#009933\">
-                                    <strong>
-                                        "._YA_COOKIEOK."
-                                    </strong>
-                                </font>
-                            </td>
+                            <td>4: setcookie('YA_CE4','value4',time()+120,'$ya_config[cookiepath]')</td>
+                            <td><font color=\"#009933\"><strong>"._YA_COOKIEOK."</strong></font></td>
                         </tr>
                        "; 
     } else {

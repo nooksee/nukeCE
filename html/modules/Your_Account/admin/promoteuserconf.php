@@ -23,9 +23,9 @@ if(!defined('IN_YA')) {
 }
 
 if (is_mod_admin('super')) {
+    $pagetitle = _USERADMIN;
     $num = $db->sql_numrows($db->sql_query("SELECT * FROM ".$prefix."_authors WHERE aid='$add_aid'"));
     if ($num > 0) {
-        $pagetitle = ": "._USERADMIN." - "._PROMOTEUSER;
         DisplayErrorReturn(_NAMEERROR);
     } else {
        $add_pwd = md5($add_pwd);
@@ -46,7 +46,6 @@ if (is_mod_admin('super')) {
          $result = $db->sql_query("INSERT INTO " . $prefix . "_authors VALUES ('$add_aid', '$add_name', '$add_url', '$add_email', '$add_password', '0', '$add_radminsuper', '$add_admlanguage')");
 
         if (!$result) {
-            $pagetitle = ": "._USERADMIN." - "._PROMOTEUSER;
             DisplayErrorReturn(_ADDERROR);
         } else {
             if ($ya_config['servermail'] == 0) {

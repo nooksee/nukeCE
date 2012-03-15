@@ -80,6 +80,7 @@ define_once('XDATA', true);
 include_once(NUKE_MODULES_DIR.'Your_Account/public/custom_functions.php');
     
 include_once(NUKE_BASE_DIR.'header.php');
+$pagetitle = _USERREGLOGIN;
 title(_USERREGLOGIN);
 OpenTable();
 echo "

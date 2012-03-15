@@ -25,6 +25,7 @@ if(!defined('IN_YA')) {
 if (!is_user()) {
     include_once(NUKE_BASE_DIR.'header.php');
     if ($ya_config['servermail'] ==0) {
+        $pagetitle = _USERREGLOGIN;
         title(_USERREGLOGIN);
         OpenTable();
         echo "

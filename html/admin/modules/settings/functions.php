@@ -222,7 +222,7 @@ function save_settings($sub) {
             $xstartdate = $_POST['xstartdate'];
             $xlocale = $_POST['xlocale'];
             $xadminmail = validate_mail($_POST['xadminmail']);
-            Validate($xadminmail, 'email', 'Nuke Settings', 0, 1, 0, 0, '', '<br /><div align=\"center\">'. _GOBACK .'</div>');
+            Validate($xadminmail, 'email', 'Nuke Settings', 0, 1, 0, 0, '', '</span></b></em><br /><div align=\"center\">'. _GOBACK .'</div>');
             $xtop = intval($_POST['xtop']);
             $xstoryhome = intval($_POST['xstoryhome']);
             $xoldnum = intval($_POST['xoldnum']);
@@ -499,6 +499,7 @@ function lazy_tap_check($set) {
         return true;
     }
     $filename = NUKE_BASE_DIR . '.htaccess';
+    $pagetitle = _LAZY_TAP;
     if(!is_file($filename)) {
         DisplayErrorReturn(_LAZY_TAP_NF);
     }

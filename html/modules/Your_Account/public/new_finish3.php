@@ -32,6 +32,7 @@ if (!isset($_SESSION['YA1']) || !isset($_SESSION['YA2'])) {
 unset($_SESSION['YA1']);
 unset($_SESSION['YA2']);
 
+$pagetitle = _USERAPPLOGIN;
 include(NUKE_FORUMS_DIR.'includes/constants.php');
 include(NUKE_BASE_DIR. 'header.php');
 

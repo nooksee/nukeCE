@@ -32,6 +32,7 @@ if ($ya_config['expiring']!=0) {
     $db->sql_query("OPTIMIZE TABLE ".$user_prefix."_users_temp");
 }
 
+$pagetitle = _USERAPPINFO;
 $username  = trim(check_html($username, 'nohtml'));
 $check_num = trim(check_html($check_num, 'nohtml'));
 $result = $db->sql_query("SELECT * FROM ".$user_prefix."_users_temp WHERE username='$username' AND check_num='$check_num'");

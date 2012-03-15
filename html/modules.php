@@ -24,7 +24,8 @@ if (isset($_POST['tos_text']) && isset($_POST['op']) && $_POST['op'] == 'editTOS
 require_once(dirname(__FILE__) . '/mainfile.php');
 
 global $name;
-if ($name) {
+$pagetitle = _ERROR_SYS;
+    if ($name) {
     global $db, $prefix, $user, $lock_modules;
     if(($lock_modules && $name != 'Your_Account') && !is_admin() && !is_user() && ($name != 'Profile' && $mode == 'register' && (isset($check_num) || isset($HTTP_POST_VARS['submit'])))) {
         include(NUKE_MODULES_DIR.'Your_Account/index.php');
@@ -78,10 +79,10 @@ if ($name) {
         } elseif(file_exists($modpath)) {
             include($modpath);
         } else {
-            DisplayErrorReturn(_MODULEDOESNOTEXIST);
+            DisplayError(_MODULEDOESNOTEXIST);
         }
     } else {
-        DisplayErrorReturn(_MODULENOTACTIVE);
+        DisplayError(_MODULENOTACTIVE);
     }
 } else {
     redirect('index.php');
