@@ -55,11 +55,11 @@ if (stristr($file,"..") || stristr($mod_file,"..") || stristr($mop,"..")) {
     die("You are so cool...");
 } else {
     $module = $db->sql_ufetchrow('SELECT `blocks` FROM `'.$prefix.'_modules` WHERE `title`="'.$module_name.'"');
-	$modpath = NUKE_MODULES_DIR.$module_name."/$file.php";
-	if (file_exists($modpath)) {
-		$showblocks = $module['blocks'];
-		unset($module, $error);
-		require($modpath);
+    $modpath = NUKE_MODULES_DIR.$module_name."/$file.php";
+    if (file_exists($modpath)) {
+        $showblocks = $module['blocks'];
+        unset($module, $error);
+        require($modpath);
     } else {
         DisplayError((is_admin()) ? "<strong>"._HOMEPROBLEM."</strong><br /><br />[ <a href=\"".$admin_file.".php?op=modules\">"._ADDAHOME."</a> ]" : _HOMEPROBLEMUSER);
     }

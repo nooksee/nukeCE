@@ -13,6 +13,9 @@
 
 global $sitename;
 
+define('_PREVPAGE','Prev Page');
+define('_PAGE','Page');
+define('_NEXTPAGE','Next Page');
 define("_USERNAME","Username");
 define("_CLICKON","Simply click on the above HTML code block and copy it. You may then paste it anywhere on your Web site, which will automatically create a link to $sitename.");
 define("_GROUPS","Groups");

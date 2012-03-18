@@ -214,6 +214,14 @@ if($totalselected > 0) {
                      ";
             }
     abpagenums($op, $totalselected, "", "", "", $min, $perpage, $max, $column, $direction, "");
+                echo "
+                  <a href='".$admin_file.".php?op=".$op."&tid=$tid&user_id=$user_id&ip_addr=$ip_addr&min=".($min - $perpage)."&column=$column&direction=$direction&showmodule=$showmodule'>
+                      <font face='Verdana' size='2'>
+                          &laquo; "._PREVPAGE."
+                      </font>
+                  </a>
+                 ";
+
 } else {
     ErrorReturn(_AB_NOIPS);
 }

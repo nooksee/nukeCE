@@ -150,7 +150,7 @@ if (file_exists(NUKE_INCLUDE_DIR . 'custom_files/custom_footer.php')) {
 echo "\n</body>\n</html>";
 $cache->resync();
 $db->sql_close();
-$s = 'PHP-Nuke Copyright &copy; 2006 by Francisco Burzi.<br />All logos, trademarks and posts in this site are property of their respective owners, all the rest &copy; 2006 by the site owner.</a>';
+$s = 'PHP-Nuke Copyright &copy; 2008 by Francisco Burzi.<br />All logos, trademarks and posts in this site are property of their respective owners, all the rest &copy; 2006 by the site owner.</a>';
 
 if(GZIPSUPPORT && $do_gzip_compress) {
     $gzip_contents = ob_get_contents();

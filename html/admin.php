@@ -49,99 +49,54 @@ if ($the_first == 0) {
         echo "
               <fieldset>
                   <legend>
-                      <span class='option'>
-                          " . _NOADMINYET . "
-                          &nbsp;
-                      </span>
+                      <span class='option'>" . _NOADMINYET . "&nbsp;</span>
                   </legend>
                   <form action=\"".$admin_file.".php\" method=\"post\" name=\"form1\">
                       <table cellpadding=\"0\" cellspacing=\"8\" border=\"0\">
                           <tr>
-                              <td>
-                                  "._NICKNAME.":
-                              </td>
-                              <td colspan=\"3\">
-                                  <input type=\"text\" name=\"name\" size=\"30\" maxlength=\"25\">
-                              </td>
+                              <td>"._NICKNAME.":&nbsp;</td>
+                              <td colspan=\"3\"><input type=\"text\" name=\"name\" size=\"30\" maxlength=\"25\"></td>
                           </tr>
                           <tr>
-                              <td>
-                                  "._HOMEPAGE.":
-                              </td>
-                              <td colspan=\"3\">
-                                  <input type=\"text\" name=\"url\" size=\"30\" maxlength=\"255\" value=\"http://\">
-                              </td>
+                              <td>"._HOMEPAGE.":&nbsp;</td>
+                              <td colspan=\"3\"><input type=\"text\" name=\"url\" size=\"30\" maxlength=\"255\" value=\"http://\"></td>
                           </tr>
                           <tr>
-                              <td>
-                                  "._EMAIL.":
-                              </td>
-                              <td colspan=\"3\">
-                                  <input type=\"text\" name=\"email\" size=\"30\" maxlength=\"255\">
-                              </td>
+                              <td>"._EMAIL.":&nbsp;</td>
+                              <td colspan=\"3\"><input type=\"text\" name=\"email\" size=\"30\" maxlength=\"255\"></td>
                           </tr>
                           <tr>
-                              <td valign='top'>
-                                  "._PASSWORD.":
-                              </td>
+                              <td valign='top'>"._PASSWORD.":&nbsp;</td>
                               <td>
                                   <input type='password' name='pwd' size='11' maxlength='40' onkeyup='chkpwd(form1.pwd.value)' onblur='chkpwd(form1.pwd.value)' onmouseout='chkpwd(form1.pwd.value)'>
-                                  <br>
-                                  <br />
+                                  <br><br />
                                   <table width='300' cellpadding='2' cellspacing='0' border='1' bgcolor='#EBEBEB' style='border-collapse: collapse;'>
                                       <tr>
-                                          <td id='td1' width='100' align='center'>
-                                              <div ID='div1'>
-                                              </div>
-                                          </td>
-                                          <td id='td2' width='100' align='center'>
-                                              <div ID='div2'>
-                                              </div>
-                                          </td>
-                                          <td id='td3' width='100' align='center'>
-                                              <div ID='div3'>
-                                                  "._PSM_NOTRATED."
-                                              </div>
-                                          </td>
-                                          <td id='td4' width='100' align='center'>
-                                              <div ID='div4'>
-                                              </div>
-                                          </td>
-                                          <td id='td5' width='100' align='center'>
-                                              <div ID='div5'>
-                                              </div>
-                                          </td>
+                                          <td id='td1' width='100' align='center'><div ID='div1'></div></td>
+                                          <td id='td2' width='100' align='center'><div ID='div2'></div></td>
+                                          <td id='td3' width='100' align='center'><div ID='div3'>"._PSM_NOTRATED."</div></td>
+                                          <td id='td4' width='100' align='center'><div ID='div4'></div></td>
+                                          <td id='td5' width='100' align='center'><div ID='div5'></div></td>
                                       </tr>
                                   </table>
-                                  <div ID='divTEMP'>
-                                  </div>
+                                  <div ID='divTEMP'></div>
                                   "._PSM_CLICK."
-                                  <a href=\"javascript:strengthhelp()\">
-                                      "._PSM_HERE."
-                                  </a>
+                                  <a href=\"javascript:strengthhelp()\">"._PSM_HERE."</a>
                                   "._PSM_HELP."
                                   <br />
                               </td>
                           </tr>
                           <tr>
-                              <td valign='top'>
-                                  "._PASS_CONFIRM.":
-                              </td>
-                              <td>
-                                  <input type='password' name='cpwd' size='11' maxlength='40'>
-                              </td>
+                              <td valign='top'>"._PASS_CONFIRM.":&nbsp;</td>
+                              <td><input type='password' name='cpwd' size='11' maxlength='40'></td>
                           </tr>
                           <tr>
-                              <td colspan=\"3\">
-                              </td>
+                              <td colspan=\"3\">&nbsp;</td>
                           </tr>
                           <tr>
-                              <td colspan=\"3\">
-                                  "._CREATEUSERDATA."&nbsp;
-                                  <input type=\"radio\" name=\"user_new\" value=\"1\" checked>
-                                      "._YES."
-                                  <input type=\"radio\" name=\"user_new\" value=\"0\">
-                                      "._NO."
+                              <td colspan=\"3\">"._CREATEUSERDATA."&nbsp;
+                                  <input type=\"radio\" name=\"user_new\" value=\"1\" checked>"._YES."&nbsp;
+                                  <input type=\"radio\" name=\"user_new\" value=\"0\">"._NO."
                               </td>
                           </tr>
                       </table>
@@ -160,7 +115,7 @@ if ($the_first == 0) {
     switch($fop) {
         case "create_first":
         create_first($name, $url, $email, $pwd, $user_new, $cpwd);
-    break;
+        break;
     }
     exit;
 }
@@ -251,63 +206,64 @@ if($admintest) {
 
     switch($op) {
         case "do_gfx":
-            do_gfx();
+        do_gfx();
         break;
 
         case "deleteNotice":
-            deleteNotice($id);
+        deleteNotice($id);
         break;
 
         case "GraphicAdmin":
-            GraphicAdmin();
+        GraphicAdmin();
         break;
 
         case "adminMain":
-            include_once(NUKE_ADMIN_MODULE_DIR.'index.php');
-            adminMain();
+        include_once(NUKE_ADMIN_MODULE_DIR.'index.php');
+        adminMain();
         break;
 
         case "logout":
-            setcookie("admin", false);
-            unset($admin);
-            header("Refresh: 3; url=".$admin_file.".php");
-            DisplayError(_YOUARELOGGEDOUT, 1);
+        setcookie("admin", false);
+        unset($admin);
+        header("Refresh: 3; url=".$admin_file.".php");
+        DisplayError(_YOUARELOGGEDOUT, 1);
         break;
 
         case "login";
-            unset($op);
+        unset($op);
 
         default:
-            if (!is_admin()) {
-                login();
+        if (!is_admin()) {
+            login();
+        }
+        define('ADMIN_POS', true);
+        define('ADMIN_PROTECTION', true);
+        $casedir = opendir(NUKE_ADMIN_DIR.'case');
+        while(false !== ($func = readdir($casedir))) {
+            if(substr($func, 0, 5) == "case.") {
+                include(NUKE_ADMIN_DIR.'case/'.$func);
             }
-            define('ADMIN_POS', true);
-            define('ADMIN_PROTECTION', true);
-            $casedir = opendir(NUKE_ADMIN_DIR.'case');
-            while(false !== ($func = readdir($casedir))) {
-                if(substr($func, 0, 5) == "case.") {
-                    include(NUKE_ADMIN_DIR.'case/'.$func);
-                }
+        }
+        closedir($casedir);
+        $result = $db->sql_query("SELECT title FROM ".$prefix."_modules ORDER BY title ASC");
+        while (list($mod_title) = $db->sql_fetchrow($result,SQL_BOTH)) {
+            if (is_mod_admin($mod_title) && file_exists(NUKE_MODULES_DIR.$mod_title.'/admin/index.php') AND file_exists(NUKE_MODULES_DIR.$mod_title.'/admin/links.php') AND file_exists(NUKE_MODULES_DIR.$mod_title.'/admin/case.php')) {
+                include(NUKE_MODULES_DIR.$mod_title.'/admin/case.php');
             }
-            closedir($casedir);
-            $result = $db->sql_query("SELECT title FROM ".$prefix."_modules ORDER BY title ASC");
-            while (list($mod_title) = $db->sql_fetchrow($result,SQL_BOTH)) {
-                if (is_mod_admin($mod_title) && file_exists(NUKE_MODULES_DIR.$mod_title.'/admin/index.php') AND file_exists(NUKE_MODULES_DIR.$mod_title.'/admin/links.php') AND file_exists(NUKE_MODULES_DIR.$mod_title.'/admin/case.php')) {
-                     include(NUKE_MODULES_DIR.$mod_title.'/admin/case.php');
-                }
-            }
-            $db->sql_freeresult($result);
+        }
+        $db->sql_freeresult($result);
         break;
 
     }
 } else {
     switch($op) {
         default:
-            if (!stristr($_SERVER['HTTP_USER_AGENT'], 'WebTV')) {
-                header('HTTP/1.0 403 Forbidden');
-            }
-            login();
+        if (!stristr($_SERVER['HTTP_USER_AGENT'], 'WebTV')) {
+            header('HTTP/1.0 403 Forbidden');
+        }
+        login();
         break;
     }
 }
+
 ?>
