@@ -25,10 +25,11 @@ if(!defined('IN_DOWNLOADS')) {
 $lid = intval($lid);
 $result = $db->sql_query("SELECT * FROM ".$prefix."_downloads_downloads WHERE lid=$lid AND active>'0'");
 $lidinfo = $db->sql_fetchrow($result);
-$pagetitle = ""._DOWNLOADPROFILE.": ".stripslashes($lidinfo['title']);
-include_once(NUKE_BASE_DIR.'header.php');
+$pagetitle = _DOWNLOADPROFILE.": ".stripslashes($lidinfo['title']);
 $priv = $lidinfo['sid'] - 2;
-
+include_once(NUKE_BASE_DIR.'header.php');
+$maindownload = 1;
+menu(1);
 if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user())  || ($lidinfo['sid'] == 2 AND is_mod_admin($module_name)) || ($lidinfo['sid'] > 2 AND of_group($priv)) || $dl_config['show_download'] == '1') {
     if (empty($lidinfo['lid']) OR $lidinfo['active'] == 0) {
         DisplayError(_INVALIDDOWNLOAD, 1);
@@ -36,7 +37,6 @@ if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user())  || ($lidinfo
     } else {
         $fetchid = base64_encode($lidinfo['url']);
         $title = stripslashes($lidinfo['title']);
-        menu(1);
         OpenTable();
         echo "<center><font class=\"option\"><b>"._DOWNLOADPROFILE.": $title</b></font><br><br>";
         downloadinfomenu($lid);
@@ -79,16 +79,18 @@ if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user())  || ($lidinfo
                   <center>
                     <table border='0'>
                     <form action='modules.php?name=$module_name' method='POST'>
-                        <input type='hidden' name='op' value='go'>
-                        <input type='hidden' name='lid' value='".$lidinfo['lid']."'>
-                        <input type='hidden' name='fetchid' value='$fetchid'>
                  ";
             if ($dl_config['usegfxcheck'] == 1) {
-                echo security_code(1,'normal', 1);
+                echo security_code(1,'bold', 1);
             }
             echo "
                         <tr>
-                            <td colspan='2' align='center'><br /><input type='submit' name='"._DL_GOGET."' value='"._DL_GOGET."'></td>
+                            <td colspan='2' align='center'><br />
+                                <input type='hidden' name='op' value='go'>
+                                <input type='hidden' name='lid' value='".$lidinfo['lid']."'>
+                                <input type='hidden' name='fetchid' value='$fetchid'>
+                                <input type='submit' name='"._DL_GOGET."' value='"._DL_GOGET."'>
+                            </td>
                         </tr>
                     </form>
                     </table>

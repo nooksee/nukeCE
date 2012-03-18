@@ -16,6 +16,7 @@ if(!defined('IN_DOWNLOADS')) {
 }
 
 global $cookie;
+$pagetitle = _REPORTBROKEN;
 $lid = intval($lid);
 if(is_user()) {
   $ratinguser = $cookie[1];
@@ -24,13 +25,8 @@ if(is_user()) {
 }
 $sub_ip = $_SERVER['REMOTE_ADDR'];
 $db->sql_query("INSERT INTO ".$prefix."_downloads_mods VALUES (NULL, $lid, 0, 0, '', '', '', '$ratinguser', '$sub_ip', 1, '', '', '', '', '')");
-$pagetitle = "- "._REPORTBROKEN;
 include_once(NUKE_BASE_DIR.'header.php');
 menu(1);
-echo "<br />\n";
-OpenTable();
-echo "<br /><center>"._THANKSFORINFO."<br /><br />"._LOOKTOREQUEST."</center><br />\n";
-CloseTable();
-include_once(NUKE_BASE_DIR.'footer.php');
+DisplayError(_THANKSFORINFO." "._LOOKTOREQUEST, 1);
 
 ?>

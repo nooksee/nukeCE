@@ -33,33 +33,33 @@ switch($op) {
     OpenTable();
     echo "<center><font class=\"title\"><b>"._ADDADOWNLOAD."</b></font></center><br>";
     if (is_user($user)) {
-        $message = "
-                    <b>"._INSTRUCTIONS.":</b><br>
-                    <strong><big>&middot;</big></strong> "._DSUBMITONCE."<br>
-                    <strong><big>&middot;</big></strong> "._DPOSTPENDING."<br>
-                    <strong><big>&middot;</big></strong> "._USERANDIP."<br>
-                   ";
-        info_box("caution", $message);
-        echo "
-              <br><br>
-              <table width=\"100%\" border=\"0\" cellspacing=\"3\">
-              <form method='post' action='modules.php?name=$module_name'>
-             ";
         $result2 = $db->sql_query("SELECT * FROM ".$prefix."_downloads_categories WHERE active>'0' AND parentid='0' ORDER BY title");
         $numrow = $db->sql_numrows($result2);
         if ($numrow == 0) {
             echo "
-                <tr>
-                    <td width='10%' nowrap><font class=\"content\"><b>"._NOCATEGORY.":</b></font></td>
-                    <td>&nbsp;</td>
-                </tr>
-                ";
+                  <table width=\"100%\" border=\"0\" cellspacing=\"3\">
+                      <tr>
+                          <td>
+                              <div align='center' class='content'>
+                                  <em><b>"._NOCATEGORY."</b></em>
+                              </div>
+                 ";
         } else {
+            $message = "
+                        <b>"._INSTRUCTIONS.":</b><br>
+                        <strong><big>&middot;</big></strong> "._DSUBMITONCE."<br>
+                        <strong><big>&middot;</big></strong> "._DPOSTPENDING."<br>
+                        <strong><big>&middot;</big></strong> "._USERANDIP."<br>
+                       ";
+            info_box("caution", $message);
             echo "
-                  <tr>
-                      <td width='10%' nowrap><font class=\"content\"><b>"._CATEGORY.":</b></font></td>
-                      <td>
-                          <select name='cat'>
+                  <br><br>
+                  <table width=\"100%\" border=\"0\" cellspacing=\"3\">
+                  <form method='post' action='modules.php?name=$module_name'>
+                      <tr>
+                          <td width='10%' nowrap><font class=\"content\"><b>"._CATEGORY.":</b></font></td>
+                          <td>
+                              <select name='cat'>
                  ";
             while($cidinfo = $db->sql_fetchrow($result2)) {
                 $crawled = array($cidinfo['cid']);
@@ -91,6 +91,7 @@ switch($op) {
                   </tr>
               </form>
               </table>
+              <br>
              ";
     } else {
         echo "
@@ -115,6 +116,7 @@ switch($op) {
     include_once(NUKE_BASE_DIR.'header.php');
     $maindownload = 1;
     menu(1);
+    OpenTable();
     echo "
           <script language='JavaScript'>
               function NewWindow(mypage, myname, w, h, scroll) {
@@ -126,7 +128,6 @@ switch($op) {
               }
           </script>
          ";
-    OpenTable();
     echo "<center><font class=\"title\"><b>"._ADDADOWNLOAD."</b></font></center><br>";
     $cat = intval($cat);
     $cidinfo = $db->sql_fetchrow($db->sql_query("SELECT * FROM ".$prefix."_downloads_categories WHERE cid='$cat' ORDER BY title"));
@@ -270,6 +271,8 @@ switch($op) {
 
     case "Add":
     $pagetitle = _ADDADOWNLOAD;
+    include_once(NUKE_BASE_DIR.'header.php');
+    menu(1);
     if ($tou > 0) {
         $cat = intval($cat);
         $cidinfo = $db->sql_fetchrow($db->sql_query("SELECT * FROM ".$prefix."_downloads_categories WHERE cid='$cat'"));
@@ -296,25 +299,31 @@ switch($op) {
                 }
                 if (!in_array($ext,$limitedext)) {
                     DisplayErrorReturn(_DL_BADEXT, 1);
+                    return;
                 } elseif (file_exists($folder."/$imageurl_name")) {
                     DisplayErrorReturn(_DL_FILEEXIST, 1);
+                    return;
                 } elseif (move_uploaded_file($imageurl_temp, $folder."/$imageurl_name")) {
                     chmod ($folder."/$imageurl_name", $file_mode);
                     $url = $url_folder."/$imageurl_name";
                 } else {
                     DisplayErrorReturn(_DL_NOUPLOAD, 1);
+                    return;
                 }
                 $filesize = sprintf("%u", filesize($url));
             } else {
                 if ($url=="" OR $url=="http;//") {
-                    DisplayErrorReturn(_DOWNLOADNOURL, 1);
+                    DisplayErrorReturn(_ERRORNOURL, 1);
+                    return;
                 }
             }
             if ($title=="") {
                 DisplayErrorReturn(DOWNLOADNOTITLE, 1);
+                return;
             }
             if ($description=="") {
-                DisplayErrorReturn(_DOWNLOADNODESC, 1);
+                DisplayErrorReturn(_ERRORNODESCRIPTION, 1);
+                return;
             }
 
             $title = check_html($title, nohtml);
@@ -334,7 +343,7 @@ switch($op) {
             $sub_ip = identify::get_ip();
 
             $db->sql_query("INSERT INTO ".$prefix."_downloads_new VALUES (NULL, $cat, 0, '$title', '$url', '$description', now(), '$auth_name', '$email', '$submitter', '$sub_ip', $filesize, '$version', '$homepage')");
-            include_once(NUKE_BASE_DIR.'header.php');
+            
             OpenTable();
             echo "
                   <div align=\"center\">
@@ -350,11 +359,10 @@ switch($op) {
             }
             echo "</div>";
             CloseTable();
-            include_once(NUKE_BASE_DIR.'footer.php');
 
             $msg = "$sitename "._DOWSUB."\n\n";
-            $msg .= _TITLE.": $title\n";
-            $msg .= _URL.": $url\n";
+            $msg .= _DOWNLOADNAME.": $title\n";
+            $msg .= _FILEURL.": $url\n";
             $msg .= _DESCRIPTION.": $description\n";
             $msg .= _HOMEPAGE.": $homepage\n";
             $msg .= _SUBIP.": $sub_ip\n";
@@ -366,10 +374,13 @@ switch($op) {
 
         } else {
             DisplayError(_DL_CANTADD, 1);
+            exit;
         }
     } else {
         DisplayErrorReturn(_DL_TOUMUST, 1);
+        return;
     }
+    include_once(NUKE_BASE_DIR.'footer.php');    
     break;
 
     case "TermsUseUp":

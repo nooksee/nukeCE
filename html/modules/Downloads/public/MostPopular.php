@@ -16,13 +16,12 @@ if(!defined('IN_DOWNLOADS')) {
 }
 
 if ($dl_config['mostpopulartrig'] == 1) {
-  $pagetitle = "- "._MOSTPOPULAR." ".$dl_config['mostpopular']."%";
+  $pagetitle = _MOSTPOPULAR." ".$dl_config['mostpopular']."%";
 } else {
-  $pagetitle = "- "._MOSTPOPULAR." ".$dl_config['mostpopular']."";
+  $pagetitle = _MOSTPOPULAR." ".$dl_config['mostpopular']."";
 }
 include_once(NUKE_BASE_DIR.'header.php');
 menu(1);
-echo "<br />";
 OpenTable();
 echo "<table border='0' width='100%'><tr><td align='center'>\n";
 if ($ratenum != "" && $ratetype != "") {

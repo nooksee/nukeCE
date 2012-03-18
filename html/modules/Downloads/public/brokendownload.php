@@ -1,31 +1,47 @@
 <?php
 
 /**************************************************************************/
-/* PHP-EVOLVED: Web Portal System                                         */
-/* ===========================                                            */
+/* PHP-Nuke CE: Web Portal System                                         */
+/* ==============================                                         */
 /*                                                                        */
-/* Copyright (c) 2011 by Kevin Atwood                                     */
-/* http://www.php-evolved.com                                             */
+/* Copyright (c) 2012 by Kevin Atwood                                     */
+/* http://www.nukece.com                                                  */
 /*                                                                        */
-/* All PHP-EVOLVED code is released under the GNU General Public License. */
+/* All PHP-Nuke CE code is released under the GNU General Public License. */
 /* See CREDITS.txt, COPYRIGHT.txt and LICENSE.txt.                        */
 /**************************************************************************/
 
+/********************************************************/
+/* Based on NSN GR Downloads                            */
+/* By: NukeScripts Network (webmaster@nukescripts.net)  */
+/* http://www.nukescripts.net                           */
+/* Copyright (c) 2000-2005 by NukeScripts Network       */
+/********************************************************/
+
 if(!defined('IN_DOWNLOADS')) {
-  exit('Access Denied');
+    exit('Access Denied');
 }
 
 $lid = intval($lid);
-$pagetitle = "- "._REPORTBROKEN;
+$pagetitle = _REPORTBROKEN;
 include_once(NUKE_BASE_DIR.'header.php');
 menu(1);
-echo "<br />\n";
 OpenTable();
-echo "<center><span class='option'><strong>"._REPORTBROKEN."</strong></span><br /><br /><br /><span class='content'>\n";
-echo "<form action='modules.php?name=$module_name' method='post'>\n";
-echo "<input type='hidden' name='lid' value='$lid'>\n";
-echo ""._THANKSBROKEN."<br />"._SECURITYBROKEN."<br /><br />\n";
-echo "<input type='hidden' name='op' value='brokendownloadS'><input type='submit' value='"._REPORTBROKEN."'></center></form>\n";
+echo "
+      <div align='center'>
+          <span class='option'>
+              <strong>"._REPORTBROKEN."</strong>
+          </span>
+          <br /><br /><br />
+          "._THANKSBROKEN."<br />
+          "._SECURITYBROKEN."<br /><br />
+          <form action='modules.php?name=$module_name' method='post'>
+            <input type='hidden' name='lid' value='$lid'>
+            <input type='hidden' name='op' value='brokendownloadS'>
+            <input type='submit' value='"._REPORTBROKEN."'>
+          </form>
+       </div>
+      ";
 CloseTable();
 include_once(NUKE_BASE_DIR.'footer.php');
 

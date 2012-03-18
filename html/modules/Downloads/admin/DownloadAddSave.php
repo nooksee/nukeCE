@@ -50,7 +50,7 @@ if(is_mod_admin($module_name)) {
         }
         $filesize = sprintf("%u", filesize($url));        
         if ($url=="" OR $url=="http;//") {
-            DisplayErrorReturn(_DOWNLOADNOURL);
+            DisplayErrorReturn(_ERRORNOURL);
             exit;
         }
         if ($title=="" || $description=="") {

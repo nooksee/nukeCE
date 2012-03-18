@@ -513,28 +513,13 @@ function rss_content($url) {
         for ($i=0,$j = count($items);$i  <$j;$i++) {
             $link = $items[$i]['link'];
             $title2 = $items[$i]['title'];
-            $content .= "
-                         &nbsp;
-                         <strong>
-                             <big>
-                                 &middot;
-                             </big>
-                         </strong> 
-                         <a href=\"$link\" target=\"new\">
-                             $title2
-                         </a>
-                         <br />
-                        ";
+            $content .= "&nbsp;<strong><big>&middot;</big></strong><a href=\"$link\" target=\"new\">$title2</a><br />";
         }
         if (!empty($site_link)) {
             $content .= "
                          <br />
                          <div align=\"center\">
-                             [ 
-                             <a href=\"$site_link\" target=\"_blank\">
-                                  "._HREADMORE."
-                             </a> 
-                             ]
+                             [&nbsp;<a href=\"$site_link\" target=\"_blank\">"._HREADMORE."</a>&nbsp;]
                          </div>
                         ";
         }
@@ -724,33 +709,12 @@ function get_author($aid) {
 
 if(!function_exists('themepreview')) {
     function themepreview($title, $hometext, $bodytext='', $notes='') {
-        echo '
-              <strong>
-                  '.$title.'
-              </strong>
-              <br />
-              <br />
-              '.$hometext.'
-             ';
+        echo '<strong>'.$title.'</strong><br /><br />'.$hometext.'';
         if (!empty($bodytext)) {
-            echo '
-                  <br />
-                  <br />
-                  '.$bodytext.'
-                 ';
+            echo '<br /><br />'.$bodytext.'';
         }
         if (!empty($notes)) {
-            echo '
-                  <br />
-                  <div>
-                      <b>
-                          '._EDITORNOTE.'
-                      </b>
-                      <i>
-                          '.$notes.'
-                      </i>
-                  </div>
-                 ';
+            echo '<br /><div><b>'._EDITORNOTE.'</b><i>'.$notes.'</i></div>';
         }
     }
 }
@@ -760,19 +724,13 @@ if(!function_exists('themecenterbox')) {
         OpenTable();
         echo '
               <div align="center">
-                  <span class="option">
-                      <strong>
-                          '.$title.'
-                      </strong>
-                  </span>
+                  <span class="option"><strong>'.$title.'</strong></span>
               </div>
               <br />
               '.$content.'
              ';
         CloseTable();
-        echo '
-              <br />
-             ';
+        echo '<br />';
     }
 }
 
@@ -941,11 +899,11 @@ function UsernameColor($username, $old_name=false) {
         $cached_names = $cache->load('UserColors', 'config');
     }
     if (!isset($cached_names[$plain_username])) {
-            list($user_color, $uname) = $db->sql_ufetchrow("SELECT `user_color_gc`, `username` FROM `" . $user_prefix . "_users` WHERE `username` = '" . str_replace("'", "\'", $username) . "'", SQL_NUM);
-            $uname = (!empty($uname)) ? $uname : $username;
-            $username = (strlen($user_color) == 6) ? '<span style="color: #'. $user_color .'"><strong>'. $uname .'</strong></span>' : $uname;
-            $cached_names[$plain_username] = $username;
-            $cache->save('UserColors', 'config', $cached_names);
+        list($user_color, $uname) = $db->sql_ufetchrow("SELECT `user_color_gc`, `username` FROM `" . $user_prefix . "_users` WHERE `username` = '" . str_replace("'", "\'", $username) . "'", SQL_NUM);
+        $uname = (!empty($uname)) ? $uname : $username;
+        $username = (strlen($user_color) == 6) ? '<span style="color: #'. $user_color .'"><strong>'. $uname .'</strong></span>' : $uname;
+        $cached_names[$plain_username] = $username;
+        $cache->save('UserColors', 'config', $cached_names);
     }
     return $cached_names[$plain_username];
 }
@@ -971,7 +929,6 @@ function GroupColor($group_name) {
     $group_name = isset($GroupColors[$group_name]) ? (strlen($GroupColors[$group_name]) == 6) ? '<span style="color: #'. $GroupColors[$group_name] .'"><strong>'. $plain_group_name .'</strong></span>' : $plain_group_name : $plain_group_name;
     return $new_groups[$plain_group_name] = $group_name;
 }
-
 include_once(NUKE_INCLUDE_DIR.'nbbcode.php');
 
 function info_box($graphic, $message) {
@@ -985,19 +942,13 @@ function info_box($graphic, $message) {
         echo "
               <table align=\"center\" border=\"0\" width=\"80%\" cellpadding=\"10\">
                   <tr>
-                      <td valign=\"top\">
-                          <img src=\"images/sys/".$graphic.".gif\" border=\"0\" alt=\"\" title=\"\" width=\"34\" height=\"34\">
-                      </td>
-                      <td valign=\"center\">
-                          $message
-                      </td>
+                      <td valign=\"top\"><img src=\"images/sys/".$graphic.".gif\" border=\"0\" alt=\"\" title=\"\" width=\"34\" height=\"34\"></td>
+                      <td valign=\"center\">$message</td>
                   </tr>
               </table>
              ";
         CloseTable();
-        echo "
-              <br />
-             ";
+        echo "<br />";
     } else {
         return;
     }

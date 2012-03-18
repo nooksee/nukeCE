@@ -15,10 +15,9 @@ if(!defined('IN_DOWNLOADS')) {
   exit('Access Denied');
 }
 
-$pagetitle = "- "._NEWDOWNLOADS;
+$pagetitle = _NEWDOWNLOADS;
 include_once(NUKE_BASE_DIR.'header.php');
 menu(1);
-echo "<br />";
 title(_NEWDOWNLOADS);
 OpenTable();
 $counter = 0;

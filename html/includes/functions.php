@@ -799,11 +799,11 @@ function security_code($gfxchk, $size='normal', $force=0) {
             case 'normal':
             $code .= "
                       <tr>
-                          <td><font class='content'><b>"._SECURITYCODE.":</b></font></td>
+                          <td>"._SECURITYCODE.":</td>
                           <td><img src='includes/captcha.php?size=normal' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'></td>
                       </tr>
                       <tr>
-                          <td><font class='content'><b>"._TYPESECCODE.":</b></font></td>
+                          <td>"._TYPESECCODE.":</td>
                           <td><input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\"></td>
                       </tr>
                      ";
@@ -848,6 +848,19 @@ function security_code($gfxchk, $size='normal', $force=0) {
                       </tr>
                       <tr>
                           <td align=\"center\"><input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\"></td>
+                      </tr>
+                     ";
+            break;
+        
+            case 'bold':
+            $code .= "
+                      <tr>
+                          <td><font class='content'><b>"._SECURITYCODE.":</b></font></td>
+                          <td><img src='includes/captcha.php?size=normal' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'></td>
+                      </tr>
+                      <tr>
+                          <td><font class='content'><b>"._TYPESECCODE.":</b></font></td>
+                          <td><input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\"></td>
                       </tr>
                      ";
             break;
@@ -919,6 +932,19 @@ function security_code($gfxchk, $size='normal', $force=0) {
                       </tr>
                       <tr>
                           <td align=\"center\"><input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\"></td>
+                      </tr>
+                     ";
+            break;
+        
+            case 'bold':
+            $code .= "
+                      <tr>
+                          <td><font class='content'><b>"._SECURITYCODE.":</b></font></td>
+                          <td><img src='includes/captcha.php?size=normal' border='0' alt='"._SECURITYCODE."' title='"._SECURITYCODE."'></td>
+                      </tr>
+                      <tr>
+                          <td><font class='content'><b>"._TYPESECCODE.":</b></font></td>
+                          <td><input type=\"text\" name=\"gfx_check\" size=\"10\" maxlength=\"10\" AutoComplete=\"off\"></td>
                       </tr>
                      ";
             break;

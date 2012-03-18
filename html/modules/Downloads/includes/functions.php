@@ -203,14 +203,14 @@ function restricted($perm) {
     $myimage = myimage("restricted.png");
     echo "
           <br />
-          <center><img src='$myimage' alt=''></center>
-          <br />
-          <center>"._DL_DENIED."!</center>
-          <br />
-          <center>"._DL_CANBEDOWN." $who_view</center>
-          <br />
-          <center>"._GOBACK."</center>
-          <br />
+          <div align='center'>
+              <img src='$myimage' alt=''><br /><br>
+              <font class=\"title\">
+                  <b>"._DL_DENIED."</b>
+              </font><br><br>
+              "._DL_CANBEDOWN." $who_view<br><br>
+              "._DOWNLOADSNOTUSER8."
+          </div>
          ";
 }
 
@@ -228,7 +228,16 @@ function restricted2($perm) {
         list($who_view) = $db->sql_fetchrow($db->sql_query("SELECT group_name FROM ".$prefix."_bbgroups WHERE group_id=$newView"));
         $who_view = $who_view." "._DL_ONLY;
     }
-    echo "<center>"._DL_DENIED."!<br />"._DL_CANBEVIEW."<br /><strong>$who_view</strong></center>";
+    $myimage = myimage("restricted.png");
+    echo "
+          <div align='center'>
+              <img src='$myimage' alt=''><br>
+              <font class=\"option\"><b>"._DL_DENIED."</b></font><br>
+              <em>"._DL_CANBEVIEW."</em><br>
+              <b>$who_view</b><br><br>
+              "._DOWNLOADSNOTUSER8."
+          </div>
+         ";
 }
 
 function newdownloadgraphic($datetime, $time) {
@@ -292,7 +301,7 @@ function popgraphic($hits) {
     global $module_name, $dl_config;
     $hits = intval($hits);
     $myimage = myimage("popular.gif");
-    if ($hits >= $dl_config['popular']) { echo "&nbsp;<img align='middle' src='$myimage' alt='"._POPULAR."' title='"._POPULAR."'>"; }
+    if ($hits >= $dl_config['popular']) { echo "&nbsp;<img align='top' src='$myimage' alt='"._POPULAR."' title='"._POPULAR."'>"; }
 }
 
 function DLadminmain() {

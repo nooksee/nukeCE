@@ -284,6 +284,7 @@ define("_PUTINHOME","Put in Home");
 define("_SURETOCHANGEMOD","Are you sure you want to change your Homepage from");
 define("_CENTERBLOCK","Center Block");
 define("_ADMINISTRATION","Administration");
+define("_ADMIN_SETUP","Admin Setup");
 define("_NOADMINYET","Create Super User");
 define("_CREATEUSERDATA","<em>Do you want to create a normal user with the same data?</em>");
 define("_NORMAL","Normal");

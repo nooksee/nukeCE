@@ -42,7 +42,7 @@ OpenTable();
 echo "<center><font class=\"option\"><b>"._CATEGORY.": $title</b></font></center><br>";
 $result2 = $db->sql_query("SELECT * FROM ".$prefix."_downloads_categories WHERE parentid=$cid ORDER BY title");
 $numrows2 = $db->sql_numrows($result2);
-if ($numrows2 > 0) {
+    if ($numrows2 > 0) {
     echo "<table border=\"0\" cellspacing=\"8\" cellpadding=\"0\" align=\"center\"><tr>";
     $count = 0;
     while($cidinfo2 = $db->sql_fetchrow($result2)) {
@@ -125,7 +125,10 @@ if ($listrows > 0) {
     $orderby = convertorderbyout($orderby);
     pagenums($cid, $query, $orderby, $op, $totalselected, $dl_config['perpage'], $max);
 }
-CloseTable();
+$numrows = $db->sql_numrows($db->sql_query("SELECT * FROM ".$prefix."_downloads_downloads"));
+    $catnum = $db->sql_numrows($db->sql_query("SELECT * FROM ".$prefix."_downloads_categories"));
+    echo "<br /><center><font class=\"content\">"._THEREARE." <b>$numrows</b> "._DOWNLOADS." "._AND." <b>$catnum</b> "._CATEGORIES." "._INDB."</font></center>";
+    CloseTable();
 include_once(NUKE_BASE_DIR.'footer.php');
 
 ?>

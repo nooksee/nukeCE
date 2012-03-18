@@ -4,7 +4,7 @@
 /* PHP-Nuke CE: Web Portal System                                         */
 /* ==============================                                         */
 /*                                                                        */
-/* Copyright (c) 2011 by Kevin Atwood                                     */
+/* Copyright (c) 2012 by Kevin Atwood                                     */
 /* http://www.nukece.com                                                  */
 /*                                                                        */
 /* All PHP-Nuke CE code is released under the GNU General Public License. */
@@ -15,11 +15,12 @@ if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
     exit('Access Denied');
 }
 
+$pagetitle = $sitename.': '._ADMINISTRATION;
+        
 function create_first($name, $url, $email, $pwd, $user_new, $cpwd) {
     global $prefix, $db, $user_prefix, $admin_file, $language, $cache, $Default_Theme;
-    $pagetitle = _ADMINLOGIN;
     if($cpwd != $pwd) {
-        DisplayErrorReturn(""._ERROR.": "._PASS_NOT_MATCH."");
+        DisplayErrorReturn(_ERROR.": "._PASS_NOT_MATCH);
     }
     
     Validate($email, 'email', 'Admin Setup', 0, 1, 0, 0, '', '</span></b></em><br /><div align=\"center\">'. _GOBACK .'</div>');
@@ -64,60 +65,43 @@ function login() {
     OpenTable();
     echo "
           <div align=\"center\">
-              <font class=\"title\">
-                  "._ADMINLOGIN."
-              </font>
+              <font class=\"title\">"._ADMINLOGIN."</font>
           </div>";
     CloseTable();
-    echo "
-          <br>
-         ";
+    echo "<br>";
     OpenTable();
     echo "
+          <table border=\"0\">
           <form method=\"post\" action=\"".$admin_file.".php\">
-              <table border=\"0\">
-                  <tr>
-                      <td>
-                          "._ADMINID."
-                      </td>
-                      <td>
-                          <input type=\"text\" NAME=\"aid\" SIZE=\"20\" MAXLENGTH=\"25\">
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          "._PASSWORD."
-                      </td>
-                      <td>
-                          <input type=\"password\" NAME=\"pwd\" SIZE=\"20\" MAXLENGTH=\"40\">
-                      </td>
-                  </tr>
+              <tr>
+                  <td>"._ADMINID."</td>
+                  <td><input type=\"text\" NAME=\"aid\" SIZE=\"20\" MAXLENGTH=\"25\"></td>
+              </tr>
+              <tr>
+                  <td>"._PASSWORD."</td>
+                  <td><input type=\"password\" NAME=\"pwd\" SIZE=\"20\" MAXLENGTH=\"40\"></td>
+              </tr>
          ";
     $gfxchk = array(1,5,6,7);
     echo security_code($gfxchk, 'large');
     echo "
-              </table>
-              <table border=\"0\">
-                  <tr>
-                      <td align=\"right\" colspan=\"2\">
-                          "._PERSISTENT."
-                      </td>
-                      <td>
-                          <input type=\"checkbox\" name=\"persistent\" value=\"1\" checked=\"checked\">
-                      </td>
-                  </tr>
-                  <tr>
-                      <td colspan=\"2\">
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <input type=\"hidden\" NAME=\"op\" value=\"login\">
-                          <input type=\"submit\" VALUE=\""._LOGIN."\">
-                      </td>
-                  </tr>
-              </table>
+          </table>
+          <table border=\"0\">
+              <tr>
+                  <td align=\"right\" colspan=\"2\">"._PERSISTENT."</td>
+                  <td><input type=\"checkbox\" name=\"persistent\" value=\"1\" checked=\"checked\"></td>
+              </tr>
+              <tr>
+                  <td colspan=\"2\"></td>
+              </tr>
+              <tr>
+                  <td>
+                      <input type=\"hidden\" NAME=\"op\" value=\"login\">
+                      <input type=\"submit\" VALUE=\""._LOGIN."\">
+                  </td>
+              </tr>
           </form>
+          </table>
          ";
     CloseTable();
     include(NUKE_BASE_DIR.'footer.php');
@@ -134,24 +118,17 @@ function deleteNotice($id) {
 function adminmenu($url, $title, $image) {
     global $counter, $admingraphic, $Default_Theme;
     $ThemeSel = get_theme();
-        if (file_exists("themes/$ThemeSel/images/admin/$image")) {
-            $image = "themes/$ThemeSel/images/admin/$image";
-	} else {
-            $image = "images/admin/$image";
-        }
+    if (file_exists("themes/$ThemeSel/images/admin/$image")) {
+        $image = "themes/$ThemeSel/images/admin/$image";
+    } else {
+        $image = "images/admin/$image";
+    }
     $img = ($admingraphic) ? "<img src=\"$image\" border=\"0\" alt=\"$title\" title=\"$title\" /></a><br />" : '';
     $close = ($admingraphic) ? '' : '</a>';
     echo "
           <td align=\"center\" width=\"10%\">
               <span class=\"content\">
-                  <a href=\"$url\">
-                      $img
-                      <strong>
-                          $title
-                      </strong>
-                      $close
-                      <br />
-                      <br />
+                  <a href=\"$url\">$img<strong>$title</strong>$close<br /><br />
               </span>
           </td>
          ";
@@ -169,16 +146,8 @@ function GraphicAdmin($pos=1) {
         OpenTable();
         echo "
               <div align=\"center\">
-                  <a href=\"".$admin_file.".php\">
-                      <font size='3' class='title'>
-                          <strong>
-                              "._ADMINMENU."
-                          </strong>
-                      </font>
-                  </a>
-                  <br />
-                  <br />
-                  <br />
+                  <a href=\"".$admin_file.".php\"><font size='3' class='title'><strong>"._ADMINMENU."</strong></font></a>
+                  <br /><br /><br />
                   <table border=\"0\" width=\"100%\" cellspacing=\"1\">
                       <tr>
              ";
@@ -198,30 +167,20 @@ function GraphicAdmin($pos=1) {
             }
         }
         adminmenu($admin_file.'.php?op=logout', _ADMINLOGOUT, 'logout.gif');
-        echo"
-                     </tr>
-                 </table>
-             </div>
-            ";
+        echo "
+                      </tr>
+                  </table>
+              </div>
+             ";
         $counter = "";
         CloseTable();
-        echo "
-              <br />
-             ";
+        echo "<br />";
     }
     OpenTable();
     echo "
           <div align=\"center\">
-              <a href=\"".$admin_file.".php\">
-                  <font size='3' class='title'>
-                      <strong>
-                          "._MODULESADMIN."
-                      </strong>
-                  </font>
-              </a>
-              <br />
-              <br />
-              <br />
+              <a href=\"".$admin_file.".php\"><font size='3' class='title'><strong>"._MODULESADMIN."</strong></font></a>
+              <br /><br /><br />
               <table border=\"0\" width=\"100%\" cellspacing=\"1\">
                   <tr>
          ";
@@ -240,9 +199,7 @@ function GraphicAdmin($pos=1) {
           </div>
          ";
     CloseTable();
-    echo '
-          <br />
-         ';
+    echo '<br />';
 }
 
 ?>

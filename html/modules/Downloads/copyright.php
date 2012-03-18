@@ -1,15 +1,22 @@
 <?php
 
 /**************************************************************************/
-/* PHP-EVOLVED: Web Portal System                                         */
-/* ===========================                                            */
+/* PHP-Nuke CE: Web Portal System                                         */
+/* ==============================                                         */
 /*                                                                        */
-/* Copyright (c) 2011 by Kevin Atwood                                     */
-/* http://www.php-evolved.com                                             */
+/* Copyright (c) 2012 by Kevin Atwood                                     */
+/* http://www.nukece.com                                                  */
 /*                                                                        */
-/* All PHP-EVOLVED code is released under the GNU General Public License. */
+/* All PHP-Nuke CE code is released under the GNU General Public License. */
 /* See CREDITS.txt, COPYRIGHT.txt and LICENSE.txt.                        */
 /**************************************************************************/
+
+/********************************************************/
+/* Based on NSN GR Downloads                            */
+/* By: NukeScripts Network (webmaster@nukescripts.net)  */
+/* http://www.nukescripts.net                           */
+/* Copyright (c) 2000-2005 by NukeScripts Network       */
+/********************************************************/
 
 define('CP_INCLUDE_DIR', dirname(dirname(dirname(__FILE__))));
 require_once(CP_INCLUDE_DIR.'/includes/showcp.php');
@@ -21,11 +28,11 @@ require_once(CP_INCLUDE_DIR.'/includes/showcp.php');
 
 $author_name = "Quake";
 $author_email = "quake2005@gmail.com";
-$author_homepage = "http://www.nuke-evolution.com";
+$author_homepage = "http://www.nukece.com";
 $license = "GNU/GPL";
-$download_location = "http://www.nuke-evolution.com/modules.php?name=Downloads";
-$module_version = "1.0";
-$module_description = "Advanced Downloads module with BBGroups Integration based on NSN GR Downloads";
+$download_location = "http://www.nukece.com/modules.php?name=Downloads";
+$module_version = "CE";
+$module_description = "Advanced Downloads module with BBtoNuke Integration based on NSN GR Downloads";
 
 // DO NOT TOUCH THE FOLLOWING COPYRIGHT CODE. YOU'RE JUST ALLOWED TO CHANGE YOUR "OWN"
 // MODULE'S DATA (SEE ABOVE) SO THE SYSTEM CAN BE ABLE TO SHOW THE COPYRIGHT NOTICE

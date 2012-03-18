@@ -45,6 +45,8 @@ $lid = intval($lid);
 $lidinfo = $db->sql_fetchrow($db->sql_query("SELECT * FROM ".$prefix."_downloads_downloads WHERE lid=$lid"));
 $pagetitle = ""._DOWNLOADPROFILE.": ".stripslashes($lidinfo['title']);
 $priv = $lidinfo['sid'] - 2;
+include_once(NUKE_BASE_DIR.'header.php');
+menu(1);
 if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user()) || ($lidinfo['sid'] == 2 AND is_mod_admin($module_name)) || ($lidinfo['sid'] > 2 AND of_group($priv))) {
     if (!empty($fetchid)) {
         $datekey = date("F j");
@@ -103,14 +105,11 @@ if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user()) || ($lidinfo[
                         if(function_exists('log_write')) {
                             log_write('error', $logdata, _DL_ERROR_2);
                         }
-                        OpenTable();
-                        echo '<center>'._DL_ERROR_2.'</center>';
-                        CloseTable();
-                        include_once(NUKE_BASE_DIR.'footer.php');
+                        DisplayError(_DL_ERROR_2, 1);
                         die();
                     }
 
-                    //If the mime_content_type was apart of PHP
+                    //If the mime_content_type was a part of PHP
                     if (!defined('MIME_FUNCTION')) {
                         //And it returned plain text
                         if ($content == "text/plain") {
@@ -168,27 +167,20 @@ if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user()) || ($lidinfo[
                 $date = date("M d, Y g:i:a");
                 $sub_ip = identify::get_ip();
                 $db->sql_query("INSERT INTO ".$prefix."_downloads_mods VALUES (NULL, $lid, 0, 0, '', '', '', '"._DSCRIPT."<br />$date', '$sub_ip', 1, '$auth_name', '$email', '$filesize', '$version', '$homepage')");
-                include_once(NUKE_BASE_DIR.'header.php');
-                title(_DL_FNF." ".$lidinfo['title']);
-                OpenTable();
-                echo "<center>"._DL_SORRY." $username, ".$lidinfo['title']." "._DL_NOTFOUND."<br /><br />"._DL_FNFREASON."<br /><br />";
-                echo _DL_FLAGGED."</center><br />";
-                echo "<center>[ <a href='modules.php?name=$module_name'>"._DL_BACKTO." $module_name</a> ]</center>";
-                CloseTable();
-                include_once(NUKE_BASE_DIR.'footer.php');
+                $pagetitle = _DL_FNF." ".$lidinfo['title'];
+                DisplayErrorReturn(_DL_SORRY." $username, ".$lidinfo['title']." "._DL_NOTFOUND."</b></em></span><br /><br />"._DL_FNFREASON."<br />"._DL_FLAGGED, 1);
+                return;
             }
         }
     } else {
         DisplayError(_DL_INVALIDURL, 1);
-        return;
+        exit;
     }
 } else {
-    include_once(NUKE_BASE_DIR.'header.php');
-    title(_DL_RESTRICTED);
-    OpenTable();
+    OpenTable;
     restricted($lidinfo['sid']);
-    CloseTable();
-    include_once(NUKE_BASE_DIR.'footer.php');
+    CloseTable;
 }
+include_once(NUKE_BASE_DIR.'footer.php');
 
 ?>
