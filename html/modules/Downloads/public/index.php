@@ -104,7 +104,6 @@ if ($listrows > 0) {
           </table>
          ";
     $totalselected = $db->sql_numrows($db->sql_query("SELECT * FROM ".$prefix."_downloads_downloads WHERE active>'0' AND cid=$cid"));
-    pagenums($cid, $query, $orderby, $op, $totalselected, $dl_config['perpage'], $max);
     echo "<table border='0' cellpadding='0' cellspacing='4' width='100%'>";
     // START LISTING
     $x = 0;
@@ -120,10 +119,10 @@ if ($listrows > 0) {
         $x++;
     }
     if ($a == 1) { echo "<td width=\"50%\">&nbsp;</td></tr>"; } else { echo "</tr>"; }
-    echo "</table>";
+    echo "</td></tr>";
     // END LISTING
     $orderby = convertorderbyout($orderby);
-    pagenums($cid, $query, $orderby, $op, $totalselected, $dl_config['perpage'], $max);
+    dlPagenums($cid, $query, $orderby, $op, $totalselected, $dl_config['perpage'], $max);
 }
 $numrows = $db->sql_numrows($db->sql_query("SELECT * FROM ".$prefix."_downloads_downloads"));
     $catnum = $db->sql_numrows($db->sql_query("SELECT * FROM ".$prefix."_downloads_categories"));

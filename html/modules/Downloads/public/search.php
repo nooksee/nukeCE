@@ -83,9 +83,7 @@ if ($query != "") {
                           </span>
                       </td>
                   </tr>
-              </table>
              ";
-        pagenums($cid, $query, $orderby, $op, $totalselected, $dl_config['perpage'], $max);
         $x = 0;
         $a = 0;
         $result = $db->sql_query("SELECT lid FROM ".$prefix."_downloads_downloads WHERE (title LIKE '%$query%' OR description LIKE '%$query%') AND active>'0' ORDER BY $orderby LIMIT $min,".$dl_config['results']);
@@ -101,8 +99,8 @@ if ($query != "") {
         }
         if ($a ==1) { echo "<td width=\"50%\">&nbsp;</td></tr>"; } else { echo "</tr>"; }
         $orderby = convertorderbyout($orderby);
-        echo "</table>";
-        pagenums($cid, $query, $orderby, $op, $totalselected, $dl_config['perpage'], $max);
+        echo "</td></tr>";
+        dlPagenums($cid, $query, $orderby, $op, $totalselected, $dl_config['perpage'], $max);
         echo "
               <br><br>
               <div align='center'>

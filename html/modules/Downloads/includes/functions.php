@@ -606,7 +606,7 @@ function pagenums_admin($op, $totalselected, $perpage, $max) {
 // Copyright (c) 2003 --- NukeScripts Network ---
 // Can not be reproduced in whole or in part without
 // written consent from NukeScripts Network CEO
-function pagenums($cid, $query, $orderby, $op, $totalselected, $perpage, $max) {
+function dlPagenums($cid, $query, $orderby, $op, $totalselected, $perpage, $max) {
     global $module_name;
     $pagesint = ($totalselected / $perpage);
     $pageremainder = ($totalselected % $perpage);
@@ -616,29 +616,136 @@ function pagenums($cid, $query, $orderby, $op, $totalselected, $perpage, $max) {
     } else {
         $pages = $pagesint;
     }
-    if ($pages != 1 && $pages != 0) {
-        $counter = 1;
-        $currentpage = ($max / $perpage);
-        echo "<table border='0' cellpadding='2' cellspacing='2' width='100%'>\n";
-        echo "<tr><form action='modules.php?name=$module_name' method='post'>\n";
-        echo "<td align='right'><strong>"._DL_SELECTPAGE.": </strong><select name='min' onChange='top.location.href=this.options[this.selectedIndex].value'>\n";
-        while ($counter <= $pages ) {
-            $cpage = $counter;
-            $mintemp = ($perpage * $counter) - $perpage;
-            if ($counter == $currentpage) {
-                echo "<option selected>$counter</option>\n";
+    if ($op > "" ) {
+        if ($pages != 1 && $pages != 0) {
+            $counter = 1;
+            $currentpage = ($max / $perpage);
+            echo "
+                  <table align='center' border='0' cellspacing='0' cellpadding='0' width='70%'>
+                      <tr>
+                          <td colspan='6'><img src='images/pix.gif' height='2' width='2' alt='' title='' /><br /><br /></td>
+                      </tr>
+                      <tr>
+                          <td colspan='6'>
+                              <table border='0' cellpadding='0' cellspacing='0' width='100%'>
+                                  <tr>
+                                      <td align='left' width='20%'>
+                 ";
+            if($currentpage <= 1) {
+                echo "";
             } else {
-                echo "<option value='modules.php?name=$module_name&amp;min=$mintemp";
-                if ($op > "" ) { echo "&amp;op=$op"; }
-                if ($query > "") { echo "&amp;query=$query"; }
-                if (isset($cid)) { echo "&amp;cid=$cid"; }
-                echo "'>$counter</option>\n";
+                echo "
+                      <a href='modules.php?name=$module_name&amp;min=".($perpage * $counter - $perpage)."&amp;op=".$op."&amp;query=$query'>
+                          <font face='Verdana' size='2'>&laquo; "._PREVPAGE."</font>
+                      </a>
+                     ";
             }
-            $counter++;
+            echo "
+                  </td>
+                  <td align='center' width='60%'>"._PAGE.":&nbsp;</font>
+                 ";
+            $start_page = ($currentpage-5<1)?1:($currentpage-5); //Set starting page to page-5, or 1 if less than 1
+            $end_page = ($currentpage+4>$pages)?$pages:($currentpage+4); //Set ending page to page+5, or pages if more than 1
+            for($counter=$start_page; $counter<=$end_page; $counter++) {
+                $cpage = $counter;
+                $mintemp = ($perpage * $counter) - $perpage;
+                if($counter == $currentpage) {
+                    echo "<font face='Verdana' size='2' color=red>$counter</font>&nbsp;";
+                } else {
+                    echo "
+                          <a href='modules.php?name=$module_name&amp;min=$mintemp&amp;op=".$op."&amp;query=$query'>
+                              <font face='Verdana' size='2'>$counter</font>
+                          </a>&nbsp;
+                         ";
+                }
+            }
+            echo "
+                  </td>
+                  <td align='right' width='20%'>
+                 ";
+            if($currentpage >= $pages) {
+                echo "";
+            } else {
+                echo "
+                      <a href='modules.php?name=$module_name&amp;min=".($min + $perpage)."&amp;op=".$op."&amp;query=$query'>
+                          <font face='Verdana' size='2'>"._NEXTPAGE." &raquo;</font>
+                      </a>
+                     ";
+            }
+            echo "
+                                  </td>
+                              </tr>
+                          </table>
+                      </td>
+                  </tr>
+                 ";
         }
-        echo "</select><strong> "._DL_OF." $pages "._DL_PAGES."</strong></td>\n</form>\n</tr>\n";
-        echo "</table>\n";
+    } else {
+        if ($pages != 1 && $pages != 0) {
+            $counter = 1;
+            $currentpage = ($max / $perpage);
+            echo "
+                  <table align='center' border='0' cellspacing='0' cellpadding='0' width='70%'>
+                      <tr>
+                          <td colspan='6'><img src='images/pix.gif' height='2' width='2' alt='' title='' /><br /><br /></td>
+                      </tr>
+                      <tr>
+                          <td colspan='6'>
+                              <table border='0' cellpadding='0' cellspacing='0' width='100%'>
+                                  <tr>
+                                      <td align='left' width='20%'>
+                 ";
+            if($currentpage <= 1) {
+                echo "";
+            } else {
+                echo "
+                      <a href='modules.php?name=$module_name&amp;min=".($perpage * $counter - $perpage)."&amp;cid=$cid'>
+                          <font face='Verdana' size='2'>&laquo; "._PREVPAGE."</font>
+                      </a>
+                     ";
+            }
+            echo "
+                  </td>
+                  <td align='center' width='60%'>"._PAGE.":&nbsp;</font>
+                 ";
+            $start_page = ($currentpage-5<1)?1:($currentpage-5); //Set starting page to page-5, or 1 if less than 1
+            $end_page = ($currentpage+4>$pages)?$pages:($currentpage+4); //Set ending page to page+5, or pages if more than 1
+            for($counter=$start_page; $counter<=$end_page; $counter++) {
+                $cpage = $counter;
+                $mintemp = ($perpage * $counter) - $perpage;
+                if($counter == $currentpage) {
+                    echo "<font face='Verdana' size='2' color=red>$counter</font>&nbsp;";
+                } else {
+                    echo "
+                          <a href='modules.php?name=$module_name&amp;min=$mintemp&amp;cid=$cid'>
+                              <font face='Verdana' size='2'>$counter</font>
+                          </a>&nbsp;
+                         ";
+                }
+            }
+            echo "
+                  </td>
+                  <td align='right' width='20%'>
+                 ";
+            if($currentpage >= $pages) {
+                echo "";
+            } else {
+                echo "
+                      <a href='modules.php?name=$module_name&amp;min=".($min + $perpage)."&amp;cid=$cid'>
+                          <font face='Verdana' size='2'>"._NEXTPAGE." &raquo;</font>
+                      </a>
+                     ";
+            }
+            echo "
+                                   </td>
+                               </tr>
+                           </table>
+                      </td>
+                  </tr>
+                 ";
+        }
     }
+    echo "</table>";
 }
 
 ?>
