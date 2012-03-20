@@ -1,0 +1,55 @@
+# Enable Gzip on textual files.
+# Best and easiest form of optimisation - sacrifice CPU cycles to encode for much smaller data transfer - well worth it.
+# Don't gzip images - they are already compressed.
+# For even more benefit, write alphabetical CSS key:value pairs and HTML attributes! (Google saved about 1.5% data transfer by doing this)
+
+SetOutputFilter DEFLATE
+# Deactivate compression for buggy browsers
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+BrowserMatch ^Mozilla/4\.0[678] no-gzip
+BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+
+# BEGIN Expire headers
+# Makes cached files stay cached for longer (304 Not modified) = fewer 200 responses.
+# Aim for at least 1 month for images, ideally a year (not longer - that'll break RFC specs)
+
+ExpiresActive On
+ExpiresDefault "access plus 1 seconds"
+ExpiresByType image/x-icon "access plus 1 year"
+ExpiresByType image/jpeg "access plus 1 year"
+ExpiresByType image/png "access plus 1 year"
+ExpiresByType image/gif "access plus 1 year"
+ExpiresByType application/x-shockwave-flash "access plus 1 year"
+ExpiresByType text/css "access plus 604800 seconds"
+ExpiresByType text/javascript "access plus 1 month"
+ExpiresByType application/x-javascript "access plus 1 month"
+ExpiresByType text/html "access plus 600 seconds"
+ExpiresByType application/xhtml+xml "access plus 600 seconds"
+
+# END Expire headers
+
+# BEGIN Cache-Control Headers
+# Only using the private/public values here - not max-age (Expires headers cover the same thing, and are more widely supported)
+
+Header set Cache-Control "public"
+
+Header set Cache-Control "private"
+
+Header set Cache-Control "private, must-revalidate"
+
+# END Cache-Control Headers
+
+# BEGIN Turn ETags Off
+# Inherently misconfigured, especially for server clusters
+
+Header unset ETag
+
+FileETag None
+# END Turn ETags Off
+
+# BEGIN Remove Last-Modified Header
+# We're using Expires header to check for freshness, so save bytes by not returning this header.
+
+Header unset Last-Modified
+
+# END Remove Last-Modified Header
