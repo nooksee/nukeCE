@@ -72,7 +72,7 @@ if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user())  || ($lidinfo
         echo "<br /><br />";
         if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user())  || ($lidinfo['sid'] == 2 AND is_mod_admin($module_name)) || ($lidinfo['sid'] > 2 AND of_group($priv))) {
             $message = "<b>"._DL_DIRECTIONS."</b>&nbsp;"._DL_DLNOTES1."$title"._DL_DLNOTES2."<br>";
-            info_box("caution", $message);
+            info_box("warning", $message);
         }
         if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user())  || ($lidinfo['sid'] == 2 AND is_mod_admin($module_name)) || ($lidinfo['sid'] > 2 AND of_group($priv))) {
             echo "

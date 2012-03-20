@@ -43,7 +43,7 @@ function remote_filesize($url, $timeout=2) {
 global $cookie, $userinfo;
 $lid = intval($lid);
 $lidinfo = $db->sql_fetchrow($db->sql_query("SELECT * FROM ".$prefix."_downloads_downloads WHERE lid=$lid"));
-$pagetitle = ""._DOWNLOADPROFILE.": ".stripslashes($lidinfo['title']);
+$pagetitle = _DOWNLOADPROFILE.": ".stripslashes($lidinfo['title']);
 $priv = $lidinfo['sid'] - 2;
 include_once(NUKE_BASE_DIR.'header.php');
 menu(1);
@@ -167,7 +167,6 @@ if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user()) || ($lidinfo[
                 $date = date("M d, Y g:i:a");
                 $sub_ip = identify::get_ip();
                 $db->sql_query("INSERT INTO ".$prefix."_downloads_mods VALUES (NULL, $lid, 0, 0, '', '', '', '"._DSCRIPT."<br />$date', '$sub_ip', 1, '$auth_name', '$email', '$filesize', '$version', '$homepage')");
-                $pagetitle = _DL_FNF." ".$lidinfo['title'];
                 DisplayErrorReturn(_DL_SORRY." $username, ".$lidinfo['title']." "._DL_NOTFOUND."</b></em></span><br /><br />"._DL_FNFREASON."<br />"._DL_FLAGGED, 1);
                 return;
             }

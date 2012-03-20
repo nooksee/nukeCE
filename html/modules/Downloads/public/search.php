@@ -102,7 +102,7 @@ if ($query != "") {
         echo "</td></tr>";
         dlPagenums($cid, $query, $orderby, $op, $totalselected, $dl_config['perpage'], $max);
         echo "
-              <br><br>
+              <br>
               <div align='center'>
                   <font class=\"content\">
                       "._TRY2SEARCH." \"$the_query\" "._INOTHERSENGINES."<br>

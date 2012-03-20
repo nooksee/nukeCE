@@ -19,7 +19,7 @@
 /********************************************************/
 
 if(is_mod_admin($module_name)) {
-    $pagetitle = ": "._DOWNLOADSADMIN." - "._ADDDOWNLOAD;
+    $pagetitle = _DOWNLOADS." &raquo; "._ADDDOWNLOAD;
     include_once(NUKE_BASE_DIR.'header.php');
     GraphicAdmin();
     DLsub();
@@ -32,7 +32,7 @@ if(is_mod_admin($module_name)) {
             <table cellpadding=\"0\" cellspacing=\"8\" border=\"0\">
             <form method='post' action='".$admin_file.".php' enctype='multipart/form-data'>
                 <tr>
-                    <td>"._TITLE.":</td>
+                    <td width=\"20%\" nowrap>"._TITLE.":</td>
                     <td><input type='text' name='title' size='50' maxlength='100'></td>
                 </tr>
                 <tr>

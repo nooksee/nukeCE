@@ -1,15 +1,22 @@
 <?php
 
 /**************************************************************************/
-/* PHP-EVOLVED: Web Portal System                                         */
-/* ===========================                                            */
+/* PHP-Nuke CE: Web Portal System                                         */
+/* ==============================                                         */
 /*                                                                        */
-/* Copyright (c) 2011 by Kevin Atwood                                     */
-/* http://www.php-evolved.com                                             */
+/* Copyright (c) 2012 by Kevin Atwood                                     */
+/* http://www.nukece.com                                                  */
 /*                                                                        */
-/* All PHP-EVOLVED code is released under the GNU General Public License. */
+/* All PHP-Nuke CE code is released under the GNU General Public License. */
 /* See CREDITS.txt, COPYRIGHT.txt and LICENSE.txt.                        */
 /**************************************************************************/
+
+/********************************************************/
+/* Based on NSN GR Downloads                            */
+/* By: NukeScripts Network (webmaster@nukescripts.net)  */
+/* http://www.nukescripts.net                           */
+/* Copyright (c) 2000-2005 by NukeScripts Network       */
+/********************************************************/
 
 if(!defined('IN_DOWNLOADS')) {
   exit('Access Denied');
