@@ -17,7 +17,7 @@ if (!defined('MODULE_FILE')) {
 
 $module_name = basename(dirname(__FILE__));
 get_lang($module_name);
-$pagetitle = '- '._USERSJOURNAL;
+$pagetitle = _USERSJOURNAL;
 include_once(NUKE_BASE_DIR.'header.php');
 include(NUKE_MODULES_DIR.$module_name.'/functions.php');
 

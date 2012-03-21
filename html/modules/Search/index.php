@@ -53,7 +53,7 @@ switch($op) {
         if (!isset($max)) $max = $min + $offset;
         $min = intval($min);
         $max = intval($max);
-        $pagetitle = "- "._SEARCH."";
+        $pagetitle = _SEARCH;
         include_once(NUKE_BASE_DIR.'header.php');
         $topic = intval($topic);
         if ($topic>0) {

@@ -40,7 +40,6 @@ switch ($op) {
     case "DownloadBroken":
     case "DownloadBrokenDelete":
     case "DownloadBrokenIgnore":
-    case "DownloadCheck":
     case "DownloadDeactivate":
     case "DownloadDelete":
     case "DownloadModify":
@@ -52,7 +51,6 @@ switch ($op) {
     case "DownloadNewDelete":
     case "Downloads":
     case "DownloadTransfer":
-    case "DownloadValidate":
     case "ExtensionAdd":
     case "ExtensionAddSave":
     case "ExtensionDelete":

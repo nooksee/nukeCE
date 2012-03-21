@@ -93,18 +93,18 @@ if ($name == 'Web_Links') {
 } else
 // Downloads
 if ($name == 'Downloads') {
-    global $l_op, $cid, $lid, $module_title;
+    global $l_op, $cid, $lid, $module_title, $pagetitle;
     $name = $module_title;
-    $newpagetitle = "$item_delim $name";
-    if(isset($cid) && is_numeric($cid)) {
-        list($cat, $parent) = $db->sql_ufetchrow("SELECT `title`, `parentid` FROM `".$prefix."_downloads_categories` WHERE `cid`='$cid'", SQL_NUM);
-        if ($parent == 0) {
-            $newpagetitle = "$item_delim $name $item_delim $cat";
-        } else {
-            list($parent) = $db->sql_ufetchrow("SELECT `title` FROM `".$prefix."_downloads_categories` WHERE `cid`='$parent'", SQL_NUM);
-            $newpagetitle = "$item_delim $name $item_delim $parent $item_delim $cat";
-        }
-    }
+    $newpagetitle = "$item_delim $name $item_delim $pagetitle";
+//    if(isset($cid) && is_numeric($cid)) {
+//        list($cat, $parent) = $db->sql_ufetchrow("SELECT `title`, `parentid` FROM `".$prefix."_downloads_categories` WHERE `cid`='$cid'", SQL_NUM);
+//        if ($parent == 0) {
+//            $newpagetitle = "$item_delim $name $item_delim $cat";
+//        } else {
+//            list($parent) = $db->sql_ufetchrow("SELECT `title` FROM `".$prefix."_downloads_categories` WHERE `cid`='$parent'", SQL_NUM);
+//            $newpagetitle = "$item_delim $name $item_delim $parent $item_delim $cat";
+//        }
+//    }
 } else
 // Content
 if ($name == 'Content') {
@@ -155,7 +155,7 @@ if ($name == 'Profile') {
 if (empty($newpagetitle)) {
     global $pagetitle, $module_title;
     if(isset($pagetitle)) {
-        $newpagetitle = $pagetitle;
+        $newpagetitle = "$item_delim $pagetitle";
     } else {
         $newpagetitle = "$item_delim $module_title";
     }
@@ -163,7 +163,8 @@ if (empty($newpagetitle)) {
 
 // Admin Pages
 if (defined('ADMIN_FILE')) {
-    $newpagetitle = "$item_delim Administration";
+    global $pagetitle;
+    $newpagetitle = "$item_delim Administration $item_delim $pagetitle";
 }
 // If we're on the main page let's use our site slogan
 if (defined('HOME_FILE')) {

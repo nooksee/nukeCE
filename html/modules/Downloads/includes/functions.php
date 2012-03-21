@@ -323,12 +323,11 @@ function DLadminmain() {
                    <td align='center' width='33%'><a href='".$admin_file.".php?op=Extensions'>"._EXTENSIONSLIST."</a></td>
                </tr>
                <tr>
-                   <td align='center' width='33%'><a href='".$admin_file.".php?op=DownloadCheck'>"._VALIDATEDOWNLOADS."</a></td>
+                   <td align='center' width='33%'><a href='".$admin_file.".php?op=FilesizeCheck'>"._VALIDATESIZES."</a></td>
                    <td align='center' width='33%'><a href='".$admin_file.".php?op=CategoryTransfer'>"._CATTRANS."</a></td>
                    <td align='center' width='33%'><a href='".$admin_file.".php?op=DLConfig'>"._DOWNCONFIG."</a></td>
                </tr>
                <tr>
-                   <td align='center' width='33%'><a href='".$admin_file.".php?op=FilesizeCheck'>"._VALIDATESIZES."</a></td>
                    <td align='center' width='33%'>&nbsp;</td>
                    <td align='center' width='33%'>&nbsp;</td>
                </tr>

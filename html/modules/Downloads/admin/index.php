@@ -46,7 +46,6 @@ if(is_mod_admin($module_name)) {
     case "DownloadBroken":include_once(NUKE_MODULES_DIR.$module_name."/admin/DownloadBroken.php");break;
     case "DownloadBrokenDelete":include_once(NUKE_MODULES_DIR.$module_name."/admin/DownloadBrokenDelete.php");break;
     case "DownloadBrokenIgnore":include_once(NUKE_MODULES_DIR.$module_name."/admin/DownloadBrokenIgnore.php");break;
-    case "DownloadCheck":include_once(NUKE_MODULES_DIR.$module_name."/admin/DownloadCheck.php");break;
     case "DownloadDeactivate":include_once(NUKE_MODULES_DIR.$module_name."/admin/DownloadDeactivate.php");break;
     case "DownloadDelete":include_once(NUKE_MODULES_DIR.$module_name."/admin/DownloadDelete.php");break;
     case "DownloadModify":include_once(NUKE_MODULES_DIR.$module_name."/admin/DownloadModify.php");break;
@@ -58,7 +57,6 @@ if(is_mod_admin($module_name)) {
     case "DownloadNewDelete":include_once(NUKE_MODULES_DIR.$module_name."/admin/DownloadNewDelete.php");break;
     case "Downloads":include_once(NUKE_MODULES_DIR.$module_name."/admin/Downloads.php");break;
     case "DownloadTransfer":include_once(NUKE_MODULES_DIR.$module_name."/admin/DownloadTransfer.php");break;
-    case "DownloadValidate":include_once(NUKE_MODULES_DIR.$module_name."/admin/DownloadValidate.php");break;
     case "ExtensionAdd":include_once(NUKE_MODULES_DIR.$module_name."/admin/ExtensionAdd.php");break;
     case "ExtensionAddSave":include_once(NUKE_MODULES_DIR.$module_name."/admin/ExtensionAddSave.php");break;
     case "ExtensionDelete":include_once(NUKE_MODULES_DIR.$module_name."/admin/ExtensionDelete.php");break;

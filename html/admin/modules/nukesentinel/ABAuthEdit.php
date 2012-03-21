@@ -9,7 +9,7 @@
 /********************************************************/
 
 if(is_god($_COOKIE['admin'])) {
-    $pagetitle = _AB_SENTINEL.": "._AB_EDITADMINS;
+    $pagetitle = _AB_SENTINEL." &raquo; "._AB_EDITADMINS;
     include(NUKE_BASE_DIR."header.php");
     $sapi_name = strtolower(php_sapi_name());
     $admin_row = abget_admin($a_aid);
