@@ -13,12 +13,6 @@ DirectoryIndex index.php index.html
 
 # END default directory page
 
-# BEGIN 404 error redirect
-
-ErrorDocument 404 /error.html
-
-# END 404 error redirect
-
 # Enable Gzip on textual files.
 # Best and easiest form of optimisation - sacrifice CPU cycles to encode for much smaller data transfer - well worth it.
 # Don't gzip images - they are already compressed.
