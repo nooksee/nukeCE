@@ -2005,21 +2005,23 @@ CREATE TABLE `nuke_counter` (
 
 INSERT INTO `nuke_counter` (`type`, `var`, `count`) VALUES
 ('total', 'hits', 1),
-('browser', 'Lynx', 0),
+('browser', 'Safari', 0),
 ('browser', 'MSIE', 0),
 ('browser', 'Opera', 0),
-('browser', 'Konqueror', 0),
-('browser', 'Netscape', 0),
-('browser', 'FireFox', 0),
+('os', 'WINXP', 0),
+('browser', 'iPhone', 0),
+('browser', 'Firefox', 0),
 ('browser', 'Bot', 0),
 ('browser', 'Other', 0),
-('os', 'Windows', 0),
+('os', 'WINVISTA', 0),
 ('os', 'Linux', 0),
 ('os', 'Mac', 0),
-('os', 'FreeBSD', 0),
-('os', 'SunOS', 0),
-('os', 'OS/2', 0),
-('os', 'AIX', 0),
+('browser', 'IEMobile', 0),
+('browser', 'Android', 0),
+('browser', 'Chrome', 0),
+('os', 'PlayStation', 0),
+('browser', 'PlayStation', 0),
+('os', 'WIN7', 0),
 ('os', 'Other', 0);
 
 -- --------------------------------------------------------
@@ -2320,17 +2322,17 @@ CREATE TABLE `nuke_downloads_config` (
 --
 
 INSERT INTO `nuke_downloads_config` (`config_name`, `config_value`) VALUES
-('admperpage', '50'),
-('blockunregmodify', '0'),
+('admperpage', '25'),
+('blockunregmodify', '1'),
 ('dateformat', 'D M j G:i:s T Y'),
 ('mostpopular', '25'),
 ('mostpopulartrig', '0'),
 ('perpage', '10'),
 ('popular', '500'),
 ('results', '10'),
-('show_download', '0'),
-('show_links_num', '0'),
-('usegfxcheck', '0');
+('show_download', '1'),
+('show_links_num', '1'),
+('usegfxcheck', '1');
 
 -- --------------------------------------------------------
 
@@ -2381,26 +2383,16 @@ CREATE TABLE `nuke_downloads_extensions` (
 --
 
 INSERT INTO `nuke_downloads_extensions` (`eid`, `ext`, `file`, `image`) VALUES
-(1, '.ace', 1, 0),
-(2, '.arj', 1, 0),
-(3, '.bz', 1, 0),
-(4, '.bz2', 1, 0),
-(5, '.cab', 1, 0),
-(6, '.exe', 1, 0),
-(7, '.gif', 0, 1),
-(8, '.gz', 1, 0),
-(9, '.iso', 1, 0),
-(10, '.jpeg', 0, 1),
-(11, '.jpg', 0, 1),
-(12, '.lha', 1, 0),
-(13, '.lzh', 1, 0),
-(14, '.png', 0, 1),
-(15, '.rar', 1, 0),
-(16, '.tar', 1, 0),
-(17, '.tgz', 1, 0),
-(18, '.uue', 1, 0),
-(19, '.zip', 1, 0),
-(20, '.zoo', 1, 0);
+(1, '.exe', 1, 0),
+(2, '.gif', 0, 1),
+(3, '.gz', 1, 0),
+(4, '.iso', 1, 0),
+(5, '.jpg', 0, 1),
+(6, '.png', 0, 1),
+(7, '.rar', 1, 0),
+(8, '.tar', 1, 0),
+(9, '.tgz', 1, 0),
+(10, '.zip', 1, 0);
 
 -- --------------------------------------------------------
 
