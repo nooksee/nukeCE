@@ -17,7 +17,6 @@ function Stats_Main() {
         if ($type == 'browser') {
             $browser[$var] = $count;
         } elseif ($type == 'os') {
-            if ($var == 'OS/2') { $var = 'OS2'; }
             $os[$var] = $count;
             $totalos += $count;
         }
@@ -40,65 +39,26 @@ function Stats_Main() {
     echo '
           <table align="center" class="forumline" cellspacing="1" width="100%">
               <tr>
-                  <th height=\"25\" align=\"center\">
-                      <span class=\"block-title\">
-                          <strong>
-                              '.$sitename.' '._STATS.'
-                          </strong>
-                      </span>
-                  </th>
+                  <th height=\"25\" align=\"center\"><span class=\"block-title\"><strong>'.$sitename.' '._STATS.'</strong></span></th>
               </tr>
               <tr>
                   <td class="row1" align="center">
-                      <span class="gen">
-                          <br />
-                          '._WERECEIVED.'
-                          <strong>
-                              '.$totalbr.'
-                          </strong>
-                          '._PAGESVIEWS.' '.$startdate.'
-                          <br />
-                          <br />
-                          [
-                          <a href="modules.php?name='.$module_name.'&amp;op=stats">
-                              '._VIEWDETAILED.'
-                          </a>
-                          ]
-                          [
-                          <a href="modules.php?name=Forums&amp;file=statistics">
-                              '._VIEWFORUMSTATS.'
-                          </a>
-                          ]
-                      </span>
-                      <br />
-                      &nbsp;
+                      <span class="gen"><br />'._WERECEIVED.'<strong>'.$totalbr.'</strong>'._PAGESVIEWS.' '.$startdate.'<br /><br />[ <a href="modules.php?name='.$module_name.'&amp;op=stats">'._VIEWDETAILED.'</a> ] [ <a href="modules.php?name=Forums&amp;file=statistics">'._VIEWFORUMSTATS.'</a> ]</span><br />&nbsp;
                   </td>
               </tr>
           </table>
-          <span class="gen">
-          <br />
-          </span>
+          <span class="gen"><br /></span>
           <table width="100%" cellpadding="3" cellspacing="1" border="0" class="forumline">
               <tr>
                   <td class="catHead" colspan="4" height="28" align="center">
-                      <span class="cattitle">
-                          '._BROWSERS.'
-                      </span>
+                      <span class="cattitle">'._BROWSERS.'</span>
                   </td>
               </tr>
               <tr>
-                  <th colspan="1" align="left" height="25" class="thCornerL" nowrap="nowrap" width="25%">
-                      &nbsp;'._BROWSER.'&nbsp;
-                  </th>
-                  <th colspan="1" align="center" class="thTop" nowrap="nowrap" width="10%">
-                      &nbsp;'._COUNT.'&nbsp;
-                  </th>
-                  <th colspan="1" align="center" class="thTop" nowrap="nowrap" width="10%">
-                      &nbsp;'._PERCENT.'&nbsp;
-                  </th>
-                  <th colspan="1" align="center" class="thCornerR" nowrap="nowrap">
-                      &nbsp;'._GRAPH.'&nbsp;
-                  </th>
+                  <th colspan="1" align="left" height="25" class="thCornerL" nowrap="nowrap" width="25%">&nbsp;'._BROWSER.'&nbsp;</th>
+                  <th colspan="1" align="center" class="thTop" nowrap="nowrap" width="10%">&nbsp;'._COUNT.'&nbsp;</th>
+                  <th colspan="1" align="center" class="thTop" nowrap="nowrap" width="10%">&nbsp;'._PERCENT.'&nbsp;</th>
+                  <th colspan="1" align="center" class="thCornerR" nowrap="nowrap">&nbsp;'._GRAPH.'&nbsp;</th>
               </tr>
          ';
     // Browsers
@@ -109,58 +69,41 @@ function Stats_Main() {
             echo '
                   <tr align="left">
                       <td class="row1">
-                          <div class="gen">
-                              <img src="modules/'.$module_name.'/images/'.strtolower($var).'.png" alt="" />
-                              &nbsp;'.$var.'
-                          </div>
+                          <div class="gen"><img src="modules/'.$module_name.'/images/'.strtolower($var).'.png" alt="" />&nbsp;
+                 ';
+            if  ($var == 'IEMobile') { echo 'Windows Mobile'; }
+            elseif ($var == 'MSIE') { echo 'Internet Explorer'; }
+            else { echo ''.$var.'';}
+            echo '
+                  </div>
                       </td>
                       <td class="row2" align="center">
-                          <div class="gen">
-                              '.$count.'
-                          </div>
+                          <div class="gen">'.$count.'</div>
                       </td>
                       <td class="row3" align="center">
-                          <div class="gen">
-                              '.$perc.' %
-                          </div>
+                          <div class="gen">'.$perc.' %</div>
                       </td>
-                      <td class="row2">
-                          <img src="themes/'.$ThemeSel.'/images/leftbar.gif" alt="" height="'.$l_size[1].'" /><img src="themes/'.$ThemeSel.'/images/mainbar.gif" alt="" height="'.$m_size[1].'" width="'.$perc.'" /><img src="themes/'.$ThemeSel.'/images/rightbar.gif" alt="" height="'.$r_size[1].'" />
-                      </td>
+                      <td class="row2"><img src="themes/'.$ThemeSel.'/images/leftbar.gif" alt="" height="'.$l_size[1].'" /><img src="themes/'.$ThemeSel.'/images/mainbar.gif" alt="" height="'.$m_size[1].'" width="'.$perc.'" /><img src="themes/'.$ThemeSel.'/images/rightbar.gif" alt="" height="'.$r_size[1].'" /></td>
                   </tr>
                  ';
         }
-        echo '
-              </table>
-             ';
+        echo '</table>';
     }
     // Operating System
     $totalos = 100 / $totalos;
     echo '
-          <span class="gen">
-          <br />
-          </span>
+          <span class="gen"><br /></span>
           <table width="100%" cellpadding="3" cellspacing="1" border="0" class="forumline">
               <tr>
                   <td class="catHead" colspan="4" height="28" align="center">
-                      <span class="cattitle">
-                          '._OPERATINGSYS.'
-                      </span>
+                      <span class="cattitle">'._OPERATINGSYS.'</span>
                   </td>
               </tr>
               <tr>
-                  <th colspan="1" align="left" height="25" class="thCornerL" nowrap="nowrap" width="25%">
-                      &nbsp;'._OS.'&nbsp;
-                  </th>
-                  <th colspan="1" align="center" class="thTop" nowrap="nowrap" width="10%">
-                      &nbsp;'._COUNT.'&nbsp;
-                  </th>
-                  <th colspan="1" align="center" class="thTop" nowrap="nowrap" width="10%">
-                      &nbsp;'._PERCENT.'&nbsp;
-                  </th>
-                  <th colspan="1" align="center" class="thCornerR" nowrap="nowrap">
-                      &nbsp;'._GRAPH.'&nbsp;
-                  </th>
+                  <th colspan="1" align="left" height="25" class="thCornerL" nowrap="nowrap" width="25%">&nbsp;'._OS.'&nbsp;</th>
+                  <th colspan="1" align="center" class="thTop" nowrap="nowrap" width="10%">&nbsp;'._COUNT.'&nbsp;</th>
+                  <th colspan="1" align="center" class="thTop" nowrap="nowrap" width="10%">&nbsp;'._PERCENT.'&nbsp;</th>
+                  <th colspan="1" align="center" class="thCornerR" nowrap="nowrap">&nbsp;'._GRAPH.'&nbsp;</th>
               </tr>
          ';
     if (is_array($os)) {
@@ -169,31 +112,27 @@ function Stats_Main() {
             echo '
                   <tr align="left">
                       <td class="row1">
-                          <div class="gen">
-                              <img src="modules/'.$module_name.'/images/'.strtolower($var).'.png" alt="" />
-                              &nbsp;'.$var.'
-                          </div>
+                          <div class="gen"><img src="modules/'.$module_name.'/images/'.strtolower($var).'.png" alt="" />&nbsp;
+                 ';
+            if  ($var == 'WINVISTA') { echo 'Windows Vista'; }
+            elseif ($var == 'WIN7') { echo 'Windows 7'; }
+            elseif ($var == 'WINXP') { echo 'Windows XP'; }
+            else { echo ''.$var.'';}
+            echo '
+                  </div>
                       </td>
                       <td class="row2" align="center">
-                          <div class="gen">
-                              '.$count.'
-                          </div>
+                          <div class="gen">'.$count.'</div>
                       </td>
                       <td class="row3" align="center">
-                          <div class="gen">
-                              '.$perc.' %
-                          </div>
+                          <div class="gen">'.$perc.' %</div>
                       </td>
-                      <td class="row2">
-                          <img src="themes/'.$ThemeSel.'/images/leftbar.gif" alt="" height="'.$l_size[1].'" /><img src="themes/'.$ThemeSel.'/images/mainbar.gif" alt="" height="'.$m_size[1].'" width="'.$perc.'" /><img src="themes/'.$ThemeSel.'/images/rightbar.gif" alt="" height="'.$r_size[1].'" />
-                      </td>
+                      <td class="row2"><img src="themes/'.$ThemeSel.'/images/leftbar.gif" alt="" height="'.$l_size[1].'" /><img src="themes/'.$ThemeSel.'/images/mainbar.gif" alt="" height="'.$m_size[1].'" width="'.$perc.'" /><img src="themes/'.$ThemeSel.'/images/rightbar.gif" alt="" height="'.$r_size[1].'" /></td>
                   </tr>
                  ';
         }
-        echo '
-              </table>
-             ';
-        }
+        echo '</table>';
+    }
     // Miscellaneous Stats
     list($unum) = $db->sql_ufetchrow('SELECT COUNT(*) FROM `'.$user_prefix.'_users` WHERE `user_id` > 1');
     list($snum) = $db->sql_ufetchrow('SELECT COUNT(*) FROM `'.$prefix.'_stories`');
@@ -201,49 +140,31 @@ function Stats_Main() {
     list($subnum) = $db->sql_ufetchrow('SELECT COUNT(*) FROM `'.$prefix.'_queue`');
     $cever = ucfirst(CE_EDITION);
     echo '
-          <span class="gen">
-          <br />
-          </span>
+          <span class="gen"><br /></span>
           <table width="100%" cellpadding="3" cellspacing="1" border="0" class="forumline">
               <tr>
                   <td class="catHead" colspan="2" height="28" align="center">
-                      <span class="cattitle">
-                          '._MISCSTATS.'
-                      </span>
+                      <span class="cattitle">'._MISCSTATS.'</span>
                   </td>
               </tr>
               <tr>
-                  <th colspan="1" align="left" height="25" class="thCornerL" nowrap="nowrap" width="85%">
-                      &nbsp;'._MISC.'&nbsp;
-                  </th>
-                  <th colspan="1" align="center" class="thCornerR" nowrap="nowrap" width="15%">
-                      &nbsp;'._COUNT.'&nbsp;
-                  </th>
+                  <th colspan="1" align="left" height="25" class="thCornerL" nowrap="nowrap" width="85%">&nbsp;'._MISC.'&nbsp;</th>
+                  <th colspan="1" align="center" class="thCornerR" nowrap="nowrap" width="15%">&nbsp;'._COUNT.'&nbsp;</th>
               </tr>
               <tr align="left">
                   <td class="row1">
-                      <span class="gen">
-                          <img src="modules/'.$module_name.'/images/users.gif" alt="" />
-                          &nbsp;'._REGUSERS.'
-                      </span>
+                      <span class="gen"><img src="modules/'.$module_name.'/images/users.gif" alt="" />&nbsp;'._REGUSERS.'</span>
                   </td>
                   <td class="row2" align="center">
-                      <span class="gen">
-                          '.$unum.'
-                      </span>
+                      <span class="gen">'.$unum.'</span>
                   </td>
               </tr>
               <tr align="left">
                   <td class="row1">
-                      <span class="gen">
-                          <img src="modules/'.$module_name.'/images/news.gif" alt="" />
-                          &nbsp;'._STORIESPUBLISHED.'
-                      </span>
+                      <span class="gen"><img src="modules/'.$module_name.'/images/news.gif" alt="" />&nbsp;'._STORIESPUBLISHED.'</span>
                   </td>
                   <td class="row2" align="center">
-                      <span class="gen">
-                          '.$snum.'
-                      </span>
+                      <span class="gen">'.$snum.'</span>
                   </td>
               </tr>
          ';
@@ -252,15 +173,10 @@ function Stats_Main() {
         echo '
               <tr align="left">
                   <td class="row1">
-                      <span class="gen">
-                          <img src="modules/'.$module_name.'/images/topics.gif" alt="" />
-                          &nbsp;'._SACTIVETOPICS.'
-                      </span>
+                      <span class="gen"><img src="modules/'.$module_name.'/images/topics.gif" alt="" />&nbsp;'._SACTIVETOPICS.'</span>
                   </td>
                   <td class="row2" align="center">
-                      <span class="gen">
-                          '.$tnum.'
-                      </span>
+                      <span class="gen">'.$tnum.'</span>
                   </td>
               </tr>
              ';
@@ -268,15 +184,10 @@ function Stats_Main() {
     echo '
           <tr align="left">
               <td class="row1">
-                  <span class="gen">
-                      <img src="modules/'.$module_name.'/images/comments.gif" alt="" />
-                      &nbsp;'._COMMENTSPOSTED.'
-                  </span>
+                  <span class="gen"><img src="modules/'.$module_name.'/images/comments.gif" alt="" />&nbsp;'._COMMENTSPOSTED.'</span>
               </td>
               <td class="row2" align="center">
-                  <span class="gen">
-                      '.$cnum.'
-                  </span>
+                  <span class="gen">'.$cnum.'</span>
               </td>
           </tr>
          ';
@@ -286,28 +197,18 @@ function Stats_Main() {
         echo '
               <tr align="left">
                   <td class="row1">
-                      <span class="gen">
-                          <img src="modules/'.$module_name.'/images/topics.gif" alt="" />
-                          &nbsp;'._LINKSINLINKS.'
-                      </span>
+                      <span class="gen"><img src="modules/'.$module_name.'/images/topics.gif" alt="" />&nbsp;'._LINKSINLINKS.'</span>
                   </td>
                   <td class="row2" align="center">
-                      <span class="gen">
-                          '.$links.'
-                      </span>
+                      <span class="gen">'.$links.'</span>
                   </td>
               </tr>
               <tr align="left">
                   <td class="row1">
-                      <span class="gen">
-                          <img src="modules/'.$module_name.'/images/news.gif" alt="" />
-                          &nbsp;'._LINKSCAT.'
-                      </span>
+                      <span class="gen"><img src="modules/'.$module_name.'/images/news.gif" alt="" />&nbsp;'._LINKSCAT.'</span>
                   </td>
                   <td class="row2" align="center">
-                      <span class="gen">
-                          '.$cat.'
-                      </span>
+                      <span class="gen">'.$cat.'</span>
                   </td>
               </tr>
              ';
@@ -315,28 +216,18 @@ function Stats_Main() {
     echo '
               <tr align="left">
                   <td class="row1">
-                      <span class="gen">
-                          <img src="modules/'.$module_name.'/images/waiting.gif" alt="" />
-                          &nbsp;'._NEWSWAITING.'
-                      </span>
+                      <span class="gen"><img src="modules/'.$module_name.'/images/waiting.gif" alt="" />&nbsp;'._NEWSWAITING.'</span>
                   </td>
                   <td class="row2" align="center">
-                      <span class="gen">
-                          '.$subnum.'
-                      </span>
+                      <span class="gen">'.$subnum.'</span>
                   </td>
               </tr>
               <tr align="left">
                   <td class="row1">
-                      <span class="gen">
-                          <img src="modules/'.$module_name.'/images/sections.gif" alt="" />
-                          &nbsp;'._CEVER.'
-                      </span>
+                      <span class="gen"><img src="modules/'.$module_name.'/images/sections.gif" alt="" />&nbsp;'._CEVER.'</span>
                   </td>
                   <td class="row2" align="center">
-                      <span class="gen">
-                          '.ucfirst($cever).'
-                      </span>
+                      <span class="gen">'.ucfirst($cever).'</span>
                   </td>
               </tr>
           </table>
@@ -349,11 +240,15 @@ function Stats() {
 
     list($total) = $db->sql_ufetchrow('SELECT SUM(hits) FROM `'.$prefix."_stats_hour`");
     OpenTable();
-    echo '<table class="forumline" cellspacing="1" width="100%">
-    <tr>
-        <th height=\"25\" align=\"center\"><span class=\"block-title\"><strong>'.$sitename.' '._STATS.'</strong></span></th>
-    </tr><tr>
-        <td class="row1" align="center"><span class="gen"><br />'._WERECEIVED.' <strong>'.$total.'</strong> '._PAGESVIEWS.' '.$startdate.'<br /><br />'._TODAYIS.": $now[0]/$now[1]/$now[2]<br />";
+    echo '
+          <table class="forumline" cellspacing="1" width="100%">
+              <tr>
+                  <th height=\"25\" align=\"center\"><span class=\"block-title\"><strong>'.$sitename.' '._STATS.'</strong></span></th>
+              </tr>
+              <tr>
+                  <td class="row1" align="center">
+                      <span class="gen"><br />'._WERECEIVED.' <strong>'.$total.'</strong> '._PAGESVIEWS.' '.$startdate.'<br /><br />'._TODAYIS.": $now[0]/$now[1]/$now[2]<br />
+         ";
 
     list($year, $month, $hits) = $db->sql_ufetchrow("SELECT `year`, `month`, SUM(hits) as hits FROM `".$prefix."_stats_hour` GROUP BY `month`, `year` ORDER BY `hits` DESC LIMIT 0,1");
     echo _MOSTMONTH.": ".getmonth($month)." $year ($hits "._HITS.")<br />";
@@ -367,9 +262,7 @@ function Stats() {
     } else {
         $hour = "$hour:00 - $hour:59";
     }
-    echo _MOSTHOUR.": $hour "._ON." ".getmonth($month)." $date, $year ($hits "._HITS.")<br /><br />[ <a href=\"modules.php?name=".$module_name."\">"._RETURNBASICSTATS.'</a> ]</span><br />&nbsp;</td>
-    </tr></table><br />';
-
+    echo _MOSTHOUR.": $hour "._ON." ".getmonth($month)." $date, $year ($hits "._HITS.")<br /><br />[ <a href=\"modules.php?name=".$module_name."\">"._RETURNBASICSTATS.'</a> ]</span><br />&nbsp;</td></tr></table><br />';
     showYearStats($nowyear);
     echo '<br />';
     showMonthStats($nowyear,$nowmonth);
@@ -423,15 +316,28 @@ function showYearStats($nowyear) {
     }
     list($TotalHitsYear) = $db->sql_ufetchrow("SELECT SUM(hits) AS TotalHitsYear FROM `".$prefix."_stats_hour`");
     $result = $db->sql_query("SELECT `year`, SUM(hits) FROM `".$prefix."_stats_hour` GROUP BY `year` ORDER BY year");
-    echo '<table class="forumline" cellspacing="1" width="100%">
-    <tr>
-        <td colspan="3" class="cat"><div class="cattitle" align="center">'._YEARLYSTATS.'</div></td>
-    </tr><tr>
-        <td width="25%" class="row2"><span class="gen"><strong>'._YEAR.'</strong></span></td><td colspan="2" class="row2"><span class="gen"><strong>'._SPAGESVIEWS.'</strong></span></td>
-    </tr>';
+    echo '
+          <table class="forumline" cellspacing="1" width="100%">
+              <tr>
+                  <td colspan="3" class="cat">
+                      <div class="cattitle" align="center">'._YEARLYSTATS.'</div>
+                  </td>
+              </tr>
+              <tr>
+                  <td width="25%" class="row2">
+                      <span class="gen"><strong>'._YEAR.'</strong></span>
+                  </td>
+                  <td colspan="2" class="row2">
+                      <span class="gen"><strong>'._SPAGESVIEWS.'</strong></span>
+                  </td>
+              </tr>
+         ';
     while (list($year,$hits) = $db->sql_fetchrow($result)){
-        echo '<tr>
-        <td class="row1"><span class="gen">';
+        echo '
+              <tr>
+                  <td class="row1">
+                      <span class="gen">
+             ';
         if ($year != $nowyear) {
             echo '<a href="modules.php?name='.$module_name.'&amp;op=yearly&amp;year='.$year.'">'.$year.'</a>';
         } else {
@@ -441,8 +347,8 @@ function showYearStats($nowyear) {
         $WidthIMG = @round(100 * $hits/$TotalHitsYear,0);
         echo "<img src=\"themes/$ThemeSel/images/leftbar.gif\" alt=\"\" width=\"".$l_size[0]."\" height=\"".$l_size[1]."\" />";
         echo "<img src=\"themes/$ThemeSel/images/mainbar.gif\" height=\"".$m_size[1]."\" width=\"".($WidthIMG * 2)."\" alt=\"\" />";
-        echo "<img src=\"themes/$ThemeSel/images/rightbar.gif\" alt=\"\" width=\"".$r_size[0]."\" height=\"".$r_size[1]."\" /></td><td class=\"row1\"><span class=\"gen\">$hits</span></td>
-    </tr>";
+        echo "<img src=\"themes/$ThemeSel/images/rightbar.gif\" alt=\"\" width=\"".$r_size[0]."\" height=\"".$r_size[1]."\" />";
+        echo "</td><td class=\"row1\"><span class=\"gen\">$hits</span></td></tr>";
     }
     $db->sql_freeresult($result);
     echo '</table>';
@@ -463,16 +369,29 @@ function showMonthStats($nowyear, $nowmonth) {
         $cache->save('r_size', 'config', $r_size);
     }
     list($TotalHitsMonth) = $db->sql_ufetchrow("SELECT sum(hits) AS TotalHitsMonth FROM `".$prefix."_stats_hour` WHERE `year`='$nowyear'");
-    echo '<table class="forumline" cellspacing="1" width="100%">
-    <tr>
-        <td colspan="3" class="cat"><div class="cattitle" align="center">'._MONTLYSTATS.' '.$nowyear.'</div></td>
-    </tr><tr>
-        <td width="25%" class="row2"><span class="gen"><strong>'._UMONTH.'</strong></span></td><td class="row2" colspan="2"><span class="gen"><strong>'._SPAGESVIEWS.'</strong></span></td>
-    </tr>';
+    echo '
+          <table class="forumline" cellspacing="1" width="100%">
+              <tr>
+                  <td colspan="3" class="cat">
+                      <div class="cattitle" align="center">'._MONTLYSTATS.' '.$nowyear.'</div>
+                  </td>
+              </tr>
+              <tr>
+                  <td width="25%" class="row2">
+                      <span class="gen"><strong>'._UMONTH.'</strong></span>
+                  </td>
+                  <td class="row2" colspan="2">
+                      <span class="gen"><strong>'._SPAGESVIEWS.'</strong></span>
+                  </td>
+              </tr>
+         ';
     $result = $db->sql_query("SELECT month, SUM(hits) FROM ".$prefix."_stats_hour WHERE year='$nowyear' GROUP BY month ORDER BY month");
     while (list($month,$hits) = $db->sql_fetchrow($result)){
-        echo '<tr>
-        <td class="row1"><span class="gen">';
+        echo '
+              <tr>
+                  <td class="row1">
+                      <span class="gen">
+             ';
         if ($month != $nowmonth) {
             echo "<a href=\"modules.php?name=".$module_name."&amp;op=monthly&amp;year=$nowyear&amp;month=$month\">".getmonth($month)."</a>";
         } else {
@@ -482,8 +401,8 @@ function showMonthStats($nowyear, $nowmonth) {
         $WidthIMG = @round(100 * $hits/$TotalHitsMonth,0);
         echo "<img src=\"themes/$ThemeSel/images/leftbar.gif\" alt=\"\" width=\"".$l_size[0]."\" height=\"$l_size[1]\" />";
         echo "<img src=\"themes/$ThemeSel/images/mainbar.gif\" height=\"".$m_size[1]."\" width=\"".($WidthIMG * 2)."\" alt=\"\" />";
-        echo "<img src=\"themes/$ThemeSel/images/rightbar.gif\" alt=\"\" width=\"".$r_size[0]."\" height=\"".$r_size[1]."\" /></td><td class=\"row1\"><span class=\"gen\">$hits</span></td>
-    </tr>";
+        echo "<img src=\"themes/$ThemeSel/images/rightbar.gif\" alt=\"\" width=\"".$r_size[0]."\" height=\"".$r_size[1]."\" />";
+        echo "</td><td class=\"row1\"><span class=\"gen\">$hits</span></td></tr>";
     }
     $db->sql_freeresult($result);
     echo '</table>';
@@ -517,17 +436,26 @@ function showDailyStats($year, $month, $nowdate) {
         $days[] = $row;
     }
     $db->sql_freeresult($result);
-    echo '<table class="forumline" cellspacing="1" width="100%">
-    <tr>
-        <td colspan="3" class="cat"><div class="cattitle" align="center">'._DAILYSTATS.' '.getmonth($month).', '.$year.'</div></td>
-    </tr><tr>
-        <td width="25%" class="row2"><span class="gen"><strong>'._DATE.'</strong></span></td><td class="row2" colspan="2"><span class="gen"><strong>'._SPAGESVIEWS.'</strong></span></td>
-    </tr>';
+    echo '
+          <table class="forumline" cellspacing="1" width="100%">
+              <tr>
+                  <td colspan="3" class="cat">
+                      <div class="cattitle" align="center">'._DAILYSTATS.' '.getmonth($month).', '.$year.'</div>
+                  </td>
+              </tr>
+              <tr>
+                  <td width="25%" class="row2">
+                      <span class="gen"><strong>'._DATE.'</strong></span>
+                  </td>
+                  <td class="row2" colspan="2">
+                      <span class="gen"><strong>'._SPAGESVIEWS.'</strong></span>
+                  </td>
+              </tr>
+         ';
     foreach ($days as $day) {
         $date = $day['date'];
         $hits = $day['hits'];
-        echo '<tr>
-        <td class="row1"><span class="gen">';
+        echo '<tr><td class="row1"><span class="gen">';
         if ($date != $nowdate && $hits > 0 ) {
             echo '<a href="modules.php?name='.$module_name.'&amp;op=daily&amp;year='.$year.'&amp;month='.$month.'&amp;date='.$date.'">'.$date.'</a>';
         } else {
@@ -543,8 +471,8 @@ function showDailyStats($year, $month, $nowdate) {
         }
         echo "<img src=\"themes/$ThemeSel/images/leftbar.gif\" alt=\"\" width=\"".$l_size[0]."\" height=\"".$l_size[1]."\" />";
         echo "<img src=\"themes/$ThemeSel/images/mainbar.gif\" height=\"".$m_size[1]."\" width=\"".($WidthIMG * 2)."\" alt=\"\" />";
-        echo "<img src=\"themes/$ThemeSel/images/rightbar.gif\" alt=\"\" width=\"".$r_size[0]."\" height=\"".$r_size[1]."\" /></td><td class=\"row1\"><span class=\"gen\">$hits ($d_percent%)</span></td>
-    </tr>";
+        echo "<img src=\"themes/$ThemeSel/images/rightbar.gif\" alt=\"\" width=\"".$r_size[0]."\" height=\"".$r_size[1]."\" />";
+        echo "</td><td class=\"row1\"><span class=\"gen\">$hits ($d_percent%)</span></td></tr>";
     }
     echo '</table>';
 }
@@ -566,13 +494,22 @@ function showHourlyStats($year, $month, $date) {
     list($TotalHitsHour) = $db->sql_ufetchrow('SELECT SUM(hits) AS TotalHitsHour FROM `'.$prefix."_stats_hour` WHERE `year`='$year' AND `month`='$month' AND `date`='$date'");
     $nowdate = date('d-m-Y');
     $nowdate_arr = explode('-', $nowdate);
-    echo '<table class="forumline" cellspacing="1" width="100%">
-    <tr>
-        <td colspan="3" class="cat"><div class="cattitle" align="center">'._HOURLYSTATS.' '.getmonth($month).' '.$date.', '.$year.'</div></td>
-    </tr><tr>
-        <td width="25%" class="row2"><span class="gen"><strong>'._HOUR.'</strong></span></td>
-        <td class="row2" colspan="2"><span class="gen"><strong>'._SPAGESVIEWS.'</strong></span></td>
-    </tr>';
+    echo '
+          <table class="forumline" cellspacing="1" width="100%">
+              <tr>
+                  <td colspan="3" class="cat">
+                      <div class="cattitle" align="center">'._HOURLYSTATS.' '.getmonth($month).' '.$date.', '.$year.'</div>
+                  </td>
+              </tr>
+              <tr>
+                  <td width="25%" class="row2">
+                      <span class="gen"><strong>'._HOUR.'</strong></span>
+                  </td>
+                  <td class="row2" colspan="2">
+                      <span class="gen"><strong>'._SPAGESVIEWS.'</strong></span>
+                  </td>
+              </tr>
+         ';
     for ($k = 0;$k<=23;$k++) {
     $result = $db->sql_query("SELECT hour, hits FROM ".$prefix."_stats_hour WHERE year='$year' AND month='$month' AND date='$date' AND hour='$k'");
     if ($db->sql_numrows($result) == 0){
@@ -582,8 +519,7 @@ function showHourlyStats($year, $month, $date) {
     }
     $db->sql_freeresult($result);
     $a = ($k < 10) ? "0$k" : $k;
-    echo '<tr>
-        <td class="row1"><span class="gen">';
+    echo '<tr><td class="row1"><span class="gen">';
     echo "$a:00 - $a:59";
     $a = '';
     echo '</span></td><td class="row1" nowrap="nowrap">';
@@ -595,7 +531,8 @@ function showHourlyStats($year, $month, $date) {
     }
     echo "<img src=\"themes/$ThemeSel/images/leftbar.gif\" alt=\"\" width=\"".$l_size[0]."\" height=\"".$l_size[1]."\" />";
     echo "<img src=\"themes/$ThemeSel/images/mainbar.gif\" height=\"".$m_size[1]."\" width=\"".($WidthIMG * 2)."\" alt=\"\" />";
-    echo "<img src=\"themes/$ThemeSel/images/rightbar.gif\" alt=\"\" width=\"".$r_size[0]."\" height=\"".$r_size[1]."\" /></td><td class=\"row1\"><span class=\"gen\">$hits ($d_percent%)</span></td></tr>";
+    echo "<img src=\"themes/$ThemeSel/images/rightbar.gif\" alt=\"\" width=\"".$r_size[0]."\" height=\"".$r_size[1]."\" />";
+    echo "</td><td class=\"row1\"><span class=\"gen\">$hits ($d_percent%)</span></td></tr>";
     }
     echo '</table>';
 }

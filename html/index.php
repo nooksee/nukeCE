@@ -17,6 +17,13 @@ $_SERVER['PHP_SELF'] = 'modules.php';
 
 require_once(dirname(__FILE__).'/mainfile.php');
 
+$detect = new Mobile_Detect();
+if ($detect->isMobile() && isset($_COOKIE['mobile'])){
+    $detect = "false";
+} elseif ($detect->isMobile()) {
+    Header("Location: modules.php?name=AvantGo");
+}
+
 global $prefix, $db, $admin_file, $httpref, $httprefmax;
 
 if (isset($_GET['op'])) {

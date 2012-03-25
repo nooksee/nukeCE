@@ -105,6 +105,8 @@ if (!$file_mode) {
 
 // Include the required files
 @require_once(NUKE_DB_DIR.'db.php');
+// Include mobile detect class
+@require_once(NUKE_CLASSES_DIR.'class.detect.php');
 // Include Error Logger and identify class
 @require_once(NUKE_CLASSES_DIR.'class.identify.php');
 global $agent;
