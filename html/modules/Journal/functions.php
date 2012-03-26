@@ -21,7 +21,7 @@ get_lang($mod_name);
     $debug = "false";
 
     /* Change Smiles Path Here */
-    $jsmiles = (file_exists("themes/$ThemeSel/images/smiles/icon_smile.gif")) ? "themes/$ThemeSel/images/smiles/" : 'modules/Forums/images/smiles/';
+    $jsmiles = (file_exists("themes/$ThemeSel/images/smiles/icon_smile.gif")) ? "themes/$ThemeSel/images/smiles/" : 'images/smiles/';
 
     function ADVT_stripslashes($text ) {
         if (get_magic_quotes_gpc() == 1 ) {

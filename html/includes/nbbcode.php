@@ -27,7 +27,7 @@ require_once(NUKE_CLASSES_DIR.'class.nbbcode.php');
 
 $ThemeSel = get_theme();
 global $smilies_path;
-$smilies_path = (file_exists("themes/$ThemeSel/images/smiles/icon_smile.gif")) ? "themes/$ThemeSel/images/smiles/" : 'modules/Forums/images/smiles/';
+$smilies_path = (file_exists("themes/$ThemeSel/images/smiles/icon_smile.gif")) ? "themes/$ThemeSel/images/smiles/" : 'images/smiles/';
 $bbbttns_path = 'modules/Forums/bbcode_box/images/';
 
 $bb_codes['quote'] = '<table width="90%" cellspacing="1" cellpadding="3" border="0" align="center" class="bodyline"><tr>
