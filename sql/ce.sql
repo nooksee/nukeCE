@@ -566,7 +566,7 @@ INSERT INTO `nuke_bbconfig` (`config_name`, `config_value`) VALUES
 ('avatar_max_height', '80'),
 ('avatar_path', 'modules/Forums/images/avatars'),
 ('avatar_gallery_path', 'modules/Forums/images/avatars'),
-('smilies_path', 'modules/Forums/images/smiles'),
+('smilies_path', 'images/smiles'),
 ('default_style', '1'),
 ('default_dateformat', 'D M d, Y g:i a'),
 ('board_timezone', '10'),
@@ -2806,7 +2806,7 @@ CREATE TABLE `nuke_modules` (
 
 INSERT INTO `nuke_modules` (`mid`, `title`, `custom_title`, `active`, `view`, `inmenu`, `pos`, `cat_id`, `blocks`, `admins`, `groups`) VALUES
 (1, 'Advertising', 'Advertise', 1, 1, 1, 3, 7, 1, '', 'Array'),
-(2, 'AvantGo', 'AvantGo', 0, 1, 1, 1, 0, 1, '', 'Array'),
+(2, 'AvantGo', 'AvantGo', 1, 1, 0, 1, 0, 1, '', 'Array'),
 (3, 'Content', 'Content', 0, 1, 0, 3, 0, 1, '', 'Array'),
 (4, 'Downloads', 'Downloads', 1, 1, 1, 0, 5, 3, 'kjlj,', 'Array'),
 (5, 'Encyclopedia', 'Encyclopedia', 0, 1, 1, 2, 0, 1, 'hjhj,', 'Array'),
