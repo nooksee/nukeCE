@@ -43,7 +43,7 @@ function Stats_Main() {
               </tr>
               <tr>
                   <td class="row1" align="center">
-                      <span class="gen"><br />'._WERECEIVED.'<strong>'.$totalbr.'</strong>'._PAGESVIEWS.' '.$startdate.'<br /><br />[ <a href="modules.php?name='.$module_name.'&amp;op=stats">'._VIEWDETAILED.'</a> ] [ <a href="modules.php?name=Forums&amp;file=statistics">'._VIEWFORUMSTATS.'</a> ]</span><br />&nbsp;
+                      <span class="gen"><br />'._WERECEIVED.'&nbsp;<strong>'.$totalbr.'</strong>&nbsp;'._PAGESVIEWS.' '.$startdate.'<br /><br />[ <a href="modules.php?name='.$module_name.'&amp;op=stats">'._VIEWDETAILED.'</a> ] [ <a href="modules.php?name=Forums&amp;file=statistics">'._VIEWFORUMSTATS.'</a> ]</span><br />&nbsp;
                   </td>
               </tr>
           </table>

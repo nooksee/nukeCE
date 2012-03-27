@@ -18,11 +18,11 @@ if (!defined('MODULE_FILE')) {
 $module_name = basename(dirname(__FILE__));
 get_lang($module_name);
 
-if(!isset($sid)) {
+if(!isset($pic_id)) {
     exit();
 }
 
-function PrintPage($sid) {
+function DisplayPic($pic_id) {
     global $site_logo, $nukeurl, $sitename, $datetime, $prefix, $db, $Default_Theme;
     if (file_exists("themes/$Default_Theme/images/logo.gif")) {
         $avantgo_logo = "themes/$Default_Theme/images/logo.gif";
@@ -34,49 +34,41 @@ function PrintPage($sid) {
         $avantgo_logo = "";
     }
     
-    $sid = intval(trim($sid));
-    $row = $db->sql_fetchrow($db->sql_query("SELECT title, time, hometext, bodytext, topic, notes FROM ".$prefix."_stories WHERE sid='$sid'"));
-    $title = stripslashes($row['title']);
-    $time = $row['time'];
-    $hometext = stripslashes($row['hometext']);
-    $bodytext = stripslashes($row['bodytext']);
-    $topic = intval($row['topic']);
-    $notes = stripslashes($row['notes']);
-    $row2 = $db->sql_fetchrow($db->sql_query("SELECT topictext FROM ".$prefix."_topics WHERE topicid='$topic'"));
-    $topictext = stripslashes($row2['topictext']);
-    formatTimestamp($time);
+    $row = $db->sql_fetchrow($db->sql_query("SELECT pic_id, pic_title, pic_time, pic_cat_id FROM ".$prefix."_bbalbum WHERE pic_id='$pic_id'"));
+    $pic_id = intval($row['pic_id']);
+    $pic_title = stripslashes($row['pic_title']);
+    $pic_time = $row['pic_time'];
+    $pic_cat_id = intval($row['pic_cat_id']);
+    $row2 = $db->sql_fetchrow($db->sql_query("SELECT cat_title FROM ".$prefix."_bbalbum_cat WHERE cat_id='$pic_cat_id'"));
+    $cat_title = stripslashes($row2['cat_title']);
+    formatTimestamp($pic_time);
     
     $pagetitle = _MOBILE;
     header("Content-Type: text/html");
     echo "
           <html>
               <head>
-                  <title>$sitename &raquo; $pagetitle &raquo; "._ARTICLES." &raquo; $title</title>
+                  <title>$sitename &raquo; $pagetitle &raquo; "._PICS." &raquo; $pic_title</title>
                   <meta name=\"HandheldFriendly\" content=\"True\">
               </head>
               <body bgcolor=\"#ffffff\" text=\"#000000\">
-                  <table width=\"45%\" border=\"0\" align=\"center\">
+                  <table border=\"0\" align=\"center\">
                       <tr>
                           <td>
-                              <table width=\"100%\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"1\" bgcolor=\"#000000\">
+                              <table border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"1\" bgcolor=\"#000000\">
                                   <tr>
                                       <td>
-                                          <table width=\"100%\" border=\"0\" align=\"center\" cellpadding=\"20\" cellspacing=\"1\" bgcolor=\"#ffffff\">
+                                          <table border=\"0\" align=\"center\" cellpadding=\"20\" cellspacing=\"1\" bgcolor=\"#ffffff\">
                                               <tr>
                                                   <td>
                                                       <center>
                                                           <img src=\"$avantgo_logo\" border=\"0\" alt=\"\"><br /><br />
-                                                          <span class=\"content\"><strong>$title</strong></span><br />
+                                                          <span class=\"content\"><strong>$pic_title</strong></span><br />
                                                           <span class=tiny>
-                                                            <strong>"._PDATE."</strong> $datetime<br />
-                                                            <strong>"._PTOPIC."</strong> $topictext<br /><br />
-                                                          </span>
+                                                              <strong>"._PPOSTED."</strong> $datetime<br />
+                                                              <strong>"._PALBUM."</strong> $cat_title</span><br /><br />
+                                                          <span class=\"content\"><a href=\"modules.php?name=Forums&file=album_pic&amp;pic_id=$pic_id\"><img src=\"modules.php?name=Forums&amp;file=album_thumbnail&amp;pic_id=$pic_id\" border=\"0\" alt=\"".$pic_title."\" title=\"".$pic_title."\" vspace=\"10\" /></a></span>
                                                       </center>
-                                                      <span class=\"content\">
-                                                          $hometext<br /><br />
-                                                          $bodytext<br /><br />
-                                                          $notes<br /><br />
-                                                      </span>
                                                   </td>
                                               </tr>
                                           </table>
@@ -86,10 +78,10 @@ function PrintPage($sid) {
                               <div style=\"height: 20px; line-height: 20px;\">&nbsp;</div>
                               <center>
                                   <span class=\"content\">
-                                      "._NEWSCOMESFROM." $sitename<br />
+                                      "._PICCOMESFROM." $sitename<br />
                                       <a href=\"$nukeurl\">$nukeurl</a><br /><br />
-                                      "._THEAURL."<br />
-                                      <a href=\"$nukeurl/modules.php?name=News&amp;file=article&amp;sid=$sid\">".substr("$nukeurl/modules.php?name=News&amp;file=article&amp;sid=$sid", 0, 40)."..."."</a>
+                                      "._THEPURL."<br />
+                                      <a href=\"$nukeurl/modules.php?name=Forums&amp;file=album_page&amp;pic_id=$pic_id\">".substr("$nukeurl/modules.php?name=Forums&amp;file=album_page&amp;pic_id=$pic_id", 0, 40)."..."."</a>
                                   </span>
                               </center>
                           </td>
@@ -100,6 +92,6 @@ function PrintPage($sid) {
          ";
 }
 
-PrintPage($sid);
+DisplayPic($pic_id);
 
 ?>

@@ -1,30 +1,32 @@
 <?php
-/*=======================================================================
- Nuke-Evolution Basic: Enhanced PHP-Nuke Web Portal System
- =======================================================================*/
 
 /**************************************************************************/
-/* PHP-NUKE: Advanced Content Management System                           */
-/* ============================================                           */
+/* PHP-Nuke CE: Web Portal System                                         */
+/* ==============================                                         */
 /*                                                                        */
-/* This is the language module with all the system messages               */
+/* Copyright (c) 2012 by Kevin Atwood                                     */
+/* http://www.nukece.com                                                  */
 /*                                                                        */
-/* If you made a translation, please go to the site and send to me        */
-/* the translated file. Please keep the original text order by modules,   */
-/* and just one message per line, also double check your translation!     */
-/*                                                                        */
-/* You need to change the second quoted phrase, not the capital one!      */
-/*                                                                        */
-/* If you need to use double quotes (") remember to add a backslash (\),  */
-/* so your entry will look like: This is \"double quoted\" text.          */
-/* And, if you use HTML code, please double check it.                     */
+/* All PHP-Nuke CE code is released under the GNU General Public License. */
+/* See CREDITS.txt, COPYRIGHT.txt and LICENSE.txt.                        */
 /**************************************************************************/
 
+define("_LATEST_NEWS","Latest News");
+define("_LATEST_PICS","Recent Pics");
+define("_ARTICLES","Articles");
+define("_PICS","Pics");
+define("_MOBILE","AvantGo");
 define("_PDATE","Date:");
+define("_PPOSTED","Posted:");
 define("_PTOPIC","Topic:");
-define("_COMESFROM","This article comes from");
-define("_THEURL","The URL for this story is:");
+define("_PALBUM","Album:");
+define("_NEWSCOMESFROM","This article comes from");
+define("_PICCOMESFROM","This pic comes from");
+define("_THEAURL","The URL for this story is:");
+define("_THEPURL","The URL for this pic is:");
 define("_DATE","Date");
-define("_TITLE","Title");
+define("_ATITLE","Article Title");
+define("_PTITLE","Pic Title");
+define("_POSTED","Posted");
 
 ?>
