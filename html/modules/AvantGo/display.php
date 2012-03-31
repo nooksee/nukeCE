@@ -67,7 +67,7 @@ function DisplayPic($pic_id) {
                                                           <span class=tiny>
                                                               <strong>"._PPOSTED."</strong> $datetime<br />
                                                               <strong>"._PALBUM."</strong> $cat_title</span><br /><br />
-                                                          <span class=\"content\"><a href=\"modules.php?name=Forums&file=album_pic&amp;pic_id=$pic_id\"><img src=\"modules.php?name=Forums&amp;file=album_thumbnail&amp;pic_id=$pic_id\" border=\"0\" alt=\"".$pic_title."\" title=\"".$pic_title."\" vspace=\"10\" /></a></span>
+                                                          <div style=\"max-width:640px;\" class=\"content\"><a href=\"modules.php?name=Forums&file=album_pic&amp;pic_id=$pic_id\"><img src=\"modules.php?name=Forums&amp;file=album_thumbnail&amp;pic_id=$pic_id\" border=\"0\" alt=\"".$pic_title."\" title=\"".$pic_title."\" vspace=\"10\" /></a></div>
                                                       </center>
                                                   </td>
                                               </tr>
@@ -81,7 +81,7 @@ function DisplayPic($pic_id) {
                                       "._PICCOMESFROM." $sitename<br />
                                       <a href=\"$nukeurl\">$nukeurl</a><br /><br />
                                       "._THEPURL."<br />
-                                      <a href=\"$nukeurl/modules.php?name=Forums&amp;file=album_page&amp;pic_id=$pic_id\">".substr("$nukeurl/modules.php?name=Forums&amp;file=album_page&amp;pic_id=$pic_id", 0, 40)."..."."</a>
+                                      <a href=\"$nukeurl/modules.php?name=Forums&amp;file=album_page&amp;pic_id=$pic_id\">$nukeurl/modules.php?name=Forums&amp;file=album_page&amp;pic_id=$pic_id</a>
                                   </span>
                               </center>
                           </td>

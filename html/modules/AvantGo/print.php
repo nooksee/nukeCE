@@ -55,7 +55,7 @@ function PrintPage($sid) {
                   <meta name=\"HandheldFriendly\" content=\"True\">
               </head>
               <body bgcolor=\"#ffffff\" text=\"#000000\">
-                  <table width=\"45%\" border=\"0\" align=\"center\">
+                  <table border=\"0\" align=\"center\">
                       <tr>
                           <td>
                               <table width=\"100%\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"1\" bgcolor=\"#000000\">
@@ -72,11 +72,11 @@ function PrintPage($sid) {
                                                             <strong>"._PTOPIC."</strong> $topictext<br /><br />
                                                           </span>
                                                       </center>
-                                                      <span class=\"content\">
+                                                      <div style=\"max-width:640px;\" class=\"content\">
                                                           $hometext<br /><br />
                                                           $bodytext<br /><br />
                                                           $notes<br /><br />
-                                                      </span>
+                                                      </div>
                                                   </td>
                                               </tr>
                                           </table>
@@ -89,7 +89,7 @@ function PrintPage($sid) {
                                       "._NEWSCOMESFROM." $sitename<br />
                                       <a href=\"$nukeurl\">$nukeurl</a><br /><br />
                                       "._THEAURL."<br />
-                                      <a href=\"$nukeurl/modules.php?name=News&amp;file=article&amp;sid=$sid\">".substr("$nukeurl/modules.php?name=News&amp;file=article&amp;sid=$sid", 0, 40)."..."."</a>
+                                      <a href=\"$nukeurl/modules.php?name=News&amp;file=article&amp;sid=$sid\">$nukeurl/modules.php?name=News&amp;file=article&amp;sid=$sid</a>
                                   </span>
                               </center>
                           </td>

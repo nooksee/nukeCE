@@ -17,6 +17,7 @@ if (!defined('MODULE_FILE')) {
 
 $module_name = basename(dirname(__FILE__));
 get_lang($module_name);
+
 global $sitename, $slogan, $db, $prefix, $module_name, $site_logo, $Default_Theme;
 if (file_exists("themes/$Default_Theme/images/logo.gif")) {
     $avantgo_logo = "themes/$Default_Theme/images/logo.gif";
@@ -34,6 +35,17 @@ if (file_exists("themes/$Default_Theme/style/style.css")) {
     $style = "";
 }
 
+// Original PHP code by Chirp Internet: www.chirp.com.au
+// Please acknowledge use of this code by including this header.
+function truncate($string, $limit, $break=" ", $pad="...") {
+    // return with no change if string is shorter than $limit
+    if(strlen($string) <= $limit) return $string; $string = substr($string, 0, $limit);
+    if(false !== ($breakpoint = strrpos($string, $break))) {
+        $string = substr($string, 0, $breakpoint);
+    }
+    return $string . $pad;
+}
+
 $pagetitle = _MOBILE;
 header("Content-Type: text/html");
 echo "
@@ -42,6 +54,18 @@ echo "
               <title>$sitename &raquo; $pagetitle</title>
               <meta name=\"HandheldFriendly\" content=\"True\">
               <style>@import url($style);</style>
+              <script type=\"text/javascript\" src=\"includes/js/jquery.js\"></script>
+              <script type=\"text/javascript\">
+                  $(function() {
+                      $('tr.parent')
+                      .css(\"cursor\",\"pointer\")
+                      .attr(\"title\",\"Click to expand/collapse\")
+                      .click(function(){
+                          $(this).siblings('.child-'+this.id).toggle();
+                      });
+                      $('tr[@class^=child-]').hide().children('td');
+                  });
+              </script>
           </head>
           <body>
               <table border=\"0\" align=\"center\" cellpadding=\"1\" cellspacing=\"0\">
@@ -64,14 +88,14 @@ echo "
                       <h1>$sitename</h1>
                   </center>
                   <table width=\"100%\" align=\"center\" cellpadding=\"3\" cellspacing=\"1\" border=\"0\" class=\"forumline\">
-                      <tr>
+                      <tr title=\"Click to expand/collapse\" style=\"cursor: pointer;\" class=\"parent\" id=\"row123\">
                           <td width=\"100%\" class=\"catHead\" colspan=\"2\" height=\"28\" align=\"center\">
                             <span class=\"cattitle\">"._LATEST_NEWS."</span>
                           </td>
                       </tr>
-                      <tr>
-                          <th width=\"65%\" colspan=\"1\" align=\"left\" class=\"thCornerL\">"._ATITLE."</th>
-                          <th width=\"35%\" colspan=\"1\" align=\"center\" class=\"thCornerR\">"._DATE."</th>
+                      <tr style=\"display: none;\" class=\"child-row123\">
+                          <th width=\"72%\" colspan=\"1\" align=\"left\" class=\"thCornerL\">"._ATITLE."</th>
+                          <th width=\"28%\" colspan=\"1\" align=\"center\" class=\"thCornerR\">"._DATE."</th>
                       </tr>
                  ";
             for ($m=0; $m < $db->sql_numrows($result); $m++) {
@@ -81,9 +105,9 @@ echo "
                 $time = $row['time'];
                 formatTimestamp($time, 'M d, Y');
                 echo "
-                      <tr>
-                          <td width=\"65%\" align=\"left\"><a href=\"modules.php?name=$module_name&amp;file=print&amp;sid=$sid\">$title</a></td>
-                          <td width=\"35%\" align=\"center\" nowrap=\"nowrap\">$datetime</td>
+                      <tr style=\"display: none;\" class=\"child-row123\">
+                          <td class=\"row1\" onmouseover=\"this.className='row3';\" onmouseout=\"this.className='row1';\"  onclick=\"window.location.href='modules.php?name=$module_name&amp;file=print&amp;sid=$sid'\" width=\"72%\" align=\"left\"><a href=\"modules.php?name=$module_name&amp;file=print&amp;sid=$sid\">".truncate($title, 37)."</a></td>
+                          <td class=\"row2\" width=\"28%\" align=\"center\" nowrap=\"nowrap\">$datetime</td>
                       </tr>
                      ";
             }
@@ -96,14 +120,14 @@ echo "
         } else {
             echo "
                   <table width=\"100%\" align=\"center\" cellpadding=\"3\" cellspacing=\"1\" border=\"0\" class=\"forumline\">
-                      <tr>
+                      <tr title=\"Click to expand/collapse\" style=\"cursor: pointer;\" class=\"parent\" id=\"row456\">
                           <td width=\"100%\" class=\"catHead\" colspan=\"2\" height=\"28\" align=\"center\">
-                              <span class=\"cattitle\">"._LATEST_PICS."</span>
+                            <span class=\"cattitle\">"._LATEST_PICS."</span>
                           </td>
                       </tr>
-                      <tr>
-                          <th width=\"65%\" colspan=\"1\" align=\"left\" class=\"thCornerL\">"._PTITLE."</th>
-                          <th width=\"35%\" colspan=\"1\" align=\"center\" class=\"thCornerR\">"._POSTED."</th>
+                      <tr style=\"display: none;\" class=\"child-row456\">
+                          <th width=\"72%\" colspan=\"1\" align=\"left\" class=\"thCornerL\">"._PTITLE."</th>
+                          <th width=\"28%\" colspan=\"1\" align=\"center\" class=\"thCornerR\">"._POSTED."</th>
                       </tr>
                  ";
             for ($m=0; $m < $db->sql_numrows($result69); $m++) {
@@ -113,9 +137,9 @@ echo "
                 $pic_time = $row['pic_time'];
                 formatTimestamp($pic_time, 'M d, Y');
                 echo "
-                      <tr>
-                          <td width=\"65%\" align=\"left\" nowrap=\"nowrap\"><a href=\"modules.php?name=$module_name&amp;file=display&amp;pic_id=$pic_id\">$pic_title</a></td>
-                          <td width=\"35%\" align=\"center\" nowrap=\"nowrap\">$datetime</td>
+                      <tr style=\"display: none;\" class=\"child-row456\">
+                          <td class=\"row1\" onmouseover=\"this.className='row3';\" onmouseout=\"this.className='row1';\"  onclick=\"window.location.href='modules.php?name=$module_name&amp;file=display&amp;pic_id=$pic_id'\" width=\"72%\" align=\"left\" nowrap=\"nowrap\"><a href=\"modules.php?name=$module_name&amp;file=display&amp;pic_id=$pic_id\">".truncate($pic_title, 37)."</a></td>
+                          <td class=\"row2\" width=\"28%\" align=\"center\" nowrap=\"nowrap\">$datetime</td>
                       </tr>
                      ";
             }
