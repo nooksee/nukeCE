@@ -4111,8 +4111,7 @@ INSERT INTO `nuke_system` (`sys_field`, `sys_value`) VALUES
 ('img_height', '300'),
 ('capfile', 'code_bg'),
 ('collapse', '0'),
-('nukeuserinfo_ec', '1'),
-('collapsetype', '0');
+('nukeuserinfo_ec', '1');
 
 -- --------------------------------------------------------
 
