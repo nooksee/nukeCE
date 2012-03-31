@@ -237,7 +237,6 @@ $img_height = intval($sysconfig['img_height']);
 $wysiwyg = $sysconfig['textarea'];
 $capfile = $sysconfig['capfile'];
 $collapse = intval($sysconfig['collapse']);
-$collapsetype = intval($sysconfig['collapsetype']);
 $nukeuserinfo_ec = intval($sysconfig['nukeuserinfo_ec']);
 $more_js = '';
 $more_styles = '';
@@ -362,22 +361,13 @@ function is_active($module) {
 }
 
 function render_blocks($side, $block) {
-    global $plus_minus_images, $currentlang, $collapse, $collapsetype;
+    global $currentlang;
     define_once('BLOCK_FILE', true);
     //Include the block lang files
     if (file_exists(NUKE_LANGUAGE_DIR.'blocks/lang-'.$currentlang.'.php')) {
         include_once(NUKE_LANGUAGE_DIR.'blocks/lang-'.$currentlang.'.php');
     } else {
         include_once(NUKE_LANGUAGE_DIR.'blocks/lang-english.php');
-    }
-
-    if($collapse) {
-        if (!$collapsetype) {
-            $block['title'] = $block['title'] . "&nbsp;&nbsp;&nbsp;<img src=\"".$plus_minus_images['minus']."\" class=\"showstate\" name=\"minus\" width=\"9\" height=\"9\" border=\"0\" onclick=\"expandcontent(this, 'block".$block['bid']."')\" alt=\"\" style=\"cursor: pointer;\" />";
-        } else {
-            $block['title'] = "<a href=\"javascript:expandcontent(this, 'block".$block['bid']."')\">".$block['title']."</a>";
-        }
-        $block['content'] = "<div id=\"block".$block['bid']."\" class=\"switchcontent\">".$block['content']."</div>";
     }
 
     if (empty($block['url'])) {
@@ -486,7 +476,6 @@ function blocks($side, $count=false) {
 }
 
 function blockfileinc($blockfiletitle, $blockfile, $side=1, $bid) {
-    global $collapse;
     if (!file_exists(NUKE_BLOCKS_DIR.$blockfile)) {
         $content = _BLOCKPROBLEM;
     } else {
@@ -494,9 +483,6 @@ function blockfileinc($blockfiletitle, $blockfile, $side=1, $bid) {
     }
     if (empty($content)) {
         $content = _BLOCKPROBLEM2;
-    }
-    if($collapse) {
-        $content = "&nbsp;<div id=\"block".$bid."\" class=\"switchcontent\">".$content."</div>";
     }
     if ($side == 'r' || $side == 'l') {
         themesidebox($blockfiletitle, $content, $bid);
@@ -956,21 +942,6 @@ function info_box($graphic, $message) {
     }
 }
 
-function get_plus_minus_image () {
-    static $theme;
-    static $image;
-    if(isset($image) && is_array($image)) return $image;
-    if(empty($theme)) {
-        if(function_exists('get_theme')) {
-            $theme = get_theme();
-        }
-    }
-    $theme_folder = (!empty($theme)) ? ((defined(NUKE_THEMES_DIR)) ? NUKE_THEMES_DIR.$theme.'/images/' : dirname(__FILE__) . '/themes/'.$theme.'/images/') : '';
-    $image['plus'] = (file_exists($theme_folder.'plus.gif')) ? 'themes/'.$theme.'/images/plus.gif' : 'images/plus.gif';
-    $image['minus'] = (file_exists($theme_folder.'minus.gif')) ? 'themes/'.$theme.'/images/minus.gif' : 'images/minus.gif';
-    return $image;
-}
-$plus_minus_images = get_plus_minus_image();
 referer();
 
 ?>

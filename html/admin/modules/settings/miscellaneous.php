@@ -15,7 +15,7 @@ if(!defined('IN_SETTINGS')) {
   exit('Access Denied');
 }
 
-global $httpref, $httprefmax, $pollcomm, $articlecomm, $minpass, $my_headlines, $user_news, $adminssl, $queries_count, $use_colors, $lock_modules, $banners, $lazy_tap, $wysiwyg, $img_resize, $img_width, $img_height, $collapse, $collapsetype;
+global $httpref, $httprefmax, $pollcomm, $articlecomm, $minpass, $my_headlines, $user_news, $adminssl, $queries_count, $use_colors, $lock_modules, $banners, $lazy_tap, $wysiwyg, $img_resize, $img_width, $img_height, $collapse;
 
 echo "
       <fieldset>
@@ -214,28 +214,6 @@ echo "
                   <td colspan=\"3\">
      ";
                       echo yesno_option('xcollapse', $collapse);
-echo "
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      " . _COLLAPSE_TYPE . ":
-                  </td>
-                  <td colspan=\"3\">
-     ";
-echo '
-                      <select name="xcollapsetype" id="xcollapsetype">
-                          <option value="0" '.(($collapsetype == 0)?' selected="selected"':'').">
-                              "._COLLAPSE_ICON."
-                          </option>
-     ";
-echo '
-                          <option value="1" '.(($collapsetype == 1)?' selected="selected"':'').">
-                              ". _COLLAPSE_TITLE."</option>
-     ";
-echo '
-                      </select>
-     ';
 echo "
                   </td>
               </tr>

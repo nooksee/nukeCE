@@ -277,7 +277,7 @@ function FormatStory($thetext, $notes, $aid, $informant) {
 /************************************************************/
 
 function themeindex ($aid, $informant, $time, $title, $counter, $topic, $thetext, $notes, $morelink, $topicname, $topicimage, $topictext) {
-    global $theme_name, $bgcolor3, $bgcolor4, $tipath;
+    global $collapse, $theme_name, $bgcolor3, $bgcolor4, $tipath;
     $ThemeSel = get_theme();
     if(!empty($topicimage)) {
         if (file_exists("themes/$ThemeSel/images/topics/$topicimage")) {
@@ -305,16 +305,20 @@ function themeindex ($aid, $informant, $time, $title, $counter, $topic, $thetext
                                       <tr>
                                           <td bgcolor="#FFFFFF">
                                               <table width="100%" border="0" cellspacing="1" cellpadding="0">
-                                                  <tr>
+         ';
+    if($collapse) { echo '<tr title="Click to expand/collapse" style="cursor: pointer;" class="parent" id="rowindex">'; } else { echo '<tr>'; }
+    echo '
                                                       <td height="30" background="themes/'.$theme_name.'/images/cellpic3.gif" bgcolor="#98aab1">
                                                           <table width="100%" border="0" cellspacing="0" cellpadding="4">
-                                                              <tr>
+														      <tr>
                                                                   <td><font class="storytitle">'.$title.'</font></td>
                                                               </tr>
                                                           </table>
                                                       </td>
                                                   </tr>
-                                                  <tr>
+         ';
+    if($collapse) { echo '<tr class="child-rowindex">'; } else { echo '<tr>'; }
+    echo '
                                                       <td bgcolor='.$bgcolor4.'>
                                                           <table width="100%" border="0" cellspacing="0" cellpadding="4">
                                                               <tr>
@@ -327,7 +331,9 @@ function themeindex ($aid, $informant, $time, $title, $counter, $topic, $thetext
                                                           </table>
                                                       </td>
                                                   </tr>
-                                                  <tr>
+         ';
+    if($collapse) { echo '<tr class="child-rowindex">'; } else { echo '<tr>'; }
+    echo '
                                                       <td bgcolor='.$bgcolor3.'>
                                                           <table width="100%" border="0" cellspacing="0" cellpadding="4">
                                                               <tr>
@@ -358,7 +364,7 @@ function themeindex ($aid, $informant, $time, $title, $counter, $topic, $thetext
 /************************************************************/
 
 function themearticle($aid, $informant, $datetime, $title, $thetext, $topic, $topicname, $topicimage, $topictext) {
-    global $theme_name, $bgcolor3, $bgcolor4, $tipath;
+    global $collapse, $theme_name, $bgcolor3, $bgcolor4, $tipath;
     $ThemeSel = get_theme();
     if(!empty($topicimage)) {
         if (file_exists("themes/$ThemeSel/images/topics/$topicimage")) {
@@ -383,7 +389,9 @@ function themearticle($aid, $informant, $datetime, $title, $thetext, $topic, $to
                                       <tr>
                                           <td bgcolor="#FFFFFF">
                                               <table width="100%" border="0" cellspacing="1" cellpadding="0">
-                                                  <tr>
+         ';
+    if($collapse) { echo '<tr title="Click to expand/collapse" style="cursor: pointer;" class="parent" id="rowarticle">'; } else { echo '<tr>'; }
+    echo '
                                                       <td height="30" background="themes/'.$theme_name.'/images/cellpic3.gif" bgcolor="#98aab1">
                                                           <table width="100%" border="0" cellspacing="0" cellpadding="4">
                                                               <tr>
@@ -392,7 +400,9 @@ function themearticle($aid, $informant, $datetime, $title, $thetext, $topic, $to
                                                           </table>
                                                       </td>
                                                   </tr>
-                                                  <tr>
+         ';
+    if($collapse) { echo '<tr class="child-rowarticle">'; } else { echo '<tr>'; }
+    echo '
                                                       <td bgcolor='.$bgcolor4.'>
                                                           <table width="100%" border="0" cellspacing="0" cellpadding="4">
                                                               <tr>
@@ -405,7 +415,9 @@ function themearticle($aid, $informant, $datetime, $title, $thetext, $topic, $to
                                                           </table>
                                                       </td>
                                                   </tr>
-                                                  <tr>
+         ';
+    if($collapse) { echo '<tr class="child-rowarticle">'; } else { echo '<tr>'; }
+    echo '
                                                       <td bgcolor='.$bgcolor3.'>
                                                           <table width="100%" border="0" cellspacing="0" cellpadding="4">
                                                               <tr>
@@ -436,7 +448,7 @@ function themearticle($aid, $informant, $datetime, $title, $thetext, $topic, $to
 
 function themesidebox($title, $content) {
     // note:  this gets called by the mainfile render blocks function when side is left or right
-    global $theme_name, $bgcolor4;
+    global $collapse, $theme_name, $bgcolor4;
     echo '
           <table role="presentation" width="145" border="0" cellspacing="0" cellpadding="1">
               <tr>
@@ -448,7 +460,9 @@ function themesidebox($title, $content) {
                                       <tr>
                                           <td bgcolor="#FFFFFF">
                                              <table width="100%" border="0" cellspacing="1" cellpadding="1">
-                                                 <tr>
+         ';
+    if($collapse) { echo '<tr title="Click to expand/collapse" style="cursor: pointer;" class="parent" id="rowsidebox">'; } else { echo '<tr>'; }
+    echo '
                                                      <td height="20" background="themes/'.$theme_name.'/images/cellpic3.gif" bgcolor="#98aab1">
                                                          <table width="100%" border="0" cellspacing="0" cellpadding="4">
                                                              <tr>
@@ -457,7 +471,9 @@ function themesidebox($title, $content) {
                                                          </table>
                                                      </td>
                                                  </tr>
-                                                 <tr>
+         ';
+    if($collapse) { echo '<tr class="child-rowsidebox">'; } else { echo '<tr>'; }
+    echo '
                                                      <td bgcolor='.$bgcolor4.'>
                                                          <table width="100%" border="0" cellspacing="0" cellpadding="1">
                                                              <tr>

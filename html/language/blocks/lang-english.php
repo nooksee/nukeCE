@@ -29,9 +29,6 @@ End Forums Block
  [ Base:    Switch Content Script              v2.0.0 ]
  ******************************************************/
 define('_COLLAPSE','Collapsible blocks?');
-define('_COLLAPSE_TYPE','Collapsible blocks icon/text');
-define('_COLLAPSE_TITLE','title');
-define('_COLLAPSE_ICON','icon');
 /*****[END]********************************************
  [ Base:    Switch Content Script              v2.0.0 ]
 ******************************************************/

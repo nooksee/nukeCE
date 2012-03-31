@@ -347,7 +347,6 @@ function save_settings($sub) {
             $ximg_height = intval($_POST['ximg_height']);
             lazy_tap_check($xlazytap);
             $xcollapse = intval($_POST['xcollapse']);
-            $xcollapsetype = intval($_POST['xcollapsetype']);
             $db->sql_query("UPDATE ".$prefix."_config SET httpref='$xhttpref', httprefmax='$xhttprefmax', pollcomm='$xpollcomm', articlecomm='$xarticlecomm', my_headlines='$xmy_headlines', user_news='$xuser_news', banners='$xbanners'");
             $db->sql_query("UPDATE ".$prefix."_system SET sys_value='".$xadminssl."' WHERE sys_field='adminssl'");
             $db->sql_query("UPDATE ".$prefix."_system SET sys_value='".$xqueries_count."' WHERE sys_field='queries_count'");
@@ -358,9 +357,7 @@ function save_settings($sub) {
             $db->sql_query("UPDATE ".$prefix."_system SET sys_value='".$ximg_resize."' WHERE sys_field='img_resize'");
             $db->sql_query("UPDATE ".$prefix."_system SET sys_value='".$ximg_width."' WHERE sys_field='img_width'");
             $db->sql_query("UPDATE ".$prefix."_system SET sys_value='".$ximg_height."' WHERE sys_field='img_height'");
-            $db->sql_query('UPDATE `'.$prefix.'_system` SET `sys_value`="'.intval($_POST['collapse']).'" WHERE `sys_field`= "module_collapse"');
             $db->sql_query("UPDATE ".$prefix."_system SET sys_value='".$xcollapse."' WHERE sys_field='collapse'");
-            $db->sql_query("UPDATE ".$prefix."_system SET sys_value='".$xcollapsetype."' WHERE sys_field='collapsetype'");
             $cache->delete('sysconfig');
 	    $cache->resync();
 

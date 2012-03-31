@@ -177,15 +177,22 @@ if (defined('ADMIN_FILE') && defined('USE_DRAG_DROP')) {
 /*****[BEGIN]******************************************
  [ Base:    Switch Content Script              v2.0.0 ]
  ******************************************************/
-global $plus_minus_images, $collapse;
+global $collapse;
 if ($collapse) {
-echo "<script type=\"text/javascript\">
-        var enablepersist=\"on\" //Enable saving state of content structure using session cookies? (on/off)
-        var memoryduration=\"7\" //persistence in # of days
-        var contractsymbol='".$plus_minus_images['minus']."' //Path to image to represent contract state.
-        var expandsymbol='".$plus_minus_images['plus']."' //Path to image to represent expand state.
-      </script>\n
-      <script type=\"text/javascript\" src=\"includes/js/collapse_blocks.js\"></script>\n";
+    echo "              
+          <script type=\"text/javascript\" src=\"includes/js/jquery.js\"></script>
+          <script type=\"text/javascript\">
+              $(function() {
+                  $('tr.parent')
+                  .css(\"cursor\",\"pointer\")
+                  .attr(\"title\",\"Click to expand/collapse\")
+                  .click(function(){
+                      $(this).siblings('.child-'+this.id).toggle();
+                  });
+                  $('tr[@class^=child-]').hide().children('td');
+              });
+          </script>
+         ";
 }
 /*****[END]********************************************
  [ Base:    Switch Content Script              v2.0.0 ]
