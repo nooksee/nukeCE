@@ -15,82 +15,63 @@ if (!defined('MODULE_FILE')) {
     die('You can\'t access this file directly...');
 }
 
+require_once("mainfile.php");
 $module_name = basename(dirname(__FILE__));
 get_lang($module_name);
+$theme_Sel = get_theme();
 
-global $sitename, $slogan, $db, $prefix, $module_name, $site_logo, $Default_Theme;
-if (file_exists("themes/$Default_Theme/images/logo.gif")) {
-    $avantgo_logo = "themes/$Default_Theme/images/logo.gif";
-} elseif (file_exists("images/$site_logo")) {
-    $avantgo_logo = "images/$site_logo";
-} elseif (file_exists("images/logo.gif")) {
-    $avantgo_logo = "images/logo.gif";
-} else {
-    $avantgo_logo = "";
-}
-    
-if (file_exists("themes/$Default_Theme/style/style.css")) {
-    $style = "themes/$Default_Theme/style/style.css";
-} else {
-    $style = "";
-}
-
-// Original PHP code by Chirp Internet: www.chirp.com.au
-// Please acknowledge use of this code by including this header.
-function truncate($string, $limit, $break=" ", $pad="...") {
-    // return with no change if string is shorter than $limit
-    if(strlen($string) <= $limit) return $string; $string = substr($string, 0, $limit);
-    if(false !== ($breakpoint = strrpos($string, $break))) {
-        $string = substr($string, 0, $breakpoint);
-    }
-    return $string . $pad;
-}
-
-$pagetitle = _MOBILE;
-header("Content-Type: text/html");
-echo "
-      <html>
-          <head>
-              <title>$sitename &raquo; $pagetitle</title>
-              <meta name=\"HandheldFriendly\" content=\"True\">
-              <style>@import url($style);</style>
-              <script type=\"text/javascript\" src=\"includes/js/jquery.js\"></script>
-              <script type=\"text/javascript\">
-                  $(function() {
-                      $('tr.parent')
-                      .css(\"cursor\",\"pointer\")
-                      .attr(\"title\",\"Click to expand/collapse\")
-                      .click(function(){
-                          $(this).siblings('.child-'+this.id).toggle();
+function avtgo() {
+    global $sitename, $theme_Sel, $slogan, $db, $prefix, $module_name, $site_logo, $datetime;
+    $pagetitle = _MOBILE;
+    header("Content-Type: text/html");
+    echo "
+          <html>
+              <head>
+                  <title>$sitename &raquo; $pagetitle</title>
+                  <meta name=\"HandheldFriendly\" content=\"True\">
+                  <style>@import url(themes/$theme_Sel/style/style.css);</style>
+                  <script type=\"text/javascript\" src=\"includes/js/jquery.js\"></script>
+                  <script type=\"text/javascript\">
+                      $(function() {
+                          $('tr.parent')
+                          .css(\"cursor\",\"pointer\")
+                          .attr(\"title\",\"Click to expand/collapse\")
+                          .click(function(){
+                              $(this).siblings('.child-'+this.id).toggle();
+                          });
+                          $('tr[@class^=child-]').hide().children('td');
                       });
-                      $('tr[@class^=child-]').hide().children('td');
-                  });
-              </script>
-          </head>
-          <body>
-              <table border=\"0\" align=\"center\" cellpadding=\"1\" cellspacing=\"0\">
-                  <tr>
-                      <td>
-                          <table border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\">
-                              <tr>
-                                  <td>
-                                      <table border=\"0\" align=\"center\" cellpadding=\"20\" cellspacing=\"1\">
-                                          <tr>
-                                              <td>
-     ";
-        $result = $db->sql_query("SELECT sid, title, time FROM ".$prefix."_stories ORDER BY sid DESC LIMIT 10");
+                  </script>
+              </head>
+              <body>
+                  <table border=\"0\" align=\"center\" cellpadding=\"1\" cellspacing=\"0\">
+                      <tr>
+                          <td>
+                              <table border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\">
+                                  <tr>
+                                      <td>
+                                          <table border=\"0\" align=\"center\" cellpadding=\"20\" cellspacing=\"1\">
+                                              <tr>
+                                                  <td>
+                                                      <center>
+                                                          <a href=\"index.php\"><img src=\"images/$site_logo\" alt=\"$slogan\" title=\"$slogan\" border=\"0\"></a><br />
+                                                          <h1>$sitename</h1>
+                                                      </center>
+         ";
+    $result = $db->sql_query("SELECT sid, title, time FROM ".$prefix."_stories ORDER BY sid DESC LIMIT 10");
+    if (($db->sql_numrows($result) > 0)) {
         if (!result) {
-            echo "An error occured";
+            echo "
+                  <div align=\"center\">
+                      <span class=\"option\"><b><em>"._DBERROR."</em></b></span>        
+                  </div>
+                 ";
         } else {
             echo "
-                  <center>
-                      <a href=\"index.php\"><img src=\"$avantgo_logo\" alt=\"$slogan\" title=\"$slogan\" border=\"0\"></a><br />
-                      <h1>$sitename</h1>
-                  </center>
                   <table width=\"100%\" align=\"center\" cellpadding=\"3\" cellspacing=\"1\" border=\"0\" class=\"forumline\">
                       <tr title=\"Click to expand/collapse\" style=\"cursor: pointer;\" class=\"parent\" id=\"row123\">
                           <td width=\"100%\" class=\"catHead\" colspan=\"2\" height=\"28\" align=\"center\">
-                            <span class=\"cattitle\">"._LATEST_NEWS."</span>
+                              <span class=\"cattitle\">"._LATEST_NEWS."</span>
                           </td>
                       </tr>
                       <tr style=\"display: none;\" class=\"child-row123\">
@@ -106,23 +87,31 @@ echo "
                 formatTimestamp($time, 'M d, Y');
                 echo "
                       <tr style=\"display: none;\" class=\"child-row123\">
-                          <td class=\"row1\" onmouseover=\"this.className='row3';\" onmouseout=\"this.className='row1';\"  onclick=\"window.location.href='modules.php?name=$module_name&amp;file=print&amp;sid=$sid'\" width=\"72%\" align=\"left\"><a href=\"modules.php?name=$module_name&amp;file=print&amp;sid=$sid\">".truncate($title, 37)."</a></td>
-                          <td class=\"row2\" width=\"28%\" align=\"center\" nowrap=\"nowrap\">$datetime</td>
+                          <td class=\"row1\" height=\"23\" width=\"72%\" onmouseover=\"this.className='row3';\" onmouseout=\"this.className='row1';\" onclick=\"window.location.href='modules.php?name=$module_name&amp;op=PrintPage&amp;sid=$sid'\" align=\"left\"><a href=\"modules.php?name=$module_name&amp;op=PrintPage&amp;sid=$sid\">".truncate($title, 35)."</a></td>
+                          <td class=\"row2\" height=\"23\" width=\"28%\" align=\"center\" nowrap=\"nowrap\">$datetime</td>
                       </tr>
                      ";
             }
-            echo "</table>";
+            echo "
+                  </table>
+                  <div style=\"height: 20px; line-height: 20px;\">&nbsp;</div>
+                 ";
         }
-        echo "<div style=\"height: 20px; line-height: 20px;\">&nbsp;</div>";
-        $result69 = $db->sql_query("SELECT pic_id, pic_title, pic_user_id, pic_time FROM ".$prefix."_bbalbum WHERE ( pic_approval = 1 ) ORDER BY pic_id DESC LIMIT 10");
+    }
+    $result69 = $db->sql_query("SELECT pic_id, pic_title, pic_user_id, pic_time FROM ".$prefix."_bbalbum WHERE ( pic_approval = 1 ) ORDER BY pic_id DESC LIMIT 10");
+    if (($db->sql_numrows($result69) > 0)) {
         if (!result69) {
-            echo "An error occured";
+            echo "
+                  <div align=\"center\">
+                      <span class=\"option\"><b><em>"._DBERROR."</em></b></span>        
+                  </div>
+                 ";
         } else {
             echo "
                   <table width=\"100%\" align=\"center\" cellpadding=\"3\" cellspacing=\"1\" border=\"0\" class=\"forumline\">
                       <tr title=\"Click to expand/collapse\" style=\"cursor: pointer;\" class=\"parent\" id=\"row456\">
                           <td width=\"100%\" class=\"catHead\" colspan=\"2\" height=\"28\" align=\"center\">
-                            <span class=\"cattitle\">"._LATEST_PICS."</span>
+                              <span class=\"cattitle\">"._LATEST_PICS."</span>
                           </td>
                       </tr>
                       <tr style=\"display: none;\" class=\"child-row456\">
@@ -138,28 +127,203 @@ echo "
                 formatTimestamp($pic_time, 'M d, Y');
                 echo "
                       <tr style=\"display: none;\" class=\"child-row456\">
-                          <td class=\"row1\" onmouseover=\"this.className='row3';\" onmouseout=\"this.className='row1';\"  onclick=\"window.location.href='modules.php?name=$module_name&amp;file=display&amp;pic_id=$pic_id'\" width=\"72%\" align=\"left\" nowrap=\"nowrap\"><a href=\"modules.php?name=$module_name&amp;file=display&amp;pic_id=$pic_id\">".truncate($pic_title, 37)."</a></td>
-                          <td class=\"row2\" width=\"28%\" align=\"center\" nowrap=\"nowrap\">$datetime</td>
+                          <td class=\"row1\" height=\"23\" width=\"72%\" onmouseover=\"this.className='row3';\" onmouseout=\"this.className='row1';\" onclick=\"window.location.href='modules.php?name=$module_name&amp;op=DisplayPic&amp;pic_id=$pic_id'\" align=\"left\" nowrap=\"nowrap\"><a href=\"modules.php?name=$module_name&amp;op=DisplayPic&amp;pic_id=$pic_id\">".truncate($pic_title, 35)."</a></td>
+                          <td class=\"row2\" height=\"23\" width=\"28%\" align=\"center\" nowrap=\"nowrap\">$datetime</td>
                       </tr>
                      ";
             }
             echo "
+                  </table>
+                  <div style=\"height: 20px; line-height: 20px;\">&nbsp;</div>
+                 ";
+        }
+    }
+    echo "
+                                                  </td>
+                                              </tr>
+                                          </table>
                                       </td>
                                   </tr>
                               </table>
                           </td>
                       </tr>
                   </table>
-                 ";
-        }
-        echo "
-                              </td>
-                          </tr>
-                      </table>
-                  </body>
-              </html>
-             ";
-include(NUKE_INCLUDE_DIR."counter.php");
-exit;
+              </body>
+          </html>
+         ";
+    include(NUKE_INCLUDE_DIR."counter.php");
+    die();
+}
+
+function PrintPage($sid) {
+    global $site_logo, $nukeurl, $module_name, $sitename, $datetime, $prefix, $db;
+    $sid = intval($sid);
+    $num = $db->sql_numrows($db->sql_query("SELECT * FROM ".$prefix."_stories WHERE sid='$sid'"));
+    if ($num == 0) {
+        Header("Location: modules.php?name=$module_name");
+        die();
+    }
+    $sid = intval(trim($sid));
+    $row = $db->sql_fetchrow($db->sql_query("SELECT title, time, hometext, bodytext, topic, notes FROM ".$prefix."_stories WHERE sid='$sid'"));
+    $title = stripslashes($row['title']);
+    $time = $row['time'];
+/*****[BEGIN]******************************************
+ [ Mod:     News BBCodes                       v1.0.0 ]
+ ******************************************************/
+    $hometext = decode_bbcode(set_smilies(stripslashes($row["hometext"])), 1, true);
+    $bodytext = decode_bbcode(set_smilies(stripslashes($row["bodytext"])), 1, true);
+/*****[END]********************************************
+ [ Mod:     News BBCodes                       v1.0.0 ]
+ ******************************************************/
+    $topic = intval($row['topic']);
+    $notes = stripslashes($row['notes']);
+    $row2 = $db->sql_fetchrow($db->sql_query("SELECT topictext FROM ".$prefix."_topics WHERE topicid='$topic'"));
+    $topictext = stripslashes($row2['topictext']);
+    formatTimestamp($time);
+    
+    $pagetitle = _MOBILE;
+    header("Content-Type: text/html");
+    echo "
+          <html>
+              <head>
+                  <title>$sitename &raquo; $pagetitle &raquo; "._ARTICLES." &raquo; $title</title>
+                  <meta name=\"HandheldFriendly\" content=\"True\">
+              </head>
+              <body bgcolor=\"#ffffff\" text=\"#000000\">
+                  <table border=\"0\" align=\"center\">
+                      <tr>
+                          <td>
+                              <table width=\"100%\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"1\" bgcolor=\"#000000\">
+                                  <tr>
+                                      <td>
+                                          <table width=\"100%\" border=\"0\" align=\"center\" cellpadding=\"20\" cellspacing=\"1\" bgcolor=\"#ffffff\">
+                                              <tr>
+                                                  <td>
+                                                      <center>
+                                                          <img src=\"images/$site_logo\" border=\"0\" alt=\"\"><br /><br />
+                                                          <span class=\"content\"><strong>$title</strong></span><br />
+                                                          <span class=tiny>
+                                                            <strong>"._PDATE."</strong> $datetime<br />
+                                                            <strong>"._PTOPIC."</strong> $topictext<br /><br />
+                                                          </span>
+                                                      </center>
+                                                      <div style=\"max-width:640px;\" class=\"content\">
+                                                          $hometext<br /><br />
+                                                          $bodytext<br /><br />
+                                                          $notes<br /><br />
+                                                      </div>
+                                                  </td>
+                                              </tr>
+                                          </table>
+                                      </td>
+                                  </tr>
+                              </table>
+                              <div style=\"height: 20px; line-height: 20px;\">&nbsp;</div>
+                              <center>
+                                  <span class=\"content\">
+                                      "._NEWSCOMESFROM." $sitename<br />
+                                      <a href=\"$nukeurl\">$nukeurl</a><br /><br />
+                                      "._THEAURL."<br />
+                                      <a href=\"$nukeurl/modules.php?name=News&amp;file=article&amp;sid=$sid\">$nukeurl/modules.php?name=News&amp;file=article&amp;sid=$sid</a>
+                                  </span>
+                              </center>
+                          </td>
+                      </tr>
+                  </table>
+              </body>
+          </html>
+         ";
+}
+
+function DisplayPic($pic_id) {
+    global $site_logo, $nukeurl, $module_name, $sitename, $datetime, $prefix, $db;
+    $pic_id = intval($pic_id);
+    $num = $db->sql_numrows($db->sql_query("SELECT * FROM ".$prefix."_bbalbum WHERE pic_id='$pic_id'"));
+    if ($num == 0) {
+        Header("Location: modules.php?name=$module_name");
+        die();
+    }
+    $pic_id = intval(trim($pic_id));
+    $row = $db->sql_fetchrow($db->sql_query("SELECT pic_id, pic_title, pic_desc, pic_time, pic_cat_id FROM ".$prefix."_bbalbum WHERE pic_id='$pic_id'"));
+    $pic_id = intval($row['pic_id']);
+    $pic_title = stripslashes($row['pic_title']);
+    $pic_time = $row['pic_time'];
+/*****[BEGIN]******************************************
+ [ Mod:     News BBCodes                       v1.0.0 ]
+ ******************************************************/
+    $pic_desc = decode_bbcode(set_smilies(stripslashes($row["pic_desc"])), 1, true);
+/*****[END]********************************************
+ [ Mod:     News BBCodes                       v1.0.0 ]
+ ******************************************************/
+    $pic_cat_id = intval($row['pic_cat_id']);
+    $row2 = $db->sql_fetchrow($db->sql_query("SELECT cat_title FROM ".$prefix."_bbalbum_cat WHERE cat_id='$pic_cat_id'"));
+    $cat_title = stripslashes($row2['cat_title']);
+    formatTimestamp($pic_time);
+    
+    $pagetitle = _MOBILE;
+    header("Content-Type: text/html");
+    echo "
+          <html>
+              <head>
+                  <title>$sitename &raquo; $pagetitle &raquo; "._PICS." &raquo; $pic_title</title>
+                  <meta name=\"HandheldFriendly\" content=\"True\">
+              </head>
+              <body bgcolor=\"#ffffff\" text=\"#000000\">
+                  <table border=\"0\" align=\"center\">
+                      <tr>
+                          <td>
+                              <table border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"1\" bgcolor=\"#000000\">
+                                  <tr>
+                                      <td>
+                                          <table border=\"0\" align=\"center\" cellpadding=\"20\" cellspacing=\"1\" bgcolor=\"#ffffff\">
+                                              <tr>
+                                                  <td>
+                                                      <center>
+                                                          <img src=\"images/$site_logo\" border=\"0\" alt=\"\"><br /><br />
+                                                          <span class=\"content\"><strong>$pic_title</strong></span><br />
+                                                          <span class=tiny>
+                                                              <strong>"._PPOSTED."</strong> $datetime<br />
+                                                              <strong>"._PALBUM."</strong> $cat_title</span><br /><br />
+                                                          <div style=\"max-width:640px;\" class=\"content\"><a href=\"modules.php?name=Forums&file=album_pic&amp;pic_id=$pic_id\"><img src=\"modules.php?name=Forums&amp;file=album_thumbnail&amp;pic_id=$pic_id\" border=\"0\" alt=\"".$pic_title."\" title=\"".$pic_title."\" vspace=\"5\" /></a></div><br />
+                                                      </center>
+                                                      <div style=\"max-width:640px;\" class=\"content\">
+                                                          $pic_desc<br /><br />
+                                                      </div>
+                                                  </td>
+                                              </tr>
+                                          </table>
+                                      </td>
+                                  </tr>
+                              </table>
+                              <div style=\"height: 20px; line-height: 20px;\">&nbsp;</div>
+                              <center>
+                                  <span class=\"content\">
+                                      "._PICCOMESFROM." $sitename<br />
+                                      <a href=\"$nukeurl\">$nukeurl</a><br /><br />
+                                      "._THEPURL."<br />
+                                      <a href=\"$nukeurl/modules.php?name=Forums&amp;file=album_page&amp;pic_id=$pic_id\">$nukeurl/modules.php?name=Forums&amp;file=album_page&amp;pic_id=$pic_id</a>
+                                  </span>
+                              </center>
+                          </td>
+                      </tr>
+                  </table>
+              </body>
+          </html>
+         ";
+}
+
+switch($op) {
+    case "PrintPage":
+    PrintPage($sid);
+    break;
+
+    case "DisplayPic":
+    DisplayPic($pic_id);
+    break;
+
+    default:
+    avtgo();
+    break;
+}
 
 ?>
