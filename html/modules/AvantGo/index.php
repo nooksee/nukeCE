@@ -21,7 +21,7 @@ get_lang($module_name);
 $theme_Sel = get_theme();
 
 function avtgo() {
-    global $sitename, $theme_Sel, $slogan, $db, $prefix, $module_name, $site_logo, $datetime;
+    global $sitename, $theme_Sel, $slogan, $db, $prefix, $module_name, $site_logo, $datetime, $adminmail;
     $pagetitle = _MOBILE;
     header("Content-Type: text/html");
     echo "
@@ -139,6 +139,9 @@ function avtgo() {
         }
     }
     echo "
+                                                      <div style=\"height: 20px; line-height: 20px;\" align=\"center\">
+                                                          <span class=\"content\">"._EMAIL.": <a href='mailto:".$adminmail."'>".$adminmail."</a></span>
+                                                      </div>
                                                   </td>
                                               </tr>
                                           </table>
@@ -284,9 +287,9 @@ function DisplayPic($pic_id) {
                                                           <span class=tiny>
                                                               <strong>"._PPOSTED."</strong> $datetime<br />
                                                               <strong>"._PALBUM."</strong> $cat_title</span><br /><br />
-                                                          <div style=\"max-width:640px;\" class=\"content\"><a href=\"modules.php?name=Forums&file=album_pic&amp;pic_id=$pic_id\"><img src=\"modules.php?name=Forums&amp;file=album_thumbnail&amp;pic_id=$pic_id\" border=\"0\" alt=\"".$pic_title."\" title=\"".$pic_title."\" vspace=\"5\" /></a></div><br />
+                                                          <div style=\"max-width:620px;\" class=\"content\"><a href=\"modules.php?name=Forums&file=album_pic&amp;pic_id=$pic_id\"><img src=\"modules.php?name=Forums&amp;file=album_thumbnail&amp;pic_id=$pic_id\" border=\"0\" alt=\"".$pic_title."\" title=\"".$pic_title."\" vspace=\"5\" /></a></div><br />
                                                       </center>
-                                                      <div style=\"max-width:640px;\" class=\"content\">
+                                                      <div style=\"max-width:520px;\" class=\"content\">
                                                           $pic_desc<br /><br />
                                                       </div>
                                                   </td>

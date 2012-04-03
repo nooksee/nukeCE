@@ -29,5 +29,6 @@ define("_ATITLE","Article Title");
 define("_PTITLE","Pic Title");
 define("_POSTED","Posted");
 define("_DBERROR","An error occured");
+define("_EMAIL","Email");
 
 ?>
