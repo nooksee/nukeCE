@@ -118,7 +118,7 @@ echo "
               <div ID='divTEMP'>
               </div>
               "._PSM_CLICK."
-              <a href=\"javascript:strengthhelp()\">
+              <a href=\"includes/help/passhelp.php\" rel='4' class='newWindow'>
                   "._PSM_HERE."
               </a>
               "._PSM_HELP."

@@ -328,7 +328,7 @@ if (is_mod_admin()) {
                                  <div ID='divTEMP'>
                                  </div>
                                  "._PSM_CLICK." 
-                                 <a href=\"javascript:strengthhelp()\">
+                                 <a href=\"includes/help/passhelp.php\" rel='4' class='newWindow'>
                                      "._PSM_HERE."
                                  </a> 
                                  "._PSM_HELP."
@@ -520,7 +520,7 @@ if (is_mod_admin()) {
                                   </table>
                                   <div ID='divTEMP'></div>
                                   "._PSM_CLICK." 
-                                  <a href=\"javascript:strengthhelp()\">"._PSM_HERE."</a> 
+                                  <a href=\"includes/help/passhelp.php\" rel='4' class='newWindow'>"._PSM_HERE."</a> 
                                   "._PSM_HELP."
                                   <br />
                           <tr>

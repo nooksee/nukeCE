@@ -230,7 +230,7 @@ function amain() {
           </tr>
           <tr>
               <td align='center' width='33%'>
-                  <a href=\"modules/Forums/admin/admin_xdata_fields.php?mode=add\" onclick=\"window.open('modules/Forums/admin/admin_xdata_fields.php?mode=add','popup','width=1024,height=768,scrollbars=yes,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no,left=180,top=100'); return false\">
+                  <a href=\"modules/Forums/admin/admin_xdata_fields.php?mode=add\" rel='5' class='newWindow'\">
                       "._YA_ADDFIELD."
                   </a>
               </td>

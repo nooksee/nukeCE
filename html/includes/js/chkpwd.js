@@ -1,7 +1,3 @@
-function strengthhelp() {
-     window.open ('includes/help/passhelp.php','PasswordStrenghtMeter','toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=no,copyhistory=no,width=400,height=200');
-}
-
 function chkpwd(w) {
     var StrengthValue
     StrengthValue = 0;

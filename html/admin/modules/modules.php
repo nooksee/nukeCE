@@ -1036,7 +1036,7 @@ if(isset($_POST['catsave'])) {
 switch ($area) {
     case 'block':
         define('USE_DRAG_DROP', true);
-        require_once(NUKE_INCLUDE_DIR.'ajax/Sajax.php');
+        require_once(NUKE_CLASSES_DIR . 'class.sajax.php');
         global $Sajax;
         $Sajax = new Sajax();
         $Sajax->sajax_export("sajax_update", "modadmin_activate");

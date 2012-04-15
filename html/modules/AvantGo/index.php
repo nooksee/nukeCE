@@ -30,19 +30,10 @@ function avtgo() {
                   <title>$sitename &raquo; $pagetitle</title>
                   <meta name=\"HandheldFriendly\" content=\"True\">
                   <style>@import url(themes/$theme_Sel/style/style.css);</style>
-                  <script type=\"text/javascript\" src=\"includes/js/jquery.js\"></script>
-                  <script type=\"text/javascript\">
-                      $(function() {
-                          $('tr.parent')
-                          .css(\"cursor\",\"pointer\")
-                          .attr(\"title\",\"Click to expand/collapse\")
-                          .click(function(){
-                              $(this).siblings('.child-'+this.id).toggle();
-                          });
-                          $('tr[@class^=child-]').hide().children('td');
-                      });
-                  </script>
-              </head>
+         ";
+    include_once("includes/javascript.min.php");
+    echo "
+          </head>
               <body>
                   <table border=\"0\" align=\"center\" cellpadding=\"1\" cellspacing=\"0\">
                       <tr>

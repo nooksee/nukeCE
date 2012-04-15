@@ -56,19 +56,6 @@ switch ($op) {
         if (!isset($max)) { $max = $min + $storynum; }
         if ($multilingual == 1) { $querylang = "AND (alanguage='$currentlang' OR alanguage='')"; } else { $querylang = ""; }
         include_once(NUKE_BASE_DIR."header.php");
-        if($neconfig["readmore"] == 1) {
-            echo "<script language='JavaScript'>\n";
-            echo "<!-- Begin\n";
-            echo "function NewsReadWindow(mypage, myname, w, h, scroll) {\n";
-            echo "var winl = (screen.width - w) / 2;\n";
-            echo "var wint = (screen.height - h) / 2;\n";
-            echo "winprops = 'height='+h+',width='+w+',top='+wint+',left='+winl+',scrollbars='+scroll+''\n";
-            echo "win = window.open(mypage, myname, winprops)\n";
-            echo "if (parseInt(navigator.appVersion) >= 4) { win.window.focus(); }\n";
-            echo "}\n";
-            echo "//  End -->\n";
-            echo "</script>\n";
-        }
         $db->sql_query("update ".$prefix."_stories_cat set counter=counter+1 where catid='$catid'");
         $result = $db->sql_query("SELECT * FROM ".$prefix."_stories WHERE catid='$catid' $querylang");
         $totalarticles = $db->sql_numrows($result);
@@ -123,7 +110,7 @@ switch ($op) {
             if (is_mod_admin($module_name)) {
                 $the_icons .= " | <a href=\"".$admin_file.".php?op=EditStory&amp;sid=".$artinfo["sid"]."\"><img src=\"images/edit.gif\" border=\"0\" alt=\""._EDIT."\" title=\""._EDIT."\" width=\"11\" height=\"11\"></a>&nbsp;<a href=\"".$admin_file.".php?op=RemoveStory&amp;sid=".$artinfo["sid"]."\"><img src=\"images/delete.gif\" border=\"0\" alt=\""._DELETE."\" title=\""._DELETE."\" width=\"11\" height=\"11\"></a>\n";
             }
-            $read_link = "<a href='modules.php?name=$module_name&amp;file=read_article&amp;sid=".$artinfo["sid"]."$r_options' onclick=\"NewsReadWindow(this.href,'ReadArticle','600','400','yes');return false;\">";
+            $read_link = "<a href='modules.php?name=$module_name&amp;file=read_article&amp;sid=".$artinfo["sid"]."$r_options' rel='8' class='newWindow'\">";
             $story_link = "<a href='modules.php?name=$module_name&amp;file=article&amp;sid=".$artinfo["sid"]."$r_options'>";
             $morelink = "(";
 

@@ -159,14 +159,6 @@ if(!isset($lazy_tap) || is_null($lazy_tap) || $lazy_tap == 0) {
      $tap_admin = 'checked';
 }
 echo "
-      <script language=\"JavaScript\" type=\"text/javascript\">
-          function lazytaphelp()
-          {
-              window.open ('includes/help/lazytaphelp.php','LazyTap','toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=no,copyhistory=no,width=400,height=200');
-          }
-      </script>
-     ";
-echo "
               <tr>
                   <td>
                       "._LAZY_TAP.":
@@ -176,7 +168,7 @@ echo "
                       <input type='radio' name='xlazytap' value='1' $tap_bots>"._LAZY_TAP_BOT." 
                       <input type='radio' name='xlazytap' value='2' $tap_all>"._LAZY_TAP_EVERYONE." 
                       <input type='radio' name='xlazytap' value='3' $tap_admin>"._LAZY_TAP_ADMIN."
-                      <a href=\"javascript:lazytaphelp()\">
+                      <a href=\"includes/help/lazytaphelp.php\" rel='4' class='newWindow'>
                           <img src=\"images/icon_help.gif\" alt=\""._LAZY_TAP_HELP."\" title=\""._LAZY_TAP_HELP."\" border=\"0\" width=\"13\" height=\"13\">
                       </a>                          
                   </td>

@@ -184,22 +184,6 @@ if (is_mod_admin()) {
                   <form method="post" name="backup" action="'.$admin_file.'.php" enctype="multipart/form-data">
                  ';
             echo "
-                  <script language=\"JavaScript\" type=\"text/javascript\">
-                      function setSelectOptions(the_form, the_select, do_check) {
-                          var selectObject = document.forms[the_form].elements[the_select];
-                          var selectCount  = selectObject.length;
-                          for (var i = 0; i < selectCount; i++) {
-                              selectObject.options[i].selected = do_check;
-                          }
-                          return true;
-                      }
-
-                      function extendedhelp() {
-                          window.open ('includes/help/extendedhelp.php','ExtendedStatus','toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=no,copyhistory=no,width=400,height=200');
-                      }
-                  </script>
-                 ";
-            echo "
                   <table align=\"center\" cellpadding=\"2\" cellspacing=\"10\" border=\"0\">
                       <tr>
                           <td>
@@ -307,7 +291,7 @@ if (is_mod_admin()) {
                                       <strong>
                                           "._EXTENDEDSTATUS."&nbsp;
                                       </strong>
-                                      <a href=\"javascript:extendedhelp()\">
+                                      <a href=\"includes/help/extendedhelp.php\" rel='4' class='newWindow'>
                                           <img src=\"images/icon_help.gif\" alt=\""._EXTENDEDHELP."\" title=\""._EXTENDEDHELP."\" border=\"0\" width=\"13\" height=\"13\">
                                       </a>
                                   </div>

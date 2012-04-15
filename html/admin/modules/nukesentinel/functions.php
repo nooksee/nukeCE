@@ -101,14 +101,6 @@ function abview_template($template="") {
     return $display_page;
 }
 
-echo "
-      <script type=\"text/javascript\">
-          function openwindow(){
-              window.open (\"includes/nscopyright.php\",\"Copyright\",\"toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=no,copyhistory=no,width=400,height=200\");
-          }
-      </script>
-     ";
-
 function sentinel_header() {
 global $admin_file;
     GraphicAdmin();
@@ -120,7 +112,7 @@ global $admin_file;
                       "._AB_SENTINEL." "._AB_ADMINISTRATION."
                   </a>
               </font>
-              <a href=\"javascript:openwindow()\">
+              <a href='includes/nscopyright.php' rel='4' class='newWindow'>
                   &copy;
               </a>    
           </div>
@@ -142,7 +134,7 @@ function OpenMenu($adsection="") {
                     "._AB_SENTINEL." ".$ab_config['version_number'].": ".$nsnststatus."$adsection
                   </a>
               </font>
-              <a href=\"javascript:openwindow()\">
+              <a href='includes/nscopyright.php' rel='4' class='newWindow'>
                   &copy;
               </a>
           </div>

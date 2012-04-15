@@ -200,7 +200,7 @@ function display_main() {
             $default_link = (is_default($theme['theme_name']) || !theme_exists($theme['theme_name'])) ? "<img src='images/key_x.gif' alt='"._THEMES_MAKEDEFAULT."' title='"._THEMES_MAKEDEFAULT."' border='0' width='17' height='17'>" : "<a href='$admin_file.php?op=theme_makedefault&amp;theme=" . $theme['theme_name'] . "'><img src='images/key.gif' alt='"._THEMES_MAKEDEFAULT."' title='"._THEMES_MAKEDEFAULT."' border='0' width='17' height='17'></a>";
             $activate_link = (is_default($theme['theme_name'])) ? "<img src='images/inactive_x.gif' alt='"._THEMES_DEACTIVATE."' title='"._THEMES_DEACTIVATE."' border='0' width='16' height='16'>" : ((ThemeIsActive($theme['theme_name'], true)) ? "<a href='$admin_file.php?op=theme_deactivate&amp;theme=" . $theme['theme_name'] . "'><img src='images/inactive.gif' alt='"._THEMES_DEACTIVATE."' title='"._THEMES_DEACTIVATE."' border='0' width='16' height='16'></a>" : "<a href='$admin_file.php?op=theme_activate&amp;theme=" . $theme['theme_name'] . "'><img src='images/active.gif' alt='"._THEMES_ACTIVATE."' title='"._THEMES_ACTIVATE."' border='0' width='16' height='16'></a>");
             $theme_uninstall = (is_default($theme['theme_name'])) ? "<img src='images/icon_uninstall_x.gif' alt='"._THEMES_UNINSTALL."' title='"._THEMES_UNINSTALL."' border='0' width='16' height='18'>" : ((ThemeIsActive($theme['theme_name'], true)) ? "<a href='$admin_file.php?op=theme_uninstall&amp;theme=" . $theme['theme_name'] . "'><img src='images/icon_uninstall.gif' alt='"._THEMES_UNINSTALL."' title='"._THEMES_UNINSTALL."' border='0' width='16' height='18'></a>":"");
-            $theme_view = (is_default($theme['theme_name'])) ? "<img src='images/view_x.gif' alt='"._THEMES_VIEW."' title='"._THEMES_VIEW."' border='0' width='17' height='17'>" : ((ThemeIsActive($theme['theme_name'], true)) ? "<a href=\"javascript:themepreview('" . $theme['theme_name'] . "')\"><img src='images/view.gif' alt='"._THEMES_VIEW."' title='"._THEMES_VIEW."' border='0' width='17' height='17'></a>":"");
+            $theme_view = (is_default($theme['theme_name'])) ? "<img src='images/view_x.gif' alt='"._THEMES_VIEW."' title='"._THEMES_VIEW."' border='0' width='17' height='17'>" : ((ThemeIsActive($theme['theme_name'], true)) ? "<a href='index.php?tpreview=" . $theme['theme_name'] . "' rel='5' class='newWindow'><img src='images/view.gif' alt='"._THEMES_VIEW."' title='"._THEMES_VIEW."' border='0' width='17' height='17'></a>":"");
 
             if($theme['permissions'] == 1) {
                 $permissions = _THEMES_ALLUSERS;
@@ -310,7 +310,7 @@ function uninstalled_theme() {
                               <a href='$admin_file.php?op=theme_makedefault&amp;theme=" .$theme. "'>
                                   <img src=\"images/key_x.gif\" alt=\""._THEMES_MAKEDEFAULT."\" title=\""._THEMES_MAKEDEFAULT."\" border=\"0\" width=\"17\" height=\"17\">
                               </a> 
-                              <a href=\"javascript:themepreview('" . $theme . "')\">
+                              <a href='index.php?tpreview=" . $theme . "' rel='5' class='newWindow'>
                                   <img src=\"images/view.gif\" alt=\""._THEMES_VIEW."\" title=\""._THEMES_VIEW."\" border=\"0\" width=\"17\" height=\"17\">
                               </a> 
                           </small>

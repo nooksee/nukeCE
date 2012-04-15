@@ -117,17 +117,6 @@ switch($op) {
     $maindownload = 1;
     menu(1);
     OpenTable();
-    echo "
-          <script language='JavaScript'>
-              function NewWindow(mypage, myname, w, h, scroll) {
-                var winl = (screen.width - w) / 2;
-                var wint = (screen.height - h) / 2;
-                winprops = 'height='+h+',width='+w+',top='+wint+',left='+winl+',scrollbars='+scroll+',resizable'
-                win = window.open(mypage, myname, winprops)
-                if (parseInt(navigator.appVersion) >= 4) { win.window.focus(); }
-              }
-          </script>
-         ";
     echo "<center><font class=\"title\"><b>"._ADDADOWNLOAD."</b></font></center><br>";
     $cat = intval($cat);
     $cidinfo = $db->sql_fetchrow($db->sql_query("SELECT * FROM ".$prefix."_downloads_categories WHERE cid='$cat' ORDER BY title"));
@@ -170,7 +159,7 @@ switch($op) {
                       <td><input type='file' name='url' size='40'> <span class=\"tiny\">&nbsp;("._MAXFSIZE.":" . $msize . ")</span><br /><em>"._DL_ALWEXT.": <font color='green'>$limitedext</font></em></td>
                   </tr>
                   <tr>
-                      <td nowrap><font class=\"content\"><b><a href='modules.php?name=$module_name&amp;op=TermsUseUp' onclick=\"NewWindow(this.href,'TermsofUseUp','540','190','yes');return false;\">"._DL_TOU."</a>:</b></font></td>
+                      <td nowrap><font class=\"content\"><b><a href='modules.php?name=$module_name&amp;op=TermsUseUp' rel='3' class='newWindow'>"._DL_TOU."</a>:</b></font></td>
                       <td>".yesno_option("tou", 0)."</td>
                   </tr>
                  ";
@@ -181,20 +170,13 @@ switch($op) {
                       <td><input type='text' name='url' size='40'>
                  ";
         if (is_mod_admin($module_name)) {
-            echo "
-                  <script language=\"JavaScript\" type=\"text/javascript\">
-                      function pathhelp() {
-                          window.open ('includes/help/pathhelp.php','URLPath','toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=no,copyhistory=no,width=400,height=200');
-                      }
-                  </script>
-                 ";
-            echo "<a href=\"javascript:pathhelp()\"><img src=\"images/icon_help.gif\" alt=\""._BAD_URLS."\" title=\""._BAD_URLS."\" border=\"0\" width=\"13\" height=\"13\"></a>";
+            echo "<a href=\"includes/help/pathhelp.php\" rel='4' class='newWindow'><img src=\"images/icon_help.gif\" alt=\""._BAD_URLS."\" title=\""._BAD_URLS."\" border=\"0\" width=\"13\" height=\"13\"></a>";
         }                      
         echo "
                       </td>
                   </tr>
                   <tr>
-                      <td nowrap><font class=\"content\"><b><a href='modules.php?name=$module_name&amp;op=TermsUse' onclick=\"NewWindow(this.href,'TermsofUseUp','540','190','yes');return false;\">"._DL_TOU."</a>:</b></font></td>
+                      <td nowrap><font class=\"content\"><b><a href='modules.php?name=$module_name&amp;op=TermsUse' rel='1' class='newWindow'>"._DL_TOU."</a>:</b></font></td>
                       <td>".yesno_option("tou", 0)."</td>
                   </tr>
                  ";

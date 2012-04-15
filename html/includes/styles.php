@@ -130,6 +130,13 @@ echo ".nuketitle {
     text-align: center;
     font-size: x-large;
     }\n";
+echo ".switchcontent{
+    border-top-width: 0;
+    }\n";
+echo ".switchclosecontent{
+    border-top-width: 0;
+    display: none;
+    }";
 global $more_styles;
 if (!empty($more_styles)) {
     echo $more_styles;

@@ -101,6 +101,7 @@ $Theme_Sel = get_theme();
     echo "<html>\n";
     echo "<head>\n";
     @require_once("themes/$Theme_Sel/theme.php");
+    include_once("includes/javascript.min.php");
     echo "<link href=\"themes/$Theme_Sel/style/style.css\" rel=\"stylesheet\" type=\"text/css\">";
     echo "<title>$title</title>\n";
     echo "<base target='parent'>\n";

@@ -113,7 +113,7 @@ function prepare_bbcode_template($bbcode_tpl) {
     $bbcode_tpl['youtube'] = str_replace('{YOUTUBELINK}', $lang['youtube_link'], $bbcode_tpl['youtube']);
     
     global $phpbb_root_path;
-    $u_sxbb_jslib = 'includes/js/select_expand_bbcodes.js';
+    $u_sxbb_jslib = 'includes/js/sxbb_jslib.js';
     // Replacing BBCode variables, but also adding CR to preserve HTML comment delimiters for JS code.
     $expand_ary1 = array('<!--', '//-->', '{L_SELECT}', '{L_EXPAND}', '{L_CONTRACT}', '{U_SXBB_JSLIB}');
     $expand_ary2 = array("\r<!--\r", "\r//-->\r", $lang['Select'], $lang['Expand'], $lang['Contract'], $u_sxbb_jslib);

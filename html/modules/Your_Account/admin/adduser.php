@@ -23,7 +23,7 @@ if(!defined('IN_YA')) {
 }
 
 if(is_mod_admin($module_name)) {
-    $pagetitle = ": "._USERADMIN." - "._ADDUSER;
+    $pagetitle = _USERADMIN." &raquo; "._ADDUSER;
     include_once(NUKE_BASE_DIR.'header.php');
     GraphicAdmin();
     asub();
@@ -111,7 +111,7 @@ if(is_mod_admin($module_name)) {
                                       <td id='td5' width='100' align='center'><div ID='div5'></div></td>
                                   </tr>
                               </table>
-                              <div ID='divTEMP'></div>"._PSM_CLICK."&nbsp;<a href=\"javascript:strengthhelp()\">"._PSM_HERE."</a>&nbsp;"._PSM_HELP."<br />
+                              <div ID='divTEMP'></div>"._PSM_CLICK."&nbsp;<a href=\"includes/help/passhelp.php\" rel='4' class='newWindow'>"._PSM_HERE."</a>&nbsp;"._PSM_HELP."<br />
                           </td>
                       </tr>
                       <tr>

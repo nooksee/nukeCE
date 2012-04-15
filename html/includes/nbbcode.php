@@ -159,7 +159,7 @@ function smilies_table($mode, $field='message', $form='post')
                 if ($mode == 'onerow') {
                     if ($col >= 15) {
                         if ($num_smilies > 15) {
-                            $content .= "<td colspan=\"$s_colspan\" class=\"nav\"><a href=\"$url\" onclick=\"window.open('$url', '_smilies', 'HEIGHT=200,resizable=yes,scrollbars=yes,WIDTH=230');return false;\" target=\"_smilies\" class=\"nav\">$smilies_more</a></td>";
+                            $content .= "<td colspan=\"$s_colspan\" class=\"nav\"><a href=\"$url\" rel=\"9\" class=\"newWindow\" target=\"_smilies\">$smilies_more</a></td>";
                         }
                         break;
                     }
@@ -179,7 +179,7 @@ function smilies_table($mode, $field='message', $form='post')
 
             if ($mode == 'inline' && $num_smilies > $inline_rows * $inline_cols) {
                 $content .= "<tr align=\"center\">
-                    <td colspan=\"$s_colspan\" class=\"nav\"><a href=\"$url\" onclick=\"window.open('$url', '_smilies', 'HEIGHT=200,resizable=yes,scrollbars=yes,WIDTH=230');return false;\" target=\"_smilies\" class=\"nav\">$smilies_more</a></td>
+                    <td colspan=\"$s_colspan\" class=\"nav\"><a href=\"$url\" rel=\"9\" class=\"newWindow\" target=\"_smilies\">$smilies_more</a></td>
                 </tr>";
             }
         }

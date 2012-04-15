@@ -23,21 +23,17 @@ if(!is_mod_admin('super')) {
     die();
 }
 
-include(NUKE_INCLUDE_DIR . 'ajax/Sajax.php');
+include(NUKE_CLASSES_DIR . 'class.sajax.php');
 
-function parse_data($data)
-{
+function parse_data($data) {
     $containers = explode(":", $data);
-    foreach($containers AS $container)
-    {
+    foreach($containers AS $container) {
         $container = str_replace(")", "", $container);
         $i = 0;
         $lastly = explode("(", $container);
         $values = explode(",", $lastly[1]);
-        foreach($values AS $value)
-        {
-            if($value == '')
-            {
+        foreach($values AS $value) {
+            if($value == '') {
                 continue;
             }
             $final[$lastly[0]][] = $value;
@@ -47,15 +43,12 @@ function parse_data($data)
     return $final;
 }
 
-function update_db($data_array, $col_check)
-{
+function update_db($data_array, $col_check) {
     global $cache, $prefix, $db;
     if (is_array($data_array)) {
-        foreach($data_array AS $set => $items)
-        {
+        foreach($data_array AS $set => $items) {
             $i = 0;
-            foreach($items AS $item)
-            {
+            foreach($items AS $item) {
                 $sql = "UPDATE " . $prefix . "_blocks SET bposition = '$set', weight = '$i'  WHERE bid = '$item' $col_check";
                 $db->sql_query($sql);
                 $i++;
@@ -66,8 +59,7 @@ function update_db($data_array, $col_check)
     $cache->resync();
 }
 
-function blocks_update($data)
-{
+function blocks_update($data) {
     $data = parse_data($data);
     update_db($data, "AND (bposition = 'l' OR bposition = 'c' OR bposition = 'r' OR bposition = 'd')");
     return 1;
@@ -162,16 +154,9 @@ function BlocksAdmin() {
     OpenTable();
     echo "
           <div align=\"center\">
-              <font class=\"title\">
-                  <a href=\"$admin_file.php?op=blocks\">
-                      "._BLOCKSADMIN."
-                  </a>
-              </font>
-              <br />
+              <font class=\"title\"><a href=\"$admin_file.php?op=blocks\">"._BLOCKSADMIN."</a></font><br />
               <img src='images/sys/li.gif' border='0' alt=''>
-              <a href='".$admin_file.".php?op=newBlock'> 
-                  "._ADDNEWBLOCK."
-              </a>
+              <a href='".$admin_file.".php?op=newBlock'>"._ADDNEWBLOCK."</a>
           </div>
          ";
     CloseTable();
@@ -187,9 +172,7 @@ function BlocksAdmin() {
               <td width='25%' align='center' valign='top'>
                   <table border='0'>
                       <tr>
-                          <td align='center'>
-                              "._LEFTBLOCK."
-                          </td>
+                          <td align='center'>"._LEFTBLOCK."</td>
                       </tr>
                       <tr>
                           <td align='center'>
@@ -202,16 +185,10 @@ function BlocksAdmin() {
               <li class="' . (($blocks['l'][$i]['active'] == 1) ? "active" : "inactive") . '" id="'.$blocks['l'][$i]['bid'].'" ondblclick="change_status(' . $blocks['l'][$i]['bid'] . ');">
                   <table width="100%">
                       <tr>
-                          <td width="75%" align="center">
-                              '.$blocks['l'][$i]['title'].'
-                          </td>
+                          <td width="75%" align="center">'.$blocks['l'][$i]['title'].'</td>
                           <td align="right" width="25%">
-                              <a href="'.$admin_file.'.php?op=editBlock&amp;bid='.$blocks['l'][$i]['bid'] . '">
-                                  <img src="images/sys/edit.gif" border="0" alt="'._EDITBLOCK.'">
-                              </a> 
-                              <a href="javascript:deleteBlock(\'' . $blocks['l'][$i]['bid'] . '\', \'l\');">
-                                  <img src="images/sys/delete.gif" border="0" alt="">
-                              </a>
+                              <a href="'.$admin_file.'.php?op=editBlock&amp;bid='.$blocks['l'][$i]['bid'] . '"><img src="images/sys/edit.gif" border="0" alt="'._EDITBLOCK.'"></a> 
+                              <a href="javascript:deleteBlock(\'' . $blocks['l'][$i]['bid'] . '\', \'l\');"><img src="images/sys/delete.gif" border="0" alt=""></a>
                           </td>
                       </tr>
                   </table>
@@ -227,9 +204,7 @@ function BlocksAdmin() {
           <td width='25%' align='center' valign='top'>
               <table border='0'>
                   <tr>
-                      <td align='center'>
-                          "._CENTERUP."
-                      </td>
+                      <td align='center'>"._CENTERUP."</td>
                   </tr>
                   <tr>
                       <td align='center'>
@@ -243,16 +218,10 @@ function BlocksAdmin() {
                   <li class="' . (($blocks['c'][$i]['active'] == 1) ? "active" : "inactive") . '" id="'.$blocks['c'][$i]['bid'].'" ondblclick="change_status(' . $blocks['c'][$i]['bid'] . ');">
                       <table width="100%">
                           <tr>
-                              <td width="75%" align="center">
-                                  '.$blocks['c'][$i]['title'].'
-                              </td>
+                              <td width="75%" align="center">'.$blocks['c'][$i]['title'].'</td>
                               <td align="right" width="25%">
-                                  <a href="'.$admin_file.'.php?op=editBlock&amp;bid=' . $blocks['c'][$i]['bid'] . '">
-                                      <img src="images/sys/edit.gif" border="0" alt="'._EDITBLOCK.'">
-                                  </a> 
-                                  <a href="javascript:deleteBlock(\'' . $blocks['c'][$i]['bid'] . '\', \'c\');">
-                                      <img src="images/sys/delete.gif" border="0" alt="">
-                                  </a>
+                                  <a href="'.$admin_file.'.php?op=editBlock&amp;bid=' . $blocks['c'][$i]['bid'] . '"><img src="images/sys/edit.gif" border="0" alt="'._EDITBLOCK.'"></a> 
+                                  <a href="javascript:deleteBlock(\'' . $blocks['c'][$i]['bid'] . '\', \'c\');"><img src="images/sys/delete.gif" border="0" alt=""></a>
                               </td>
                           </tr>
                       </table>
@@ -266,9 +235,7 @@ function BlocksAdmin() {
               </td>
           </tr>
           <tr>
-              <td align='center'>
-                  "._CENTERDOWN."
-              </td>
+              <td align='center'>"._CENTERDOWN."</td>
           </tr>
           <tr>
               <td align='center'>
@@ -744,28 +711,24 @@ function BlocksAddScripts() {
                    var sendData = bid+\":\"+status;
                    x_status_update(sendData, confirm);
                }
-              ";
-   $script .= "
+               
                function deleteBlock(bid, position) {
                    var p = document.getElementById(position);
                    var b = document.getElementById(bid);
                    p.removeChild(b);
                    x_deleteBlock(bid, confirm);
                }
-              ";
-   $script .= "
+               
                function onDrop() {
                    var data = DragDrop.serData('g2');
                    x_blocks_update(data, confirm);
                }
-              ";
-   $script .= "
+               
                function getSort() {
                    order = document.getElementById(\"weight\");
                    order.value = DragDrop.serData('g1', null);
                }
-              ";
-   $script .= "
+               
                function showValue() {
                    order = document.getElementById(\"weigth\");
                }

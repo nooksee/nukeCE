@@ -131,7 +131,7 @@ if(defined('HOME_FILE')) {
 }
 if (!defined('HOME_FILE') AND defined('MODULE_FILE') AND file_exists(NUKE_MODULES_DIR.$name.'/copyright.php')) {
     $cpname = str_replace("_", " ", $name);
-    echo "<div align=\"right\"><a href=\"javascript:openwindow()\">$cpname &copy;</a></div>";
+    echo "<div align=\"right\"><a href=\"modules/".$name."/copyright.php\" rel='4' class='newWindow'>$cpname &copy;</a></div>";
 }
 if (!defined('HOME_FILE') AND defined('MODULE_FILE') AND (file_exists(NUKE_MODULES_DIR.$name.'/admin/panel.php') && is_admin())) {
     echo "<br />";

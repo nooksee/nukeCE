@@ -62,6 +62,7 @@ define("_PRIVATEMSG","private message(s).");
 define("_YOUAREANON","You are Anonymous user. You can register for free by clicking <a href=\"modules.php?name=Your_Account&amp;op=new_user\">here</a>.");
 define("_NOTE","Note:");
 define("_EDITORNOTE","Editor's Note:");
+define("_ADMINOPT","Admin Options");
 define("_ADMIN","Admin:");
 define("_WERECEIVED","We received");
 define("_PAGESVIEWS","page views since");

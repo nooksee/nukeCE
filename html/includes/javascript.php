@@ -19,54 +19,54 @@ if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
 
 include_once(NUKE_INCLUDE_DIR.'styles.php');
 
-##################################################
-# Include for some common javascripts functions  #
-##################################################
+########################################################
+# Include for some common javascript/jquery functions  #
+########################################################
 
 echo "<script type=\"text/javascript\" src=\"includes/js/onload.js\"></script>\n";
 
-/*****[BEGIN]******************************************
- [ Mod:     IE Embed Fix                       v1.0.0 ]
- ******************************************************/
-echo "<!--[if IE]><script defer=\"defer\" type=\"text/javascript\" src=\"includes/js/embed_fix.js\"></script>\n<![endif]-->";
-/*****[END]********************************************
- [ Mod:     IE Embed Fix                       v1.0.0 ]
- ******************************************************/
-
-if (isset($userpage)) {
-    echo "<script type=\"text/javascript\">\n";
-    echo "<!--\n";
-    echo "function showimage() {\n";
-    echo "if (!document.images)\n";
-    echo "return\n";
-    echo "document.images.avatar.src=\n";
-    echo "'$nukeurl/modules/Forums/images/avatars/gallery/' + document.Register.user_avatar.options[document.Register.user_avatar.selectedIndex].value\n";
-    echo "}\n";
-    echo "//-->\n";
-    echo "</script>\n\n";
-}
-
-global $name;
-
-if (defined('MODULE_FILE') && !defined("HOME_FILE") AND file_exists("modules/".$name."/copyright.php")) {
-    echo "<script type=\"text/javascript\">\n";
-    echo "<!--\n";
-    echo "function openwindow(){\n";
-    echo "    window.open (\"modules/".$name."/copyright.php\",\"Copyright\",\"toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=no,copyhistory=no,width=400,height=200\");\n";
-    echo "}\n";
-    echo "//-->\n";
-    echo "</script>\n\n";
-}
-
+echo "<script type=\"text/javascript\" src=\"includes/js/jquery.js\"></script>\n";
 
 /*****[BEGIN]******************************************
- [ Mod:     Anti-Spam                         v.1.1.0 ]
+ [ Mod:     Anti-spam                         v.1.1.0 ]
  ******************************************************/
 if (!defined('ADMIN_FILE')) {
     echo "<script type=\"text/javascript\" src=\"includes/js/anti-spam.js\"></script>\n";
 }
 /*****[END]********************************************
- [ Mod:     Anti-Spam                         v.1.1.0 ]
+ [ Mod:     Anti-spam                         v.1.1.0 ]
+ ******************************************************/
+
+/*****[BEGIN]******************************************
+ [ Mod:     Open Pop-up Window                v.1.1.0 ]
+ ******************************************************/
+echo "
+      <script type=\"text/javascript\">
+          var windowSizeArray = [ 
+                                 \"width=200,height=200\",
+                                 \"width=350,height=150,scrollbars=yes\",
+                                 \"width=300,height=400,scrollbars=yes\",
+                                 \"width=300,height=300,scrollbars=yes\",
+                                 \"width=400,height=200,scrollbars=yes\",
+                                 \"width=1024,height=768,scrollbars=yes\",
+                                 \"width=500,height=300\",
+                                 \"width=700,height=450\",
+                                 \"width=600,height=400,scrollbars=yes\",
+                                 \"width=280,height=200,scrollbars=yes\"
+                                ];
+          $(document).ready(function(){
+              $('.newWindow').click(function (event){
+                  var url = $(this).attr(\"href\");
+                  var windowName = \"popUp\";//$(this).attr(\"name\");
+                  var windowSize = windowSizeArray[  $(this).attr(\"rel\")  ];
+                  window.open(url, windowName, windowSize);
+                  event.preventDefault();
+              });
+          });
+      </script>
+     ";
+/*****[END]********************************************
+ [ Mod:     Open Pop-up Window                v.1.1.0 ]
  ******************************************************/
 
 /*****[BEGIN]******************************************
@@ -88,35 +88,40 @@ if (!$arcade_on) {
  ******************************************************/
  global $admin_file;
  if(isset($name) && ($name == "Your Account" || $name == "Your_Account" || $name == "Profile" || defined('ADMIN_FILE'))) {
-     echo '<script type="text/javascript">
-        var pwd_strong = "'.PSM_STRONG.'";
-        var pwd_stronger = "'.PSM_STRONGER.'";
-        var pwd_strongest = "'.PSM_STRONGEST.'";
-        var pwd_notrated = "'.PSM_NOTRATED.'";
-        var pwd_med = "'.PSM_MED.'";
-        var pwd_weak = "'.PSM_WEAK.'";
-        var pwd_strength = "'.PSM_CURRENTSTRENGTH.'";
-    </script>';
-    echo "<script type=\"text/javascript\" src=\"includes/js/password_strength.js\"></script>\n";
+     echo '
+           <script type="text/javascript">
+               var pwd_strong = "'.PSM_STRONG.'";
+               var pwd_stronger = "'.PSM_STRONGER.'";
+               var pwd_strongest = "'.PSM_STRONGEST.'";
+               var pwd_notrated = "'.PSM_NOTRATED.'";
+               var pwd_med = "'.PSM_MED.'";
+               var pwd_weak = "'.PSM_WEAK.'";
+               var pwd_strength = "'.PSM_CURRENTSTRENGTH.'";
+           </script>
+          ';
+     echo "<script type=\"text/javascript\" src=\"includes/js/chkpwd.js\"></script>";
  }
 /*****[END]********************************************
  [ Mod:     Password Strength Meter            v1.0.0 ]
  ******************************************************/
+
 /*****[BEGIN]******************************************
- [ Base:    Theme Management                   v1.0.2 ]
+ [ Mod:     Admin Controls                    v.1.1.0 ]
  ******************************************************/
 if (defined('ADMIN_FILE')) {
-    echo "<script type=\"text/javascript\">\n";
-    echo "<!--\n";
-    echo "function themepreview(theme){\n";
-    echo "window.open (\"index.php?tpreview=\" + theme + \"\",\"ThemePreview\",\"toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=no,copyhistory=no,width=1000,height=800\");\n";
-    echo "}\n";
-    echo "//-->\n";
-    echo "</script>\n\n";
+    echo "
+          <script language=\"JavaScript\" type=\"text/javascript\">
+              function setSelectOptions(the_form, the_select, do_check) {
+                  var selectObject = document.forms[the_form].elements[the_select];
+                  var selectCount  = selectObject.length;
+                  for (var i = 0; i < selectCount; i++) {
+                      selectObject.options[i].selected = do_check;
+                  }
+                  return true;
+              }
+          </script>
+         ";
 }
-/*****[END]********************************************
- [ Base:    Theme Management                   v1.0.2 ]
- ******************************************************/
 
 /*****[BEGIN]******************************************
  [ Mod:     ToolManDHTML                       v0.0.2 ]
@@ -146,9 +151,9 @@ if (defined('ADMIN_FILE') && defined('USE_DRAG_DROP')) {
         $script_out .= "list.onDragDrop = function() {onDrop(); };\n";
     }
 
-    echo "<script type=\"text/javascript\" src=\"includes/ajax/coordinates.js\"></script>\n";
-    echo "<script type=\"text/javascript\" src=\"includes/ajax/drag.js\"></script>\n";
-    echo "<script type=\"text/javascript\" src=\"includes/ajax/dragdrop.js\"></script>\n";
+    echo "<script type=\"text/javascript\" src=\"includes/js/coordinates.js\"></script>\n";
+    echo "<script type=\"text/javascript\" src=\"includes/js/drag.js\"></script>\n";
+    echo "<script type=\"text/javascript\" src=\"includes/js/dragdrop.js\"></script>\n";
     echo "<script type=\"text/javascript\"><!--
     function confirm(z)
     {
@@ -174,13 +179,16 @@ if (defined('ADMIN_FILE') && defined('USE_DRAG_DROP')) {
  [ Mod:     ToolManDHTML                       v0.0.2 ]
  ******************************************************/
 
+/*****[END]********************************************
+ [ Mod:     Admin Controls                    v.1.1.0 ]
+ ******************************************************/
+
 /*****[BEGIN]******************************************
- [ Base:    Switch Content Script              v2.0.0 ]
+ [ Base:    Switch Content Script              v3.0.0 ]
  ******************************************************/
 global $collapse;
 if ($collapse) {
     echo "              
-          <script type=\"text/javascript\" src=\"includes/js/jquery.js\"></script>
           <script type=\"text/javascript\">
               $(function() {
                   $('tr.parent')
@@ -195,7 +203,7 @@ if ($collapse) {
          ";
 }
 /*****[END]********************************************
- [ Base:    Switch Content Script              v2.0.0 ]
+ [ Base:    Switch Content Script              v3.0.0 ]
  ******************************************************/
 
 /*****[BEGIN]******************************************
@@ -205,18 +213,16 @@ global $img_resize;
 if ($img_resize) {
     if((empty($name) || $name == 'News' || $name == 'Reviews' || $name == 'Stories Archive' || $name == 'Downloads' || $name == 'Web Links' || $name == 'Content') && !defined('IN_PHPBB')) {
         global $img_width, $img_height;
-        echo "<script defer=\"defer\" type=\"text/javascript\">
-        //<![CDATA[
-        <!--
-        var rmw_max_width = ".$img_width."; // you can change this number, this is the max width in pixels for posted images
-        var rmw_max_height = ".$img_height."; // you can change this number, this is the max hight in pixels for posted images
-        var rmw_border_1 = '1px solid ';
-        var rmw_border_2 = '2px dotted ';
-        var rmw_image_title = '';
-        //-->
-        //]]>
-        </script>
-        <script defer=\"defer\" type=\"text/javascript\" src=\"includes/js/rmw_jslib.js\"></script>\n";
+        echo "
+              <script defer=\"defer\" type=\"text/javascript\">
+                  var rmw_max_width = ".$img_width."; // you can change this number, this is the max width in pixels for posted images
+                  var rmw_max_height = ".$img_height."; // you can change this number, this is the max hight in pixels for posted images
+                  var rmw_border_1 = '1px solid ';
+                  var rmw_border_2 = '2px dotted ';
+                  var rmw_image_title = '';
+              </script>
+              <script defer=\"defer\" type=\"text/javascript\" src=\"includes/js/rmw_jslib.js\"></script>
+             ";
     }
 }
 /*****[END]********************************************
