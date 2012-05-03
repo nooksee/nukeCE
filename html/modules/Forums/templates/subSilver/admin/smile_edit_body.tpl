@@ -3,12 +3,9 @@
 <p>{L_SMILEY_EXPLAIN}</p>
 
 <script language="javascript" type="text/javascript">
-<!--
-function update_smiley(newimage)
-{
-    document.smiley_image.src = "{S_SMILEY_BASEDIR}/" + newimage;
-}
-//-->
+    function update_smiley(newimage) {
+        document.smiley_image.src = "{S_SMILEY_BASEDIR}/" + newimage;
+    }
 </script>
 
 <form method="post" action="{S_SMILEY_ACTION}"><table class="forumline" cellspacing="1" cellpadding="4" border="0" align="center">

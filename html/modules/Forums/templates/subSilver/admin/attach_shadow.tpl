@@ -1,23 +1,8 @@
-
 <h1>{L_SHADOW_TITLE}</h1>
 
 <p>{L_SHADOW_EXPLAIN}</p>
 
 {ERROR_BOX}
-
-<script language="Javascript" type="text/javascript">
-    //
-    // Should really check the browser to stop this whining ...
-    //
-    function select_switch(status)
-    {
-        for (i = 0; i < document.shadow_list.length; i++)
-        {
-            document.shadow_list.elements[i].checked = status;
-        }
-    }
-</script>
-
 <form method="post" name="shadow_list" action="{S_ATTACH_ACTION}">
 
   <table width="100%" align="center" cellpadding="4" cellspacing="1" border="0" class="forumline">
@@ -64,7 +49,7 @@
 
   <table width="100%" cellspacing="2" border="0" align="center" cellpadding="2">
     <tr> 
-      <td align="right" valign="top" nowrap="nowrap"><strong><span class="gensmall"><a href="javascript:select_switch(true);" class="gensmall">{L_MARK_ALL}</a> :: <a href="javascript:select_switch(false);" class="gensmall">{L_UNMARK_ALL}</a></span></strong></td>
+      <td align="right" valign="top" nowrap="nowrap"><strong><span class="gensmall"><a href="javascript:select_shadow(true);" class="gensmall">{L_MARK_ALL}</a> :: <a href="javascript:select_shadow(false);" class="gensmall">{L_UNMARK_ALL}</a></span></strong></td>
     </tr>
   </table>
 

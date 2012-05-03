@@ -610,17 +610,6 @@ $template->assign_vars(array(
         'L_WHOSONLINE_ADMIN' => sprintf($lang['Admin_online_color'], '<span style="color:#' . $theme['fontcolor3'] . '">', '</span>'),
         'L_WHOSONLINE_MOD' => sprintf($lang['Mod_online_color'], '<span style="color:#' . $theme['fontcolor2'] . '">', '</span>'),
 /*****[BEGIN]******************************************
- [ Mod:     Resize Posted Images               v2.4.5 ]
- ******************************************************/
-        'L_RMW_IMAGE_TITLE' => $lang['rmw_image_title'],
-        'U_RMW_JSLIB' => 'includes/js/rmw_jslib.js',
-        'IMAGE_RESIZE_WIDTH' => $board_config['image_resize_width'],
-        'IMAGE_RESIZE_HEIGHT' => $board_config['image_resize_height'],
-/*****[END]********************************************
- [ Mod:     Resize Posted Images               v2.4.5 ]
- ******************************************************/
-
-/*****[BEGIN]******************************************
  [ Base:    Recent Topics                      v1.2.4 ]
  ******************************************************/
         'U_RECENT' => append_sid("recent.$phpEx"),

@@ -1,16 +1,3 @@
-<script language="Javascript" type="text/javascript">
-    //
-    // Taking from Attachment of Acyd Burn
-    //
-    function select(status)
-    {
-        for (i = 0; i < document.log_list.length; i++)
-        {
-            document.log_list.elements[i].checked = status;
-        }
-    }
-</script>
-
 <h1>{L_LOG_ACTIONS_TITLE}</h1>
 
 <p>{L_LOG_ACTION_EXPLAIN}</p>
@@ -56,7 +43,7 @@
       </td>
 </tr>
 <tr> 
-      <td class="catBottom" colspan="9" height="28" align="right"><strong><span class="gensmall"><a href="javascript:select(true);" class="gensmall">{L_MARK_ALL}</a> :: <a href="javascript:select(false);" class="gensmall">{L_UNMARK_ALL}</a></span></strong></td>
+      <td class="catBottom" colspan="9" height="28" align="right"><strong><span class="gensmall"><a href="javascript:select_log(true);" class="gensmall">{L_MARK_ALL}</a> :: <a href="javascript:select(false);" class="gensmall">{L_UNMARK_ALL}</a></span></strong></td>
     </tr>
 </table>
 

@@ -85,7 +85,7 @@ function avtgo() {
             }
             echo "
                   </table>
-                  <div style=\"height: 20px; line-height: 20px;\">&nbsp;</div>
+                  <div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>
                  ";
         }
     }
@@ -125,12 +125,12 @@ function avtgo() {
             }
             echo "
                   </table>
-                  <div style=\"height: 20px; line-height: 20px;\">&nbsp;</div>
+                  <div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>
                  ";
         }
     }
     echo "
-                                                      <div style=\"height: 20px; line-height: 20px;\" align=\"center\">
+                                                          <div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>
                                                           <span class=\"content\">"._EMAIL.": <a href='mailto:".$adminmail."'>".$adminmail."</a></span>
                                                       </div>
                                                   </td>
@@ -212,7 +212,7 @@ function PrintPage($sid) {
                                       </td>
                                   </tr>
                               </table>
-                              <div style=\"height: 20px; line-height: 20px;\">&nbsp;</div>
+                              <div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>
                               <center>
                                   <span class=\"content\">
                                       "._NEWSCOMESFROM." $sitename<br />
@@ -289,7 +289,7 @@ function DisplayPic($pic_id) {
                                       </td>
                                   </tr>
                               </table>
-                              <div style=\"height: 20px; line-height: 20px;\">&nbsp;</div>
+                              <div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>
                               <center>
                                   <span class=\"content\">
                                       "._PICCOMESFROM." $sitename<br />

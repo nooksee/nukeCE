@@ -32,7 +32,6 @@
       Better Session Handling                  v1.0.0       06/25/2005
       Forum ACP Administration Links           v1.0.0       06/26/2005
       Advanced Username Color                  v1.0.5       07/25/2005
-      DHTML Slide Menu for ACP                 v1.0.0       07/30/2005
       Advance Admin Index Stats                v1.0.0       08/02/2005
       Log Moderator Actions                    v1.1.6       08/06/2005
       Online Time                              v1.0.0       08/21/2005
@@ -128,17 +127,6 @@ if( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'left' )
                 "U_ADMIN_INDEX" => append_sid("index.$phpEx?pane=right"),
 
 /*****[BEGIN]******************************************
- [ Mod:     DHTML Slide Menu for ACP           v1.0.0 ]
- ******************************************************/
-                "COOKIE_NAME"    => $board_config['cookie_name'],
-                "COOKIE_PATH"    => $board_config['cookie_path'],
-                "COOKIE_DOMAIN"    => $board_config['cookie_domain'],
-                "COOKIE_SECURE"    => $board_config['cookie_secure'],
-/*****[END]********************************************
- [ Mod:     DHTML Slide Menu for ACP           v1.0.0 ]
- ******************************************************/
-
-/*****[BEGIN]******************************************
  [ Mod:     Forum ACP Administration Links     v1.0.0 ]
  ******************************************************/
                 "U_ADMIN_NUKE" => ADMIN_NUKE,
@@ -147,6 +135,7 @@ if( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'left' )
  [ Mod:     Forum ACP Administration Links     v1.0.0 ]
  ******************************************************/
 
+                "L_QUICK_LINKS" => $lang['Quick_links'],
                 "L_FORUM_INDEX" => $lang['Main_index'],
                 "L_ADMIN_INDEX" => $lang['Admin_Index'],
                 "L_PREVIEW_FORUM" => $lang['Preview_forum'],
@@ -163,28 +152,15 @@ if( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'left' )
 
         ksort($module);
 
-/*****[BEGIN]******************************************
- [ Mod:     DHTML Slide Menu for ACP           v1.0.0 ]
- ******************************************************/
     $menu_cat_id = 0;
-/*****[END]********************************************
- [ Mod:     DHTML Slide Menu for ACP           v1.0.0 ]
- ******************************************************/
  while( list($cat, $action_array) = each($module) )
 {
     $cat = ( !empty($lang[$cat]) ) ? $lang[$cat] : preg_replace("/_/", " ", $cat);
 
     $template->assign_block_vars("catrow", array(
 
-/*****[BEGIN]******************************************
- [ Mod:     DHTML Slide Menu for ACP           v1.0.0 ]
- ******************************************************/
                     "MENU_CAT_ID" => $menu_cat_id,
                     "MENU_CAT_ROWS" => count($action_array),
-/*****[END]********************************************
- [ Mod:     DHTML Slide Menu for ACP           v1.0.0 ]
- ******************************************************/
-
                      "ADMIN_CATEGORY" => $cat)
     );
 
@@ -200,15 +176,8 @@ if( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'left' )
 
         $template->assign_block_vars("catrow.modulerow", array(
 
-/*****[BEGIN]******************************************
- [ Mod:     DHTML Slide Menu for ACP           v1.0.0 ]
- ******************************************************/
             "ROW_COUNT" => $row_count,
-/*****[END]********************************************
- [ Mod:     DHTML Slide Menu for ACP           v1.0.0 ]
- ******************************************************/
-
-             "ROW_COLOR" => "#" . $row_color,
+            "ROW_COLOR" => "#" . $row_color,
             "ROW_CLASS" => $row_class,
 
             "ADMIN_MODULE" => $action,
@@ -216,13 +185,7 @@ if( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'left' )
         );
         $row_count++;
     }
-/*****[BEGIN]******************************************
- [ Mod:     DHTML Slide Menu for ACP           v1.0.0 ]
- ******************************************************/
     $menu_cat_id++;
-/*****[END]********************************************
- [ Mod:     DHTML Slide Menu for ACP           v1.0.0 ]
- ******************************************************/
 }
         $template->pparse("body");
 

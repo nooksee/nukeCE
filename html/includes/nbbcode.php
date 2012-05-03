@@ -121,7 +121,7 @@ function smilies_table($mode, $field='message', $form='post')
                     hr_help= "'. $bbcode_common['hr'][0].' '.$bbcode_common['hr'][1].'";
                     video_help="'. $bbcode_common['video'][0].' '.$bbcode_common['video'][1].'";
                     flash_help="'. $bbcode_common['flash'][0].' '.$bbcode_common['flash'][1].'";</script>
-                    <script language="JavaScript" src="includes/js/bbcode.js" type="text/javascript"></script>';
+                    <script language="JavaScript" src="includes/js/nbbcode.js" type="text/javascript"></script>';
         define('BBCODE_JS_ACTIVE', 1);
     }
     if ($mode == 'onerow') {
@@ -194,7 +194,7 @@ if(!function_exists('bbcode_table')){
         global $bbbttns_path, $color_desc, $font_desc, $textcolor1, $bbcode_common;
         $content = '';
         if (!defined('BBCODE_JS_ACTIVE')) {
-            $content .= '<script language="JavaScript" src="includes/js/bbcode.js" type="text/javascript"></script>';
+            $content .= '<script language="JavaScript" src="includes/js/nbbcode.js" type="text/javascript"></script>';
             define('BBCODE_JS_ACTIVE', 1);
         }
         $content .= '<table cellpadding="0" cellspacing="0" border="0">

@@ -1,19 +1,3 @@
-<script language="JavaScript" type="text/javascript">
-<!--
-function toggle_check_all()
-{
-    for (var i=0; i < document.delete_ids.elements.length; i++)
-    {
-        var checkbox_element = document.delete_ids.elements[i];
-        if ((checkbox_element.name != 'check_all_box') && (checkbox_element.type == 'checkbox'))
-        {
-            checkbox_element.checked = document.delete_ids.check_all_box.checked;
-        }
-    }
-}
--->
-</script>
-
 <!-- BEGIN statusrow -->
 <table width="100%" cellspacing="2" cellpadding="2" border="1" align="center">
     <tr> 

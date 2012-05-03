@@ -147,18 +147,11 @@ switch($pmaction)
         'MESSAGE' => $private_message)
         );
         
-        if ($board_config['aprvmView'])
-        {
-            $template->assign_block_vars('popup_switch', array());
-            $template->pparse('viewmsg_body');
-            $aprvmUtil->copyright();
-            break;
-        }
-        else
-        {
-            $template->assign_var_from_handle('PM_MESSAGE', 'viewmsg_body');
-        }
-    }
+        $template->assign_block_vars('popup_switch', array());
+        $template->pparse('viewmsg_body');
+        $aprvmUtil->copyright();
+        break;
+   }
     case 'remove_old':
     {
         if ($pmaction == 'remove_old')
@@ -289,8 +282,7 @@ switch($pmaction)
         $i = 0;
         while($row = $db->sql_fetchrow($result))
         {
-            $view_url = (!$board_config['aprvmView']) ? append_sid($aprvmUtil->urlStart.'&pmaction=view_message&view_id='.$row['privmsgs_id']) : '#';
-            $onclick_url = ($board_config['aprvmView']) ? "JavaScript:window.open('" . append_sid($aprvmUtil->urlStart.'&pmaction=view_message&view_id=' . $row['privmsgs_id']) . "', '_privmsg', 'HEIGHT=450,resizable=yes,WIDTH=550')" : '';
+            $view_url = append_sid($aprvmUtil->urlStart.'&pmaction=view_message&view_id='.$row['privmsgs_id']);
             $template->assign_block_vars('msgrow', array(
             'ROW_CLASS' => (!(++$i% 2)) ? $theme['td_class1'] : $theme['td_class2'],
             'ATTACHMENT_INFO' => (defined('ATTACH_VERSION')) ? 'Not Here Yet' : '',
@@ -300,8 +292,7 @@ switch($pmaction)
             'FROM' => UsernameColor($aprvmUtil->id_2_name($row['privmsgs_from_userid'])),
             'TO' => UsernameColor($aprvmUtil->id_2_name($row['privmsgs_to_userid'])),
             'FROM_IP' => ($board_config['aprvmIP']) ? '<br />('.decode_ip($row['privmsgs_ip']).')' : '',
-            'U_VIEWMSG' => $onclick_url,
-            'U_INLINE_VIEWMSG' => $view_url,
+            'U_VIEWMSG' => $view_url,
             'DATE' => create_date($lang['DATE_FORMAT'], $row['privmsgs_date'], $board_config['board_timezone']))
             );
             if ($mode != 'archive' && $board_config['aprvmArchive'])
@@ -366,8 +357,6 @@ switch($pmaction)
         'URL_ORPHAN' => append_sid($aprvmUtil->urlStart . '&pmaction=remove_old'),
         'URL_SENT' => append_sid($aprvmUtil->urlStart . '&pmaction=remove_sent'),
         'URL_ALL' => append_sid($aprvmUtil->urlStart . '&pmaction=remove_all'),
-        'URL_INLINE_MESSAGE_TYPE' => ($board_config['aprvmView'] == 1) ? '<a href="' . append_sid($aprvmUtil->urlStart . '&config_name=aprvmView&config_value=0') . "\">{$lang['Inline']}</a>" : $lang['Inline'],
-        'URL_POPUP_MESSAGE_TYPE' => ($board_config['aprvmView'] == 0) ? '<a href="' . append_sid($aprvmUtil->urlStart . '&config_name=aprvmView&config_value=1') . "\">{$lang['Pop_up']}</a>" : $lang['Pop_up'],
         'URL_ROWS_PLUS_5' => '<a href="' . append_sid($aprvmUtil->urlStart . '&config_name=aprvmRows&config_value='.strval($board_config['aprvmRows']+5)) . "\">{$lang['Rows_Plus_5']}</a>",
         'URL_ROWS_MINUS_5' => ($board_config['aprvmRows'] > 5) ? '<a href="' . append_sid($aprvmUtil->urlStart . '&config_name=aprvmRows&config_value='.strval($board_config['aprvmRows']-5)) . "\">{$lang['Rows_Minus_5']}</a>" : $lang['Rows_Minus_5'],
         'URL_SHOW_IP_ON' => ($board_config['aprvmIP'] == 0) ? '<a href="' . append_sid($aprvmUtil->urlStart . '&config_name=aprvmIP&config_value=1') . "\">{$lang['Enable']}</a>" : $lang['Enable'],
@@ -444,10 +433,9 @@ class aprvmUtils
     {
         global $board_config, $db, $HTTP_GET_VARS, $status_message, $lang, $cache;
 
-        $configList = array('aprvmArchive', 'aprvmVersion', 'aprvmView', 'aprvmRows', 'aprvmIP');
+        $configList = array('aprvmArchive', 'aprvmVersion', 'aprvmRows', 'aprvmIP');
         $configLangs = array('aprvmArchive' => $lang['Archive_Feature'],
                             'aprvmVersion' => $lang['Version'],
-                            'aprvmView' => $lang['PM_View_Type'],
                             'aprvmRows' => $lang['Rows_Per_Page'],
                             'aprvmIP' => $lang['Show_IP']);
         $configDefaults = array('0', $this->modVersion, '0', '25', '1');

@@ -4,7 +4,7 @@
 /* PHP-Nuke CE: Web Portal System                                         */
 /* ==============================                                         */
 /*                                                                        */
-/* Copyright (c) 2011 by Kevin Atwood                                     */
+/* Copyright (c) 2012 by Kevin Atwood                                     */
 /* http://www.nukece.com                                                  */
 /*                                                                        */
 /* All PHP-Nuke CE code is released under the GNU General Public License. */
@@ -12,12 +12,14 @@
 /**************************************************************************/
 
 if(!defined('ADMIN_FILE')) {
-   die ("Illegal File Access");
+    die ("Illegal File Access");
 }
 
 if(!is_mod_admin()) {
     die ("Access Denied");
 }
+
+$pagetitle = _MODULESADMIN;
 
 function modadmin_get_modules ($mid='') {
     global $prefix, $db;
@@ -59,7 +61,7 @@ function modadmin_home ($mid) {
     global $prefix, $db, $cache;
     list($title) = $db->sql_ufetchrow("SELECT title FROM ".$prefix."_modules WHERE mid='$mid'",SQL_NUM);
     if ($title == '') {
-    	return false;
+        return false;
     }
     $db->sql_query("UPDATE ".$prefix."_main SET main_module='$title'");
     $db->sql_query("UPDATE ".$prefix."_modules SET active=1, view=0 WHERE mid='$mid'");
@@ -76,70 +78,24 @@ function modadmin_dispaly_modules ($modadmin_modules) {
     OpenTable();
     echo "
           <div align=\"center\">
-              <font class=\"title\">
-                  <a href=\"$admin_file.php?op=modules\">
-                      "._MODULESADMIN."
-                  </a>
-              </font>
-              <br />
-              <img src='images/sys/li.gif' border='0' alt=''>
-              <a href=\"$admin_file.php?op=modules&amp;area=block\"> 
-                  "._MODULES_BLOCK."
-              </a>
-              <br />
-              "._NOTINMENU."
-              <br />
-              <br />
-              [
-              <a href=\"".$admin_file.".php?op=modules&amp;a=all\">
-                  "._ACTIVATE." "._ALL."
-              </a> 
-              | 
-              <a href=\"".$admin_file.".php?op=modules&amp;a=none\">
-                  "._DEACTIVATE." "._ALL."
-              </a>
-              ]
+              <font class=\"title\"><a href=\"$admin_file.php?op=modules\">"._MODULESADMIN."</a></font><br />
+              <img src='images/sys/li.gif' border='0' alt=''>&nbsp;<a href=\"$admin_file.php?op=modules&amp;area=block\">"._MODULES_BLOCK."</a><br />"._NOTINMENU."<br /><br />
+              [&nbsp;<a href=\"".$admin_file.".php?op=modules&amp;a=all\">"._ACTIVATE." "._ALL."</a>&nbsp;|&nbsp;<a href=\"".$admin_file.".php?op=modules&amp;a=none\">"._DEACTIVATE." "._ALL."</a>&nbsp;]
           </div>
          ";
     CloseTable();
-    echo "
-          <span class=\"gen\">
-          <br />
-          </span>
-         ";
+    echo "<div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>";
     OpenTable();
     echo "
-          <span class=\"gen\">
-          <br />
-          </span>
+          <div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>
           <table align=\"center\" width=\"90%\" cellpadding=\"3\" cellspacing=\"1\" border=\"0\" class=\"forumline\">
               <form action=\"".$admin_file.".php?op=modules\" method=\"post\">
                   <tr>
-                      <th colspan=\"1\" align=\"center\" height=\"25\" class=\"thCornerL\" nowrap=\"nowrap\">
-                          <strong>
-                              "._TITLE."
-                          </strong>
-                      </th>
-                      <th colspan=\"1\" align=\"center\" class=\"thTop\" nowrap=\"nowrap\">
-                          <strong>
-                              "._CUSTOMTITLE."
-                          </strong>
-                      </th>
-                      <th colspan=\"1\" align=\"center\" class=\"thTop\" nowrap=\"nowrap\">
-                          <strong>
-                              "._VIEW."
-                          </strong>
-                      </th>
-                      <th colspan=\"1\" align=\"center\" class=\"thTop\" nowrap=\"nowrap\">
-                          <strong>
-                              "._BLOCKSSHOW."
-                          </strong>
-                      </th>
-                      <th colspan=\"1\" align=\"center\" class=\"thCornerR\" nowrap=\"nowrap\">
-                          <strong>
-                              "._FUNCTIONS."
-                          </strong>
-                      </th>
+                      <th colspan=\"1\" align=\"center\" height=\"25\" class=\"thCornerL\" nowrap=\"nowrap\"><strong>"._TITLE."</strong></th>
+                      <th colspan=\"1\" align=\"center\" class=\"thTop\" nowrap=\"nowrap\"><strong>"._CUSTOMTITLE."</strong></th>
+                      <th colspan=\"1\" align=\"center\" class=\"thTop\" nowrap=\"nowrap\"><strong>"._VIEW."</strong></th>
+                      <th colspan=\"1\" align=\"center\" class=\"thTop\" nowrap=\"nowrap\"><strong>"._BLOCKSSHOW."</strong></th>
+                      <th colspan=\"1\" align=\"center\" class=\"thCornerR\" nowrap=\"nowrap\"><strong>"._FUNCTIONS."</strong></th>
                   </tr>
          ";
     foreach ($modadmin_modules as $module) {
@@ -160,10 +116,10 @@ function modadmin_dispaly_modules ($modadmin_modules) {
             $groups = explode('-', $module['groups']);
             foreach ($groups as $group) {
                 if (!empty($group)) {
-                     $row = $db->sql_ufetchrow("SELECT group_name FROM ".$prefix.'_bbgroups WHERE group_id='.$group, SQL_NUM);
-                     if (!empty($row['group_name'])) {
-                         $who_view .= $row['group_name'].', ';
-                     }
+                    $row = $db->sql_ufetchrow("SELECT group_name FROM ".$prefix.'_bbgroups WHERE group_id='.$group, SQL_NUM);
+                    if (!empty($row['group_name'])) {
+                        $who_view .= $row['group_name'].', ';
+                    }
                 }
             }
             if (!empty($who_view)) {
@@ -187,19 +143,19 @@ function modadmin_dispaly_modules ($modadmin_modules) {
         if(isset($module['blocks'])) {
             switch($module['blocks']) {
                 case 0:
-                    $module['blocks'] = _NONE;
+                $module['blocks'] = _NONE;
                 break;
                 case 1:
-                    $module['blocks'] = _LEFT;
+                $module['blocks'] = _LEFT;
                 break;
                 case 2:
-                    $module['blocks'] = _RIGHT;
+                $module['blocks'] = _RIGHT;
                 break;
                 case 3:
-                    $module['blocks'] = _BOTH;
+                $module['blocks'] = _BOTH;
                 break;
                 default:
-                    $module['blocks'] = '';
+                $module['blocks'] = '';
                 break;
             }
         } else {
@@ -208,35 +164,18 @@ function modadmin_dispaly_modules ($modadmin_modules) {
 
         echo "
               <tr>
-                  <td class=".$row_class." align=\"center\">
-                      <a href=\"modules.php?name=".$module['title']."\" title=\""._SHOW."\">
-                          ".$title."
-                      </a>
-                  </td>
-                  <td class=".$row_class." align=\"center\">
-                      ".$module['custom_title']."
-                  </td>
-                  <td class=".$row_class." align=\"center\">
-                      ".$who_view."
-                  </td>
-                  <td class=".$row_class." align=\"center\">
-                      ".$module['blocks']."
-                  </td>
-                  <td class=".$row_class." align=\"center\">
-                      <a href=\"".$admin_file.".php?op=modules&amp;edit=".$mid."\">
-                          <img src=\"images/edit.gif\" alt=\""._EDIT."\" title=\""._EDIT."\" border=\"0\" width=\"17\" height=\"17\">
-                      </a>
-                      ".$active." ".$home."
-                  </td>
+                <td class=".$row_class." align=\"center\"><a href=\"modules.php?name=".$module['title']."\" title=\""._SHOW."\">".$title."</a></td>
+                <td class=".$row_class." align=\"center\">".$module['custom_title']."</td>
+                <td class=".$row_class." align=\"center\">".$who_view."</td>
+                <td class=".$row_class." align=\"center\">".$module['blocks']."</td>
+                <td class=".$row_class." align=\"center\"><a href=\"".$admin_file.".php?op=modules&amp;edit=".$mid."\"><img src=\"images/edit.gif\" alt=\""._EDIT."\" title=\""._EDIT."\" border=\"0\" width=\"17\" height=\"17\"></a>".$active."&nbsp;".$home."</td>
               </tr>
              ";
     }
     echo "
               </form>
           </table>
-          <span class=\"gen\">
-          <br />
-          </span>
+          <div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>
          ";
     CloseTable();
 }
@@ -248,35 +187,31 @@ function modadmin_edit_module ($module) {
     $o1 = $o2 = $o3 = $o4 = $o6 = '';
     switch ($module['view']) {
         case 1:
-            $o1 = 'SELECTED';
+        $o1 = 'SELECTED';
         break;
         case 2:
-            $o2 = 'SELECTED';
+        $o2 = 'SELECTED';
         break;
         case 3:
-            $o3 = 'SELECTED';
+        $o3 = 'SELECTED';
         break;
         case 4:
-            $o4 = 'SELECTED';
+        $o4 = 'SELECTED';
         break;
         case 6:
-            $o6 = 'SELECTED';
-            $ingroups = explode('-', $module['groups']);
+        $o6 = 'SELECTED';
+        $ingroups = explode('-', $module['groups']);
         break;
     }
     GraphicAdmin();
     OpenTable();
     echo "
           <div align=\"center\">
-              <font class=\"title\">
-                  <a href=\"$admin_file.php?op=modules\">
-                      "._MODULESADMIN."
-                  </a>
-              </font>
+              <font class=\"title\"><a href=\"$admin_file.php?op=modules\">"._MODULESADMIN."</a></font>
           </div>
          ";
     CloseTable();
-    echo "<br />";
+    echo "<div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>";
     OpenTable();
     if(substr($module['title'],0,3) != '~l~') {
         $a = ($module['title'] == $main_module) ? ' - ('._INHOME.')' : '';
@@ -284,202 +219,126 @@ function modadmin_edit_module ($module) {
               <fieldset>
                   <legend>
                       <span class='option'>
-                          <strong>
-                              ".$module['title'].$a."&nbsp;
-                          </strong>
+                          <strong>".$module['title'].$a."&nbsp;</strong>
                       </span>
                   </legend>
                   <table cellpadding=\"0\" cellspacing=\"8\" border=\"0\">
-                  <form method=\"post\" action=\"".$admin_file.".php?op=modules\">
-                      <tr>
-                          <td>
-                              "._CUSTOMTITLE.":
-                          </td>
-                          <td colspan=\"3\">
-                              <input type=\"text\" name=\"custom_title\" id=\"custom_title\" value=\"".$module['custom_title']."\" size=\"30\" maxlength=\"255\" />
-                          </td>
-                      </tr>
-             ";
-            if($module['title'] == $main_module || $module['title'] == 'Your_Account' || $module['title'] == 'Profile') {
-                echo "<input type=\"hidden\" name=\"view\" value=\"0\" />";
-            } else {
-                echo "
-                      <tr>
-                          <td nowrap>
-                              " . _VIEWPRIV . "
-                          </td>
-                          <td> 
-                              <select name=\"view\">
-                                  <option value=\"1\" $o1>
-                                      " . _MVALL . "
-                                  </option>
-                                  <option value=\"2\" $o2>
-                                      " . _MVANON . "
-                                  </option>
-                                  <option value=\"3\" $o3>
-                                      " . _MVUSERS . "
-                                  </option>
-                                  <option value=\"4\" $o4>
-                                      " . _MVADMIN . "
-                                  </option>
-                                  <option value=\"6\" $o6>
-                                      "._MVGROUPS."
-                                  </option>
-                              </select>
-                              <br />
-                          </td>
-                      </tr>
-                      <tr>
-                          <td nowrap valign='middle'>
-                              <div>
-                                  "._WHATGROUPS.":
-                              </div>
-                          </td>
-                          <td>
-                              <select name='add_groups[]' multiple size='5'>
-                     ";
-                $groupsResult = $db->sql_query("select group_id, group_name from ".$prefix."_bbgroups where group_description <> 'Personal User'");
-                while(list($gid, $gname) = $db->sql_fetchrow($groupsResult)) {
-                    if(@in_array($gid,$ingroups) AND $o6 == 'SELECTED') { $sel = "selected"; } else { $sel = ""; }
-                    echo "
-                          <OPTION VALUE='$gid'$sel>
-                              $gname
-                          </option>
-                         ";
-                }
-                echo "
-                              </select>
-                              <br />
-                              <span class='tiny'>
-                                  ("._WHATGRDESC.")
-                              </span
-                          </td>
-                      </tr>
-                      <br />
-                     ";
+                      <form method=\"post\" action=\"".$admin_file.".php?op=modules\">
+                          <tr>
+                              <td width='20%' nowrap>"._CUSTOMTITLE.":&nbsp;</td>
+                              <td colspan=\"3\"><input type=\"text\" name=\"custom_title\" id=\"custom_title\" value=\"".$module['custom_title']."\" size=\"30\" maxlength=\"255\" /></td>
+                          </tr>
+            ";
+        if($module['title'] == $main_module || $module['title'] == 'Your_Account' || $module['title'] == 'Profile') {
+            echo "<input type=\"hidden\" name=\"view\" value=\"0\" />";
+        } else {
+            echo "
+                  <tr>
+                      <td nowrap>" . _VIEWPRIV . "</td>
+                      <td> 
+                          <select name=\"view\">
+                              <option value=\"1\" $o1>"._MVALL."</option>
+                              <option value=\"2\" $o2>"._MVANON."</option>
+                              <option value=\"3\" $o3>"._MVUSERS."</option>
+                              <option value=\"4\" $o4>"._MVADMIN."</option>
+                              <option value=\"6\" $o6>"._MVGROUPS."</option>
+                          </select><br />
+                      </td>
+                  </tr>
+                  <tr>
+                      <td nowrap valign='middle'>
+                          <div>"._WHATGROUPS.":&nbsp;</div>
+                      </td>
+                      <td>
+                          <select name='add_groups[]' multiple size='5'>
+                ";
+            $groupsResult = $db->sql_query("select group_id, group_name from ".$prefix."_bbgroups where group_description <> 'Personal User'");
+            while(list($gid, $gname) = $db->sql_fetchrow($groupsResult)) {
+                if(@in_array($gid,$ingroups) AND $o6 == 'SELECTED') { $sel = "selected"; } else { $sel = ""; }
+                echo "<OPTION VALUE='$gid'$sel>$gname</option>";
             }
+            echo "
+                          </select><br />
+                          <span class='tiny'>("._WHATGRDESC.")</span><br />
+                      </td>
+                  </tr>
+                 ";
+        }
         echo "
                       <tr>
-                          <td>
-                              <label for=\"blocks\">
-                                  "._BLOCKSSHOW.":
-                              </label>
-                          </td>
-                          <td>
-                              ".select_box('blocks', $module['blocks'], array("0"=>_NONE, "1"=>_LEFT, "2"=>_RIGHT, "3"=>_BOTH))."
-                          </td>
+                          <td><label for=\"blocks\">"._BLOCKSSHOW.":&nbsp;</label></td>
+                          <td>".select_box('blocks', $module['blocks'], array("0"=>_NONE, "1"=>_LEFT, "2"=>_RIGHT, "3"=>_BOTH))."</td>
                       </tr>
                       <tr>
-                          <td>
-                              <label for=\"inmenu\">
-                                  "._SHOWINMENU."
-                              </label>
-                          </td>
-                          <td>
-                              ".yesno_option('inmenu',  $module['inmenu'])."
-                              <br />
-                          </td>
+                          <td nowrap><label for=\"inmenu\">"._SHOWINMENU."</label></td>
+                          <td>".yesno_option('inmenu',  $module['inmenu'])."<br /></td>
                       </tr>
                   </table>
               </fieldset>
-              <br />
-                  <div align=\"center\">
-                      <input type=\"hidden\" name=\"save\" value=\"".$module['mid']."\" />
-                      <input type=\"submit\" value=\"" ._SAVECHANGES . "\">
-                  </div>
+              <div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>
+                      <div align=\"center\">
+                          <input type=\"hidden\" name=\"save\" value=\"".$module['mid']."\" />
+                          <input type=\"submit\" value=\"" ._SAVECHANGES . "\">
+                      </div>
                   </form>
               </td>
              ";
     } else {
-        
         $title = substr($module['title'],3);
-        
         echo "
               <fieldset>
                   <legend>
                       <span class='option'>
-                          <strong>
-                              ".$title."&nbsp;
-                          </strong>
+                          <strong>".$title."&nbsp;</strong>
                       </span>
                   </legend>
                   <table cellpadding=\"0\" cellspacing=\"8\" border=\"0\">
-                  <form method=\"post\" action=\"".$admin_file.".php?op=modules\">
-                      <tr>
-                          <td>
-                              "._MOD_CAT_LINK_TITLE.":
-                          </td>
-                          <td colspan=\"3\">
-                              <input type=\"text\" name=\"title\" id=\"linktitle\" value=\"".$title."\" size=\"30\" maxlength=\"30\" />
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>
-                              "._URL.":
-                          </td>
-                          <td colspan=\"3\">
-                              <input type=\"text\" name=\"custom_title\" id=\"link\" value=\"".$module['custom_title']."\" size=\"30\" maxlength=\"100\" />
-                          </td>
-                      </tr>
-                      <tr>
-                          <td nowrap>
-                              " . _VIEWPRIV . "
-                          </td>
-                          <td> 
-                              <select name=\"view\">
-                                  <option value=\"1\" $o1>
-                                      " . _MVALL . "
-                                  </option>
-                                  <option value=\"2\" $o2>
-                                      " . _MVANON . "
-                                  </option>
-                                  <option value=\"3\" $o3>
-                                      " . _MVUSERS . "
-                                  </option>
-                                  <option value=\"4\" $o4>
-                                      " . _MVADMIN . "
-                                  </option>
-                                  <option value=\"6\" $o6>
-                                      "._MVGROUPS."
-                                  </option>
-                              </select>
-                              <br />
-                          </td>
-                      </tr>
-                      <tr>
-                      <td nowrap valign='middle'>
-                          <div>
-                              "._WHATGROUPS.":
-                          </div>
-                      </td>
-                      <td>
-                          <select name='add_groups[]' multiple size='5'>
+                      <form method=\"post\" action=\"".$admin_file.".php?op=modules\">
+                          <tr>
+                              <td width='20%' nowrap>"._MOD_CAT_LINK_TITLE.":&nbsp;</td>
+                              <td colspan=\"3\"><input type=\"text\" name=\"title\" id=\"linktitle\" value=\"".$title."\" size=\"30\" maxlength=\"30\" /></td>
+                          </tr>
+                          <tr>
+                              <td>"._URL.":&nbsp;</td>
+                              <td colspan=\"3\"><input type=\"text\" name=\"custom_title\" id=\"link\" value=\"".$module['custom_title']."\" size=\"30\" maxlength=\"100\" /></td>
+                          </tr>
+                          <tr>
+                              <td nowrap>" . _VIEWPRIV . "</td>
+                              <td> 
+                                  <select name=\"view\">
+                                      <option value=\"1\" $o1>"._MVALL ."</option>
+                                      <option value=\"2\" $o2>"._MVANON."</option>
+                                      <option value=\"3\" $o3>"._MVUSERS."</option>
+                                      <option value=\"4\" $o4>"._MVADMIN."</option>
+                                      <option value=\"6\" $o6>"._MVGROUPS."</option>
+                                  </select><br />
+                              </td>
+                          </tr>
+                          <tr>
+                              <td nowrap valign='middle'>
+                                  <div>"._WHATGROUPS.":&nbsp;</div>
+                              </td>
+                              <td>
+                                  <select name='add_groups[]' multiple size='5'>
              ";
         $groupsResult = $db->sql_query("select group_id, group_name from ".$prefix."_bbgroups where group_description <> 'Personal User'");
         while(list($gid, $gname) = $db->sql_fetchrow($groupsResult)) {
             if(@in_array($gid,$ingroups) AND $o6 == 'SELECTED') { $sel = "selected"; } else { $sel = ""; }
-            echo "
-                  <OPTION VALUE='$gid'$sel>
-                      $gname
-                  </option>
-                 ";
+            echo "<OPTION VALUE='$gid'$sel>$gname</option>";
         }
         echo "
-                              </select>
-                              <br />
-                              <span class='tiny'>
-                                  ("._WHATGRDESC.")
-                              </span>
+                              </select><br />
+                              <span class='tiny'>("._WHATGRDESC.")</span>
                           </td>
                       </tr>
                   </table>
               </fieldset>
-              <br />
-                  <div align=\"center\">
-                      <input type=\"hidden\" name=\"link\" value=\"1\" />
-                      <input type=\"hidden\" name=\"save\" value=\"".$module['mid']."\" />
-                      <input type=\"submit\" value=\"" ._SAVECHANGES . "\">
-                  </div>
+              <div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>
+                      <div align=\"center\">
+                          <input type=\"hidden\" name=\"link\" value=\"1\" />
+                          <input type=\"hidden\" name=\"save\" value=\"".$module['mid']."\" />
+                          <input type=\"submit\" value=\"" ._SAVECHANGES . "\">
+                      </div>
                   </form>
               </td>
              ";
@@ -542,43 +401,62 @@ function modadmin_block () {
     OpenTable();
     echo "
           <div align=\"center\">
-              <font class=\"title\">
-                  <a href=\"$admin_file.php?op=modules\">
-                      "._MODULESADMIN."
-                  </a>
-              </font>
+              <font class=\"title\"><a href=\"$admin_file.php?op=modules\">"._MODULESADMIN."</a></font>
           </div>
          ";
     CloseTable();
-    echo "
-          <br />
-         ";
+    echo "<div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>";
     OpenTable();
     echo "
+          <div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>
           <table width=\"70%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\">
               <tr>
-                  <td width=\"33%\" align=\"center\" rowspan=\"1\">
-                      <span style=\"font-weight: bold; text-align: 'center';\">
-                          "._INACTIVE."
-                      </span>
-                      <ul id=\"left_col\" class=\"sortable boxy\">
+                  <td width='33%' align='center' valign='top'>
+                      <table border='0'>
+                          <tr>
+                              <td align='center'><b>"._AVAILABLE."</b></td>
+                          </tr>
+                          <tr>
+                              <td align='center'>
+                                  <ul id=\"left_col\" class=\"sortable boxy\">
          ";
     if(is_array($inactive)) {
         foreach ($inactive as $element) {
-            $custom_title = (substr($element['title'],0,3) == '~l~') ? "<span style=\"color: blue;\">".substr($element['title'],3)."</span>&nbsp;&nbsp;<a href=\"".$admin_file.".php?op=modules&amp;delete=".$element['mid']."\"><img src=\"images/sys/delete.gif\" border=\"0\" alt=\"\"></a>" : $element['custom_title'];
-            $custom_title .= "&nbsp;&nbsp;<a href=\"".$admin_file.".php?op=modules&amp;edit=".$element['mid']."\"><img src=\"images/sys/edit.gif\" border=\"0\" alt=\""._MODULEEDIT."\"></a>";
-
+            $custom_title = (substr($element['title'],0,3) == '~l~') ? "<span style=\"color: blue;\">".substr($element['title'],3)."</span>" : $element['custom_title'];
             echo "
                   <li class=\"" . (($element['active'] == 1) ? "active" : "inactive")."\" id=\"mod".$element['mid']."\" ondblclick=\"change_status('".$element['mid']."')\">
-                      ".$custom_title."
+                      <table width=\"100%\">
+                          <tr>
+                              <td width=\"75%\" align=\"left\">&nbsp;<strong><big>&middot;</big></strong>&nbsp;".$custom_title."</td>
+                              <td align=\"right\" width=\"25%\">
+                                  <a href=\"".$admin_file.".php?op=modules&amp;edit=".$element['mid']."\"><img src=\"images/sys/edit.gif\" border=\"0\" alt=\""._MODULEEDIT."\"></a>
+                 ";
+            if(substr($element['title'],0,3) == '~l~') {
+                echo "<a href=\"".$admin_file.".php?op=modules&amp;delete=".$element['mid']."\"><img src=\"images/sys/delete.gif\" border=\"0\" alt=\"\"></a>";
+            } else {
+                echo "<img src=\"images/sys/delete_x.gif\" border=\"0\" alt=\"\">";
+            }
+            echo "
+                              </td>
+                          </tr>
+                      </table>                
                   </li>
                  ";
         }
     }
     echo "
-              </ul>
+                          </ul>
+                      </td>
+                  </tr>
+              </table>
           </td>
-          <td align=\"center\">
+          <td width='33%' align='center' valign='top'>
+              <table border='0'>
+                  <tr>
+                      <td align='center'><b>"._MAIN."</b></td>
+                  </tr>
+                  <tr>
+                      <td align='center'>
          ";
     //Active
     if(is_array($modadmin_module_cats)) {
@@ -590,152 +468,128 @@ function modadmin_block () {
             }
             $i++;
             if($i == count($modadmin_module_cats)) {
-                $updown = "<a href=\"".$admin_file.".php?op=modules&amp;upcat=".$cat['pos']."\"><img src=\"images/up.gif\" border=\"0\" alt=\"\"></a>";
+                $updown = "<img src=\"images/null.gif\" border=\"0\" alt=\"\">&nbsp;<a href=\"".$admin_file.".php?op=modules&amp;upcat=".$cat['pos']."\"><img src=\"images/up.gif\" border=\"0\" alt=\"\"></a>";
             } else if($i != 1) {
-                $updown = "<a href=\"".$admin_file.".php?op=modules&amp;downcat=".$cat['pos']."\"><img src=\"images/down.gif\" border=\"0\" alt=\"\"></a><a href=\"".$admin_file.".php?op=modules&amp;upcat=".$cat['pos']."\"><img src=\"images/up.gif\" border=\"0\" alt=\"\"></a>";
+                $updown = "<a href=\"".$admin_file.".php?op=modules&amp;downcat=".$cat['pos']."\"><img src=\"images/down.gif\" border=\"0\" alt=\"\"></a>&nbsp;<a href=\"".$admin_file.".php?op=modules&amp;upcat=".$cat['pos']."\"><img src=\"images/up.gif\" border=\"0\" alt=\"\"></a>";
             } else if($i == 1) {
-                $updown = "<a href=\"".$admin_file.".php?op=modules&amp;downcat=".$cat['pos']."\"><img src=\"images/down.gif\" border=\"0\" alt=\"\"></a>";
+                $updown = "<img src=\"images/null.gif\" border=\"0\" alt=\"\">&nbsp;<a href=\"".$admin_file.".php?op=modules&amp;downcat=".$cat['pos']."\"><img src=\"images/down.gif\" border=\"0\" alt=\"\"></a>";
             }
             echo "
-                  <span style=\"font-weight: bold; text-align: 'center';\">
-                      ".$cat['name']."
-                      &nbsp;
-                      <a href=\"".$admin_file.".php?op=modules&amp;editcat=".$cat['cid']."\">
-                          <img src=\"images/sys/edit.gif\" border=\"0\" alt=\""._MOD_CAT_EDIT."\">
-                      </a>
-                      <a href=\"".$admin_file.".php?op=modules&amp;deletecat=".$cat['cid']."\">
-                          <img src=\"images/sys/delete.gif\" border=\"0\" alt=\""._MOD_CAT_DELETE."\">
-                      </a>
-                      ".$updown."
-                  </span>
+                  <table width=\"100%\" cellspacing=\"1\" cellpadding=\"2\">
+                      <tr>
+                          <td width=\"60%\" align=\"left\"><span style=\"font-weight: bold;\">".$cat['name']."</span></td>
+                          <td align=\"center\" width=\"40%\">
+                              ".$updown."
+                              <a href=\"".$admin_file.".php?op=modules&amp;editcat=".$cat['cid']."\"><img src=\"images/sys/edit.gif\" border=\"0\" alt=\""._MOD_CAT_EDIT."\"></a>
+                              <a href=\"".$admin_file.".php?op=modules&amp;deletecat=".$cat['cid']."\"><img src=\"images/sys/delete.gif\" border=\"0\" alt=\""._MOD_CAT_DELETE."\"></a>
+                          </td>
+                      </tr>
+                  </table>                
                   <ul id=\"ul".$cat['cid']."\" class=\"sortable boxy\">
                  ";
             $sql = 'SELECT * FROM `'.$prefix.'_modules` WHERE cat_id='.$cat['cid'].' AND `inmenu`<>0 ORDER BY `pos` ASC';
             $result = $db->sql_query($sql);
             while ($row = $db->sql_fetchrow($result)) {
-                $custom_title = (substr($row['title'],0,3) == '~l~') ? "<span style=\"color: blue;\">".substr($row['title'],3)."</span>&nbsp;&nbsp;<a href=\"".$admin_file.".php?op=modules&amp;delete=".$row['mid']."\"><img src=\"images/sys/delete.gif\" border=\"0\" alt=\"\"></a>" : $row['custom_title'];
-                $custom_title .= "&nbsp;&nbsp;<a href=\"".$admin_file.".php?op=modules&amp;edit=".$row['mid']."\"><img src=\"images/sys/edit.gif\" border=\"0\" alt=\""._MODULEEDIT."\"></a>";
-
+                $custom_title = (substr($row['title'],0,3) == '~l~') ? "<span style=\"color: blue;\">".substr($row['title'],3)."</span>" : $row['custom_title'];
                 echo "
                       <li class=\"" . (($row['active'] == 1) ? "active" : "inactive") . "\" id=\"mod".$row['mid']."\" ondblclick=\"change_status('".$row['mid']."')\">
-                          ".$custom_title."
+                          <table width=\"100%\">
+                              <tr>
+                                  <td width=\"75%\" align=\"left\">&nbsp;<strong><big>&middot;</big></strong>&nbsp;".$custom_title."</td>
+                                  <td align=\"right\" width=\"25%\">
+                                      <a href=\"".$admin_file.".php?op=modules&amp;edit=".$row['mid']."\"><img src=\"images/sys/edit.gif\" border=\"0\" alt=\""._MODULEEDIT."\"></a>";
+                if(substr($row['title'],0,3) == '~l~') {
+                    echo "&nbsp;<a href=\"".$admin_file.".php?op=modules&amp;delete=".$row['mid']."\"><img src=\"images/sys/delete.gif\" border=\"0\" alt=\"\"></a>";
+                } else {
+                    echo "&nbsp;<img src=\"images/sys/delete_x.gif\" border=\"0\" alt=\"\">";
+                }
+                echo "
+                                  </td>
+                              </tr>
+                          </table>                
                       </li>
                      ";
             }
             $db->sql_freeresult($result);
-            echo "
-                  </ul>
-                 ";
+            echo "</ul>";
         }
     }
     echo "
+                              </td>
+                          </tr>
+                      </table>
                   </td>
               </tr>
               <tr>
-                  <td colspan=\"3\" align=\"center\">
-                      <br />
-                      <form action=\"\" method=\"post\">
-                          <br />
-                          <input type=\"hidden\" name=\"order\" id=\"order\" value=\"\" />
+                  <td colspan=\"3\" align=\"center\"><br />
+                      <form action=\"\" method=\"post\"><br />
+                         <input type=\"hidden\" name=\"order\" id=\"order\" value=\"\" />
                           <input type=\"submit\" onclick=\"getSort()\" value=\""._SUBMIT."\" />
                       </form>
+                  </td>
+              </tr>                   
           </table>
          ";
     CloseTable();
-    echo "
-          <br />
-         ";
+    echo "<div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>";
     OpenTable();
     echo "
-          <div align=\"center\">
-              "._MOD_EXPLAIN."
-              <br />
-              <br />
+          <div align=\"center\">"._MOD_EXPLAIN."<br /><br />
               <input type=\"submit\" value=\"Refresh Screen\" onclick=\"window.location.reload()\" />
           </div>
          ";
     CloseTable();
-    echo "
-          <br />
-         ";
+    echo "<div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>";
     OpenTable();
     echo "
           <fieldset>
               <legend>
-                  <span class='option'>
-                      <strong>
-                          "._MOD_CAT_ADD."
-                          &nbsp;
-                      </strong>
-                  </span>
+                  <span class='option'><strong>"._MOD_CAT_ADD."&nbsp;</strong></span>
               </legend>
               <table cellpadding=\"0\" cellspacing=\"8\" border=\"0\">
-              <form action=\"".$admin_file.".php?op=modules&amp;area=block\" method=\"post\">
-                  <tr>
-                      <td>
-                          "._MOD_CAT_TITLE.":
-                      </td>
-                      <td colspan=\"3\">
-                          <input type=\"text\" name=\"cat\" id=\"cat\" value=\"\" size=\"30\" maxlength=\"30\" />
-                      </td>
-                  </tr>
-                      </td>
-                  </tr>
+                  <form action=\"".$admin_file.".php?op=modules&amp;area=block\" method=\"post\">
+                      <tr>
+                          <td width='20%' nowrap>"._MOD_CAT_TITLE.":&nbsp;</td>
+                          <td colspan=\"3\"><input type=\"text\" name=\"cat\" id=\"cat\" value=\"\" size=\"30\" maxlength=\"30\" /></td>
+                      </tr>
               </table>
           </fieldset>
-          <br />
-              <div align=\"center\">
-                  <input type=\"submit\" value=\"" . _SUBMIT . "\">
-              </div>
+          <div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>
+                  <div align=\"center\">
+                      <input type=\"submit\" value=\"" . _SUBMIT . "\">
+                  </div>
               </form>
           </td>
          ";
     CloseTable();
-    echo "
-          <br />
-         ";
+    echo "<div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>";
     OpenTable();
     echo "
           <fieldset>
               <legend>
-                  <span class='option'>
-                      <strong>
-                          "._MOD_LINK_ADD."
-                          &nbsp;
-                      </strong>
-                  </span>
+                  <span class='option'><strong>"._MOD_LINK_ADD."&nbsp;</strong></span>
               </legend>
               <table cellpadding=\"0\" cellspacing=\"8\" border=\"0\">
               <form action=\"".$admin_file.".php?op=modules&amp;area=block\" method=\"post\">
                   <tr>
-                      <td>
-                          "._MOD_CAT_LINK_TITLE.":
-                      </td>
-                      <td colspan=\"3\">
-                          <input type=\"text\" name=\"linktitle\" id=\"linktitle\" value=\"\" size=\"30\" maxlength=\"30\" />
-                      </td>
+                      <td width='20%' nowrap>"._MOD_CAT_LINK_TITLE.":&nbsp;</td>
+                      <td colspan=\"3\"><input type=\"text\" name=\"linktitle\" id=\"linktitle\" value=\"\" size=\"30\" maxlength=\"30\" /></td>
                   </tr>
                   <tr>
-                      <td>
-                          "._URL.":
-                      </td>
-                      <td colspan=\"3\">
-                          <input type=\"text\" name=\"link\" id=\"link\" value=\"\" size=\"30\" maxlength=\"100\" />
-                      </td>
-                  </tr>
-                      </td>
+                      <td>"._URL.":&nbsp;</td>
+                      <td colspan=\"3\"><input type=\"text\" name=\"link\" id=\"link\" value=\"\" size=\"30\" maxlength=\"100\" /></td>
                   </tr>
               </table>
           </fieldset>
-          <br />
-              <div align=\"center\">
-                  <input type=\"submit\" value=\"" . _SUBMIT . "\">
-              </div>
+          <div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>
+                  <div align=\"center\">
+                      <input type=\"submit\" value=\"" . _SUBMIT . "\">
+                  </div>
               </form>
           </td>
          ";
     CloseTable();
-    }
+}
 
 function modadmin_get_module_cats () {
     global $modadmin_module_cats, $prefix, $db, $cache;
@@ -756,25 +610,22 @@ function modadmin_get_module_cats () {
 
 function modadmin_parse_data($data) {
     $containers = explode(":", $data);
-    foreach($containers AS $container)
-  {
-      $container = str_replace(")", "", $container);
-      $i = 0;
-      $lastly = explode("(", $container);
-      $values = explode(",", $lastly[1]);
-      foreach($values AS $value)
-      {
-        if($value == '')
-        {
-            continue;
+    foreach($containers AS $container) {
+        $container = str_replace(")", "", $container);
+        $i = 0;
+        $lastly = explode("(", $container);
+        $values = explode(",", $lastly[1]);
+        foreach($values AS $value) {
+            if($value == '') {
+                continue;
+            }
+            $key = str_replace('ul', '', $lastly[0]);
+            $value = str_replace('mod','',$value);
+            $final[$key][] = $value;
+            $i ++;
         }
-        $key = str_replace('ul', '', $lastly[0]);
-        $value = str_replace('mod','',$value);
-        $final[$key][] = $value;
-        $i ++;
-      }
-  }
-  return $final;
+    }
+    return $final;
 }
 
 function modadmin_write_cats ($data) {
@@ -832,66 +683,45 @@ function modadmin_move_cat ($pos, $up) {
 function modadmin_edit_cat($cat) {
     global $prefix, $db, $admin_file, $cache;
     $cat = Fix_Quotes($cat);
-    
     if(!is_numeric($cat)) {
         DisplayError(_MOD_ERROR_CAT_NF);
     }
     $result = $db->sql_query('SELECT name FROM `'.$prefix.'_modules_cat` WHERE `cid` = '.$cat);
     $row = $db->sql_fetchrow($result);
     $db->sql_freeresult($result);
-    
     if(!isset($row[0]) || empty($row[0])) {
         DisplayError(_MOD_ERROR_CAT_NF);
     }
-
     $name = $row[0];
-    
     include_once(NUKE_BASE_DIR.'header.php');
     GraphicAdmin();
     OpenTable();
     echo "
           <div align=\"center\">
-              <font class=\"title\">
-                  <a href=\"$admin_file.php?op=modules\">
-                      "._MODULESADMIN."
-                  </a>
-              </font>
-           </div>
-          ";
-    CloseTable();
-    echo "
-          <br />
+              <font class=\"title\"><a href=\"$admin_file.php?op=modules\">"._MODULESADMIN."</a></font>
+          </div>
          ";
+    CloseTable();
+    echo "<div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>";
     OpenTable();
     echo "
           <fieldset>
               <legend>
-                  <span class='option'>
-                      <strong>
-                          "._MOD_CAT_EDIT."
-                          &nbsp;
-                      </strong>
-                  </span>
+                  <span class='option'><strong>"._MOD_CAT_EDIT."&nbsp;</strong></span>
               </legend>
               <table cellpadding=\"0\" cellspacing=\"8\" border=\"0\">
               <form method=\"post\" action=\"".$admin_file.".php?op=modules\">
                   <tr>
-                      <td>
-                          "._MOD_CAT_TITLE.":
-                      </td>
-                      <td colspan=\"3\">
-                          <input type=\"text\" name=\"cattitle\" id=\"title\" value=\"".$name."\" size=\"30\" maxlength=\"30\" />
-                      </td>
-                  </tr>
-                      </td>
+                      <td>"._MOD_CAT_TITLE.":&nbsp;</td>
+                      <td colspan=\"3\"><input type=\"text\" name=\"cattitle\" id=\"title\" value=\"".$name."\" size=\"30\" maxlength=\"30\" /></td>
                   </tr>
               </table>
           </fieldset>
-          <br />
-              <div align=\"center\">
-                  <input type=\"hidden\" name=\"catsave\" value=\"".$cat."\">
-                  <input type=\"submit\" value=\"" . _SAVECHANGES . "\">
-              </div>
+          <div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>
+                  <div align=\"center\">
+                      <input type=\"hidden\" name=\"catsave\" value=\"".$cat."\">
+                      <input type=\"submit\" value=\"" . _SAVECHANGES . "\">
+                  </div>
               </form>
           </td>
          ";
@@ -902,11 +732,9 @@ function modadmin_edit_cat_save($cat, $name) {
     global $prefix, $db, $admin_file, $cache;
     $name = Fix_Quotes($name);
     $cat = Fix_Quotes($cat);
-    
     if(!is_numeric($cat)) {
         DisplayError(_MOD_ERROR_CAT_NF);
     }
-
     $sql = "UPDATE `".$prefix."_modules_cat` SET `name`=\"".$name."\" WHERE `cid`=".$cat;
     $db->sql_query($sql);
     $cache->delete('module_cats');
@@ -932,54 +760,44 @@ function modadmin_delete_link ($mid) {
     $cache->resync();
 }
 
-/*~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-*/
-
 function modadmin_add_scripts() {
     global $Sajax;
-    $script .= "
-                function module_activate(mid) {
-                    x_modadmin_activate(mid, confirm);
-                    window.location.reload();
-                }
-               ";
-    $script .= "
-                function change_status(bid) {
-                    var elem = document.getElementById(\"mod\"+bid);
-                    elem.className = ((elem.className == \"active\") ? \"inactive\" : \"active\");
-                    x_modadmin_activate(bid, confirm);
-                }
-               ";
-    $script .= "
-                function onDrop() {
-                    var data = DragDrop.serData('g2');
-                    x_sajax_update(data, confirm);
-                }
-               ";
-    $script .= "
-                function getSort()
-                {
-                    order = document.getElementById(\"order\");
-                    order.value = DragDrop.serData('g1', null);
-                }
-               ";
-    $script .= "
-                function showValue()
-                {
-                    order = document.getElementById(\"order\");
-                    alert(order.value);
-                }
-               ";
-    $Sajax->sajax_add_script($script);
+    $scr .= "
+             function module_activate(mid) {
+                 x_modadmin_activate(mid, confirm);
+                 window.location.reload();
+             }
+
+             function change_status(bid) {
+                 var elem = document.getElementById(\"mod\"+bid);
+                 elem.className = ((elem.className == \"active\") ? \"inactive\" : \"active\");
+                 x_modadmin_activate(bid, confirm);
+             }
+
+             function onDrop() {
+                 var data = DragDrop.serData('g2');
+                 x_sajax_update(data, confirm);
+             }
+
+             function getSort() {
+                 order = document.getElementById(\"order\");
+                 order.value = DragDrop.serData('g1', null);
+             }
+
+             function showValue() {
+                 order = document.getElementById(\"order\");
+                 alert(order.value);
+             }
+            ";
+    $Sajax->sajax_add_script($scr);
 }
 
-/*~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-*/
-
 if(isset($_GET['a'])) {
-   (intval($_GET['a'])) ? modadmin_activate(intval($_GET['a'])) :  modadmin_activate_all($_GET['a']);
+    (intval($_GET['a'])) ? modadmin_activate(intval($_GET['a'])) :  modadmin_activate_all($_GET['a']);
 }
 
 if(isset($_GET['h'])) {
-   (intval($_GET['h'])) ? modadmin_home(intval($_GET['h'])) :  '';
+    (intval($_GET['h'])) ? modadmin_home(intval($_GET['h'])) :  '';
 }
 
 if(isset($_POST['save'])) {
@@ -998,8 +816,7 @@ if(isset($_POST['linktitle']) && isset($_POST['link'])) {
     }
 }
 
-if (isset($_POST['order']))
-{
+if (isset($_POST['order'])) {
     $data = modadmin_parse_data($_POST['order']);
     modadmin_write_cats($data);
     // redirect so refresh doesnt reset order to last save
@@ -1035,23 +852,23 @@ if(isset($_POST['catsave'])) {
 
 switch ($area) {
     case 'block':
-        define('USE_DRAG_DROP', true);
-        require_once(NUKE_CLASSES_DIR . 'class.sajax.php');
-        global $Sajax;
-        $Sajax = new Sajax();
-        $Sajax->sajax_export("sajax_update", "modadmin_activate");
-        $Sajax->sajax_handle_client_request();
-        modadmin_add_scripts();
-        global $modadmin_module_cats;
-        modadmin_get_module_cats();
-        modadmin_ajax_header();
-        modadmin_block();
+    define('USE_DRAG_DROP', true);
+    require_once(NUKE_CLASSES_DIR . 'class.sajax.php');
+    global $Sajax;
+    $Sajax = new Sajax();
+    $Sajax->sajax_export("sajax_update", "modadmin_activate");
+    $Sajax->sajax_handle_client_request();
+    modadmin_add_scripts();
+    global $modadmin_module_cats;
+    modadmin_get_module_cats();
+    modadmin_ajax_header();
+    modadmin_block();
     break;
 
     default:
-        include_once(NUKE_BASE_DIR.'header.php');
-        $modadmin_modules = modadmin_get_modules(intval($_GET['edit']));
-        (!isset($_GET['edit'])) ? modadmin_dispaly_modules($modadmin_modules) : modadmin_edit_module($modadmin_modules[0]);
+    include_once(NUKE_BASE_DIR.'header.php');
+    $modadmin_modules = modadmin_get_modules(intval($_GET['edit']));
+    (!isset($_GET['edit'])) ? modadmin_dispaly_modules($modadmin_modules) : modadmin_edit_module($modadmin_modules[0]);
     break;
 }
 

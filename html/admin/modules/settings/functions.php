@@ -343,8 +343,6 @@ function save_settings($sub) {
             $xlazytap = intval($_POST['xlazytap']);
             $xtextarea = $_POST['xtextarea'];
             $ximg_resize = intval($_POST['ximg_resize']);
-            $ximg_width = intval($_POST['ximg_width']);
-            $ximg_height = intval($_POST['ximg_height']);
             lazy_tap_check($xlazytap);
             $xcollapse = intval($_POST['xcollapse']);
             $db->sql_query("UPDATE ".$prefix."_config SET httpref='$xhttpref', httprefmax='$xhttprefmax', pollcomm='$xpollcomm', articlecomm='$xarticlecomm', my_headlines='$xmy_headlines', user_news='$xuser_news', banners='$xbanners'");
@@ -355,8 +353,6 @@ function save_settings($sub) {
             $db->sql_query("UPDATE ".$prefix."_system SET sys_value='".$xtextarea."' WHERE sys_field='textarea'");
             $db->sql_query("UPDATE ".$prefix."_system SET sys_value='".$xlazytap."' WHERE sys_field='lazy_tap'");
             $db->sql_query("UPDATE ".$prefix."_system SET sys_value='".$ximg_resize."' WHERE sys_field='img_resize'");
-            $db->sql_query("UPDATE ".$prefix."_system SET sys_value='".$ximg_width."' WHERE sys_field='img_width'");
-            $db->sql_query("UPDATE ".$prefix."_system SET sys_value='".$ximg_height."' WHERE sys_field='img_height'");
             $db->sql_query("UPDATE ".$prefix."_system SET sys_value='".$xcollapse."' WHERE sys_field='collapse'");
             $cache->delete('sysconfig');
 	    $cache->resync();

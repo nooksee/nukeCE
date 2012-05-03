@@ -1,4 +1,4 @@
-<div style="display:none" id="resizemod"></div><br />
+<div style="display:none" id="resize"></div><br />
 <br /><div align="center"><span class="gensmall">{REPORT_LINK}</b>{ADMIN_LINK}</span></div><br />
 <!--
     We request you retain the full copyright notice below including the link to www.phpbb.com.

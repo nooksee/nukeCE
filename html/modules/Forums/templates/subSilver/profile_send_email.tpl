@@ -1,25 +1,3 @@
-<script language="JavaScript" type="text/javascript">
-<!--
-function checkForm(formObj) {
-
-    formErrors = false;    
-
-    if (formObj.message.value.length < 2) {
-        formErrors = "{L_EMPTY_MESSAGE_EMAIL}";
-    }
-    else if ( formObj.subject.value.length < 2)
-    {
-        formErrors = "{L_EMPTY_SUBJECT_EMAIL}";
-    }
-
-    if (formErrors) {
-        alert(formErrors);
-        return false;
-    }
-}
-//-->
-</script>
-
 <form action="{S_POST_ACTION}" method="post" name="post" onSubmit="return checkForm(this)">
 
 {ERROR_BOX}

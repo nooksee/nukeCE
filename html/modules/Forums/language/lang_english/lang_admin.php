@@ -29,7 +29,6 @@
       Global Announcements                     v1.2.8       06/13/2005
       PM Quick Reply                           v1.3.5       06/14/2005
       Force Word Wrapping - Configurator       v1.0.16      06/15/2005
-      Resize Posted Images                     v2.4.5       06/15/2005
       Advance Signature Divider Control        v1.0.0       06/16/2005
       Forum Blocks                             v1.0.0       06/23/2005
       Forum ACP Administration Links           v1.0.0       06/26/2005
@@ -119,6 +118,7 @@ $lang['bid_faq'] = 'Buddy List FAQ';
 // Index
 //
 $lang['Admin'] = 'Administration';
+$lang['Quick_links'] = 'Quick Links';
 $lang['Not_admin'] = 'You are not authorized to administer this board';
 $lang['Admin_intro'] = 'This screen will give you a quick overview of all the various statistics of your board. You can get back to this page by clicking on the <u>Forums Admin</u> link in the left pane. To return to the index of your board, click the <u>Forum Index</u> link or the phpBB logo also in the left pane. The other links on the left hand side of this screen will allow you to control every aspect of your forum experience. Each screen will have instructions on how to use the tools.';
 $lang['Main_index'] = 'Forum Index';
@@ -1055,15 +1055,6 @@ $lang['show_splitted_logs'] = 'Show Topic Splitted logs';
 $lang['allow_logs_view'] = 'Show logs to';
 /*****[END]********************************************
  [ Mod:   Log Actions Mod - Topic View         v2.0.0 ]
- ******************************************************/
-
-/*****[BEGIN]******************************************
- [ Mod:   Resize Posted Images                 v2.4.5 ]
- ******************************************************/
-$lang['image_resize_width'] = 'Resize Image Width';
-$lang['image_resize_height'] = 'Resize Image Height';
-/*****[END]********************************************
- [ Mod:   Resize Posted Images                 v2.4.5 ]
  ******************************************************/
 
 /*****[BEGIN]******************************************

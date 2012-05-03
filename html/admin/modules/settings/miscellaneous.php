@@ -15,7 +15,7 @@ if(!defined('IN_SETTINGS')) {
   exit('Access Denied');
 }
 
-global $httpref, $httprefmax, $pollcomm, $articlecomm, $minpass, $my_headlines, $user_news, $adminssl, $queries_count, $use_colors, $lock_modules, $banners, $lazy_tap, $wysiwyg, $img_resize, $img_width, $img_height, $collapse;
+global $httpref, $httprefmax, $pollcomm, $articlecomm, $minpass, $my_headlines, $user_news, $adminssl, $queries_count, $use_colors, $lock_modules, $banners, $lazy_tap, $wysiwyg, $img_resize, $collapse;
 
 echo "
       <fieldset>
@@ -181,22 +181,6 @@ echo "
      ";
                       echo yesno_option('ximg_resize', $img_resize);
 echo "
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      "._IMG_WIDTH.":
-                  </td>
-                  <td colspan=\"3\">
-                      <input type='text' name='ximg_width' value='$img_width' size='5' maxlength='5'>
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      "._IMG_HEIGHT.":
-                  </td>
-                  <td colspan=\"3\">
-                      <input type='text' name='ximg_height' value='$img_height' size='5' maxlength='5'>
                   </td>
               </tr>
               <tr>

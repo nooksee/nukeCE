@@ -6,17 +6,7 @@
       <!-- MOD GLANCE END -->
    </tr>
 </table>
-<script language="Javascript" type="text/javascript">
-<!--
-    function open_postreview(ref)
-    {
-        height = screen.height / 3;
-        width = screen.width / 2;
-        window.open(ref, '_phpbbpostreview', 'HEIGHT=' + height + ',WIDTH=' + width + ',resizable=yes,scrollbars=yes');
-        return;
-    }
-//-->
-</script>
+
 <table width="100%" cellspacing="2" cellpadding="2" border="0">
   <tr> 
     <td align="left" valign="bottom" colspan="2"><a class="maintitle" href="{U_VIEW_TOPIC}">{TOPIC_TITLE}</a><br />
@@ -27,7 +17,7 @@
 
 <table width="100%" cellspacing="2" cellpadding="2" border="0">
   <tr> 
-    <td align="left" valign="bottom" nowrap="nowrap"><span class="nav"><a href="{U_POST_NEW_TOPIC}"><img src="{POST_IMG}" border="0" alt="{L_POST_NEW_TOPIC}" align="middle" /></a>&nbsp;&nbsp;&nbsp;<a href="{U_POST_REPLY_TOPIC}"><img src="{REPLY_IMG}" border="0" alt="{L_POST_REPLY_TOPIC}" align="middle" /></a>&nbsp;&nbsp;&nbsp;<a target="_blank" href="{U_PRINTER_TOPIC}"><img src="{PRINTER_IMG}" border="0" alt="{L_PRINTER_TOPIC}" align="middle" /></a>&nbsp;&nbsp;&nbsp;<a href="{U_SHARE_TOPIC}" class="gen" onclick="window.open('{U_SHARE_TOPIC}','popup','width=700,height=450,scrollbars=no,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no,left=330,top=320'); return false"><img src="{SHARE_IMG}" border="0" alt="{L_SHARE_TOPIC}" align="middle" /></a></span></td>
+    <td align="left" valign="bottom" nowrap="nowrap"><span class="nav"><a href="{U_POST_NEW_TOPIC}"><img src="{POST_IMG}" border="0" alt="{L_POST_NEW_TOPIC}" align="middle" /></a>&nbsp;&nbsp;&nbsp;<a href="{U_POST_REPLY_TOPIC}"><img src="{REPLY_IMG}" border="0" alt="{L_POST_REPLY_TOPIC}" align="middle" /></a>&nbsp;&nbsp;&nbsp;<a target="_blank" href="{U_PRINTER_TOPIC}"><img src="{PRINTER_IMG}" border="0" alt="{L_PRINTER_TOPIC}" align="middle" /></a>&nbsp;&nbsp;&nbsp;<a href="{U_SHARE_TOPIC}" rel="7" class="newWindow gen"><img src="{SHARE_IMG}" border="0" alt="{L_SHARE_TOPIC}" align="middle" /></a></span></td>
     <td align="left" valign="middle" width="100%"><span class="nav">&nbsp;&nbsp;&nbsp;<a href="{U_INDEX}" class="nav">{L_INDEX}</a> 
       ->&nbsp;<a href="{U_VIEW_FORUM}" class="nav">{FORUM_NAME}</a></span></td>
   </tr>
@@ -111,7 +101,7 @@
 	&nbsp;&nbsp;<a href="{U_POST_SQR_TOPIC}"><img src="{SQR_IMG}" border="0" alt="{L_POST_SQR_TOPIC}" align="middle" /></a>
     <!-- END switch_quick_reply -->
 	&nbsp;&nbsp;<a target="_blank" href="{U_PRINTER_TOPIC}"><img src="{PRINTER_IMG}" border="0" alt="{L_PRINTER_TOPIC}" align="middle" /></a>
-	&nbsp;&nbsp;<a href="{U_SHARE_TOPIC}" class="gen" onclick="window.open('{U_SHARE_TOPIC}','popup','width=700,height=450,scrollbars=no,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no,left=330,top=320'); return false"><img src="{SHARE_IMG}" border="0" alt="{L_SHARE_TOPIC}" align="middle" /></a>
+	&nbsp;&nbsp;<a href="{U_SHARE_TOPIC}" rel="7" class="newWindow gen"><img src="{SHARE_IMG}" border="0" alt="{L_SHARE_TOPIC}" align="middle" /></a>
     </span></td>
     <td align="left" valign="middle" width="100%"><span class="nav"><a href="{U_INDEX}" class="nav">{L_INDEX}</a> 
       ->&nbsp;<a href="{U_VIEW_FORUM}" class="nav">{FORUM_NAME}</a></span></td>

@@ -213,13 +213,6 @@ $lang['Statistics'] = 'Statistics';
 $lang['BBCode_guide'] = 'BBCode Guide';
 $lang['Usergroups'] = 'Groups';
 $lang['Last_Post'] = 'Last Post';
-/*****[BEGIN]******************************************
- [ Mod:     Resize Posted Images               v2.4.5 ]
- ******************************************************/
-$lang['rmw_image_title'] = 'Click to view full-size';
-/*****[END]********************************************
- [ Mod:     Resize Posted Images               v2.4.5 ]
- ******************************************************/
 $lang['Moderator'] = 'Moderator';
 $lang['Moderators'] = 'Moderators';
 

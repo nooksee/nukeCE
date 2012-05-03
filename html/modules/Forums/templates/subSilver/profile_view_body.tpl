@@ -79,7 +79,7 @@
     <!-- BEGIN switch_user_admin -->
 <tr> 
             <td valign="middle" nowrap="nowrap" align="right"><span class="gen">{L_USER_ADMIN}:</span></td>
-            <td valign="middle"><span class="gen"><a target="_admin" href="{U_ADMIN_PROFILE}" class="gen" onclick="window.open('{U_ADMIN_PROFILE}','popup','width=1024,height=768,scrollbars=yes,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no,left=180,top=100'); return false">{USERNAME}</a></span></td>
+            <td valign="middle"><span class="gen"><a href="{U_ADMIN_PROFILE}" rel="5" class="newWindow gen" target="_admin">{USERNAME}</a></span></td>
 </tr>        
     <!-- END switch_user_admin -->
       </table>

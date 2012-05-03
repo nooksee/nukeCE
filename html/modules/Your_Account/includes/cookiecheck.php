@@ -117,32 +117,12 @@ function yacookiecheckresults(){
                    ";
 
     if ($_COOKIE ['YA_CE3'] != "value3") {
-        echo "
-              <table align=\"center\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\" width=\"70%\">
-                  <tr>
-                      <td colspan=\"2\">
-                          <div align=\"center\">
-                              <font color=\"#FF3333\">
-                                  <em>
-                                      "._YA_COOKIENO."
-                                  </em>
-                              </font>
-                          </div>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td valign=\"top\">
-             ";
+        ErrorReturn("<font color=\"#FF3333\">"._YA_COOKIENO."</font>");
     if ($cookiedebug == "1") {
         OpenTable();
         echo $debugcookie;
         CloseTable();
     }
-    echo "
-                  </td>
-              </tr>
-          </table>
-         ";
     } else if ($cookiedebug == "1") {
         echo "
               <form action=\"modules.php?name=$module_name\" method=\"post\">

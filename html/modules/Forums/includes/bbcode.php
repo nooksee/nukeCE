@@ -66,15 +66,15 @@ function prepare_bbcode_template($bbcode_tpl) {
     $bbcode_tpl['quote_username_open'] = str_replace('{USERNAME}', UsernameColor('\\1'), $bbcode_tpl['quote_username_open']);
     $bbcode_tpl['quote_post_open'] = str_replace('{L_QUOTE}', $lang['Quote'], $bbcode_tpl['quote_post_open']);
     $temp_url = append_sid('show_post.php?p=\\1');
-    $bbcode_tpl['quote_post_open'] = str_replace('{U_VIEW_POST}', '<a href="#_somewhat" onClick="javascript:open_postreview( \'' . $temp_url . '\' );" class="genmed">' . $lang['View_post'] . '</a>', $bbcode_tpl['quote_post_open']);
+    $bbcode_tpl['quote_post_open'] = str_replace('{U_VIEW_POST}', '<a href="' . $temp_url . '" rel="8" class="newWindow genmed" target="#_somewhat">' . $lang['View_post'] . '</a>', $bbcode_tpl['quote_post_open']);
     $bbcode_tpl['quote_username_post_open'] = str_replace('{L_QUOTE}', $lang['Quote'], $bbcode_tpl['quote_username_post_open']);
     $bbcode_tpl['quote_username_post_open'] = str_replace('{L_WROTE}', $lang['wrote'], $bbcode_tpl['quote_username_post_open']);
     $bbcode_tpl['quote_username_post_open'] = str_replace('{USERNAME}', '\\1', $bbcode_tpl['quote_username_post_open']);
     $temp_url = append_sid('show_post.php?p=\\2');
-    $bbcode_tpl['quote_username_post_open'] = str_replace('{U_VIEW_POST}', '<a href="#_somewhat" onClick="javascript:open_postreview( \'' . $temp_url . '\' );" class="genmed">' . $lang['View_post'] . '</a>', $bbcode_tpl['quote_username_post_open']);
+    $bbcode_tpl['quote_username_post_open'] = str_replace('{U_VIEW_POST}', '<a href="' . $temp_url . '" rel="8" class="newWindow genmed" target="#_somewhat">' . $lang['View_post'] . '</a>', $bbcode_tpl['quote_username_post_open']);
     $bbcode_tpl['quote_username_post_open'] = str_replace('{USERNAME}', UsernameColor('\\1'), $bbcode_tpl['quote_username_post_open']);
     $temp_url = append_sid('show_post.php?p=\\2');
-    $bbcode_tpl['quote_username_post_open'] = str_replace('{U_VIEW_POST}', '<a href="#_somewhat" onClick="javascript:open_postreview( \'' . $temp_url . '\' );" class="genmed">' . $lang['View_post'] . '</a>', $bbcode_tpl['quote_username_post_open']);
+    $bbcode_tpl['quote_username_post_open'] = str_replace('{U_VIEW_POST}', '<a href="' . $temp_url . '" rel="8" class="newWindow genmed" target="#_somewhat">' . $lang['View_post'] . '</a>', $bbcode_tpl['quote_username_post_open']);
     $bbcode_tpl['code_open'] = str_replace('{L_CODE}', $lang['Code'], $bbcode_tpl['code_open']);
     $bbcode_tpl['php_open'] = str_replace('{L_PHP}', $lang['PHPCode'], $bbcode_tpl['php_open']); // PHP MOD
     $bbcode_tpl['img'] = str_replace('{URL}', '\\1', $bbcode_tpl['img']);
@@ -113,7 +113,7 @@ function prepare_bbcode_template($bbcode_tpl) {
     $bbcode_tpl['youtube'] = str_replace('{YOUTUBELINK}', $lang['youtube_link'], $bbcode_tpl['youtube']);
     
     global $phpbb_root_path;
-    $u_sxbb_jslib = 'includes/js/sxbb_jslib.js';
+    $u_sxbb_jslib = 'modules/Forums/includes/js/sxbb_jslib.js';
     // Replacing BBCode variables, but also adding CR to preserve HTML comment delimiters for JS code.
     $expand_ary1 = array('<!--', '//-->', '{L_SELECT}', '{L_EXPAND}', '{L_CONTRACT}', '{U_SXBB_JSLIB}');
     $expand_ary2 = array("\r<!--\r", "\r//-->\r", $lang['Select'], $lang['Expand'], $lang['Contract'], $u_sxbb_jslib);
@@ -1037,7 +1037,7 @@ if(!function_exists('bbcode_table')) {
         }
         $content = '';
         if (!defined("BBCODE_JS_ACTIVE")) {
-            $content .= '<script language="JavaScript" src="includes/js/bbcode.js" type="text/javascript"></script>';
+            $content .= '<script language="JavaScript" src="modules/Forums/includes/js/bbcode.js" type="text/javascript"></script>';
             define("BBCODE_JS_ACTIVE", 1);
         }
         $content .= '

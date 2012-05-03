@@ -1,12 +1,3 @@
-<script language="javascript" type="text/javascript">
-<!--
-function update_rank(newimage)
-{
-   document.rank_image.src = newimage;
-}
-//-->
-</script>
-
 <h1>{L_RANKS_TITLE}</h1>
 
 <p>{L_RANKS_TEXT}</p>

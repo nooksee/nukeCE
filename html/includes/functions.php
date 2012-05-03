@@ -1098,7 +1098,7 @@ function nuke_img_tag_to_resize($text) {
         $text = str_replace('<NO RESIZE>', '', $text);
         return $text;
     }
-    $text = preg_replace('/<\s*?img/',"<img resizemod=\"on\" ",$text);
+    $text = preg_replace('/<\s*?img/',"<img id=\"resize\" ",$text);
     return $text;
 }
 

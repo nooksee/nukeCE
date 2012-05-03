@@ -86,7 +86,6 @@ if ( $board_config['allow_smilies'] )
 }
    $template->assign_vars(array(
       'U_MORE_SMILIES' => append_sid("posting.$phpEx?mode=smilies"),
-      'L_EMPTY_MESSAGE' => $lang['Empty_message'],
       'L_PREVIEW' => $lang['Preview'],
       'L_SUBMIT' => $lang['Submit'],
       'L_CANCEL' => $lang['Cancel'],
@@ -100,8 +99,6 @@ if ( $board_config['allow_smilies'] )
       'L_ALL_SMILIES' => $lang['PMQR_smilies'],
       'L_QUOTE_SELECTED' => $lang['PMQR_QuoteSelelected'],
       'L_NO_TEXT_SELECTED' => $lang['PMQR_QuoteSelelectedEmpty'],
-      'L_EMPTY_MESSAGE' => $lang['Empty_message'],
-      'L_EMPTY_SUBJECT' => $lang['Empty_subject'],
       'L_ENTER_URL' => $lang['PMQR_enter_url'],
       'L_ENTER_TITLE' => $lang['PMQR_enter_title'],
       'L_TITLE' => $lang['PMQR_title'],

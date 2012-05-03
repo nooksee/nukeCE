@@ -195,7 +195,7 @@
 <!-- BEGIN size_open --><span style="font-size: {SIZE}px; line-height: normal"><!-- END size_open -->
 <!-- BEGIN size_close --></span><!-- END size_close -->
 
-<!-- BEGIN img --><img resizemod="on" onload="rmw_img_loaded(this)" src="{URL}" border="0" alt="" /><!-- END img -->
+<!-- BEGIN img --><img id="resize" src="{URL}" border="0" alt="" /><!-- END img -->
 
 <!-- BEGIN url --><a href="{URL}" target="_blank" class="postlink">{DESCRIPTION}</a><!-- END url -->
 

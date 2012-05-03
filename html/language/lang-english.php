@@ -341,13 +341,6 @@ define("VALIDATE_WORD","A word was found in %s which is not allowed");
  [ Mod:     Password Strength Meter            v1.0.0 ]
  ******************************************************/
 define("PSM_HELP_TITLE","Password Strenght Help");
-define("PSM_NOTRATED","Not Rated");
-define("PSM_CURRENTSTRENGTH","Current Strength: ");
-define("PSM_WEAK","Weak");
-define("PSM_MED","Medium");
-define("PSM_STRONG","Strong");
-define("PSM_STRONGER","Stronger");
-define("PSM_STRONGEST","Strongest");
 /*****[END]********************************************
  [ Mod:     Password Strength Meter            v1.0.0 ]
  ******************************************************/

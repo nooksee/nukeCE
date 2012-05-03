@@ -1,4 +1,3 @@
-
 <h1>{L_MANAGE_CAT_TITLE}</h1>
 
 <p>{L_MANAGE_CAT_EXPLAIN}</p>

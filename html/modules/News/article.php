@@ -194,7 +194,7 @@ if ($haspoll == 1) {
         $sum = (int)$sum+$optionCount;
     }
     $boxContent .= "
-                    <div style=\"height: 15px; line-height: 15px;\">&nbsp;</div>
+                    <div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>
                     <div class=\"content\">
                         &nbsp;<a href=\"modules.php?name=Surveys&amp;op=results&amp;pollID=$pollID&amp;mode=".$userinfo['umode']."&amp;order=".$userinfo['uorder']."&amp;thold=".$userinfo['thold']."\"><strong>"._RESULTS."</strong></a>&nbsp;<br />
                         &nbsp;<a href=\"modules.php?name=Surveys\"><strong>"._POLLS."</strong></a>&nbsp;

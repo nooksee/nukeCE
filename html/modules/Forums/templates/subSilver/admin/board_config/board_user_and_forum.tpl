@@ -81,13 +81,5 @@
         <td class="row1">{L_AUTOLOGIN_TIME} <br /><span class="gensmall">{L_AUTOLOGIN_TIME_EXPLAIN}</span></td>
         <td class="row2"><input class="post" type="text" size="3" maxlength="4" name="max_autologin_time" value="{AUTOLOGIN_TIME}" /></td>
     </tr>
-    <tr>
-        <td class="row1">{L_IMAGE_RESIZE_WIDTH}<br /><span class="gensmall">{L_IMAGE_RESIZE_WIDTH}</span></td>
-        <td class="row2"><input class="post" type="text" size="5" maxlength="4" name="image_resize_width" value="{IMAGE_RESIZE_WIDTH}" /></td>
-    </tr>
-    <tr>
-        <td class="row1">{L_IMAGE_RESIZE_HEIGHT}<br /><span class="gensmall">{L_IMAGE_RESIZE_HEIGHT}</span></td>
-        <td class="row2"><input class="post" type="text" size="5" maxlength="4" name="image_resize_height" value="{IMAGE_RESIZE_HEIGHT}" /></td>
-    </tr>
 </table>
 </span>

@@ -124,14 +124,6 @@ $template->assign_vars(array(
  ******************************************************/
     "L_SMILIES_PATH" => $lang['Smilies_path'],
     "L_SMILIES_PATH_EXPLAIN" => $lang['Smilies_path_explain'],
-/*****[BEGIN]******************************************
- [ Mod:   Resize Posted Images                 v2.4.5 ]
- ******************************************************/
-    "L_IMAGE_RESIZE_WIDTH" => $lang['image_resize_width'],
-    "L_IMAGE_RESIZE_HEIGHT" => $lang['image_resize_height'],
-/*****[END]********************************************
- [ Mod:   Resize Posted Images                 v2.4.5 ]
- ******************************************************/
 ));
 
 //Data Template Variables
@@ -187,15 +179,7 @@ $template->assign_vars(array(
  [ Mod:   Log Actions Mod - Topic View         v2.0.0 ]
  ******************************************************/
     "SMILIES_PATH" => $new['smilies_path'],
-/*****[BEGIN]******************************************
- [ Mod:   Resize Posted Images                 v2.4.5 ]
- ******************************************************/
-    "IMAGE_RESIZE_WIDTH" => $new['image_resize_width'],
-    "IMAGE_RESIZE_HEIGHT" => $new['image_resize_height'],
-/*****[END]********************************************
- [ Mod:   Resize Posted Images                 v2.4.5 ]
- ******************************************************/
- ));
+));
 $template->pparse("user_and_forum");
 
 ?>

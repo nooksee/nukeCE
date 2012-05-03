@@ -1,27 +1,3 @@
-<script language="JavaScript" type="text/javascript">
-<!--
-function toggle_check_all()
-{
-    var archive_text = "archive_id";
-    
-    for (var i=0; i < document.msgrow_values.elements.length; i++)
-    {
-        var checkbox_element = document.msgrow_values.elements[i];
-        if ((checkbox_element.name != 'check_all_del_box') && (checkbox_element.name != 'check_all_arch_box') && (checkbox_element.type == 'checkbox'))
-        {
-            if (checkbox_element.name.search("archive_id") != -1)
-            {        
-                checkbox_element.checked = document.msgrow_values.check_all_arch_box.checked;
-            }
-            else
-            {            
-                checkbox_element.checked = document.msgrow_values.check_all_del_box.checked;            
-            }
-        }
-    }
-}
--->
-</script>
 <!-- BEGIN statusrow -->
 <table width="100%" cellspacing="2" cellpadding="2" border="1" align="center">
     <tr> 
@@ -89,7 +65,7 @@ function toggle_check_all()
 <!-- BEGIN archive_avail_switch_msg -->
       <td class="{msgrow.ROW_CLASS}" align="center"><span class="gen">&nbsp;<input type="checkbox" name="archive_id_{msgrow.PM_ID}" onClick="JavaScript:delete_id_{msgrow.PM_ID}.checked = false;">&nbsp;</span></td>
 <!-- END archive_avail_switch_msg -->
-      <td class="{msgrow.ROW_CLASS}" align="left"><span class="genmed"><a href="{msgrow.U_INLINE_VIEWMSG}" onClick="{msgrow.U_VIEWMSG}">{msgrow.SUBJECT}</a></span></td>
+      <td class="{msgrow.ROW_CLASS}" align="left"><span class="genmed"><a href="{msgrow.U_VIEWMSG}" rel="10" class="newWindow genmed" target="_uviewmsg">{msgrow.SUBJECT}</a></span></td>
       <td class="{msgrow.ROW_CLASS}" align="center" valign="middle"><span class="gensmall">{msgrow.FROM}{msgrow.FROM_IP}</span></td>
       <td class="{msgrow.ROW_CLASS}" align="center" valign="middle"><span class="gensmall">{msgrow.TO}</span></td>
       <td class="{msgrow.ROW_CLASS}" align="center" valign="middle"><span class="gensmall">{msgrow.DATE}</span></td>

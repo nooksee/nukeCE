@@ -2,7 +2,7 @@
     <th class="thHead" colspan="2">{L_ADD_ATTACH_TITLE}</th>
 </tr>
 <tr>
-    <td class="row1" colspan="2"><span class="gensmall">{L_ADD_ATTACH_EXPLAIN}<br /><a href="{U_RULES}" rel="6" class="newWindow" target="_attachrules" class="gensmall">{L_RULES}</a></span></td>
+    <td class="row1" colspan="2"><span class="gensmall">{L_ADD_ATTACH_EXPLAIN}<br /><a href="{U_RULES}" rel="6" class="newWindow gensmall" target="_attachrules">{L_RULES}</a></span></td>
 </tr>
 <tr> 
     <td class="row1"><span class="gen"><strong>{L_FILE_NAME}</strong></span></td> 

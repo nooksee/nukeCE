@@ -1,15 +1,3 @@
-<script language="Javascript" type="text/javascript">
-    //
-    // Taking from Attachment of Acyd Burn
-    //
-    function select(status)
-    {
-        for (i = 0; i < document.mmo_list.length; i++)
-        {
-            document.mmo_list.elements[i].checked = status;
-        }
-    }
-</script>
 <h1>{L_MMO_TITLE}</h1>
 <p>{L_MMO_TEXT}</p>
   <!-- BEGIN mm_switch_markunmark -->
@@ -56,7 +44,7 @@
   <!-- BEGIN mm_switch_markunmark -->
   <tr>
  <td class="catHead" colspan="8" height="28" align="right"> 
- <strong><span class="gensmall"><a href="javascript:select(true);" class="gensmall">{L_MMO_MARK}</a> &nbsp; <a href="javascript:select(false);" class="gensmall">{L_MMO_UNMARK}</a></span></strong>&nbsp;&nbsp;
+ <strong><span class="gensmall"><a href="javascript:select_mm(true);" class="gensmall">{L_MMO_MARK}</a> &nbsp; <a href="javascript:select(false);" class="gensmall">{L_MMO_UNMARK}</a></span></strong>&nbsp;&nbsp;
         <input type="submit" name="delete" class="liteoption" value="{L_MMO_DELETE}" />
         </td>
   </tr>

@@ -1,11 +1,3 @@
-<script language="Javascript" type="text/javascript">
-    function open_postreview(ref) {
-        height = screen.height / 3;
-        width = screen.width / 2;
-        window.open(ref, '_phpbbpostreview', 'HEIGHT=' + height + ',WIDTH=' + width + ',resizable=yes,scrollbars=yes');
-    }
-</script>
-
 <table class="forumline" width="100%" cellspacing="1" cellpadding="3" border="0">
     <tr align="right">
         <td class="catHead" colspan="2" height="28"><span class="nav"><a href="{U_VIEW_OLDER_POST}" class="nav">{L_VIEW_PREVIOUS_POST}</a> :: <a href="{U_VIEW_NEWER_POST}" class="nav">{L_VIEW_NEXT_POST}</a> &nbsp;</span></td>

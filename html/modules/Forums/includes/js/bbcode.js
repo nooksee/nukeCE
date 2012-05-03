@@ -1,17 +1,13 @@
 var theSelection = false;
-
 var clientPC = navigator.userAgent.toLowerCase(); // Get client info
 var clientVer = parseInt(navigator.appVersion); // Get browser version
-
 var is_ie = ((clientPC.indexOf("msie") != -1) && (clientPC.indexOf("opera") == -1));
 var is_nav = ((clientPC.indexOf('mozilla')!=-1) && (clientPC.indexOf('spoofer')==-1)
-                && (clientPC.indexOf('compatible') == -1) && (clientPC.indexOf('opera')==-1)
-                && (clientPC.indexOf('webtv')==-1) && (clientPC.indexOf('hotjava')==-1));
+&& (clientPC.indexOf('compatible') == -1) && (clientPC.indexOf('opera')==-1)
+&& (clientPC.indexOf('webtv')==-1) && (clientPC.indexOf('hotjava')==-1));
 var is_moz = 0;
-
 var is_win = ((clientPC.indexOf("win")!=-1) || (clientPC.indexOf("16bit") != -1));
 var is_mac = (clientPC.indexOf("mac")!=-1);
-
 var baseHeight = 0;
 
 b_help = "Bold: [b]text[/b]";
@@ -98,13 +94,13 @@ function initInsertions() {
 }
 
 function BBCplain() {
-theSelection = document.selection.createRange().text;
-                if (theSelection != '') {
-                       temp = theSelection;
-                       temp = temp.replace(/\[FLASH=([^\]]*)\]WIDTH=[0-9]{0,4} HEIGHT=[0-9]{0,4}\[\/FLASH\]/gi,"$1");
-          temp = temp.replace(/\[VIDEO=([^\]]*)\]WIDTH=[0-9]{0,4} HEIGHT=[0-9]{0,4}\[\/VIDEO\]/gi,"$1");
-  document.selection.createRange().text = temp.replace(/\[[^\]]*\]/gi,"");
-      }
+    theSelection = document.selection.createRange().text;
+    if (theSelection != '') {
+        temp = theSelection;
+        temp = temp.replace(/\[FLASH=([^\]]*)\]WIDTH=[0-9]{0,4} HEIGHT=[0-9]{0,4}\[\/FLASH\]/gi,"$1");
+        temp = temp.replace(/\[VIDEO=([^\]]*)\]WIDTH=[0-9]{0,4} HEIGHT=[0-9]{0,4}\[\/VIDEO\]/gi,"$1");
+        document.selection.createRange().text = temp.replace(/\[[^\]]*\]/gi,"");
+    }
 }
 
 function BBCgrad() {
@@ -112,12 +108,13 @@ function BBCgrad() {
     document.post.message.focus();
     oSelect = document.selection;
     oSelectRange = oSelect.createRange();
-    if (oSelectRange.text.length < 1) { alert("Please select the text first");
-return;
-}
+    if (oSelectRange.text.length < 1) {
+        alert("Please select the text first");
+        return;
+    }
     if (oSelectRange.text.length > 120) {
-      alert("This only works for less than 120 letters");
-      return;
+        alert("This only works for less than 120 letters");
+        return;
     }
     showModalDialog("modules/Forums/bbcode_box/grad.htm",oSelectRange,"help:no; center:yes; status:no; dialogHeight:50px; dialogWidth:50px");
 }
@@ -128,20 +125,20 @@ function BBChr() {
 }
 
 function BBCram() {
-        var FoundErrors = '';
-        var enterURL   = prompt("Please write real media file URL","http://");
-        if (!enterURL) {
-                FoundErrors += " You didn't write the file URL.";
-        }
-     var enterW   = prompt("Enter the real media file width", "220");
-    if (!enterW)    {
+    var FoundErrors = '';
+    var enterURL = prompt("Please write real media file URL","http://");
+    if (!enterURL) {
+        FoundErrors += " You didn't write the file URL.";
+    }
+    var enterW = prompt("Enter the real media file width", "220");
+    if (!enterW) {
         FoundErrors += " You didn't enter the real media file width.";
     }
-    var enterH   = prompt("Enter the real media file height", "140");
-    if (!enterH)    {
+    var enterH = prompt("Enter the real media file height", "140");
+    if (!enterH) {
         FoundErrors += " You didn't enter the real media file height.";
     }
-    if (FoundErrors)  {
+    if (FoundErrors) {
         alert("Error:"+FoundErrors);
         return;
     }
@@ -150,34 +147,34 @@ function BBCram() {
 }
 
 function BBCstream() {
-        var FoundErrors = '';
-        var enterURL   = prompt("Please write stream file URL","http://");
-        if (!enterURL) {
-                FoundErrors += " You didn't write the file URL.";
-        }
-        if (FoundErrors) {
-                alert("Error:"+FoundErrors);
-                return;
-        }
-        var ToAdd = "[stream]"+enterURL+"[/stream]";
-        PostWrite(ToAdd);
+    var FoundErrors = '';
+    var enterURL = prompt("Please write stream file URL","http://");
+    if (!enterURL) {
+        FoundErrors += " You didn't write the file URL.";
+    }
+    if (FoundErrors) {
+        alert("Error:"+FoundErrors);
+        return;
+    }
+    var ToAdd = "[stream]"+enterURL+"[/stream]";
+    PostWrite(ToAdd);
 }
 
 function BBCvideo() {
     var FoundErrors = '';
-    var enterURL   = prompt("Please Enter the video file URL", "http://");
-    if (!enterURL)    {
+    var enterURL = prompt("Please Enter the video file URL", "http://");
+    if (!enterURL) {
         FoundErrors += " You didn't write the file URL.";
     }
-        var enterW   = prompt("Enter the video file width", "400");
-    if (!enterW)    {
+    var enterW = prompt("Enter the video file width", "400");
+    if (!enterW) {
         FoundErrors += " You didn't enter the video file width.";
     }
-    var enterH   = prompt("Enter the video file height", "350");
-    if (!enterH)    {
+    var enterH = prompt("Enter the video file height", "350");
+    if (!enterH) {
         FoundErrors += " You didn't enter the video file height.";
     }
-    if (FoundErrors)  {
+    if (FoundErrors) {
         alert("Error:"+FoundErrors);
         return;
     }
@@ -186,60 +183,57 @@ function BBCvideo() {
 }
 
 function BBCGVideo() {
-   var FoundErrors = '';
-   var enterURL   = prompt("Give the URL of the page containing the Google movie", "http://");
-   if (!enterURL)    {
-      FoundErrors += "You did not give a URL";
-   }
-   if (FoundErrors)  {
-      alert("Error:"+FoundErrors);
-      return;
-   }
-   var ToAdd = "[GVideo]"+enterURL+"[/GVideo]";
-   PostWrite(ToAdd);
+    var FoundErrors = '';
+    var enterURL = prompt("Give the URL of the page containing the Google movie", "http://");
+    if (!enterURL) {
+        FoundErrors += "You did not give a URL";
+    }
+    if (FoundErrors) {
+        alert("Error:"+FoundErrors);
+        return;
+    }
+    var ToAdd = "[GVideo]"+enterURL+"[/GVideo]";
+    PostWrite(ToAdd);
 }
 
 function BBCyoutube() {
-   var FoundErrors = '';
-   var enterURL   = prompt("Give the URL of the page containing the YouTube movie", "http://");
-   if (!enterURL)    {
-      FoundErrors += "You did not give a URL";
-   }
-   if (FoundErrors)  {
-      alert("Error:"+FoundErrors);
-      return;
-   }
-   var ToAdd = "[youtube]"+enterURL+"[/youtube]";
-   PostWrite(ToAdd);
+    var FoundErrors = '';
+    var enterURL = prompt("Give the URL of the page containing the YouTube movie", "http://");
+    if (!enterURL) {
+        FoundErrors += "You did not give a URL";
+    }
+    if (FoundErrors) {
+        alert("Error:"+FoundErrors);
+        return;
+    }
+    var ToAdd = "[youtube]"+enterURL+"[/youtube]";
+    PostWrite(ToAdd);
 }
 
 function BBCmail() {
-        var FoundErrors = '';
-        var entermail   = prompt("Enter the Email Address","");
-        if (!entermail) {
-                FoundErrors += " You didn't write the Email Address.";
-        }
-        if (FoundErrors) {
-                alert("Error:"+FoundErrors);
-                return;
-        }
-        var ToAdd = "[email]"+entermail+"[/email]";
-        PostWrite(ToAdd);
+    var FoundErrors = '';
+    var entermail = prompt("Enter the Email Address","");
+    if (!entermail) {
+        FoundErrors += " You didn't write the Email Address.";
+    }
+    if (FoundErrors) {
+        alert("Error:"+FoundErrors);
+        return;
+    }
+    var ToAdd = "[email]"+entermail+"[/email]";
+    PostWrite(ToAdd);
 }
 
 function BBCstrike() {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[s]" + theSelection + "[/s]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[s]" + theSelection + "[/s]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[s]", "[/s]");
         return;
     }
@@ -257,17 +251,14 @@ function BBCstrike() {
 
 function BBCspoil() {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[spoil]" + theSelection + "[/spoil]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[spoil]" + theSelection + "[/spoil]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[spoil]", "[/spoil]");
         return;
     }
@@ -289,13 +280,11 @@ function BBCmarqu() {
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[marq=up]" + theSelection + "[/marq]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[marq=up]" + theSelection + "[/marq]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[marq=up]", "[/marq]");
         return;
     }
@@ -313,17 +302,14 @@ function BBCmarqu() {
 
 function BBCmarql() {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[marq=left]" + theSelection + "[/marq]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[marq=left]" + theSelection + "[/marq]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[marq=left]", "[/marq]");
         return;
     }
@@ -341,17 +327,14 @@ function BBCmarql() {
 
 function BBCmarqr() {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[marq=right]" + theSelection + "[/marq]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[marq=right]" + theSelection + "[/marq]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[marq=right]", "[/marq]");
         return;
     }
@@ -368,7 +351,7 @@ function BBCmarqr() {
 }
 
 function BBCdir(dirc) {
-       document.post.message.dir=(dirc);
+    document.post.message.dir=(dirc);
 }
 
 function BBCfade() {
@@ -394,17 +377,14 @@ function BBCfade() {
 
 function BBCjustify() {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[align=justify]" + theSelection + "[/align]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[align=justify]" + theSelection + "[/align]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[align=justify]", "[/align]");
         return;
     }
@@ -422,17 +402,14 @@ function BBCjustify() {
 
 function BBCleft() {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[align=left]" + theSelection + "[/align]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[align=left]" + theSelection + "[/align]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[align=left]", "[/align]");
         return;
     }
@@ -450,17 +427,14 @@ function BBCleft() {
 
 function BBCright() {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[align=right]" + theSelection + "[/align]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[align=right]" + theSelection + "[/align]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[align=right]", "[/align]");
         return;
     }
@@ -478,17 +452,14 @@ function BBCright() {
 
 function BBCcenter() {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[align=center]" + theSelection + "[/align]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[align=center]" + theSelection + "[/align]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[align=center]", "[/align]");
         return;
     }
@@ -506,17 +477,14 @@ function BBCcenter() {
 
 function BBCft() {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[font="+document.post.ft.value+"]" + theSelection + "[/font]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[font="+document.post.ft.value+"]" + theSelection + "[/font]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[font="+document.post.ft.value+"]", "[/font]");
         return;
     }
@@ -526,17 +494,14 @@ function BBCft() {
 
 function BBCfs() {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[size="+document.post.fs.value+"]" + theSelection + "[/size]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[size="+document.post.fs.value+"]" + theSelection + "[/size]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[size="+document.post.fs.value+"]", "[/size]");
         return;
     }
@@ -546,17 +511,14 @@ function BBCfs() {
 
 function BBCfc() {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[color="+document.post.fc.value+"]" + theSelection + "[/color]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[color="+document.post.fc.value+"]" + theSelection + "[/color]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[color="+document.post.fc.value+"]", "[/color]");
         return;
     }
@@ -566,17 +528,14 @@ function BBCfc() {
 
 function BBCmarqd() {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[marq=down]" + theSelection + "[/marq]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[marq=down]" + theSelection + "[/marq]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[marq=down]", "[/marq]");
         return;
     }
@@ -594,16 +553,16 @@ function BBCmarqd() {
 
 function BBCflash() {
     var FoundErrors = '';
-    var enterURL   = prompt("Enter the flash file URL", "http://");
-    if (!enterURL)    {
+    var enterURL = prompt("Enter the flash file URL", "http://");
+    if (!enterURL) {
         FoundErrors += " You didn't write the flash file URL.";
     }
-    var enterW   = prompt("Enter the flash width", "250");
-    if (!enterW)    {
+    var enterW = prompt("Enter the flash width", "250");
+    if (!enterW) {
         FoundErrors += " You didn't write the flash width.";
     }
-    var enterH   = prompt("Enter the flash height", "250");
-    if (!enterH)    {
+    var enterH = prompt("Enter the flash height", "250");
+    if (!enterH) {
         FoundErrors += " You didn't write the flash height.";
     }
     if (FoundErrors)  {
@@ -622,7 +581,7 @@ function helpline(help) {
 function checkForm() {
     formErrors = false;
     if (document.post.message.value.length < 2) {
-        formErrors = "{L_EMPTY_MESSAGE}";
+        formErrors = "You must enter a message when posting.";
     }
     if (formErrors) {
         alert(formErrors);
@@ -636,7 +595,7 @@ function checkForm() {
 
 function emoticon(text) {
     var txtarea = document.post.message;
-     if (is_ie && typeof(baseHeight) != 'number') baseHeight = document.selection.createRange().duplicate().boundingHeight;
+    if (is_ie && typeof(baseHeight) != 'number') baseHeight = document.selection.createRange().duplicate().boundingHeight;
     text = ' ' + text + ' ';
     if (txtarea.createTextRange && txtarea.caretPos) {
         if (baseHeight != txtarea.caretPos.boundingHeight) {
@@ -646,9 +605,7 @@ function emoticon(text) {
         var caretPos = txtarea.caretPos;
         caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ? caretPos.text + text + ' ' : caretPos.text + text;
         txtarea.focus();
-    } else
-    if (txtarea.selectionEnd && (txtarea.selectionStart | txtarea.selectionStart == 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionStart | txtarea.selectionStart == 0)) {
         mozWrap(txtarea, text, "");
         return;
     } else {
@@ -659,7 +616,6 @@ function emoticon(text) {
 
 function bbfontstyle(bbopen, bbclose) {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (!theSelection) {
@@ -670,14 +626,10 @@ function bbfontstyle(bbopen, bbclose) {
         document.selection.createRange().text = bbopen + theSelection + bbclose;
         txtarea.focus();
         return;
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, bbopen, bbclose);
         return;
-    }
-    else
-    {
+    } else {
         txtarea.value += bbopen + bbclose;
         txtarea.focus();
     }
@@ -692,24 +644,21 @@ function PostWrite(text) {
     if (document.post.message.createTextRange && document.post.message.caretPos) {
         var caretPos = document.post.message.caretPos;
         caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ?    text + ' ' : text;
-    }
-    else document.post.message.value += text;
-    document.post.message.focus(caretPos)
+    } else
+        document.post.message.value += text;
+        document.post.message.focus(caretPos)
 }
 
 function BBCsup() {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[sup]" + theSelection + "[/sup]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[sup]" + theSelection + "[/sup]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[sup]", "[/sup]");
         return;
     }
@@ -727,17 +676,14 @@ function BBCsup() {
 
 function BBCsub() {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[sub]" + theSelection + "[/sub]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[sub]" + theSelection + "[/sub]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[sub]", "[/sub]");
         return;
     }
@@ -755,17 +701,14 @@ function BBCsub() {
 
 function BBCcode() {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[code]" + theSelection + "[/code]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[code]" + theSelection + "[/code]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[code]", "[/code]");
         return;
     }
@@ -786,13 +729,11 @@ function BBCphp() {
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[php]" + theSelection + "[/php]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[php]" + theSelection + "[/php]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[php]", "[/php]");
         return;
     }
@@ -810,17 +751,14 @@ function BBCphp() {
 
 function BBCquote() {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[quote]" + theSelection + "[/quote]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[quote]" + theSelection + "[/quote]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[quote]", "[/quote]");
         return;
     }
@@ -838,17 +776,14 @@ function BBCquote() {
 
 function BBClist() {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[list]" + theSelection + "[/list]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[list]" + theSelection + "[/list]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[list]", "[/list]");
         return;
     }
@@ -866,17 +801,14 @@ function BBClist() {
 
 function BBCbold() {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[b]" + theSelection + "[/b]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[b]" + theSelection + "[/b]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[b]", "[/b]");
         return;
     }
@@ -894,17 +826,14 @@ function BBCbold() {
 
 function BBCitalic() {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[i]" + theSelection + "[/i]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[i]" + theSelection + "[/i]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[i]", "[/i]");
         return;
     }
@@ -922,17 +851,14 @@ function BBCitalic() {
 
 function BBCunder() {
     var txtarea = document.post.message;
-
     if ((clientVer >= 4) && is_ie && is_win) {
         theSelection = document.selection.createRange().text;
         if (theSelection != '') {
-        document.selection.createRange().text = "[u]" + theSelection + "[/u]";
-        document.post.message.focus();
-        return;
+            document.selection.createRange().text = "[u]" + theSelection + "[/u]";
+            document.post.message.focus();
+            return;
         }
-    }
-    else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0))
-    {
+    } else if (txtarea.selectionEnd && (txtarea.selectionEnd - txtarea.selectionStart > 0)) {
         mozWrap(txtarea, "[u]", "[/u]");
         return;
     }
@@ -950,15 +876,15 @@ function BBCunder() {
 
 function BBCurl() {
     var FoundErrors = '';
-    var enterURL   = prompt("Enter the URL", "http://");
+    var enterURL = prompt("Enter the URL", "http://");
     var enterTITLE = prompt("Enter the page name", "Web Page Name");
-    if (!enterURL)    {
+    if (!enterURL) {
         FoundErrors += " You didn't write the URL.";
     }
-    if (!enterTITLE)  {
+    if (!enterTITLE) {
         FoundErrors += " You didn't write the page name.";
     }
-    if (FoundErrors)  {
+    if (FoundErrors) {
         alert("Error:"+FoundErrors);
         return;
     }
@@ -968,7 +894,7 @@ function BBCurl() {
 
 function BBCimg() {
     var FoundErrors = '';
-    var enterURL   = prompt("Enter the image URL","http://");
+    var enterURL = prompt("Enter the image URL","http://");
     if (!enterURL) {
         FoundErrors += "You didn't write the image URL";
     }
@@ -985,14 +911,12 @@ function storeCaret(textEl) {
     if (textEl.createTextRange) textEl.caretPos = document.selection.createRange().duplicate();
 }
 
-function mozWrap(txtarea, open, close)
-{
+function mozWrap(txtarea, open, close) {
     var selLength = txtarea.textLength;
     var selStart = txtarea.selectionStart;
     var selEnd = txtarea.selectionEnd;
     if (selEnd == 1 || selEnd == 2)
-        selEnd = selLength;
-
+    selEnd = selLength;
     var s1 = (txtarea.value).substring(0,selStart);
     var s2 = (txtarea.value).substring(selStart, selEnd)
     var s3 = (txtarea.value).substring(selEnd, selLength);
@@ -1000,68 +924,42 @@ function mozWrap(txtarea, open, close)
     return;
 }
 
-function sqr_show_hide()
-{
+function sqr_show_hide() {
     var id = 'sqr';
     var item = null;
-
-    if (document.getElementById)
-    {
+    if (document.getElementById) {
         item = document.getElementById(id);
-    }
-    else if (document.all)
-    {
+    } else if (document.all) {
         item = document.all[id];
-    }
-    else if (document.layers)
-    {
+    } else if (document.layers) {
         item = document.layers[id];
     }
-
-    if (item && item.style)
-    {
-        if (item.style.display == "none")
-        {
+    if (item && item.style) {
+        if (item.style.display == "none") {
             item.style.display = "";
-        }
-        else
-        {
+        } else {
             item.style.display = "none";
         }
-    }
-    else if (item)
-    {
+    } else if (item) {
         item.visibility = "show";
     }
 }
 
-function sqr_show()
-{
+function sqr_show() {
     var id = 'sqr';
     var item = null;
-
-    if (document.getElementById)
-    {
+    if (document.getElementById) {
         item = document.getElementById(id);
-    }
-    else if (document.all)
-    {
+    } else if (document.all) {
         item = document.all[id];
-    }
-    else if (document.layers)
-    {
+    } else if (document.layers) {
         item = document.layers[id];
     }
-
-    if (item && item.style)
-    {
-        if (item.style.display == "none")
-        {
+    if (item && item.style) {
+        if (item.style.display == "none") {
             item.style.display = "";
         }
-    }
-    else if (item)
-    {
+    } else if (item) {
         item.visibility = "show";
     }
 }

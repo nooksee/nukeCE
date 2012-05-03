@@ -1,6 +1,3 @@
-<script src="modules/Forums/bbcode_box/bbcode_box.js" type="text/javascript" >
-</script>
-
 <!-- BEGIN switch_open_qr_yes -->
 <div id="sqr" style="display: show; position: relative; ">
 <!-- END switch_open_qr_yes -->
@@ -49,7 +46,7 @@
                   <!-- END smilies_row -->
                   <!-- BEGIN switch_smilies_extra -->
                   <tr align="center">
-                    <td colspan="{S_SMILIES_COLSPAN}"><span  class="nav"><a href="{U_MORE_SMILIES}" onclick="window.open('{U_MORE_SMILIES}', '_phpbbsmilies', 'HEIGHT=300,resizable=yes,scrollbars=yes,WIDTH=500');return false;" target="_phpbbsmilies" class="nav">{L_MORE_SMILIES}</a></span></td>
+                    <td colspan="{S_SMILIES_COLSPAN}"><span class="nav"><a href="{U_MORE_SMILIES}" rel="6" class="newWindow nav" target="_phpbbsmilies">{L_MORE_SMILIES}</a></span></td>
                   </tr>
                   <!-- END switch_smilies_extra -->
                   <!-- BEGIN switch_advanced_qr -->
