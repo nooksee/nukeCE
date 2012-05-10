@@ -242,7 +242,7 @@ function preview_review($date, $title, $text, $reviewer, $email, $score, $cover,
     /*****[BEGIN]******************************************
      [ Mod:     Reviews BBCodes                    v1.0.0 ]
      ******************************************************/
-        $text = decode_bbcode(set_smilies($text), 1, true);
+        $text = BBCode2Html($text, 1, true);
     /*****[END]********************************************
      [ Mod:     Reviews BBCodes                    v1.0.0 ]
      ******************************************************/
@@ -677,7 +677,7 @@ function showcontent($id, $page) {
 /*****[BEGIN]******************************************
  [ Mod:     Reviews BBCodes                    v1.0.0 ]
  ******************************************************/
-    $text = decode_bbcode(set_smilies(stripslashes($myrow['text'])), 1, true);
+    $text = BBCode2Html(stripslashes($myrow['text']), 1, true);
 /*****[END]********************************************
  [ Mod:     Reviews BBCodes                    v1.0.0 ]
  ******************************************************/

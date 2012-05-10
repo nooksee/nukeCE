@@ -1,4 +1,4 @@
-<div style="display:none" id="resize"></div>
+<div style="display:none" class="resize"></div>
 <div style="height: 24px; line-height: 24px;">&nbsp;</div>
 <div align="center">
     <span class="gensmall">{REPORT_LINK}</b>{ADMIN_LINK}</span>

@@ -58,7 +58,7 @@ if (!defined('MODULE_FILE')) {
             $jid = intval($jid);
             $jtitle = check_html($row['title'], "nohtml");
             $jbodytext = $row['bodytext'];
-            $jbodytext =  decode_bbcode(set_smilies(stripslashes($jbodytext)), 1, true);
+            $jbodytext =  BBCode2Html(stripslashes($jbodytext), 1, true);
             $jbodytext = nuke_img_tag_to_resize($jbodytext);
             $jmood = check_html($row['mood'], "nohtml");
             print ("<form name='journal' action='modules.php?name=$module_name&amp;file=edit' method='post'>");
@@ -175,7 +175,7 @@ if (!defined('MODULE_FILE')) {
             $jid = intval($jid);
             $jtitle = check_html($row['title'], "nohtml");
             $jbodytext = $row['bodytext'];
-            $jbodytext =  decode_bbcode(set_smilies(stripslashes($jbodytext)), 1, true);
+            $jbodytext =  BBCode2Html(stripslashes($jbodytext), 1, true);
             $jbodytext = nuke_img_tag_to_resize($jbodytext);
             $jmood = check_html($row['mood'], "nohtml");
             print ("<form name='journal' action='modules.php?name=$module_name&amp;file=edit' method='post'>");

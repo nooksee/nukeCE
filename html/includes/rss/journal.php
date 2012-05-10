@@ -77,7 +77,7 @@ $result32 = $db->sql_query("SELECT jid, title, bodytext, ptime FROM ".$prefix."_
         $text = $row32['bodytext'];
         $time = $row32['ptime'];
      //$hometext = ereg_replace('\x99', '', $hometext); // Needs improvement
-    $text = decode_bb_all($text);
+    $text = BBCode2Html($text);
     $text = decode_rss_rest($text);
 
     // Format: 2004-08-02T12:15:23-06:00 (W3C Compliant)

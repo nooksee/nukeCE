@@ -109,7 +109,7 @@ if (isset($_POST['tos_yes']) AND $ya_config['tos'] == intval(1)) {
                                   $sitename - "._YATOS1."
                               </strong>
                               <P>
-                                  ".nl2br(decode_bbcode(set_smilies($ya_config['tos_text']),1,true))."
+                                  ".nl2br(BBCode2Html($ya_config['tos_text']),1,true)."
                           </td>
                       </tr>
                   </table>

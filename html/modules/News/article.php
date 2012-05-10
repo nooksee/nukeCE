@@ -70,8 +70,8 @@ $title = stripslashes(check_html($row["title"], "nohtml"));
 /*****[BEGIN]******************************************
 [ Mod:     News BBCodes                       v1.0.0 ]
 ******************************************************/
-$hometext = decode_bbcode(set_smilies(stripslashes($row["hometext"])), 1, true);
-$bodytext = decode_bbcode(set_smilies(stripslashes($row["bodytext"])), 1, true);
+$hometext = BBCode2Html(stripslashes($row["hometext"]), 1, true);
+$bodytext = BBCode2Html(stripslashes($row["bodytext"]), 1, true);
 $hometext = nuke_img_tag_to_resize($hometext);
 $bodytext = nuke_img_tag_to_resize($bodytext);
 /*****[END]********************************************

@@ -67,7 +67,7 @@ while(list($pic_id, $pic_title, $pic_cat_id) = $db->sql_fetchrow($result)) {
     list($desc) = $db->sql_fetchrow($result2);
     $desc = entity_to_hex_value($desc);
     //$desc = ereg_replace('\x99', '', $desc); // Needs improvement
-    $desc = decode_bb_all($desc);
+    $desc = BBCode2Html($desc);
     $desc = decode_rss_rest($desc);
     $result3 = $db->sql_query("SELECT pic_time AS pic_time FROM ".$prefix."_bbalbum WHERE pic_id='$pic_id'");
     list($pic_time) = $db->sql_fetchrow($result3);

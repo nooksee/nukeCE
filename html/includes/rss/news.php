@@ -84,7 +84,7 @@ while ($row = $db->sql_fetchrow($result)) {
     $time = $row['time'];
     $hometext = $row['hometext'];
     //$hometext = ereg_replace('\x99', '', $hometext); // Needs improvement
-    $hometext = decode_bb_all($hometext);
+    $hometext = BBCode2Html($hometext);
     $hometext = decode_rss_rest($hometext);
 
     // Format: 2004-08-02T12:15:23-06:00 (W3C Compliant)

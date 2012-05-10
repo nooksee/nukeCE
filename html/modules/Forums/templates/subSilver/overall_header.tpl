@@ -16,9 +16,7 @@
         </script>
         <!-- start mod : Resize Posted Images Based on Max Width -->
         <script src="includes/libraries/jquery.resize.js"></script>
-        <script type="text/javascript">
-            Sexy.js("modules/Forums/includes/js/bbresize.js");
-        </script>
+        <script src="modules/Forums/includes/js/bbresize.js"></script>
         <!-- fin mod : Resize Posted Images Based on Max Width -->
         <!-- BEGIN switch_enable_pm_popup -->
         <script type="text/javascript">

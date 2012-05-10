@@ -142,7 +142,7 @@ if (!defined('HOME_FILE') AND defined('MODULE_FILE') AND (file_exists(NUKE_MODUL
 themefooter();
 
 if (!defined('IN_PHPBB')) {
-    echo "<div style=\"display:none\" id=\"resize\"></div>";
+    echo "<div style=\"display:none\" class=\"resize\"></div>";
 }
 if (file_exists(NUKE_INCLUDE_DIR . 'custom_files/custom_footer.php')) {
     include_once(NUKE_INCLUDE_DIR . 'custom_files/custom_footer.php');

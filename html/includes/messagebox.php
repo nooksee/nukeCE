@@ -25,8 +25,6 @@ if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
     exit('Access Denied');
 }
 
-include_once(NUKE_INCLUDE_DIR.'nbbcode.php');
-
 global $bgcolor1, $bgcolor2, $textcolor2, $prefix, $multilingual, $currentlang, $db, $admin_file, $userinfo;
 $query = ($multilingual) ? "AND (mlanguage='$currentlang' OR mlanguage='')" : '';
 if (!is_admin()) {
@@ -42,7 +40,7 @@ if (!is_admin()) {
 $result = $db->sql_query("SELECT mid, title, content, date, expire, view, groups FROM ".$prefix."_message WHERE active='1' $query ORDER BY date DESC", true);
 $query = '';
 while (list($mid, $title, $content, $date, $expire, $view, $groups) = $db->sql_fetchrow($result)) {
-	$content = decode_bb_all($content, 1, true);
+	$content = BBCode2Html($content, 1, true);
 	if (!empty($title) && !empty($content)) {
 		$output = '';
 		switch($view) {

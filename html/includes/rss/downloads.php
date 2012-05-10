@@ -80,7 +80,7 @@ while(list($lid, $title, $description, $date, $submitter) = $db->sql_fetchrow($r
     $description = stripslashes($description);
     $description = entity_to_hex_value($description);
     //$description = ereg_replace('\x99', '', $description); // Needs improvement
-    $description = decode_bb_all($description);
+    $description = BBCode2Html($description);
     $description = decode_rss_rest($description);
     if (empty($submitter)) {
         $submitter = $sitename;

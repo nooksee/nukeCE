@@ -67,7 +67,7 @@ while(list($topic_id, $topic_title, $topic_last_post_id) = $db->sql_fetchrow($re
     list($desc) = $db->sql_fetchrow($result2);
     $desc = entity_to_hex_value($desc);
     //$desc = ereg_replace('\x99', '', $desc); // Needs improvement
-    $desc = decode_bb_all($desc);
+    $desc = BBCode2Html($desc);
     $desc = decode_rss_rest($desc);
     $result3 = $db->sql_query("SELECT post_time AS post_time FROM ".$prefix."_bbposts WHERE post_id='$topic_last_post_id'");
     list($post_time) = $db->sql_fetchrow($result3);

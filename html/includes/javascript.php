@@ -56,9 +56,7 @@ if ($img_resize) {
     if((empty($name) || $name == 'News' || $name == 'Journal' || $name == 'Reviews' || $name == 'Stories Archive' || $name == 'Downloads' || $name == 'Web Links' || $name == 'Content') && !defined('IN_PHPBB')) {
         echo '
               <script src="includes/libraries/jquery.resize.js"></script>
-              <script type="text/javascript">
-                  Sexy.js("includes/js/resize.js");
-              </script>
+              <script src="includes/js/resize.js"></script>
              ';
     }
 }
@@ -76,9 +74,7 @@ if (!$arcade_on) {
 if (!$arcade_on) {
     echo '
           <script src="includes/libraries/jquery.pngfix.js"></script>
-          <script type="text/javascript">
-              Sexy.js("includes/js/pngfix.js");
-          </script>
+          <script src="includes/js/pngfix.js"></script>
          ';
 }
 /*****[END]********************************************

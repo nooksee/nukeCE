@@ -65,7 +65,8 @@ switch ($op) {
         while ($artinfo = $db->sql_fetchrow($result)) {
             formatTimestamp($artinfo["time"]);
             $subject = stripslashes(check_html($subject, "nohtml"));
-            $artinfo["hometext"] = decode_bbcode(set_smilies(stripslashes($artinfo["hometext"])), 1, true);
+            $artinfo["hometext"] = BBCode2Html(stripslashes($artinfo["hometext"]), 1, true);
+            $artinfo["hometext"] = nuke_img_tag_to_resize($artinfo["hometext"]);
             $artinfo["notes"] = stripslashes($artinfo["notes"]);
             $artinfo["sid"] = intval($artinfo["sid"]);
             $artinfo["aid"] = stripslashes($artinfo["aid"]);

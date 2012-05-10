@@ -126,7 +126,7 @@ function PreviewStory($name, $address, $subject, $story, $storyext, $topic, $ala
 /*****[BEGIN]******************************************
  [ Mod:     News BBCodes                    v1.0.0 ]
  ******************************************************/
-    $story2 = decode_bbcode(set_smilies(stripslashes($story2)), 1, true);
+    $story2 = BBCode2Html(stripslashes($story2), 1, true);
 /*****[END]********************************************
  [ Mod:     News BBCodes                    v1.0.0 ]
  ******************************************************/

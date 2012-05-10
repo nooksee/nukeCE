@@ -11,7 +11,7 @@
         <!-- Layout -->
         <script src="../../../includes/libraries/jquery.layout.js"></script>
         <script type="text/javascript">
-            Sexy.css("../../../includes/css/layout.css");
+            Sexy.css("../includes/css/layout.css");
             Sexy.js("../includes/js/layout.js");
         </script>
     </head>

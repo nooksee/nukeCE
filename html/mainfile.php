@@ -371,9 +371,9 @@ function render_blocks($side, $block) {
     if (empty($block['url'])) {
         if (empty($block['blockfile'])) {
             if ($side == 'c' || $side == 'd') {
-                themecenterbox($block['title'], decode_bbcode($block['content'], 1, true));
+                themecenterbox($block['title'], BBCode2Html($block['content'], 1, true));
             } else {
-                themesidebox($block['title'], decode_bbcode($block['content'], 1, true), $block['bid']);
+                themesidebox($block['title'], BBCode2Html($block['content'], 1, true), $block['bid']);
             }
         } else {
             blockfileinc($block['title'], $block['blockfile'], $side, $block['bid']);
@@ -915,7 +915,6 @@ function GroupColor($group_name) {
     $group_name = isset($GroupColors[$group_name]) ? (strlen($GroupColors[$group_name]) == 6) ? '<span style="color: #'. $GroupColors[$group_name] .'"><strong>'. $plain_group_name .'</strong></span>' : $plain_group_name : $plain_group_name;
     return $new_groups[$plain_group_name] = $group_name;
 }
-include_once(NUKE_INCLUDE_DIR.'nbbcode.php');
 
 function info_box($graphic, $message) {
     // Function to generate a message box with a graphic inside

@@ -45,15 +45,15 @@ function showpage($pid, $page=0) {
 /*****[BEGIN]******************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
-    $mytitle = decode_bbcode(set_smilies(stripslashes(check_html($mypage['title'], "nohtml"))), 1);
-    $mysubtitle = decode_bbcode(set_smilies(stripslashes(check_html($mypage['subtitle'], "nohtml"))), 1);
-    $mypage_header = decode_bbcode(set_smilies(stripslashes($mypage['page_header'])), 1, true);
+    $mytitle = BBCode2Html(stripslashes(check_html($mypage['title'], "nohtml")), 1);
+    $mysubtitle = BBCode2Html(stripslashes(check_html($mypage['subtitle'], "nohtml")), 1);
+    $mypage_header = BBCode2Html(stripslashes($mypage['page_header']), 1, true);
     $mypage_header = nuke_img_tag_to_resize($mypage_header);
-    $mytext = decode_bbcode(set_smilies(stripslashes($mypage['text'])), 1, true);
+    $mytext = BBCode2Html(stripslashes($mypage['text']), 1, true);
     $mytext = nuke_img_tag_to_resize($mytext);
-    $mypage_footer = decode_bbcode(set_smilies(stripslashes($mypage['page_footer'])), 1, true);
+    $mypage_footer = BBCode2Html(stripslashes($mypage['page_footer']), 1, true);
     $mypage_footer = nuke_img_tag_to_resize($mypage_footer);
-    $mysignature = decode_bbcode(set_smilies(stripslashes($mypage['signature'])), 1, true);
+    $mysignature = BBCode2Html(stripslashes($mypage['signature']), 1, true);
     $mysignature = nuke_img_tag_to_resize($mysignature);
     $mydate = $mypage['date'];
     $mycounter = intval($mypage['counter']);
@@ -64,7 +64,7 @@ function showpage($pid, $page=0) {
         $date = explode(" ", $mydate);
         echo "<span class=\"title\">$mytitle</span><br />"
             ."<span class=\"content\">$mysubtitle</span><br /><br /><br /><br />";
-       // $mypage['text'] = decode_bbcode(set_smilies(stripslashes($mypage['text'])),1);
+       // $mypage['text'] = BBCode2Html(stripslashes($mypage['text']),1);
     /*****[END]********************************************
      [ Mod:     Content BBCodes                    v1.0.1 ]
      ******************************************************/
@@ -130,14 +130,14 @@ function list_pages() {
 /*****[BEGIN]******************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
-            $title = decode_bbcode(set_smilies(stripslashes(check_html($row['title'], "nohtml"))), 1);
-            $description = decode_bbcode(set_smilies(stripslashes($row['description'])), 1, true);
+            $title = BBCode2Html(stripslashes(check_html($row['title'], "nohtml")), 1);
+            $description = BBCode2Html(stripslashes($row['description']), 1, true);
 /*****[END]********************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
             $numrows3 = $db->sql_numrows($db->sql_query("SELECT * FROM ".$prefix."_pages WHERE cid='$cid'"));
             if ($numrows3 > 0) {
-                echo "<tr><td valign=\"top\">&nbsp;<a href=\"modules.php?name=$module_name&amp;pa=list_pages_categories&amp;cid=$cid\">" . decode_bbcode(set_smilies($title)) . "</a>&nbsp;</td><td align=\"left\">$description</td></tr>";
+                echo "<tr><td valign=\"top\">&nbsp;<a href=\"modules.php?name=$module_name&amp;pa=list_pages_categories&amp;cid=$cid\">" . BBCode2Html($title) . "</a>&nbsp;</td><td align=\"left\">$description</td></tr>";
             }
         }
         $db->sql_freeresult($result);
@@ -151,8 +151,8 @@ function list_pages() {
 /*****[BEGIN]******************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
-        $title = decode_bbcode(set_smilies(stripslashes(check_html($row4['title'], "nohtml"))), 1);
-        $subtitle = decode_bbcode(set_smilies(stripslashes(check_html($row4['subtitle'], "nohtml"))), 1);
+        $title = BBCode2Html(stripslashes(check_html($row4['title'], "nohtml")), 1);
+        $subtitle = BBCode2Html(stripslashes(check_html($row4['subtitle'], "nohtml")), 1);
 /*****[END]********************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
@@ -168,9 +168,9 @@ function list_pages() {
               $subtitle = "";
         }
         if (is_mod_admin($module_name)) {
-            echo "<strong><big>&middot;</big></strong> $the_lang <a href=\"modules.php?name=$module_name&amp;pa=showpage&amp;pid=$pid\">" . decode_bbcode(set_smilies($title)) . "</a> " . decode_bbcode(set_smilies($subtitle)) . " [ <a href=\"".$admin_file.".php?op=content_edit&amp;pid=$pid\">"._EDIT."</a> | <a href=\"".$admin_file.".php?op=content_change_status&amp;pid=$pid&amp;active=1\">"._DEACTIVATE."</a> | <a href=\"".$admin_file.".php?op=content_delete&amp;pid=$pid\">"._DELETE."</a> ]<br />";
+            echo "<strong><big>&middot;</big></strong> $the_lang <a href=\"modules.php?name=$module_name&amp;pa=showpage&amp;pid=$pid\">" . BBCode2Html($title) . "</a> " . BBCode2Html($subtitle) . " [ <a href=\"".$admin_file.".php?op=content_edit&amp;pid=$pid\">"._EDIT."</a> | <a href=\"".$admin_file.".php?op=content_change_status&amp;pid=$pid&amp;active=1\">"._DEACTIVATE."</a> | <a href=\"".$admin_file.".php?op=content_delete&amp;pid=$pid\">"._DELETE."</a> ]<br />";
         } else {
-            echo "<strong><big>&middot;</big></strong> $the_lang <a href=\"modules.php?name=$module_name&amp;pa=showpage&amp;pid=$pid\">" . decode_bbcode(set_smilies($title)) . "</a> " . decode_bbcode(set_smilies($subtitle)) . "<br />";
+            echo "<strong><big>&middot;</big></strong> $the_lang <a href=\"modules.php?name=$module_name&amp;pa=showpage&amp;pid=$pid\">" . BBCode2Html($title) . "</a> " . BBCode2Html($subtitle) . "<br />";
         }
     }
     $db->sql_freeresult($result4);
@@ -185,8 +185,8 @@ function list_pages() {
 /*****[BEGIN]******************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
-            $title = decode_bbcode(set_smilies(stripslashes(check_html($row5['title'], "nohtml"))), 1);
-            $subtitle = decode_bbcode(set_smilies(stripslashes(check_html($row5['subtitle'], "nohtml"))), 1);
+            $title = BBCode2Html(stripslashes(check_html($row5['title'], "nohtml")), 1);
+            $subtitle = BBCode2Html(stripslashes(check_html($row5['subtitle'], "nohtml")), 1);
 /*****[END]********************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
@@ -201,7 +201,7 @@ function list_pages() {
             } else {
                 $subtitle = " ";
             }
-            echo "<strong><big>&middot;</big></strong> $the_lang <a href=\"modules.php?name=$module_name&amp;pa=showpage&amp;pid=$pid\">" . decode_bbcode(set_smilies($title)) . "</a> " . decode_bbcode(set_smilies($subtitle)) . " [ <a href=\"".$admin_file.".php?op=content_edit&amp;pid=$pid\">"._EDIT."</a> | <a href=\"".$admin_file.".php?op=content_change_status&amp;pid=$pid&amp;active=0\">"._ACTIVATE."</a> | <a href=\"".$admin_file.".php?op=content_delete&amp;pid=$pid\">"._DELETE."</a> ]<br />";
+            echo "<strong><big>&middot;</big></strong> $the_lang <a href=\"modules.php?name=$module_name&amp;pa=showpage&amp;pid=$pid\">" . BBCode2Html($title) . "</a> " . BBCode2Html($subtitle) . " [ <a href=\"".$admin_file.".php?op=content_edit&amp;pid=$pid\">"._EDIT."</a> | <a href=\"".$admin_file.".php?op=content_change_status&amp;pid=$pid&amp;active=0\">"._ACTIVATE."</a> | <a href=\"".$admin_file.".php?op=content_delete&amp;pid=$pid\">"._DELETE."</a> ]<br />";
         }
         $db->sql_freeresult($result5);
         echo "</blockquote>";
@@ -224,8 +224,8 @@ function list_pages_categories($cid) {
 /*****[BEGIN]******************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
-        $title = decode_bbcode(set_smilies(stripslashes(check_html($row['title'], "nohtml"))), 1);
-        $subtitle = decode_bbcode(set_smilies(stripslashes(check_html($row['subtitle'], "nohtml"))), 1);
+        $title = BBCode2Html(stripslashes(check_html($row['title'], "nohtml")), 1);
+        $subtitle = BBCode2Html(stripslashes(check_html($row['subtitle'], "nohtml")), 1);
 /*****[END]********************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
@@ -241,9 +241,9 @@ function list_pages_categories($cid) {
                 $subtitle = "";
         }
         if (is_mod_admin($module_name)) {
-            echo "<strong><big>&middot;</big></strong> $the_lang <a href=\"modules.php?name=$module_name&amp;pa=showpage&amp;pid=$pid\">" . decode_bbcode(set_smilies($title)) . "</a> " . decode_bbcode(set_smilies($subtitle)) . " [ <a href=\"".$admin_file.".php?op=content_edit&amp;pid=$pid\">"._EDIT."</a> | <a href=\"".$admin_file.".php?op=content_change_status&amp;pid=$pid&amp;active=1\">"._DEACTIVATE."</a> | <a href=\"".$admin_file.".php?op=content_delete&amp;pid=$pid\">"._DELETE."</a> ]<br />";
+            echo "<strong><big>&middot;</big></strong> $the_lang <a href=\"modules.php?name=$module_name&amp;pa=showpage&amp;pid=$pid\">" . BBCode2Html($title) . "</a> " . BBCode2Html($subtitle) . " [ <a href=\"".$admin_file.".php?op=content_edit&amp;pid=$pid\">"._EDIT."</a> | <a href=\"".$admin_file.".php?op=content_change_status&amp;pid=$pid&amp;active=1\">"._DEACTIVATE."</a> | <a href=\"".$admin_file.".php?op=content_delete&amp;pid=$pid\">"._DELETE."</a> ]<br />";
         } else {
-            echo "<strong><big>&middot;</big></strong> $the_lang <a href=\"modules.php?name=$module_name&amp;pa=showpage&amp;pid=$pid\">" . decode_bbcode(set_smilies($title)) . "</a> " . decode_bbcode(set_smilies($subtitle)) . "<br />";
+            echo "<strong><big>&middot;</big></strong> $the_lang <a href=\"modules.php?name=$module_name&amp;pa=showpage&amp;pid=$pid\">" . BBCode2Html($title) . "</a> " . BBCode2Html($subtitle) . "<br />";
         }
     }
     $db->sql_freeresult($result);
@@ -257,8 +257,8 @@ function list_pages_categories($cid) {
 /*****[BEGIN]******************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
-            $title = decode_bbcode(set_smilies(stripslashes(check_html($row2['title'], "nohtml"))), 1);
-            $subtitle = decode_bbcode(set_smilies(stripslashes(check_html($row2['subtitle'], "nohtml"))), 1);
+            $title = BBCode2Html(stripslashes(check_html($row2['title'], "nohtml")), 1);
+            $subtitle = BBCode2Html(stripslashes(check_html($row2['subtitle'], "nohtml")), 1);
 /*****[END]********************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
@@ -273,7 +273,7 @@ function list_pages_categories($cid) {
             } else {
                     $subtitle = " ";
             }
-            echo "<strong><big>&middot;</big></strong> $the_lang <a href=\"modules.php?name=$module_name&amp;pa=showpage&amp;pid=$pid\">" . decode_bbcode(set_smilies($title)) . "</a> " . decode_bbcode(set_smilies($subtitle)) . " [ <a href=\"".$admin_file.".php?op=content_edit&amp;pid=$pid\">"._EDIT."</a> | <a href=\"".$admin_file.".php?op=content_change_status&amp;pid=$pid&amp;active=0\">"._ACTIVATE."</a> | <a href=\"".$admin_file.".php?op=content_delete&amp;pid=$pid\">"._DELETE."</a> ]<br />";
+            echo "<strong><big>&middot;</big></strong> $the_lang <a href=\"modules.php?name=$module_name&amp;pa=showpage&amp;pid=$pid\">" . BBCode2Html($title) . "</a> " . BBCode2Html($subtitle) . " [ <a href=\"".$admin_file.".php?op=content_edit&amp;pid=$pid\">"._EDIT."</a> | <a href=\"".$admin_file.".php?op=content_change_status&amp;pid=$pid&amp;active=0\">"._ACTIVATE."</a> | <a href=\"".$admin_file.".php?op=content_delete&amp;pid=$pid\">"._DELETE."</a> ]<br />";
         }
         $db->sql_freeresult($result2);
         echo "</blockquote>";
