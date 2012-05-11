@@ -566,7 +566,7 @@ INSERT INTO `nuke_bbconfig` (`config_name`, `config_value`) VALUES
 ('avatar_max_height', '80'),
 ('avatar_path', 'modules/Forums/images/avatars'),
 ('avatar_gallery_path', 'modules/Forums/images/avatars'),
-('smilies_path', 'images/smiles'),
+('smilies_path', 'modules/Forums/images/smiles'),
 ('default_style', '1'),
 ('default_dateformat', 'D M d, Y g:i a'),
 ('board_timezone', '10'),
