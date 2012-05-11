@@ -97,7 +97,7 @@ function show_month($year, $month, $month_l) {
         $score = intval($row['score']);
         $ratings = intval($row['ratings']);
         $time = explode(" ", $time);
-        $actions = "<a href=\"modules.php?name=News&amp;file=print&amp;sid=$sid\"><img src=\"images/print.gif\" border=0 alt=\""._PRINTER."\" title=\""._PRINTER."\" width=\"16\" height=\"11\"></a> <a href=\"modules.php?name=News&amp;file=print_pdf&amp;sid=$sid\"><img src='images/pdf.gif' border='0' alt='"._PDF."' title='"._PDF."'></a> <a href=\"modules.php?name=News&amp;file=friend&amp;op=FriendSend&amp;sid=$sid\"><img src=\"images/friend.gif\" border=0 alt=\""._FRIEND."\" title=\""._FRIEND."\" width=\"16\" height=\"11\"></a>";
+        $actions = "<a href=\"modules.php?name=News&amp;file=print&amp;sid=$sid\" target=\"_blank\"><img src=\"images/print.gif\" border=0 alt=\""._PRINTER."\" title=\""._PRINTER."\" width=\"16\" height=\"11\"></a> <a href=\"modules.php?name=News&amp;file=print_pdf&amp;sid=$sid\" rel='5' class='newWindow'><img src='images/pdf.gif' border='0' alt='"._PDF."' title='"._PDF."'></a> <a href=\"modules.php?name=News&amp;file=friend&amp;op=FriendSend&amp;sid=$sid\"><img src=\"images/friend.gif\" border=0 alt=\""._FRIEND."\" title=\""._FRIEND."\" width=\"16\" height=\"11\"></a>";
         if ($score != 0) {
             $rated = substr($score / $ratings, 0, 4);
         } else {
@@ -196,7 +196,7 @@ function show_all($min) {
         $score = intval($row['score']);
         $ratings = intval($row['ratings']);
         $time = explode(" ", $time);
-        $actions = "<a href=\"modules.php?name=News&amp;file=print&amp;sid=$sid\"><img src=\"images/print.gif\" border=0 alt=\""._PRINTER."\" title=\""._PRINTER."\" width=\"15\" height=\"11\"></a> <a href=\"modules.php?name=News&amp;file=print_pdf&amp;sid=$sid\"><img src='images/pdf.gif' border='0' alt='"._PDF."' title='"._PDF."'></a> <a href=\"modules.php?name=News&amp;file=friend&amp;op=FriendSend&amp;sid=$sid\"><img src=\"images/friend.gif\" border=0 alt=\""._FRIEND."\" title=\""._FRIEND."\" width=\"15\" height=\"11\"></a>";
+        $actions = "<a href=\"modules.php?name=News&amp;file=print&amp;sid=$sid\" target=\"_blank\"><img src=\"images/print.gif\" border=0 alt=\""._PRINTER."\" title=\""._PRINTER."\" width=\"15\" height=\"11\"></a> <a href=\"modules.php?name=News&amp;file=print_pdf&amp;sid=$sid\" rel='5' class='newWindow'><img src='images/pdf.gif' border='0' alt='"._PDF."' title='"._PDF."'></a> <a href=\"modules.php?name=News&amp;file=friend&amp;op=FriendSend&amp;sid=$sid\"><img src=\"images/friend.gif\" border=0 alt=\""._FRIEND."\" title=\""._FRIEND."\" width=\"15\" height=\"11\"></a>";
         if ($score != 0) {
             $rated = substr($score / $ratings, 0, 4);
         } else {

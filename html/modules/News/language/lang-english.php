@@ -78,8 +78,6 @@ define("_THANKS","Thanks!");
 define("_RECOMMEND","Recommend this Site to a Friend");
 define("_PDATE","Date:");
 define("_PTOPIC","Topic:");
-define("_COMESFROM","This article comes from");
-define("_THEURL","The URL for this story is:");
 define("_PREVIEW","Preview");
 define("_NEWUSER","New User");
 define("_OPTIONS","Options");

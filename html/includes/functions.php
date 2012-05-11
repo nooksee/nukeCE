@@ -1392,4 +1392,27 @@ function truncate($string, $limit, $break=" ", $pad="...") {
 	return $text;
 }
 
+FUNCTION html2text($html){
+    $tags = ARRAY (
+    0 => '~<h[123][^>]+>~si',
+    1 => '~<h[456][^>]+>~si',
+    2 => '~<table[^>]+>~si',
+    3 => '~<tr[^>]+>~si',
+    4 => '~<li[^>]+>~si',
+    5 => '~<br[^>]+>~si',
+    6 => '~<p[^>]+>~si',
+    7 => '~<div[^>]+>~si',
+    );
+    $html = PREG_REPLACE($tags,"\n",$html);
+    $html = PREG_REPLACE('~</t(d|h)>\s*<t(d|h)[^>]+>~si',' - ',$html);
+    $html = PREG_REPLACE('~<[^>]+>~s','',$html);
+    // reducing spaces
+    $html = PREG_REPLACE('~ +~s',' ',$html);
+    $html = PREG_REPLACE('~^\s+~m','',$html);
+    $html = PREG_REPLACE('~\s+$~m','',$html);
+    // reducing newlines
+    $html = PREG_REPLACE('~\n+~s',"\n",$html);
+    RETURN $html;
+}
+
 ?>

@@ -31,8 +31,8 @@ class markitup {
         $modheader = '
                       <link rel="stylesheet" type="text/css" href="includes/wysiwyg/markItUp/skins/simple/style.css" />
                       <link rel="stylesheet" type="text/css" href="includes/wysiwyg/markItUp/sets/bbcode/style.css" />
-                      <script type="text/javascript" src="includes/js/markitup.js"></script>
                       <script type="text/javascript" src="includes/wysiwyg/markItUp/jquery.markitup.js"></script>
+                      <script type="text/javascript" src="includes/js/markitup.js"></script>
                       <script type="text/javascript" src="includes/wysiwyg/markItUp/sets/bbcode/set.js"></script>
                      ';
     }

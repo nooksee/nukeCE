@@ -28,8 +28,8 @@ class tinymce {
         }
         $this->first = false;
         $modheader = '
-                      <script type="text/javascript" src="includes/js/tinymce.js"></script>
                       <script type="text/javascript" src="includes/wysiwyg/TinyMCE/jscripts/tiny_mce/jquery.tinymce.js"></script>
+                      <script type="text/javascript" src="includes/js/tinymce.js"></script>
                      ';
     }
 

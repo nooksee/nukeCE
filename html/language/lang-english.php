@@ -13,6 +13,8 @@
 
 global $sitename;
 
+define("_THEAURL","The URL for this story is:");
+define("_NEWSCOMESFROM","This article comes from");
 define('_PREVPAGE','Prev Page');
 define('_PAGE','Page');
 define('_NEXTPAGE','Next Page');

@@ -231,8 +231,9 @@ list($title) = $db->sql_fetchrow($result);
 $title = stripslashes(check_html($title, "nohtml"));
 
 $pagetitle = $title;
-$pagedesc = $bodytext;
+$pagedesc = html2text($bodytext);
 $pageimg = $topic_img;
+
 $page_title = urlencode($pagetitle);
 $page_desc = urlencode($pagedesc);
 $page_img = urlencode($pageimg);
@@ -240,8 +241,8 @@ $page_img = urlencode($pageimg);
 $optiontitle = _OPTIONS;
 $optionbox = "
               <br />
-              &nbsp;<img src='images/print.gif' border='0' alt='"._PRINTER."' title='"._PRINTER."'> <a href=\"modules.php?name=$module_name&amp;file=print&amp;sid=$sid\">"._PRINTER."</a><br /><br />
-              &nbsp;<img src='images/pdf.gif' border='0' alt='"._PDF."' title='"._PDF."'> <a href=\"modules.php?name=$module_name&amp;file=print_pdf&amp;sid=$sid\">"._PDF."</a><br /><br />
+              &nbsp;<img src='images/print.gif' border='0' alt='"._PRINTER."' title='"._PRINTER."'> <a href=\"modules.php?name=$module_name&amp;file=print&amp;sid=$sid\" target=\"_blank\">"._PRINTER."</a><br /><br />
+              &nbsp;<img src='images/pdf.gif' border='0' alt='"._PDF."' title='"._PDF."'> <a href=\"modules.php?name=$module_name&amp;file=print_pdf&amp;sid=$sid\" rel='5' class='newWindow'>"._PDF."</a><br /><br />
               &nbsp;<img src='images/friend.gif' border='0' alt='"._FRIEND."' title='"._FRIEND."'> <a href=\"modules.php?name=$module_name&amp;file=friend&amp;op=FriendSend&amp;sid=$sid\">"._FRIEND."</a><br /><br />
               &nbsp;<img src='images/share.gif' border='0' alt='"._FACEBOOK."' title='"._FACEBOOK."'> <a href=\"http://www.facebook.com/sharer.php?s=100&p[title]=$page_title&p[summary]=$page_desc&p[url]=$current_url&p[images][0]=$nukeurl/$page_img\" rel='7' class='newWindow'\">"._FACEBOOK."</a><br /><br />
               &nbsp;<img src='images/tweet.png' border='0' alt='"._TWITTER."' title='"._TWITTER."'> <a href=\"http://twitter.com/share?url=$current_url&amp;text=$title\" rel='7' class='newWindow'\">"._TWITTER."</a><br /><br />

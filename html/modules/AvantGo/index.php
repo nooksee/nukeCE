@@ -202,9 +202,9 @@ function PrintPage($sid) {
                                                           </span>
                                                       </center>
                                                       <div style=\"max-width:640px;\" class=\"content\">
-                                                          $hometext<br /><br />
-                                                          $bodytext<br /><br />
-                                                          $notes<br /><br />
+                                                          $hometext
+                                                          $bodytext
+                                                          $notes
                                                       </div>
                                                   </td>
                                               </tr>

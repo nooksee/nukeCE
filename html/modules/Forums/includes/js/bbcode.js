@@ -116,7 +116,7 @@ function BBCgrad() {
         alert("This only works for less than 120 letters");
         return;
     }
-    showModalDialog("modules/Forums/bbcode_box/grad.htm",oSelectRange,"help:no; center:yes; status:no; dialogHeight:50px; dialogWidth:50px");
+    showModalDialog("modules/Forums/includes/bbcode/grad.htm",oSelectRange,"help:no; center:yes; status:no; dialogHeight:50px; dialogWidth:50px");
 }
 
 function BBChr() {
@@ -239,11 +239,11 @@ function BBCstrike() {
     }
     if (Strikeout == 0) {
         ToAdd = "[s]";
-        document.strik.src = "modules/Forums/bbcode_box/images/strike1.gif";
+        document.strik.src = "modules/Forums/images/bbcode/strike1.gif";
         Strikeout = 1;
     } else {
         ToAdd = "[/s]";
-        document.strik.src = "modules/Forums/bbcode_box/images/strike.gif";
+        document.strik.src = "modules/Forums/images/bbcode/strike.gif";
         Strikeout = 0;
     }
     PostWrite(ToAdd);
@@ -264,11 +264,11 @@ function BBCspoil() {
     }
     if (Spoiler == 0) {
         ToAdd = "[spoil]";
-        document.spoil.src = "modules/Forums/bbcode_box/images/spoil1.gif";
+        document.spoil.src = "modules/Forums/images/bbcode/spoil1.gif";
         Spoiler = 1;
     } else {
         ToAdd = "[/spoil]";
-        document.spoil.src = "modules/Forums/bbcode_box/images/spoil.gif";
+        document.spoil.src = "modules/Forums/images/bbcode/spoil.gif";
         Spoiler = 0;
     }
     PostWrite(ToAdd);
@@ -290,11 +290,11 @@ function BBCmarqu() {
     }
     if (marqu == 0) {
         ToAdd = "[marq=up]";
-        document.post.marqu.src = "modules/Forums/bbcode_box/images/marqu1.gif";
+        document.post.marqu.src = "modules/Forums/images/bbcode/marqu1.gif";
         marqu = 1;
     } else {
         ToAdd = "[/marq]";
-        document.post.marqu.src = "modules/Forums/bbcode_box/images/marqu.gif";
+        document.post.marqu.src = "modules/Forums/images/bbcode/marqu.gif";
         marqu = 0;
     }
     PostWrite(ToAdd);
@@ -315,11 +315,11 @@ function BBCmarql() {
     }
     if (marql == 0) {
         ToAdd = "[marq=left]";
-        document.post.marql.src = "modules/Forums/bbcode_box/images/marql1.gif";
+        document.post.marql.src = "modules/Forums/images/bbcode/marql1.gif";
         marql = 1;
     } else {
         ToAdd = "[/marq]";
-        document.post.marql.src = "modules/Forums/bbcode_box/images/marql.gif";
+        document.post.marql.src = "modules/Forums/images/bbcode/marql.gif";
         marql = 0;
     }
     PostWrite(ToAdd);
@@ -340,11 +340,11 @@ function BBCmarqr() {
     }
     if (marqr == 0) {
         ToAdd = "[marq=right]";
-        document.post.marqr.src = "modules/Forums/bbcode_box/images/marqr1.gif";
+        document.post.marqr.src = "modules/Forums/images/bbcode/marqr1.gif";
         marqr = 1;
     } else {
         ToAdd = "[/marq]";
-        document.post.marqr.src = "modules/Forums/bbcode_box/images/marqr.gif";
+        document.post.marqr.src = "modules/Forums/images/bbcode/marqr.gif";
         marqr = 0;
     }
     PostWrite(ToAdd);
@@ -365,11 +365,11 @@ function BBCfade() {
     }
     if (fade == 0) {
         ToAdd = "[fade]";
-        document.post.fade.src = "modules/Forums/bbcode_box/images/fade1.gif";
+        document.post.fade.src = "modules/Forums/images/bbcode/fade1.gif";
         fade = 1;
     } else {
         ToAdd = "[/fade]";
-        document.post.fade.src = "modules/Forums/bbcode_box/images/fade.gif";
+        document.post.fade.src = "modules/Forums/images/bbcode/fade.gif";
         fade = 0;
     }
     PostWrite(ToAdd);
@@ -390,11 +390,11 @@ function BBCjustify() {
     }
     if (justify == 0) {
         ToAdd = "[align=justify]";
-        document.post.justify.src = "modules/Forums/bbcode_box/images/justify1.gif";
+        document.post.justify.src = "modules/Forums/images/bbcode/justify1.gif";
         justify = 1;
     } else {
         ToAdd = "[/align]";
-        document.post.justify.src = "modules/Forums/bbcode_box/images/justify.gif";
+        document.post.justify.src = "modules/Forums/images/bbcode/justify.gif";
         justify = 0;
     }
     PostWrite(ToAdd);
@@ -415,11 +415,11 @@ function BBCleft() {
     }
     if (left == 0) {
         ToAdd = "[align=left]";
-        document.post.left.src = "modules/Forums/bbcode_box/images/left1.gif";
+        document.post.left.src = "modules/Forums/images/bbcode/left1.gif";
         left = 1;
     } else {
         ToAdd = "[/align]";
-        document.post.left.src = "modules/Forums/bbcode_box/images/left.gif";
+        document.post.left.src = "modules/Forums/images/bbcode/left.gif";
         left = 0;
     }
     PostWrite(ToAdd);
@@ -440,11 +440,11 @@ function BBCright() {
     }
     if (right == 0) {
         ToAdd = "[align=right]";
-        document.post.right.src = "modules/Forums/bbcode_box/images/right1.gif";
+        document.post.right.src = "modules/Forums/images/bbcode/right1.gif";
         right = 1;
     } else {
         ToAdd = "[/align]";
-        document.post.right.src = "modules/Forums/bbcode_box/images/right.gif";
+        document.post.right.src = "modules/Forums/images/bbcode/right.gif";
         right = 0;
     }
     PostWrite(ToAdd);
@@ -465,11 +465,11 @@ function BBCcenter() {
     }
     if (center == 0) {
         ToAdd = "[align=center]";
-        document.post.center.src = "modules/Forums/bbcode_box/images/center1.gif";
+        document.post.center.src = "modules/Forums/images/bbcode/center1.gif";
         center = 1;
     } else {
         ToAdd = "[/align]";
-        document.post.center.src = "modules/Forums/bbcode_box/images/center.gif";
+        document.post.center.src = "modules/Forums/images/bbcode/center.gif";
         center = 0;
     }
     PostWrite(ToAdd);
@@ -541,11 +541,11 @@ function BBCmarqd() {
     }
     if (marqd == 0) {
         ToAdd = "[marq=down]";
-        document.post.marqd.src = "modules/Forums/bbcode_box/images/marqd1.gif";
+        document.post.marqd.src = "modules/Forums/images/bbcode/marqd1.gif";
         marqd = 1;
     } else {
         ToAdd = "[/marq]";
-        document.post.marqd.src = "modules/Forums/bbcode_box/images/marqd.gif";
+        document.post.marqd.src = "modules/Forums/images/bbcode/marqd.gif";
         marqd = 0;
     }
     PostWrite(ToAdd);
@@ -664,11 +664,11 @@ function BBCsup() {
     }
     if (superscript == 0) {
         ToAdd = "[sup]";
-        document.supscript.src = "modules/Forums/bbcode_box/images/sup1.gif";
+        document.supscript.src = "modules/Forums/images/bbcode/sup1.gif";
         superscript = 1;
     } else {
         ToAdd = "[/sup]";
-        document.supscript.src = "modules/Forums/bbcode_box/images/sup.gif";
+        document.supscript.src = "modules/Forums/images/bbcode/sup.gif";
         superscript = 0;
     }
     PostWrite(ToAdd);
@@ -689,11 +689,11 @@ function BBCsub() {
     }
     if (subscript == 0) {
         ToAdd = "[sub]";
-        document.subs.src = "modules/Forums/bbcode_box/images/sub1.gif";
+        document.subs.src = "modules/Forums/images/bbcode/sub1.gif";
         subscript = 1;
     } else {
         ToAdd = "[/sub]";
-        document.subs.src = "modules/Forums/bbcode_box/images/sub.gif";
+        document.subs.src = "modules/Forums/images/bbcode/sub.gif";
         subscript = 0;
     }
     PostWrite(ToAdd);
@@ -714,11 +714,11 @@ function BBCcode() {
     }
     if (Code == 0) {
         ToAdd = "[code]";
-        document.post.code.src = "modules/Forums/bbcode_box/images/code1.gif";
+        document.post.code.src = "modules/Forums/images/bbcode/code1.gif";
         Code = 1;
     } else {
         ToAdd = "[/code]";
-        document.post.code.src = "modules/Forums/bbcode_box/images/code.gif";
+        document.post.code.src = "modules/Forums/images/bbcode/code.gif";
         Code = 0;
     }
     PostWrite(ToAdd);
@@ -739,11 +739,11 @@ function BBCphp() {
     }
     if (PHP == 0) {
         ToAdd = "[php]";
-        document.post.php.src = "modules/Forums/bbcode_box/images/php1.gif";
+        document.post.php.src = "modules/Forums/images/bbcode/php1.gif";
         PHP = 1;
     } else {
         ToAdd = "[/php]";
-        document.post.php.src = "modules/Forums/bbcode_box/images/php.gif";
+        document.post.php.src = "modules/Forums/images/bbcode/php.gif";
         PHP = 0;
     }
     PostWrite(ToAdd);
@@ -764,11 +764,11 @@ function BBCquote() {
     }
     if (Quote == 0) {
         ToAdd = "[quote]";
-        document.post.quote.src = "modules/Forums/bbcode_box/images/quote1.gif";
+        document.post.quote.src = "modules/Forums/images/bbcode/quote1.gif";
         Quote = 1;
     } else {
         ToAdd = "[/quote]";
-        document.post.quote.src = "modules/Forums/bbcode_box/images/quote.gif";
+        document.post.quote.src = "modules/Forums/images/bbcode/quote.gif";
         Quote = 0;
     }
     PostWrite(ToAdd);
@@ -789,11 +789,11 @@ function BBClist() {
     }
     if (List == 0) {
         ToAdd = "[list]";
-        document.listdf.src = "modules/Forums/bbcode_box/images/list1.gif";
+        document.listdf.src = "modules/Forums/images/bbcode/list1.gif";
         List = 1;
     } else {
         ToAdd = "[/list]";
-        document.listdf.src = "modules/Forums/bbcode_box/images/list.gif";
+        document.listdf.src = "modules/Forums/images/bbcode/list.gif";
         List = 0;
     }
     PostWrite(ToAdd);
@@ -814,11 +814,11 @@ function BBCbold() {
     }
     if (Bold == 0) {
         ToAdd = "[b]";
-        document.post.bold.src = "modules/Forums/bbcode_box/images/bold1.gif";
+        document.post.bold.src = "modules/Forums/images/bbcode/bold1.gif";
         Bold = 1;
     } else {
         ToAdd = "[/b]";
-        document.post.bold.src = "modules/Forums/bbcode_box/images/bold.gif";
+        document.post.bold.src = "modules/Forums/images/bbcode/bold.gif";
         Bold = 0;
     }
     PostWrite(ToAdd);
@@ -839,11 +839,11 @@ function BBCitalic() {
     }
     if (Italic == 0) {
         ToAdd = "[i]";
-        document.post.italic.src = "modules/Forums/bbcode_box/images/italic1.gif";
+        document.post.italic.src = "modules/Forums/images/bbcode/italic1.gif";
         Italic = 1;
     } else {
         ToAdd = "[/i]";
-        document.post.italic.src = "modules/Forums/bbcode_box/images/italic.gif";
+        document.post.italic.src = "modules/Forums/images/bbcode/italic.gif";
         Italic = 0;
     }
     PostWrite(ToAdd);
@@ -864,11 +864,11 @@ function BBCunder() {
     }
     if (Underline == 0) {
         ToAdd = "[u]";
-        document.post.under.src = "modules/Forums/bbcode_box/images/under1.gif";
+        document.post.under.src = "modules/Forums/images/bbcode/under1.gif";
         Underline = 1;
     } else {
         ToAdd = "[/u]";
-        document.post.under.src = "modules/Forums/bbcode_box/images/under.gif";
+        document.post.under.src = "modules/Forums/images/bbcode/under.gif";
         Underline = 0;
     }
     PostWrite(ToAdd);

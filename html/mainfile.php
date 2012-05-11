@@ -19,7 +19,7 @@ if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
 
 // Define File
 define_once('NUKE_CE', '2.0.5.0.1');
-define_once('CE_EDITION', 'PRERELEASE');
+define_once('CE_EDITION', '2.0.5.0.1');
 define('PHPVERS', @phpversion());
 define_once('CE_VERSION', NUKE_CE . ' ' . CE_EDITION);
 
