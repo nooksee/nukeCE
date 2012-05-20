@@ -147,9 +147,6 @@ $template->assign_vars(array(
 	'SORT_ASC' => ($new['sort_order'] == 'ASC') ? 'selected="selected"' : '',
 	'SORT_DESC' => ($new['sort_order'] == 'DESC') ? 'selected="selected"' : '',
 
-	'FULLPIC_POPUP_ENABLED' => ($new['fullpic_popup'] == 1) ? 'checked="checked"' : '',
-	'FULLPIC_POPUP_DISABLED' => ($new['fullpic_popup'] == 0) ? 'checked="checked"' : '',
-
 	'S_GUEST' => ALBUM_GUEST,
 	'S_USER' => ALBUM_USER,
 	'S_PRIVATE' => ALBUM_PRIVATE,
@@ -194,7 +191,6 @@ $template->assign_vars(array(
 	'L_DEFAULT_SORT_ORDER' => $lang['Default_Sort_Order'],
 	'L_ASC' => $lang['Sort_Ascending'],
 	'L_DESC' => $lang['Sort_Descending'],
-	'L_FULLPIC_POPUP' => $lang['Fullpic_Popup'],
 	'L_GUEST' => $lang['Forum_ALL'], 
 	'L_REG' => $lang['Forum_REG'], 
 	'L_PRIVATE' => $lang['Forum_PRIVATE'], 

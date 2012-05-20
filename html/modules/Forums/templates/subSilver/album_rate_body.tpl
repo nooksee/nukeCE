@@ -19,7 +19,7 @@ function checkRateForm() {
         <th class="thTop" height="25" colspan="2">{L_RATING}</th>
     </tr>
     <tr>
-        <td class="row1" align="center" width="30%"><a href="{U_PIC}" {TARGET_BLANK}><img src="{U_THUMBNAIL}" alt="{PIC_TITLE}" title="{PIC_TITLE}" border="0" vspace="20" hspace="20" /></a></td>
+        <td class="row1" align="center" width="30%"><a href="{U_PIC}" rel="album" class="fullsize"><img src="{U_THUMBNAIL}" alt="{PIC_TITLE}" title="{PIC_TITLE}" border="0" vspace="20" hspace="20" /></a></td>
         <td class="row1" valign="top">
             <table width="100%" cellspacing="2" cellpadding="2" border="0">
                 <tr>

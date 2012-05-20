@@ -37,6 +37,7 @@ $lang['Sorry_auth_view_attach'] = 'Sorry but you are not authorized to view or d
 $lang['Description'] = 'Description'; // used in Administration Panel too...
 $lang['Downloaded'] = 'Downloaded';
 $lang['Download'] = 'Download'; // this Language Variable is defined in lang_admin.php too, but we are unable to access it from the main Language File
+$lang['Preview'] = 'Preview'; // this Language Variable is defined in lang_admin.php too, but we are unable to access it from the main Language File
 $lang['Filesize'] = 'Filesize';
 $lang['Viewed'] = 'Viewed';
 $lang['Download_number'] = '%d Time(s)'; // replace %d with count

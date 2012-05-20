@@ -20,12 +20,15 @@ echo '
       <script src="includes/libraries/jquery.js"></script>
       <!-- Sexy -->
       <script src="includes/libraries/jquery.sexy.js"></script>
+      <!-- Resize -->
+      <script src="includes/libraries/jquery.resize.js"></script>
      ';
 
 ########################################################
 # Include for some common javascript/jquery functions  #
 ########################################################
 echo '
+      <script src="includes/js/resize.js"></script>
       <script type="text/javascript">
           Sexy.css("includes/css/styles.css");
           Sexy.bundle(

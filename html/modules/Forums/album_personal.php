@@ -319,7 +319,7 @@ if ($total_pics > 0)
 			}
 
 			$template->assign_block_vars('picrow.piccol', array(
-				'U_PIC' => ($album_config['fullpic_popup']) ? append_sid("album_pic.$phpEx?pic_id=". $picrow[$j]['pic_id']) : append_sid("album_page.$phpEx?pic_id=". $picrow[$j]['pic_id']),
+				'U_PIC' => append_sid("album_pic.$phpEx?pic_id=". $picrow[$j]['pic_id']),
 				'THUMBNAIL' => append_sid("album_thumbnail.$phpEx?pic_id=". $picrow[$j]['pic_id']),
 				'DESC' => $picrow[$j]['pic_desc']
 				)
@@ -415,8 +415,6 @@ $template->assign_vars(array(
 	'L_UPLOAD_PIC' => $lang['Upload_Pic'],
 
 	'L_PERSONAL_GALLERY_NOT_CREATED' => sprintf($lang['Personal_gallery_not_created'], $username),
-
-	'TARGET_BLANK' => ($album_config['fullpic_popup']) ? 'target="_blank"' : '',
 
 	'S_COLS' => $album_config['cols_per_page'],
 	'S_COL_WIDTH' => (100/$album_config['cols_per_page']) . '%',

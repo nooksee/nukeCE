@@ -26,7 +26,7 @@
     <!-- BEGIN picrow -->
     <tr>
         <!-- BEGIN piccol -->
-        <td align="center" width="{S_COL_WIDTH}" class="row1" onMouseOver="this.className='row2';" onMouseOut="this.className='row1';"  onclick="window.location.href='{picrow.piccol.U_PIC}'"><span class="genmed"><a href="{picrow.piccol.U_PIC}" {TARGET_BLANK}><img src="{picrow.piccol.THUMBNAIL}" border="0" alt="{picrow.piccol.DESC}" title="{picrow.piccol.DESC}" vspace="10" /></a></span></td>
+        <td align="center" width="{S_COL_WIDTH}" class="row1" onMouseOver="this.className='row2';" onMouseOut="this.className='row1';"><span class="genmed"><a href="{picrow.piccol.U_PIC}" rel="album" class="fullsize"><img src="{picrow.piccol.THUMBNAIL}" border="0" alt="{picrow.piccol.DESC}" title="{picrow.piccol.DESC}" vspace="10" /></a></span></td>
         <!-- END piccol -->
         <!-- BEGIN nopiccol --> 
         <td align="center" width="{S_COL_WIDTH}" class="row1">&nbsp;</span></td> 

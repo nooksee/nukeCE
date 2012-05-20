@@ -198,7 +198,7 @@ $sql = "SELECT *
 
    $last_pic_info = '<br />'. $lang['Pic_Title'] .': <a href="'; 
 
-   $last_pic_info .= ($album_config['fullpic_popup']) ? append_sid("album_pic.$phpEx?pic_id=". $pic_id) .'" title="' . $pic_title_full . '" target="_blank">' : append_sid("album_page.$phpEx?pic_id=". $pic_id) .'" title="' . $pic_title_full . '" class="genmed">' ; 
+   $last_pic_info .= append_sid("album_pic.$phpEx?pic_id=". $pic_id) .'" title="' . $pic_title_full . '" rel="album" class="fullsize">' ; 
 
    $last_pic_info .= $pic_title .'</a>';
    

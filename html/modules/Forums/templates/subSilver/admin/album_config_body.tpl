@@ -106,10 +106,6 @@
 	  </td>
 	</tr>
 	<tr>
-	  <td class="row1"><span class="genmed">{L_FULLPIC_POPUP}</span></td>
-	  <td class="row2"><span class="genmed"><input type="radio" {FULLPIC_POPUP_ENABLED} name="fullpic_popup" value="1" />{L_YES}&nbsp;&nbsp;<input type="radio" {FULLPIC_POPUP_DISABLED} name="fullpic_popup" value="0" />{L_NO}</span></td>
-	</tr>
-	<tr>
 	  <th class="thHead" colspan="2">{L_EXTRA_SETTINGS}</th>
 	</tr>
 	<tr>

@@ -49,7 +49,6 @@ $lang['Thumbnail_Settings'] = 'Thumbnail Settings';
 $lang['Extra_Settings'] = 'Extra Settings';
 $lang['Default_Sort_Method'] = 'Default Sort Method';
 $lang['Default_Sort_Order'] = 'Default Sort Order';
-$lang['Fullpic_Popup'] = 'View full pic as a popup';
 
 
 // Personal Gallery Page

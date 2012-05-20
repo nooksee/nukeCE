@@ -78,8 +78,18 @@ class Wysiwyg {
         return select_box('xtextarea', $wysiwyg, $this->getEditors()). '</td></tr>';
     }
 
-    function getEditors() {
-        $editors = array('' => _NONE);
+function getEditors() {
+    $editors = array('' => _NONE);
+    if (ereg('MSIE ([0-9].[0-9]{1,2})', $_SERVER['HTTP_USER_AGENT'])) {
+        $wysiwygs = dir(NUKE_INCLUDE_DIR.'wysiwyg');
+        while ($dir = $wysiwygs->read()) {
+            if ($dir[0] != '.' && file_exists(NUKE_INCLUDE_DIR."wysiwyg/SimpleMCE/$dir.php")) {
+                $editors[$dir] = $dir;
+            }
+        }
+        $wysiwygs->close();
+        return $editors;
+    } else
         $wysiwygs = dir(NUKE_INCLUDE_DIR.'wysiwyg');
         while ($dir = $wysiwygs->read()) {
             if ($dir[0] != '.' && file_exists(NUKE_INCLUDE_DIR."wysiwyg/$dir/$dir.php")) {
@@ -88,7 +98,7 @@ class Wysiwyg {
         }
         $wysiwygs->close();
         return $editors;
-    }
+}
 
     function getHTML() {
         if (!empty($this->editor)) {

@@ -6,7 +6,9 @@
 // ----------------------------------------------------------------------------
 myBbcodeSettings = {
   nameSpace:          "bbcode", // Useful to prevent multi-instances CSS conflict
-  // previewParserPath:  "",
+  previewParserPath:  "includes/wysiwyg/markItUp/sets/bbcode/preview.php",
+  previewTemplatePath: "includes/wysiwyg/markItUp/templates/preview.html",
+  previewInWindow: 'width=550, height=400, resizable=yes, scrollbars=yes',
   markupSet: [
       {name:'Bold', key:'B', openWith:'[b]', closeWith:'[/b]'}, 
       {name:'Italic', key:'I', openWith:'[i]', closeWith:'[/i]'}, 
@@ -39,6 +41,7 @@ myBbcodeSettings = {
       {name:'Quotes', openWith:'[quote]', closeWith:'[/quote]'}, 
       {name:'Code', openWith:'[code]', closeWith:'[/code]'}, 
       {separator:'---------------' },
-      {name:'Clean', className:"clean", replaceWith:function(h) { return h.selection.replace(/\[(.*?)\]/g, "") } }
-   ]
+      {name:'Clean', className:"clean", replaceWith:function(h) { return h.selection.replace(/\[(.*?)\]/g, "") } },
+      {name:'Preview', className:"preview", call:'preview' }
+  ]
 }

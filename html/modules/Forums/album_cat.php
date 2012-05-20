@@ -427,7 +427,7 @@ if ($total_pics > 0)
 			}
 
 			$template->assign_block_vars('picrow.piccol', array(
-				'U_PIC' => ($album_config['fullpic_popup']) ? append_sid("album_pic.$phpEx?pic_id=". $picrow[$j]['pic_id']) : append_sid("album_page.$phpEx?pic_id=". $picrow[$j]['pic_id']),
+				'U_PIC' => append_sid("album_pic.$phpEx?pic_id=". $picrow[$j]['pic_id']),
 				'THUMBNAIL' => append_sid("album_thumbnail.$phpEx?pic_id=". $picrow[$j]['pic_id']),
 				'DESC' => $picrow[$j]['pic_desc'],
 				'APPROVAL' => $approval_link,
@@ -586,8 +586,6 @@ $template->assign_vars(array(
 	'ALBUM_JUMPBOX' => $album_jumpbox,
 
 	'S_ALBUM_ACTION' => append_sid("album_cat.$phpEx?cat_id=$cat_id"),
-
-	'TARGET_BLANK' => ($album_config['fullpic_popup']) ? 'target="_blank"' : '',
 
 	'L_SELECT_SORT_METHOD' => $lang['Select_sort_method'],
 	'L_ORDER' => $lang['Order'],

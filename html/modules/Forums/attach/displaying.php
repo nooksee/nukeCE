@@ -1,7 +1,4 @@
 <?php
-/*=======================================================================
- Nuke-Evolution Basic: Enhanced PHP-Nuke Web Portal System
- =======================================================================*/
 
 /**
 *
@@ -456,12 +453,12 @@ function display_attachments_preview($attachment_list, $attachment_filesize_list
 
             if (!$denied)
             {
-                // Some basic Template Vars
+                   // Some basic Template Vars
                 $template->assign_vars(array(
                     'L_DESCRIPTION'        => $lang['Description'],
                     'L_DOWNLOAD'        => $lang['Download'],
                     'L_FILENAME'        => $lang['File_name'],
-                    'L_FILESIZE'        => $lang['Filesize'])
+                        'L_FILESIZE'        => $lang['Filesize'])
                 );
 
                 // define category
@@ -505,8 +502,8 @@ function display_attachments_preview($attachment_list, $attachment_filesize_list
 
                 if (intval($display_categories[$extension]) == IMAGE_CAT && intval($attachment_thumbnail_list[$i]) == 1)
                 {
-                    $thumbnail = TRUE;
-                    $image = FALSE;
+                    $thumbnail = FALSE;
+                    $image = TRUE;
                 }
 
                 if (!$image && !$stream && !$swf && !$thumbnail)
@@ -516,6 +513,19 @@ function display_attachments_preview($attachment_list, $attachment_filesize_list
 
                 if ($image)
                 {
+                    $upload_image = '';
+
+                    if ($attach_config['upload_img'] != '' && $upload_icons[$extension] == '')
+                    {
+                        $upload_image = '<img src="' . $attach_config['upload_img'] . '" alt="" border="0" />';
+                    }
+                    else if (trim($upload_icons[$extension]) != '')
+                    {
+                        $upload_image = '<img src="' . $upload_icons[$extension] . '" alt="" border="0" />';
+                    }
+
+                    $target_blank = 'target="_blank"';
+
                     // Images
                     $template->assign_block_vars('postrow.attach.cat_images', array(
                         'DOWNLOAD_NAME'        => $display_name,
@@ -523,26 +533,76 @@ function display_attachments_preview($attachment_list, $attachment_filesize_list
                         'FILESIZE'            => $filesize,
                         'SIZE_VAR'            => $size_lang,
                         'COMMENT'            => $comment,
-                        'L_DOWNLOADED_VIEWED'    => $lang['Viewed'])
-                    );
+                        'S_UPLOAD_IMAGE'        => $upload_image,
+                    'TARGET_BLANK'            => $target_blank,
+                    'L_DOWNLOADED_VIEWED'    => $lang['Viewed'],
+                        'L_DOWNLOAD_COUNT'        => sprintf($lang['Download_number'], $attachments['_' . $post_id][$i]['download_count']))
+                );
                 }
 
                 if ($thumbnail)
                 {
-                    // Images, but display Thumbnail
+                    $upload_image = '';
+
+                    if ($attach_config['upload_img'] != '' && $upload_icons[$extension] == '')
+                    {
+                        $upload_image = '<img src="' . $attach_config['upload_img'] . '" alt="" border="0" />';
+                    }
+                    else if (trim($upload_icons[$extension]) != '')
+                    {
+                        $upload_image = '<img src="' . $upload_icons[$extension] . '" alt="" border="0" />';
+                    }
+
+                    $target_blank = 'target="_blank"';
+
+                    if (intval($attach_config['allow_ftp_upload']) && trim($attach_config['download_path']) == '')
+                {
+                    $thumb_source = append_sid('download.' . $phpEx . '?id=' . $attachments['_' . $post_id][$i]['attach_id'] . '&amp;thumb=1');
+                }
+                else
+                {
+                    // Check if we can reach the file or if it is stored outside of the webroot
+                    if ($attach_config['upload_dir'][0] == '/' || ( $attach_config['upload_dir'][0] != '/' && $attach_config['upload_dir'][1] == ':'))
+                    {
+                        $thumb_source = append_sid('download.' . $phpEx . '?id=' . $attachments['_' . $post_id][$i]['attach_id'] . '&amp;thumb=1');
+                    }
+                    else
+                    {
+                        // BEGIN
+                        $thumb_source = $thumbnail_filename;
+                        // END
+                    }
+                }
+
+                // Images, but display Thumbnail
                     $template->assign_block_vars('postrow.attach.cat_thumb_images', array(
                         'DOWNLOAD_NAME'        => $display_name,
                         'IMG_SRC'            => $filename,
-                        'IMG_THUMB_SRC'        => $thumb_filename,
+                        'IMG_THUMB_SRC'        => $thumb_source,
                         'FILESIZE'            => $filesize,
                         'SIZE_VAR'            => $size_lang,
                         'COMMENT'            => $comment,
-                        'L_DOWNLOADED_VIEWED'    => $lang['Viewed'])
+                        'S_UPLOAD_IMAGE'        => $upload_image,
+                    'TARGET_BLANK'            => $target_blank,
+                    'L_DOWNLOADED_VIEWED'    => $lang['Viewed'])
                     );
                 }
 
                 if ($stream)
                 {
+                    $upload_image = '';
+
+                    if ($attach_config['upload_img'] != '' && $upload_icons[$extension] == '')
+                    {
+                        $upload_image = '<img src="' . $attach_config['upload_img'] . '" alt="" border="0" />';
+                    }
+                    else if (trim($upload_icons[$extension]) != '')
+                    {
+                        $upload_image = '<img src="' . $upload_icons[$extension] . '" alt="" border="0" />';
+                    }
+
+                    $target_blank = 'target="_blank"';
+
                     // Streams
                     $template->assign_block_vars('postrow.attach.cat_stream', array(
                         'U_DOWNLOAD_LINK'    => $filename,
@@ -550,14 +610,30 @@ function display_attachments_preview($attachment_list, $attachment_filesize_list
                         'FILESIZE'            => $filesize,
                         'SIZE_VAR'            => $size_lang,
                         'COMMENT'            => $comment,
-                        'L_DOWNLOADED_VIEWED'    => $lang['Viewed'])
-                    );
+                        'S_UPLOAD_IMAGE'        => $upload_image,
+                    'TARGET_BLANK'            => $target_blank,
+                    'L_DOWNLOADED_VIEWED'    => $lang['Viewed'],
+                        'L_DOWNLOAD_COUNT'        => sprintf($lang['Download_number'], $attachments['_' . $post_id][$i]['download_count']))
+                );
                 }
 
                 if ($swf)
                 {
+                    $upload_image = '';
+
+                    if ($attach_config['upload_img'] != '' && $upload_icons[$extension] == '')
+                    {
+                        $upload_image = '<img src="' . $attach_config['upload_img'] . '" alt="" border="0" />';
+                    }
+                    else if (trim($upload_icons[$extension]) != '')
+                    {
+                        $upload_image = '<img src="' . $upload_icons[$extension] . '" alt="" border="0" />';
+                    }
+
+                    $target_blank = 'target="_blank"';
+
                     // Macromedia Flash Files
-                    list($width, $height) = swf_getdimension($filename);
+                    // list($width, $height) = swf_getdimension($filename);
 
                     $template->assign_block_vars('postrow.attach.cat_swf', array(
                         'U_DOWNLOAD_LINK'        => $filename,
@@ -566,7 +642,10 @@ function display_attachments_preview($attachment_list, $attachment_filesize_list
                         'SIZE_VAR'                => $size_lang,
                         'COMMENT'                => $comment,
                         'L_DOWNLOADED_VIEWED'    => $lang['Viewed'],
-                        'WIDTH'                    => $width,
+                        'L_DOWNLOAD_COUNT'        => sprintf($lang['Download_number'], $attachments['_' . $post_id][$i]['download_count']),
+                    'S_UPLOAD_IMAGE'        => $upload_image,
+                    'TARGET_BLANK'            => $target_blank,
+                    'WIDTH'                    => $width,
                         'HEIGHT'                => $height)
                     );
                 }
@@ -596,8 +675,9 @@ function display_attachments_preview($attachment_list, $attachment_filesize_list
                         'SIZE_VAR'                => $size_lang,
                         'COMMENT'                => $comment,
                         'L_DOWNLOADED_VIEWED'    => $lang['Downloaded'],
-                        'TARGET_BLANK'            => $target_blank)
-                    );
+                        'TARGET_BLANK'            => $target_blank,
+                            'L_DOWNLOAD_COUNT'        => sprintf($lang['Download_number'], $attachments['_' . $post_id][$i]['download_count']))
+                );
                 }
             }
         }
@@ -677,6 +757,7 @@ function display_attachments($post_id)
             // Some basic Template Vars
             $template->assign_vars(array(
                 'L_DESCRIPTION'        => $lang['Description'],
+                'L_PREVIEW'        => $lang['Preview'],
                 'L_DOWNLOAD'        => $lang['Download'],
                 'L_FILENAME'        => $lang['File_name'],
                 'L_FILESIZE'        => $lang['Filesize'])
@@ -734,6 +815,8 @@ function display_attachments($post_id)
 
             if ($image)
             {
+                $target_blank = 'target="_blank"';
+
                 // Images
                 // NOTE: If you want to use the download.php everytime an image is displayed inlined, replace the
                 // Section between BEGIN and END with (Without the // of course):
@@ -772,6 +855,7 @@ function display_attachments($post_id)
                     'SIZE_VAR'            => $size_lang,
                     'COMMENT'            => $comment,
                     'L_DOWNLOADED_VIEWED'    => $lang['Viewed'],
+                    'TARGET_BLANK'            => $target_blank,
                     'L_DOWNLOAD_COUNT'        => sprintf($lang['Download_number'], $attachments['_' . $post_id][$i]['download_count']))
                 );
 
@@ -791,6 +875,8 @@ function display_attachments($post_id)
 
             if ($thumbnail)
             {
+                $target_blank = 'target="_blank"'; //( (intval($display_categories[$attachments['_' . $post_id][$i]['extension']]) == IMAGE_CAT) ) ? 'target="_blank"' : '';
+
                 // Images, but display Thumbnail
                 // NOTE: If you want to use the download.php everytime an thumnmail is displayed inlined, replace the
                 // Section between BEGIN and END with (Without the // of course):
@@ -816,6 +902,7 @@ function display_attachments($post_id)
                 }
 
                 $template->assign_block_vars('postrow.attach.cat_thumb_images', array(
+                    'U_DOWNLOAD_LINK'    => append_sid('download.' . $phpEx . '?id=' . $attachments['_' . $post_id][$i]['attach_id']),
                     'DOWNLOAD_NAME'            => $display_name,
                     'S_UPLOAD_IMAGE'        => $upload_image,
 
@@ -824,6 +911,7 @@ function display_attachments($post_id)
                     'FILESIZE'                => $filesize,
                     'SIZE_VAR'                => $size_lang,
                     'COMMENT'                => $comment,
+                    'TARGET_BLANK'            => $target_blank,
                     'L_DOWNLOADED_VIEWED'    => $lang['Viewed'],
                     'L_DOWNLOAD_COUNT'        => sprintf($lang['Download_number'], $attachments['_' . $post_id][$i]['download_count']))
                 );
@@ -831,16 +919,19 @@ function display_attachments($post_id)
 
             if ($stream)
             {
+                $target_blank = 'target="_blank"';
+
                 // Streams
                 $template->assign_block_vars('postrow.attach.cat_stream', array(
                     'U_DOWNLOAD_LINK'        => $filename,
                     'S_UPLOAD_IMAGE'        => $upload_image,
 
-//                    'U_DOWNLOAD_LINK' => append_sid('download.' . $phpEx . '?id=' . $attachments['_' . $post_id][$i]['attach_id']),
+                    // 'U_DOWNLOAD_LINK' => append_sid('download.' . $phpEx . '?id=' . $attachments['_' . $post_id][$i]['attach_id']),
                     'DOWNLOAD_NAME'            => $display_name,
                     'FILESIZE'                => $filesize,
                     'SIZE_VAR'                => $size_lang,
                     'COMMENT'                => $comment,
+                    'TARGET_BLANK'            => $target_blank,
                     'L_DOWNLOADED_VIEWED'    => $lang['Viewed'],
                     'L_DOWNLOAD_COUNT'        => sprintf($lang['Download_number'], $attachments['_' . $post_id][$i]['download_count']))
                 );
@@ -858,8 +949,10 @@ function display_attachments($post_id)
 
             if ($swf)
             {
+                $target_blank = 'target="_blank"';
+
                 // Macromedia Flash Files
-                list($width, $height) = swf_getdimension($filename);
+                // list($width, $height) = swf_getdimension($filename);
 
                 $template->assign_block_vars('postrow.attach.cat_swf', array(
                     'U_DOWNLOAD_LINK'        => $filename,
@@ -869,10 +962,11 @@ function display_attachments($post_id)
                     'FILESIZE'                => $filesize,
                     'SIZE_VAR'                => $size_lang,
                     'COMMENT'                => $comment,
+                    'TARGET_BLANK'            => $target_blank,
                     'L_DOWNLOADED_VIEWED'    => $lang['Viewed'],
-                    'L_DOWNLOAD_COUNT'        => sprintf($lang['Download_number'], $attachments['_' . $post_id][$i]['download_count']),
-                    'WIDTH'                    => $width,
-                    'HEIGHT'                => $height)
+                    'L_DOWNLOAD_COUNT'        => sprintf($lang['Download_number'], $attachments['_' . $post_id][$i]['download_count']))
+                    // 'WIDTH'                    => $width,
+                    // 'HEIGHT'                => $height)
                 );
 
                 // Viewed/Heared File ... update the download count (download.php is not called here)

@@ -399,7 +399,7 @@ if( !isset($HTTP_POST_VARS['comment']) )
 		'U_VIEW_CAT' => ($cat_id != PERSONAL_GALLERY) ? append_sid("album_cat.$phpEx?cat_id=$cat_id") : append_sid("album_personal.$phpEx?user_id=$user_id"),
 
 		'U_THUMBNAIL' => append_sid("album_thumbnail.$phpEx?pic_id=$pic_id"),
-		'U_PIC' => ($album_config['fullpic_popup']) ? append_sid("album_pic.$phpEx?pic_id=$pic_id") : append_sid("album_page.$phpEx?pic_id=$pic_id"),
+		'U_PIC' => append_sid("album_pic.$phpEx?pic_id=$pic_id"),
 
 		'PIC_TITLE' => $thispic['pic_title'],
 		'PIC_DESC' => nl2br($thispic['pic_desc']),
@@ -409,8 +409,6 @@ if( !isset($HTTP_POST_VARS['comment']) )
 		'PIC_TIME' => create_date($board_config['default_dateformat'], $thispic['pic_time'], $board_config['board_timezone']),
 		'PIC_VIEW' => $thispic['pic_view_count'],
 		'PIC_COMMENTS' => $total_comments,
-
-		'TARGET_BLANK' => ($album_config['fullpic_popup']) ? 'target="_blank"' : '',
 
 		'L_PIC_TITLE' => $lang['Pic_Title'],
 		'L_PIC_DESC' => $lang['Pic_Desc'],

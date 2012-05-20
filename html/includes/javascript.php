@@ -20,6 +20,8 @@ echo '
       <script src="includes/libraries/jquery.js"></script>
       <!-- Sexy -->
       <script src="includes/libraries/jquery.sexy.js"></script>
+      <!-- Colorbox -->
+      <script src="includes/libraries/jquery.colorbox.js"></script>
      ';
 ########################################################
 # Include for some common javascript/jquery functions  #
@@ -27,6 +29,7 @@ echo '
 echo '
       <script type="text/javascript">
           Sexy.css("includes/css/styles.css");
+          Sexy.css("includes/css/colorbox.css");
           Sexy.bundle(
               "includes/js/onload.js",
               "includes/js/popup.js",
@@ -57,6 +60,7 @@ if ($img_resize) {
         echo '
               <script src="includes/libraries/jquery.resize.js"></script>
               <script src="includes/js/resize.js"></script>
+              <script src="includes/js/fullsize.js"></script>
              ';
     }
 }

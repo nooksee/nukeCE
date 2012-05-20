@@ -239,7 +239,7 @@ if( !isset($HTTP_POST_VARS['rate']) )
 		'U_VIEW_CAT' => ($cat_id != PERSONAL_GALLERY) ? append_sid("album_cat.$phpEx?cat_id=$cat_id") : append_sid("album_personal.$phpEx?user_id=$user_id"),
 
 		'U_THUMBNAIL' => append_sid("album_thumbnail.$phpEx?pic_id=$pic_id"),
-		'U_PIC' => ($album_config['fullpic_popup']) ? append_sid("album_pic.$phpEx?pic_id=$pic_id") : append_sid("album_page.$phpEx?pic_id=$pic_id"),
+		'U_PIC' => append_sid("album_pic.$phpEx?pic_id=$pic_id"),
 
 		'PIC_TITLE' => $thispic['pic_title'],
 		'PIC_DESC' => nl2br($thispic['pic_desc']),
@@ -251,8 +251,6 @@ if( !isset($HTTP_POST_VARS['rate']) )
 		'PIC_RATING' => ($thispic['rating'] != 0) ? round($thispic['rating'], 2) : $lang['Not_rated'],
 
 		'S_RATE_MSG' => ($already_rated) ? $lang['Already_rated'] : $lang['Rating'],
-
-		'TARGET_BLANK' => ($album_config['fullpic_popup']) ? 'target="_blank"' : '',
 
 		'L_RATING' => $lang['Rating'],
 		'L_PIC_TITLE' => $lang['Pic_Title'],

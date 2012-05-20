@@ -1,3 +1,3 @@
 $(document).ready(function () {
-      $( ".resize" ).aeImageResize({ height: 550, width: 550 });
+      $( ".resize" ).aeImageResize({ height: 400, width: 400 });
 });

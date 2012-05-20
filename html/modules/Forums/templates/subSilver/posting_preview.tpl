@@ -10,16 +10,19 @@
             <tr>
                 <td>
                     <span class="postbody">{MESSAGE}</span>
-                        <!-- BEGIN postrow -->
-                    {ATTACHMENTS}
-                    <!-- END postrow -->
                 </td>
             </tr>
+            <!-- BEGIN postrow -->
+            <tr>
+                <td>
+                    <span class="postbody">{ATTACHMENTS}</span>
+                </td>
+            </tr>
+            <!-- END postrow -->
         </table></td>
     </tr>
     <tr> 
         <td class="spaceRow" height="1"><img src="modules/Forums/templates/subSilver/images/spacer.gif" width="1" height="1" /></td>
     </tr>
 </table>
-
 <br clear="all" />

@@ -11,7 +11,7 @@
         <th class="thTop" height="25">{PIC_TITLE}</th>
     </tr>
     <tr>
-        <td class="row1" align="center"><img class="resize" src="{U_PIC}" border="0" vspace="10" alt="{PIC_TITLE}" title="{PIC_TITLE}" /></td>
+        <td class="row1" align="center"><a href="{U_PIC}" rel="album" class="fullsize"><img class="resize" src="{U_PIC}" border="0" vspace="10" alt="{PIC_TITLE}" title="{PIC_TITLE}" /></a></td>
     </tr>
     <tr>
         <td class="row2">

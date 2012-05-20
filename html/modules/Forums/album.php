@@ -175,7 +175,7 @@ for ($i = 0; $i < count($catrows); $i++) {
 
         $last_pic_info .= '<br />'. $lang['Pic_Title'] .': <a href="';
 
-        $last_pic_info .= ($album_config['fullpic_popup']) ? append_sid("album_pic.$phpEx?pic_id=". $lastrow['pic_id']) .'" class="genmed" target="_blank">' : append_sid("album_page.$phpEx?pic_id=". $lastrow['pic_id']) .'" class="genmed">' ;
+        $last_pic_info .= append_sid("album_pic.$phpEx?pic_id=". $lastrow['pic_id']) .'" rel="album" class="fullsize">' ;
 
         $last_pic_info .= $lastrow['pic_title'] .'</a>';
     }
@@ -226,7 +226,7 @@ if ($allowed_cat != '') {
                     $recentrow[$j]['rating'] = round($recentrow[$j]['rating'], 2);
                 }
 
-                $template->assign_block_vars('recent_pics.recent_col', array('U_PIC' => ($album_config['fullpic_popup']) ? append_sid("album_pic.$phpEx?pic_id=". $recentrow[$j]['pic_id']) : append_sid("album_page.$phpEx?pic_id=". $recentrow[$j]['pic_id']), 'THUMBNAIL' => append_sid("album_thumbnail.$phpEx?pic_id=". $recentrow[$j]['pic_id']), 'DESC' => $recentrow[$j]['pic_desc']));
+                $template->assign_block_vars('recent_pics.recent_col', array('U_PIC' => append_sid("album_pic.$phpEx?pic_id=". $recentrow[$j]['pic_id']), 'THUMBNAIL' => append_sid("album_thumbnail.$phpEx?pic_id=". $recentrow[$j]['pic_id']), 'DESC' => $recentrow[$j]['pic_desc']));
 
                 if( ($recentrow[$j]['user_id'] == ALBUM_GUEST) or ($recentrow[$j]['username'] == '') ) {
                     $recent_poster = ($recentrow[$j]['pic_username'] == '') ? $lang['Guest'] : $recentrow[$j]['pic_username'];
@@ -262,7 +262,7 @@ include($phpbb_root_path . 'includes/page_header.'.$phpEx);
 
 $template->set_filenames(array('body' => 'album_index_body.tpl'));
 
-$template->assign_vars(array('L_CATEGORY' => $lang['Category'], 'L_PICS' => $lang['Pics'], 'L_LAST_PIC' => $lang['Last_Pic'], 'U_YOUR_PERSONAL_GALLERY' => append_sid("album_personal.$phpEx?user_id=". $userdata['user_id']), 'L_YOUR_PERSONAL_GALLERY' => $lang['Your_Personal_Gallery'], 'U_USERS_PERSONAL_GALLERIES' => append_sid("album_personal_index.$phpEx"), 'L_USERS_PERSONAL_GALLERIES' => $lang['Users_Personal_Galleries'], 'S_COLS' => $album_config['cols_per_page'], 'S_COL_WIDTH' => (100/$album_config['cols_per_page']) . '%', 'TARGET_BLANK' => ($album_config['fullpic_popup']) ? 'target="_blank"' : '', 'L_RECENT_PUBLIC_PICS' => $lang['Recent_Public_Pics'], 'L_NO_PICS' => $lang['No_Pics'], 'L_PIC_TITLE' => $lang['Pic_Title'], 'L_VIEW' => $lang['View'], 'L_POSTER' => $lang['Poster'], 'L_PUBLIC_CATS' => $lang['Public_Categories']));
+$template->assign_vars(array('L_CATEGORY' => $lang['Category'], 'L_PICS' => $lang['Pics'], 'L_LAST_PIC' => $lang['Last_Pic'], 'U_YOUR_PERSONAL_GALLERY' => append_sid("album_personal.$phpEx?user_id=". $userdata['user_id']), 'L_YOUR_PERSONAL_GALLERY' => $lang['Your_Personal_Gallery'], 'U_USERS_PERSONAL_GALLERIES' => append_sid("album_personal_index.$phpEx"), 'L_USERS_PERSONAL_GALLERIES' => $lang['Users_Personal_Galleries'], 'S_COLS' => $album_config['cols_per_page'], 'S_COL_WIDTH' => (100/$album_config['cols_per_page']) . '%', 'L_RECENT_PUBLIC_PICS' => $lang['Recent_Public_Pics'], 'L_NO_PICS' => $lang['No_Pics'], 'L_PIC_TITLE' => $lang['Pic_Title'], 'L_VIEW' => $lang['View'], 'L_POSTER' => $lang['Poster'], 'L_PUBLIC_CATS' => $lang['Public_Categories']));
 
 //
 // Generate the page

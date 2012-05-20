@@ -1085,15 +1085,24 @@ include_once(NUKE_INCLUDE_DIR.'functions_deprecated.php');
 ******************************************************/
 
 function nuke_img_tag_to_resize($text) {
+    require_once(NUKE_CLASSES_DIR.'class.parser.php');
+    $img_dom = str_get_html($text);
     global $img_resize;
-    
     if(!$img_resize) return $text;
     if(empty($text)) return $text;
     if(preg_match('/<NO RESIZE>/',$text)) {
         $text = str_replace('<NO RESIZE>', '', $text);
         return $text;
     }
-    $text = preg_replace('/<\s*?img/',"<img class=\"resize\" ",$text);
+    foreach($img_dom->find('a') as $a) {
+        foreach($a->find('img') as $img) {
+            if ( preg_match("/(.*?).(jpg|jpeg|png|gif|bmp|ico|svg)/i", $a->href) ) {
+                $text = preg_replace('/<\s*?img/',"<img class=\"resize\" ",$text);
+                return $text;
+            }
+        }
+    }
+    $text = preg_replace("{<img\\s*(.*?)src=('.*?'|\".*?\"|[^\\s]+)(.*?)\\s*/?>}ims", '<a class="fullsize" href=$2><img class="resize" $1src=$2 $3/></a>', $text); 
     return $text;
 }
 

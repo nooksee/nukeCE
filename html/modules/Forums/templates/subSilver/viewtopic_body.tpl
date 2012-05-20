@@ -49,10 +49,13 @@
                 <td valign="top" align="right" nowrap="nowrap">{postrow.QUOTE_IMG} {postrow.EDIT_IMG} {postrow.DELETE_IMG} {postrow.IP_IMG} {postrow.REPORT_IMG}</td>
             </tr>
             <tr> 
-                <td colspan="2"><hr /></td>
+                <td colspan="2"><hr style="height: 2px; width: 100%; margin-left: 0px; margin-right: auto;"></td>
             </tr>
             <tr>
-                <td colspan="2" height="100%" valign="top"><span class="postbody">{postrow.MESSAGE}</span>{postrow.ATTACHMENTS}<span class="postbody"></span></td>
+                <td colspan="2" height="100%" valign="top"><span class="postbody">{postrow.MESSAGE}</span><span class="postbody"></span></td>
+                </tr> 
+                <tr> 
+                        <td colspan="2"><SPAN CLASS="postbody">{postrow.ATTACHMENTS}<span class="postbody"></span></td> 
                 <!-- Start add - Bottom aligned signature MOD -->
                 </tr> 
                 <tr> 

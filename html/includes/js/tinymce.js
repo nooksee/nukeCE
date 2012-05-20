@@ -5,10 +5,10 @@ $(document).ready(function () {
 
         // General options
         theme : "advanced",
-        plugins : "advhr,advimage,advlink,inlinepopups,preview,media,print,contextmenu,paste,fullscreen,noneditable,xhtmlxtras,template",
+        plugins : "save,advhr,advimage,advlink,inlinepopups,preview,media,print,contextmenu,paste,fullscreen,noneditable,xhtmlxtras,template",
 
         // Theme options
-        theme_advanced_buttons1 : "template,|,pastetext,pasteword,|,undo,redo,|,link,unlink,|,preview,|,print,|,image,media,|,forecolor,|,removeformat,|,charmap,advhr,|,cleanup,code,|,fullscreen",
+        theme_advanced_buttons1 : "template,|,save,|,pastetext,pasteword,|,undo,redo,|,link,unlink,|,preview,|,print,|,image,media,|,forecolor,|,removeformat,|,charmap,advhr,|,code,|,fullscreen",
         theme_advanced_buttons2 : "formatselect,fontselect,fontsizeselect,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,bullist,numlist",
         theme_advanced_buttons3 : "",
         theme_advanced_buttons4 : "",

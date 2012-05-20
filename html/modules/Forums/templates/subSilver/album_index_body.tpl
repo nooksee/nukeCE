@@ -13,7 +13,7 @@
                 <!-- BEGIN recent_pics -->
                 <tr>
                     <!-- BEGIN recent_col -->
-                    <td class="row1" width="{S_COL_WIDTH}" align="center" onMouseOver="this.className='row2';" onMouseOut="this.className='row1';"  onclick="window.location.href='{recent_pics.recent_col.U_PIC}'"><a href="{recent_pics.recent_col.U_PIC}" {TARGET_BLANK}><img src="{recent_pics.recent_col.THUMBNAIL}" border="0" alt="{recent_pics.recent_col.DESC}" title="{recent_pics.recent_col.DESC}" vspace="10" /></a></td>
+                    <td class="row1" width="{S_COL_WIDTH}" align="center" onMouseOver="this.className='row2';" onMouseOut="this.className='row1';"><a href="{recent_pics.recent_col.U_PIC}" rel="album" class="fullsize"><img src="{recent_pics.recent_col.THUMBNAIL}" border="0" alt="{recent_pics.recent_col.DESC}" title="{recent_pics.recent_col.DESC}" vspace="10" /></a></td>
                     <!-- END recent_col -->
                 </tr>
                 <tr>

@@ -131,7 +131,9 @@ function avtgo() {
     }
     echo "
                                                           <div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>
-                                                          <span class=\"content\">"._EMAIL.": <a href='mailto:".$adminmail."'>".$adminmail."</a></span>
+                                                          <center>
+                                                              <span class=\"content\">"._EMAIL.": <a href='mailto:".$adminmail."'>".$adminmail."</a></span>
+                                                          </center>
                                                       </div>
                                                   </td>
                                               </tr>
@@ -162,13 +164,15 @@ function PrintPage($sid) {
     $title = stripslashes($row['title']);
     $time = $row['time'];
 /*****[BEGIN]******************************************
- [ Mod:     News BBCodes                       v1.0.0 ]
- ******************************************************/
+[ Mod:     News BBCodes                       v1.1.0 ]
+******************************************************/
     $hometext = BBCode2Html(stripslashes($row["hometext"]), 1, true);
     $bodytext = BBCode2Html(stripslashes($row["bodytext"]), 1, true);
+    $hometext = nuke_img_tag_to_resize($hometext);
+    $bodytext = nuke_img_tag_to_resize($bodytext);
 /*****[END]********************************************
- [ Mod:     News BBCodes                       v1.0.0 ]
- ******************************************************/
+[ Mod:     News BBCodes                       v1.1.0 ]
+******************************************************/
     $topic = intval($row['topic']);
     $notes = stripslashes($row['notes']);
     $row2 = $db->sql_fetchrow($db->sql_query("SELECT topictext FROM ".$prefix."_topics WHERE topicid='$topic'"));
@@ -182,6 +186,9 @@ function PrintPage($sid) {
               <head>
                   <title>$sitename &raquo; $pagetitle &raquo; "._ARTICLES." &raquo; $title</title>
                   <meta name=\"HandheldFriendly\" content=\"True\">
+         ";
+    include_once("includes/javascript.min.php");
+    echo "
               </head>
               <body bgcolor=\"#ffffff\" text=\"#000000\">
                   <table border=\"0\" align=\"center\">
@@ -261,6 +268,9 @@ function DisplayPic($pic_id) {
               <head>
                   <title>$sitename &raquo; $pagetitle &raquo; "._PICS." &raquo; $pic_title</title>
                   <meta name=\"HandheldFriendly\" content=\"True\">
+         ";
+    include_once("includes/javascript.min.php");
+    echo "
               </head>
               <body bgcolor=\"#ffffff\" text=\"#000000\">
                   <table border=\"0\" align=\"center\">

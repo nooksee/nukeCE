@@ -29,7 +29,7 @@ $imagick = '';
 function get_img_size_format($width, $height)
 {
     // Maximum Width the Image can take
-    $max_width = 400;
+    $max_width = 150;
 
     if ($width > $height)
     {

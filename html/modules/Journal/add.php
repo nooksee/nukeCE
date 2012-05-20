@@ -86,7 +86,7 @@ if (is_user()) {
     }
     asort($filelist);
     while (list ($key, $file) = each ($filelist)) {
-        if (!ereg(".gif|.jpg",$file)) { }
+        if (!ereg(".gif|.jpg|.png",$file)) { }
         elseif ($file == "." || $file == "..") {
         $a=1;
         } else {
