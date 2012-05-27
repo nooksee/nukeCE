@@ -4240,7 +4240,7 @@ CREATE TABLE `nuke_users` (
   `user_view_log` tinyint(4) NOT NULL default '0',
   `user_glance_show` varchar(255) NOT NULL default '1',
   `user_hide_images` tinyint(2) NOT NULL default '0',
-  `user_open_quickreply` tinyint(1) NOT NULL default '1',
+  `user_open_quickreply` tinyint(1) NOT NULL default '0',
   `xdata_bbcode` varchar(10) default NULL,
   PRIMARY KEY  (`user_id`),
   KEY `uname` (`username`),
