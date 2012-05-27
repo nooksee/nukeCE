@@ -75,7 +75,7 @@ if (is_user()) {
     $direktori = $jsmiles;
     $handle = opendir($direktori);
     while ($file = readdir($handle)) {
-        if (is_file($file) && strtolower(substr($file, -4)) == '.gif' || '.jpg') {
+        if (is_file($file) && strtolower(substr($file, -4)) == '.gif' || '.jpg' || '.png') {
             $filelist[] = $file;
         } else {
             OpenTable();

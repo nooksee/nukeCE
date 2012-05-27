@@ -458,8 +458,8 @@ function autoEdit($anid) {
         if ($topic_icon == 0) {
             echo "<img src=\"images/topics/$topicimage\" border=\"0\" align=\"right\" alt=\"\">";
         }
-    $hometext_bb = BBCode2Html(stripslashes($hometext), 1, true);
-    $bodytext_bb = BBCode2Html(stripslashes($bodytext), 1, true);
+    $hometext_bb = BBCode2Html(stripslashes($hometext));
+    $bodytext_bb = BBCode2Html(stripslashes($bodytext));
     $hometext_bb = nuke_img_tag_to_resize($hometext_bb);
     $bodytext_bb = nuke_img_tag_to_resize($bodytext_bb);
     themepreview($subject, $hometext_bb, $bodytext_bb);
@@ -694,8 +694,8 @@ function displayStory($qid) {
 /*****[BEGIN]******************************************
  [ Mod:     News BBCodes                       v1.0.0 ]
  ******************************************************/
-    $storyext_bb = BBCode2Html(stripslashes($storyext), 1, true);
-    $story_bb = BBCode2Html(stripslashes($story), 1, true);
+    $storyext_bb = BBCode2Html(stripslashes($storyext));
+    $story_bb = BBCode2Html(stripslashes($story));
     $storyext_bb = nuke_img_tag_to_resize($storyext_bb);
     $story_bb = nuke_img_tag_to_resize($story_bb);
 /*****[END]********************************************
@@ -967,8 +967,8 @@ function previewStory($automated, $year, $day, $month, $hour, $min, $qid, $uid, 
 /*****[BEGIN]******************************************
  [ Mod:     News BBCodes                       v1.0.0 ]
  ******************************************************/
-    $bodytext_bb = BBCode2Html(stripslashes($bodytext), 1, true);
-    $hometext_bb = BBCode2Html(stripslashes($hometext), 1, true);
+    $bodytext_bb = BBCode2Html(stripslashes($bodytext));
+    $hometext_bb = BBCode2Html(stripslashes($hometext));
     $hometext_bb = nuke_img_tag_to_resize($hometext_bb);
     $bodytext_bb = nuke_img_tag_to_resize($bodytext_bb);
     themepreview($subject, $hometext_bb, $bodytext_bb, $notes);
@@ -1329,8 +1329,8 @@ function postStory($automated, $year, $day, $month, $hour, $min, $qid, $uid, $au
         list($topicimage) = $db->sql_fetchrow($result2);
         OpenTable();
         echo "<center><span class=\"option\"><strong>"._EDITARTICLE."</strong></span></center><br />";
-        $hometext_bb = BBCode2Html(stripslashes(nl2br($hometext)), 1, true);
-        $bodytext_bb = BBCode2Html(stripslashes(nl2br($bodytext)), 1, true);
+        $hometext_bb = BBCode2Html(stripslashes(nl2br($hometext)));
+        $bodytext_bb = BBCode2Html(stripslashes(nl2br($bodytext)));
         $hometext_bb = nuke_img_tag_to_resize($hometext_bb);
         $bodytext_bb = nuke_img_tag_to_resize($bodytext_bb);
         if($writes == 0) {
@@ -1854,8 +1854,8 @@ function previewAdminStory($automated, $year, $day, $month, $hour, $min, $subjec
 /*****[BEGIN]******************************************
  [ Mod:     News BBCodes                       v1.0.0 ]
  ******************************************************/
-    $hometext_bb = BBCode2Html(stripslashes($hometext), 1, true);
-    $bodytext_bb = BBCode2Html(stripslashes($bodytext), 1, true);
+    $hometext_bb = BBCode2Html(stripslashes($hometext));
+    $bodytext_bb = BBCode2Html(stripslashes($bodytext));
     $hometext_bb = nuke_img_tag_to_resize($hometext_bb);
     $bodytext_bb = nuke_img_tag_to_resize($bodytext_bb);
     if($writes == 0) {

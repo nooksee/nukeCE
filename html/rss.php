@@ -17,7 +17,6 @@ define('NO_SECURITY', true);
 
 require_once(dirname(__FILE__) . '/mainfile.php');
 include_once(NUKE_INCLUDE_DIR.'counter.php');
-include_once(NUKE_RSS_DIR.'functions.php');
 
 if(isset($feed) && !preg_match("/[\W]/i", $feed)) {
     $feed = htmlentities(addslashes($feed));

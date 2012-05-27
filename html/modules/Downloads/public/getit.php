@@ -43,9 +43,16 @@ if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user())  || ($lidinfo
         mt_srand ((double)microtime()*1000000);
         $maxran = 1000000;
         $random_num = mt_rand(0, $maxran);
-        $lidinfo['description'] = stripslashes($lidinfo['description']);
-        $lidinfo['description'] = str_replace ("\r\n", "<br />", $lidinfo['description']);
-        echo "<br><font class=\"content\">".$lidinfo['description']."<br>";
+        /*****[BEGIN]******************************************
+        [ Mod:     News BBCodes                       v1.0.0 ]
+        ******************************************************/
+        $lidinfo['description'] = BBCode2Html(stripslashes($lidinfo['description']));
+        $lidinfo['description'] = nuke_img_tag_to_resize($lidinfo['description']);
+        /*****[END]********************************************
+        [ Mod:     News BBCodes                       v1.0.0 ]       
+        ******************************************************/
+echo "<br><font class=\"content\">".$lidinfo['description']."<br>";
+
         if (empty($lidinfo['name'])) {
             $lidinfo['name'] = "<i>"._UNKNOWN."</i>";
         } else {

@@ -4,7 +4,7 @@
 /* PHP-Nuke CE: Web Portal System                                         */
 /* ==============================                                         */
 /*                                                                        */
-/* Copyright (c) 2011 by Kevin Atwood                                     */
+/* Copyright (c) 2012 by Kevin Atwood                                     */
 /* http://www.nukece.com                                                  */
 /*                                                                        */
 /* All PHP-Nuke CE code is released under the GNU General Public License. */
@@ -15,19 +15,29 @@ if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
     exit('Access Denied');
 }
 
+include(NUKE_CLASSES_DIR.'class.feed.php');
+
 $sitename = entity_to_hex_value($sitename);
 $nukeurl = htmlspecialchars($nukeurl);
 $backend_title = entity_to_hex_value($backend_title);
 $slogan = entity_to_hex_value($slogan);
 
-$gmtdiff = date("O", time());
-$gmtstr = substr($gmtdiff, 0, 3) . ":" . substr($gmtdiff, 3, 9);
-// Format: 2004-08-02T12:15:23-06:00 (W3C Compliant)
-$now = date("Y-m-d\TH:i:s", time());
-$now = $now . $gmtstr;
+$Feed = new FeedWriter(RSS2);
+
+$Feed->setChannelElement('title',$sitename);
+$Feed->setChannelElement('link',$nukeurl);
+$Feed->setChannelElement('description',$slogan);
+$Feed->setChannelElement('copyright',$sitename);
+$Feed->setChannelElement('generator',"".$sitename." RSS Parser");
+$Feed->setChannelElement('ttl',"60");
+
+$Feed->setImage($sitename,$nukeurl,"".$nukeurl."/images/powered/minilogo.gif");
+
+$Feed->setChannelElement('language',$backend_language);
+$Feed->setChannelElement('creator',$adminmail);
+$Feed->setChannelElement('pubDate', date(DATE_RSS, time()));
 
 $num = (isset($num) && is_integer(intval($num)) && intval($num) > 0) ? 'LIMIT '.$num : 'LIMIT 10';
-
 $cat = intval($cat);
 if (!empty($cat)) {
     $catid = $db->sql_fetchrow($db->sql_query("SELECT catid FROM ".$prefix."_downloads_categories WHERE title LIKE '%$cat%' LIMIT 1"));
@@ -40,67 +50,33 @@ if (!empty($cat)) {
 } else {
     $result = $db->sql_query("SELECT lid, title, description, date, submitter FROM ".$prefix."_downloads_downloads ORDER BY lid DESC ".$num);
 }
-
-header("Content-Type: text/xml");
-
-echo "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n";
-echo "<?xml-stylesheet title=\"XSL_formatting\" type=\"text/xsl\" href=\"includes/rss/rss_20.xsl\" ?>\n\n";
-echo "<rss version=\"2.0\" \n";
-echo " xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n";
-echo " xmlns:sy=\"http://purl.org/rss/1.0/modules/syndication/\"\n";
-echo " xmlns:admin=\"http://webns.net/mvcb/\"\n";
-echo " xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n\n";
-echo "<channel>\n";
-echo "<title>".$sitename."</title>\n";
-echo "<link>".$nukeurl."</link>\n";
-echo "<description>".$slogan."</description>\n";
-echo "<copyright>".$sitename."</copyright>\n";
-echo "<generator>".$sitename." Nuke RSS Parser</generator>\n";
-echo "<ttl>60</ttl>\n\n";
-echo "<image>\n";
-echo "<title>".$sitename."</title>\n";
-echo "<url>".$nukeurl."/images/powered/minilogo.gif</url>\n";
-echo "<link>".$nukeurl."</link>\n";
-echo "<width>94</width>\n";
-echo "<height>15</height>\n";
-echo "<description>".$backend_title."</description>\n";
-echo "</image>\n";
-echo "<dc:language>".$backend_language."</dc:language>\n";
-echo "<dc:creator>".$adminmail."</dc:creator>\n";
-echo "<dc:date>".$now."</dc:date>\n\n";
-echo "<sy:updatePeriod>hourly</sy:updatePeriod>\n";
-echo "<sy:updateFrequency>1</sy:updateFrequency>\n";
-echo "<sy:updateBase>".$now."</sy:updateBase>\n\n";
-
 while(list($lid, $title, $description, $date, $submitter) = $db->sql_fetchrow($result)) {
     $title = stripslashes($title);
     $title = entity_to_hex_value($title);
-    //$title2 = ereg_replace(" ", "_", $title);
-    $description = Fix_Quotes(filter_text($description, "nohtml"));
     $description = stripslashes($description);
-    $description = entity_to_hex_value($description);
-    //$description = ereg_replace('\x99', '', $description); // Needs improvement
     $description = BBCode2Html($description);
-    $description = decode_rss_rest($description);
+    $description = scaleImages($description, '250px');
     if (empty($submitter)) {
         $submitter = $sitename;
     }
-
-    // Format: 2004-08-02T12:15:23-06:00 (W3C Compliant)
+    $gmtdiff = date("O", time());
+    $gmtstr = substr($gmtdiff, 0, 3) . ":" . substr($gmtdiff, 3, 9);
     $date = date("Y-m-d\TH:i:s", strtotime($date));
     $date = $date . $gmtstr;
 
-    echo "<item>\n";
-    echo "<title>".$title."</title>\n";
-    echo "<link>".$nukeurl."/modules.php?name=Downloads&amp;op=getit&amp;lid=".$lid."</link>\n";
-    echo "<description><![CDATA[".$description."]]></description>\n";
-    echo "<guid isPermaLink=\"false\">".$lid."@".$nukeurl."</guid>\n";
-    echo "<dc:subject>".$title."</dc:subject>\n";
-    echo "<dc:date>".$date."</dc:date>\n";
-    echo "<dc:creator>Posted by ".$submitter."</dc:creator>\n";
-    echo "</item>\n\n";
-}
-echo "</channel>\n\n";
-echo "</rss>\n";
+    //add item elements to the feed eg elements inside <item> -Elementshere- </item>
+    $Feed->feeditem->setItemTitle($title);
+    $Feed->feeditem->setItemLink("".$nukeurl."/modules.php?name=Downloads&op=getit&lid=".$lid."");
+
+    $Feed->feeditem->setDate($date);
+    $Feed->feeditem->setItemDescription($description);
+
+    $Feed->feeditem->addElement('author', "Uploaded by ".$submitter."");
+    $Feed->feeditem->addElement('guid', "".$lid."@".$nukeurl."",array('isPermaLink'=>'true'));
+
+    $Feed->feeditem=$Feed->insertItem($Feed->feeditem);//<--important! use as it is
+}  
+
+$Feed->burnFeed();
 
 ?>

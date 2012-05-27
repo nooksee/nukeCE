@@ -51,7 +51,7 @@ if(is_mod_admin($module_name)) {
 /*****[BEGIN]******************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
-            $mytitle = BBCode2Html(stripslashes(check_html($mypages['title'], "nohtml")), 1);
+            $mytitle = BBCode2Html(stripslashes(check_html($mypages['title'], "nohtml")));
 /*****[END]********************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
@@ -359,12 +359,12 @@ if(is_mod_admin($module_name)) {
     /*****[BEGIN]******************************************
      [ Mod:     Content BBCodes                    v1.0.1 ]
      ******************************************************/
-        $mysubtitle_bb = BBCode2Html(stripslashes(check_html($mysubtitle, "nohtml")), 1);
-        $mypage_header_bb = BBCode2Html(stripslashes($mypage_header), 1, true);
+        $mysubtitle_bb = BBCode2Html(stripslashes(check_html($mysubtitle, "nohtml")));
+        $mypage_header_bb = BBCode2Html(stripslashes($mypage_header));
         $mypage_header_bb = nuke_img_tag_to_resize($mypage_header_bb);
-        $mytext_bb = BBCode2Html(stripslashes($mytext), 1, true);
+        $mytext_bb = BBCode2Html(stripslashes($mytext));
         $mytext_bb = nuke_img_tag_to_resize($mytext_bb);
-        $mypage_footer_bb = BBCode2Html(stripslashes($mypage_footer), 1, true);
+        $mypage_footer_bb = BBCode2Html(stripslashes($mypage_footer));
         $mypage_footer_bb = nuke_img_tag_to_resize($mypage_footer_bb);
         contentpreview($mysubtitle_bb, $mypage_header_bb, $mytext_bb, $mypage_footer_bb);
         echo "<strong><br />" . _ACTIVATEPAGE . "</strong><br />"

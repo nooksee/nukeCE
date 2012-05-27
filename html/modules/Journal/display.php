@@ -77,7 +77,7 @@ while ($row = $db->sql_fetchrow($result)) {
     echo "<br />";
     OpenTable();
     $jbodytext = $row['bodytext'];
-    $jbodytext =  BBCode2Html(stripslashes($jbodytext), 1, true);
+    $jbodytext =  BBCode2Html(stripslashes($jbodytext));
     $jbodytext = nuke_img_tag_to_resize($jbodytext);
     printf ("%s", $jbodytext);
     CloseTable();

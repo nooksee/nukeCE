@@ -55,7 +55,7 @@ if (!defined('MODULE_FILE')) {
         $title = addslashes($title);
         if (isset($mood)) { $mood = check_html($mood, "nohtml"); }
         else { $mood = ""; }
-        $jbodytext =  BBCode2Html(stripslashes($jbodytext), 1, true);
+        $jbodytext =  BBCode2Html(stripslashes($jbodytext));
         $jbodytext = nuke_img_tag_to_resize($jbodytext);
         $jbodytext = addslashes($jbodytext);
         $sql = "INSERT INTO ".$prefix."_journal (jid, aid, title, bodytext, mood, pdate, ptime, status, mtime, mdate) VALUES (NULL,'$username','$title','$jbodytext','$mood','$pdate','$ptime','$status','$mtime','$ndate')";

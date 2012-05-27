@@ -195,7 +195,7 @@
 <!-- BEGIN size_open --><span style="font-size: {SIZE}px; line-height: normal"><!-- END size_open -->
 <!-- BEGIN size_close --></span><!-- END size_close -->
 
-<!-- BEGIN img --><a href="{URL}" class="fullsize"><img class="resize" src="{URL}" border="0" alt="" /><!-- END img -->
+<!-- BEGIN img --><a href="{URL}" class="fullsize"><img class="resize" src="{URL}" border="0" alt="" /></a><!-- END img -->
 
 <!-- BEGIN url --><a href="{URL}" target="_blank" class="postlink">{DESCRIPTION}</a><!-- END url -->
 

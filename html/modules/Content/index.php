@@ -45,15 +45,15 @@ function showpage($pid, $page=0) {
 /*****[BEGIN]******************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
-    $mytitle = BBCode2Html(stripslashes(check_html($mypage['title'], "nohtml")), 1);
-    $mysubtitle = BBCode2Html(stripslashes(check_html($mypage['subtitle'], "nohtml")), 1);
-    $mypage_header = BBCode2Html(stripslashes($mypage['page_header']), 1, true);
+    $mytitle = BBCode2Html(stripslashes(check_html($mypage['title'], "nohtml")));
+    $mysubtitle = BBCode2Html(stripslashes(check_html($mypage['subtitle'], "nohtml")));
+    $mypage_header = BBCode2Html(stripslashes($mypage['page_header']));
     $mypage_header = nuke_img_tag_to_resize($mypage_header);
-    $mytext = BBCode2Html(stripslashes($mypage['text']), 1, true);
+    $mytext = BBCode2Html(stripslashes($mypage['text']));
     $mytext = nuke_img_tag_to_resize($mytext);
-    $mypage_footer = BBCode2Html(stripslashes($mypage['page_footer']), 1, true);
+    $mypage_footer = BBCode2Html(stripslashes($mypage['page_footer']));
     $mypage_footer = nuke_img_tag_to_resize($mypage_footer);
-    $mysignature = BBCode2Html(stripslashes($mypage['signature']), 1, true);
+    $mysignature = BBCode2Html(stripslashes($mypage['signature']));
     $mysignature = nuke_img_tag_to_resize($mysignature);
     $mydate = $mypage['date'];
     $mycounter = intval($mypage['counter']);
@@ -64,7 +64,6 @@ function showpage($pid, $page=0) {
         $date = explode(" ", $mydate);
         echo "<span class=\"title\">$mytitle</span><br />"
             ."<span class=\"content\">$mysubtitle</span><br /><br /><br /><br />";
-       // $mypage['text'] = BBCode2Html(stripslashes($mypage['text']),1);
     /*****[END]********************************************
      [ Mod:     Content BBCodes                    v1.0.1 ]
      ******************************************************/
@@ -130,8 +129,8 @@ function list_pages() {
 /*****[BEGIN]******************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
-            $title = BBCode2Html(stripslashes(check_html($row['title'], "nohtml")), 1);
-            $description = BBCode2Html(stripslashes($row['description']), 1, true);
+            $title = BBCode2Html(stripslashes(check_html($row['title'], "nohtml")));
+            $description = BBCode2Html(stripslashes($row['description']));
 /*****[END]********************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
@@ -151,8 +150,8 @@ function list_pages() {
 /*****[BEGIN]******************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
-        $title = BBCode2Html(stripslashes(check_html($row4['title'], "nohtml")), 1);
-        $subtitle = BBCode2Html(stripslashes(check_html($row4['subtitle'], "nohtml")), 1);
+        $title = BBCode2Html(stripslashes(check_html($row4['title'], "nohtml")));
+        $subtitle = BBCode2Html(stripslashes(check_html($row4['subtitle'], "nohtml")));
 /*****[END]********************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
@@ -185,8 +184,8 @@ function list_pages() {
 /*****[BEGIN]******************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
-            $title = BBCode2Html(stripslashes(check_html($row5['title'], "nohtml")), 1);
-            $subtitle = BBCode2Html(stripslashes(check_html($row5['subtitle'], "nohtml")), 1);
+            $title = BBCode2Html(stripslashes(check_html($row5['title'], "nohtml")));
+            $subtitle = BBCode2Html(stripslashes(check_html($row5['subtitle'], "nohtml")));
 /*****[END]********************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
@@ -224,8 +223,8 @@ function list_pages_categories($cid) {
 /*****[BEGIN]******************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
-        $title = BBCode2Html(stripslashes(check_html($row['title'], "nohtml")), 1);
-        $subtitle = BBCode2Html(stripslashes(check_html($row['subtitle'], "nohtml")), 1);
+        $title = BBCode2Html(stripslashes(check_html($row['title'], "nohtml")));
+        $subtitle = BBCode2Html(stripslashes(check_html($row['subtitle'], "nohtml")));
 /*****[END]********************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
@@ -257,8 +256,8 @@ function list_pages_categories($cid) {
 /*****[BEGIN]******************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/
-            $title = BBCode2Html(stripslashes(check_html($row2['title'], "nohtml")), 1);
-            $subtitle = BBCode2Html(stripslashes(check_html($row2['subtitle'], "nohtml")), 1);
+            $title = BBCode2Html(stripslashes(check_html($row2['title'], "nohtml")));
+            $subtitle = BBCode2Html(stripslashes(check_html($row2['subtitle'], "nohtml")));
 /*****[END]********************************************
  [ Mod:     Content BBCodes                    v1.0.1 ]
  ******************************************************/

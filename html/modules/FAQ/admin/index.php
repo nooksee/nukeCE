@@ -110,7 +110,7 @@ if(is_mod_admin($module_name)) {
             $id = intval($row['id']);
             $question = $row['question'];
             $answer = $row['answer'];
-            $answer_bb = BBCode2Html(stripslashes($answer), 1, true);
+            $answer_bb = BBCode2Html(stripslashes($answer));
             echo "<tr><td><i>$question</i><br /><br />$answer_bb"
                 ."</td><td align=\"center\">[ <a href=\"".$admin_file.".php?op=FaqCatGoEdit&amp;id=$id\">" . _EDIT . "</a> | <a href=\"".$admin_file.".php?op=FaqCatGoDel&amp;id=$id&amp;ok=0\">" . _DELETE . "</a> ]</td></tr>";
         }

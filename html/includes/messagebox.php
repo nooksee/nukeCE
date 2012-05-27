@@ -40,7 +40,7 @@ if (!is_admin()) {
 $result = $db->sql_query("SELECT mid, title, content, date, expire, view, groups FROM ".$prefix."_message WHERE active='1' $query ORDER BY date DESC", true);
 $query = '';
 while (list($mid, $title, $content, $date, $expire, $view, $groups) = $db->sql_fetchrow($result)) {
-	$content = BBCode2Html($content, 1, true);
+	$content = BBCode2Html($content);
 	if (!empty($title) && !empty($content)) {
 		$output = '';
 		switch($view) {

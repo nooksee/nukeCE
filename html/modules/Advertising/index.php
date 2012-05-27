@@ -118,7 +118,7 @@ function terms() {
     $row = $db->sql_fetchrow($db->sql_query("SELECT * FROM ".$prefix."_banner_terms"));
     $terms = eregi_replace("\[sitename\]", $sitename, $row['terms_body']);
     $terms = eregi_replace("\[country\]", $row['country'], $terms);
-    $terms = BBCode2Html($terms, 1, true);
+    $terms = BBCode2Html($terms);
 	OpenTable();
     echo "<center><span class='title'><strong>$sitename: "._TERMSCONDITIONS."</strong></span></center><br /><br />"
         ."$terms"

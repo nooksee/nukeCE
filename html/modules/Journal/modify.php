@@ -58,7 +58,7 @@ if (!defined('MODULE_FILE')) {
             $jid = intval($jid);
             $jtitle = check_html($row['title'], "nohtml");
             $jbodytext = $row['bodytext'];
-            $jbodytext =  BBCode2Html(stripslashes($jbodytext), 1, true);
+            $jbodytext =  BBCode2Html(stripslashes($jbodytext));
             $jbodytext = nuke_img_tag_to_resize($jbodytext);
             $jmood = check_html($row['mood'], "nohtml");
             print ("<form name='journal' action='modules.php?name=$module_name&amp;file=edit' method='post'>");
@@ -84,7 +84,7 @@ if (!defined('MODULE_FILE')) {
             $direktori = "$jsmiles";
             $handle = opendir($direktori);
             while ($file = readdir($handle)) {
-                if (is_file($file) && strtolower(substr($file, -4)) == '.gif' || '.jpg') {
+                if (is_file($file) && strtolower(substr($file, -4)) == '.gif' || '.jpg' || '.png') {
                     $filelist[] = $file;
                 } else {
                     OpenTable();
@@ -97,7 +97,7 @@ if (!defined('MODULE_FILE')) {
             closedir($handle);
             asort($filelist);
             while (list ($key, $file) = each ($filelist)) {
-                if (!ereg(".gif|.jpg",$file)) { }
+                if (!ereg(".gif|.jpg|.png",$file)) { }
                 elseif ($file == "." || $file == "..") {
                     $a = 1;
                 } else {
@@ -175,7 +175,7 @@ if (!defined('MODULE_FILE')) {
             $jid = intval($jid);
             $jtitle = check_html($row['title'], "nohtml");
             $jbodytext = $row['bodytext'];
-            $jbodytext =  BBCode2Html(stripslashes($jbodytext), 1, true);
+            $jbodytext =  BBCode2Html(stripslashes($jbodytext));
             $jbodytext = nuke_img_tag_to_resize($jbodytext);
             $jmood = check_html($row['mood'], "nohtml");
             print ("<form name='journal' action='modules.php?name=$module_name&amp;file=edit' method='post'>");

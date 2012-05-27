@@ -74,7 +74,7 @@ function ShowFaqAll($id_cat) {
         $id_cat = intval($row['id_cat']);
          $question = stripslashes(check_html($row['question'], "nohtml"));
          $answer = stripslashes($row['answer']);
-         $answer = BBCode2Html(stripslashes($answer), 1, true);
+         $answer = BBCode2Html(stripslashes($answer));
         echo"<tr><td><a name=\"$id\"></a>"
             ."<strong><big>&middot;</big></strong>&nbsp;&nbsp;<strong>$question</strong>"
             ."<p align=\"justify\">$answer</p>"

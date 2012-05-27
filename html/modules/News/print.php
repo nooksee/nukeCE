@@ -35,13 +35,15 @@ function PrintPage($sid) {
     $title = stripslashes($row['title']);
     $time = $row['time'];
 /*****[BEGIN]******************************************
- [ Mod:     News BBCodes                       v1.0.0 ]
- ******************************************************/
-    $hometext = BBCode2Html(stripslashes($row["hometext"]), 1, true);
-    $bodytext = BBCode2Html(stripslashes($row["bodytext"]), 1, true);
+[ Mod:     News BBCodes                       v1.1.0 ]
+******************************************************/
+    $hometext = BBCode2Html(stripslashes($row["hometext"]));
+    $bodytext = BBCode2Html(stripslashes($row["bodytext"]));
+    $hometext = nuke_img_tag_to_resize($hometext);
+    $bodytext = nuke_img_tag_to_resize($bodytext);
 /*****[END]********************************************
- [ Mod:     News BBCodes                       v1.0.0 ]
- ******************************************************/
+[ Mod:     News BBCodes                       v1.1.0 ]
+******************************************************/
     $topic = intval($row['topic']);
     $notes = stripslashes($row['notes']);
     $row2 = $db->sql_fetchrow($db->sql_query("SELECT topictext FROM ".$prefix."_topics WHERE topicid='$topic'"));
@@ -55,6 +57,9 @@ function PrintPage($sid) {
               <head>
                   <title>$sitename &raquo; $title</title>
                   <meta name=\"HandheldFriendly\" content=\"True\">
+         ";
+    include_once("includes/javascript.min.php");
+    echo "
               </head>
               <body bgcolor=\"#ffffff\" text=\"#000000\">
                   <table border=\"0\" align=\"center\">

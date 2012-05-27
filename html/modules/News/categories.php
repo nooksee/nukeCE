@@ -71,7 +71,7 @@ switch ($op) {
 /*****[BEGIN]******************************************
  [ Mod:     News BBCodes                       v1.0.0 ]
  ******************************************************/
-            $artinfo["hometext"] =  BBCode2Html(stripslashes($artinfo["hometext"]), 1, true);
+            $artinfo["hometext"] =  BBCode2Html(stripslashes($artinfo["hometext"]));
             $artinfo["hometext"] = nuke_img_tag_to_resize($artinfo["hometext"]);
 /*****[END]********************************************
  [ Mod:     News BBCodes                       v1.0.0 ]

@@ -31,7 +31,7 @@ include(NUKE_MODULES_DIR.$module_name.'/functions.php');
             $title = addslashes($title);
         } else { $title = ""; }
         if (isset($jbodytext)) {
-            $jbodytext = BBCode2Html(stripslashes($jbodytext), 1, true);
+            $jbodytext = BBCode2Html(stripslashes($jbodytext));
             $jbodytext = nuke_img_tag_to_resize($jbodytext);
             $jbodytext = addslashes($jbodytext);
         } else { $jbodytext = ""; }

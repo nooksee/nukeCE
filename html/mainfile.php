@@ -371,9 +371,9 @@ function render_blocks($side, $block) {
     if (empty($block['url'])) {
         if (empty($block['blockfile'])) {
             if ($side == 'c' || $side == 'd') {
-                themecenterbox($block['title'], BBCode2Html($block['content'], 1, true));
+                themecenterbox($block['title'], BBCode2Html($block['content']));
             } else {
-                themesidebox($block['title'], BBCode2Html($block['content'], 1, true), $block['bid']);
+                themesidebox($block['title'], BBCode2Html($block['content']), $block['bid']);
             }
         } else {
             blockfileinc($block['title'], $block['blockfile'], $side, $block['bid']);

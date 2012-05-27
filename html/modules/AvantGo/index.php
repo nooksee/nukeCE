@@ -16,6 +16,8 @@ if (!defined('MODULE_FILE')) {
 }
 
 require_once("mainfile.php");
+require_once(NUKE_CLASSES_DIR.'class.bbcode.php');
+
 $module_name = basename(dirname(__FILE__));
 get_lang($module_name);
 $theme_Sel = get_theme();
@@ -166,8 +168,8 @@ function PrintPage($sid) {
 /*****[BEGIN]******************************************
 [ Mod:     News BBCodes                       v1.1.0 ]
 ******************************************************/
-    $hometext = BBCode2Html(stripslashes($row["hometext"]), 1, true);
-    $bodytext = BBCode2Html(stripslashes($row["bodytext"]), 1, true);
+    $hometext = BBCode2Html(stripslashes($row["hometext"]));
+    $bodytext = BBCode2Html(stripslashes($row["bodytext"]));
     $hometext = nuke_img_tag_to_resize($hometext);
     $bodytext = nuke_img_tag_to_resize($bodytext);
 /*****[END]********************************************
@@ -252,7 +254,8 @@ function DisplayPic($pic_id) {
 /*****[BEGIN]******************************************
  [ Mod:     News BBCodes                       v1.0.0 ]
  ******************************************************/
-    $pic_desc = BBCode2Html(stripslashes($row["pic_desc"]), 1, true);
+    $pic_desc = decode_bbcode(stripslashes($row["pic_desc"]), 1, true);
+    $pic_desc = BBCode2Html(stripslashes($row["pic_desc"]));
 /*****[END]********************************************
  [ Mod:     News BBCodes                       v1.0.0 ]
  ******************************************************/

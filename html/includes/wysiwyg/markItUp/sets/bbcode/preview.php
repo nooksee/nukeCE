@@ -9,7 +9,7 @@
 // http://www.jaysalvat.com/
 // http://markitup.jaysalvat.com/
 // ----------------------------------------------------------------------------
-    function BBCode2Html($text, $allowed=0, $allow_html=false) {
+    function BBCode2Html($text) {
 	$text = trim($text);
 
 	// BBCode [code]
