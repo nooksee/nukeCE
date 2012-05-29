@@ -2001,23 +2001,22 @@ CREATE TABLE `nuke_counter` (
 
 INSERT INTO `nuke_counter` (`type`, `var`, `count`) VALUES
 ('total', 'hits', 1),
-('browser', 'Safari', 0),
+('browser', 'Firefox', 0),
+('browser', 'Chrome', 0),
 ('browser', 'MSIE', 0),
 ('browser', 'Opera', 0),
-('os', 'WINXP', 0),
-('browser', 'iPhone', 0),
-('browser', 'Firefox', 0),
+('browser', 'Safari', 0),
+('browser', 'PlayStation', 0),
 ('browser', 'Bot', 0),
 ('browser', 'Other', 0),
-('os', 'WINVISTA', 0),
+('os', 'Android', 0),
+('os', 'WIN', 0),
+('os', 'WINMOBILE', 0),
+('os', 'iOS', 0),
 ('os', 'Linux', 0),
 ('os', 'Mac', 0),
-('browser', 'IEMobile', 0),
-('browser', 'Android', 0),
-('browser', 'Chrome', 0),
 ('os', 'PlayStation', 0),
-('browser', 'PlayStation', 0),
-('os', 'WIN7', 0),
+('os', 'Bot', 0),
 ('os', 'Other', 0);
 
 -- --------------------------------------------------------
