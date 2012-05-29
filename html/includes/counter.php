@@ -25,22 +25,18 @@ $agent = $_SERVER['HTTP_USER_AGENT'];
 // Get the users Browser ^_^
 // Create the Associative Array for the browsers ^_^
 $browserArray = array(
-    'IEMobile' => 'IEMobile',
-    'Android' => 'Android',
-    'iPhone' => 'iPhone',
-    'Firefox' => 'Firefox',
-    'Chrome' => 'Chrome',
-    'MSIE' => 'MSIE',
-    'Opera' => 'Opera',
-    'Safari' => 'Safari',
-    'PlayStation' => 'PLAYSTATION 3'
+    'Firefox' => '(Firefox)|(fennec)|(firefox.*maemo)',
+    'Chrome' => '(Chrome)|(\bCrMo\b)',
+    'MSIE' => '(MSIE)|(ie*mobile)',
+    'Opera' => '(Opera)|(Opera.*Mini)|(Opera.*Mobi)',
+    'Safari' => '(Safari)|(Mobile*Safari)',
+    'PlayStation' => 'PLAYSTATION 3',
+    'Bot' => '(nuhk)|(Ezooms)|(008)|(Google)|(Googlebot)|(IDBot)|(eStyle)|(Scrubby)|(Altavista)|(Scooter)|(MSRBOT)|(GeonaBot)|(FAST-WebCrawler)|(Dumbot)|(AcoiRobot)|(CrocCrawler)|(ASPSeek)|(Accoona)|(AbachoBOT)|(Rambler)|(Inktomi)|(Lycos)|(Gigabot)|(Spinn3r)|(Baiduspider)|(GeoHasher)|(YandexBot)|(InfoSeek)|(Yahoo)|(Yammybot)|(FastCrawler)|(Openbot)|(Slurp)|(MSNBot)|(Ask Jeeves\/Teoma)|(ia_archiver)'
 );
 
 foreach ($browserArray as $k => $v) {
     if (preg_match("/$v/", $agent)) {
         break;
-    } elseif(empty($agent)) {
-        $k = "Bot"; 
     } else {
         $k = "Other";
     }
@@ -50,13 +46,15 @@ $browser = $k;
 // Get the users OS ^^
 // Create the Associative Array for the Operating Systems ^_^
 $osArray = array(
-    'WINXP' => '(Windows XP)|(Windows NT 5.1)',
-    'WINVISTA' => 'Windows NT 6.0',
-    'WIN7' => '(Windows NT 6.1)|(Windows NT 7.0)',
+    'Android' => 'Android',
+    'WIN' => '(Windows XP)|(Windows NT 5.1)|(Windows NT 5.2)|(Windows NT 6.0)|(Windows NT 6.1)|(Windows NT 7.0)',
+    'WINMOBILE' => 'IEMobile|Windows Phone|Windows CE.*(PPC|Smartphone)|MSIEMobile|Window Mobile|XBLWP7',
+    'iOS' => '(iphone|ipod|ipad)',
     'Linux' => '(X11)|(Linux)',
     'Mac' => '(Mac_PowerPC)|(Macintosh)|(Mac OS)',
-    'PlayStation' => 'PLAYSTATION 3'
-    );
+    'PlayStation' => 'PLAYSTATION 3',
+    'Bot' => '(nuhk)|(Ezooms)|(008)|(Google)|(Googlebot)|(IDBot)|(eStyle)|(Scrubby)|(Altavista)|(Scooter)|(MSRBOT)|(GeonaBot)|(FAST-WebCrawler)|(Dumbot)|(AcoiRobot)|(CrocCrawler)|(ASPSeek)|(Accoona)|(AbachoBOT)|(Rambler)|(Inktomi)|(Lycos)|(Gigabot)|(Spinn3r)|(Baiduspider)|(GeoHasher)|(YandexBot)|(InfoSeek)|(Yahoo)|(Yammybot)|(FastCrawler)|(Openbot)|(Slurp)|(MSNBot)|(Ask Jeeves\/Teoma)|(ia_archiver)'
+);
 
 foreach ($osArray as $k => $v) {
     if (preg_match("/$v/", $agent)) {

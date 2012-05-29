@@ -1,7 +1,15 @@
 <?php
-/*=======================================================================
- Nuke-Evolution Basic: Enhanced PHP-Nuke Web Portal System
- =======================================================================*/
+
+/**************************************************************************/
+/* PHP-Nuke CE: Web Portal System                                         */
+/* ==============================                                         */
+/*                                                                        */
+/* Copyright (c) 2012 by Kevin Atwood                                     */
+/* http://www.nukece.com                                                  */
+/*                                                                        */
+/* All PHP-Nuke CE code is released under the GNU General Public License. */
+/* See CREDITS.txt, COPYRIGHT.txt and LICENSE.txt.                        */
+/**************************************************************************/
 
 $now = explode('-', formatTimestamp(time(),'d-m-Y'));
 $nowdate = $now[0];
@@ -71,8 +79,7 @@ function Stats_Main() {
                       <td class="row1">
                           <div class="gen"><img src="modules/'.$module_name.'/images/'.strtolower($var).'.png" alt="" />&nbsp;
                  ';
-            if  ($var == 'IEMobile') { echo 'Windows Mobile'; }
-            elseif ($var == 'MSIE') { echo 'Internet Explorer'; }
+            if  ($var == 'MSIE') { echo 'Internet Explorer'; }
             else { echo ''.$var.'';}
             echo '
                   </div>
@@ -114,9 +121,8 @@ function Stats_Main() {
                       <td class="row1">
                           <div class="gen"><img src="modules/'.$module_name.'/images/'.strtolower($var).'.png" alt="" />&nbsp;
                  ';
-            if  ($var == 'WINVISTA') { echo 'Windows Vista'; }
-            elseif ($var == 'WIN7') { echo 'Windows 7'; }
-            elseif ($var == 'WINXP') { echo 'Windows XP'; }
+            if ($var == 'WIN') { echo 'Windows'; }
+            elseif ($var == 'WINMOBILE') { echo 'Windows Mobile'; }
             else { echo ''.$var.'';}
             echo '
                   </div>
