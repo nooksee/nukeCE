@@ -29,7 +29,7 @@ function log_write($file, $output, $title = 'General Error') {
             $username = _ANONYMOUS;
         }
     }
-    $ip = GetHostByName(identify::get_ip());
+    $ip = GetHostByName(Security::get_ip());
     $date = date("d M Y - H:i:s");
     if($file == 'admin') {
         $string = '';

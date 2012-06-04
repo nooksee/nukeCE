@@ -1946,7 +1946,7 @@ function addrating($ratinglid, $ratinguser, $rating, $ratinghost_name, $ratingco
     $title = stripslashes(check_html($row['title'], "nohtml"));
     $ttitle = $title;
     /* Make sure only 1 anonymous from an IP in a single day. */
-    $ip = identify::get_ip();
+    $ip = Security::get_ip();
     /* Check if Rating is Null */
     if ($rating=="--") {
     $error = "nullerror";
@@ -2075,7 +2075,7 @@ function ratelink($lid, $user, $ttitle) {
     $ttitle = htmlentities($ttitle);
     $transfertitle = ereg_replace ("_", " ", $ttitle);
     $displaytitle = $transfertitle;
-    $ip = identify::get_ip();
+    $ip = Security::get_ip();
     echo "<strong>".htmlentities($displaytitle)."</strong>"
     ."<ul><span class=\"content\">"
     ."<li>"._RATENOTE1.""

@@ -17,14 +17,14 @@ $_SERVER['PHP_SELF'] = 'modules.php';
 
 require_once(dirname(__FILE__).'/mainfile.php');
 
-$detect = new Mobile_Detect();
-if ($detect->isMobile() && isset($_COOKIE['mobile'])){
-    $detect = "false";
-} elseif ($detect->isMobile()) {
-    Header("Location: modules.php?name=AvantGo");
-}
+global $prefix, $db, $admin_file, $httpref, $httprefmax, $result;
 
-global $prefix, $db, $admin_file, $httpref, $httprefmax;
+$result = UA::parse();
+
+// redirect phones, to redirect tablets use isMobileDevice
+if ($result->isMobile) {
+    header("location:modules.php?name=AvantGo");
+}
 
 if (isset($_GET['op'])) {
     if($_GET['op'] == 'ad_click' && isset($_GET['bid'])) {

@@ -113,17 +113,18 @@ function head() {
 }
 
 function online() {
-    global $prefix, $db, $name, $board_config, $userinfo;
-    $ip = identify::get_ip();
+    global $prefix, $db, $name, $board_config, $userinfo, $result;
+    $ip = Security::get_ip();
     $url = (defined('ADMIN_FILE')) ? 'index.php' : Fix_Quotes($_SERVER['REQUEST_URI']);
     $uname = $ip;
     $guest = 1;
-    $user_agent = identify::identify_agent();
+
+    $result = UA::parse();
     if (is_user()) {
         $uname = $userinfo['username'];
         $guest = 0;
-    } elseif($user_agent['engine'] == 'bot') {
-        $uname = $user_agent['bot'];
+    } elseif($result->isSpider) {
+        $uname = "Spider";
         $guest = 3;
     }
     $custom_title = $name;

@@ -28,7 +28,7 @@ include(NUKE_BASE_DIR.'ips.php');
 
 if(isset($ips) && is_array($ips)) {
     $ip_check = implode('|^',$ips);
-    if (!preg_match("/^".$ip_check."/",identify::get_ip())) {
+    if (!preg_match("/^".$ip_check."/",Security::get_ip())) {
         unset($aid);
         unset($admin);
         

@@ -322,7 +322,7 @@ switch($op) {
             $filesize = str_replace(',', '', $filesize);
             $filesize = intval($filesize);
             $cat = intval($cat);
-            $sub_ip = identify::get_ip();
+            $sub_ip = Security::get_ip();
 
             $db->sql_query("INSERT INTO ".$prefix."_downloads_new VALUES (NULL, $cat, 0, '$title', '$url', '$description', now(), '$auth_name', '$email', '$submitter', '$sub_ip', $filesize, '$version', '$homepage')");
             

@@ -292,7 +292,7 @@ echo '
                           <h1 class="myclass2">
                               Bots Only 
 		          </h1>                             
-                          Only when nukeCE detects the user is a bot (ie Google, MSN, etc) will it 
+                          Only when nukeCE detects the user is a crawler (ie Google, MSN, etc) will it 
                           <br />
                           activate the Lazy Google Tap 
                           <br />

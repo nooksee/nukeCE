@@ -59,7 +59,7 @@ if ($db->sql_numrows($result) < 1) {
                     <table border="0" cellpadding="2" cellspacing="0" width="100%">
                ';
 
-    $ip = identify::get_ip();
+    $ip = Security::get_ip();
     $past = time()-86400*$number_of_days;
     $result = $db->sql_query("SELECT ip FROM ".$prefix."_poll_check WHERE ip='$ip' AND pollID='$pollID'");
     $result2 = $db->sql_query("SELECT optionText, voteID, optionCount FROM ".$prefix."_poll_data WHERE pollID='$pollID' AND optionText!='' ORDER BY voteID");

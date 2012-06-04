@@ -122,7 +122,7 @@ function pollLatest() {
 
 function pollCollector($pollID, $voteID, $forwarder) {
     global $prefix, $db, $sysconfig;
-    $ip = identify::get_ip();
+    $ip = Security::get_ip();
     $number_of_days = intval($sysconfig['poll_days']);
     $past = time()-86400*$number_of_days;
     $db->sql_query("DELETE FROM ".$prefix."_poll_check WHERE time < $past");

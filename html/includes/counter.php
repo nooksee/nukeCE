@@ -16,54 +16,37 @@ if (stristr(htmlentities($_SERVER['PHP_SELF']), "counter.php")) {
     die();
 }
 
-global $prefix, $db;
+global $prefix, $db, $result;
 
-// Obtain user agent which is a long string not meant for human reading, but we're gonna echo it out, just because I am bored xD
-// Not needed for it to work though ^_^
-$agent = $_SERVER['HTTP_USER_AGENT'];
+$result = UA::parse();
 
-// Get the users Browser ^_^
-// Create the Associative Array for the browsers ^_^
-$browserArray = array(
-    'Firefox' => '(Firefox)|(fennec)|(firefox.*maemo)',
-    'Chrome' => '(Chrome)|(\bCrMo\b)',
-    'MSIE' => '(MSIE)|(ie*mobile)',
-    'Opera' => '(Opera)|(Opera.*Mini)|(Opera.*Mobi)',
-    'Safari' => '(Safari)|(Mobile*Safari)',
-    'PlayStation' => 'PLAYSTATION 3',
-    'Bot' => '(nuhk)|(Ezooms)|(008)|(Google)|(Googlebot)|(IDBot)|(eStyle)|(Scrubby)|(Altavista)|(Scooter)|(MSRBOT)|(GeonaBot)|(FAST-WebCrawler)|(Dumbot)|(AcoiRobot)|(CrocCrawler)|(ASPSeek)|(Accoona)|(AbachoBOT)|(Rambler)|(Inktomi)|(Lycos)|(Gigabot)|(Spinn3r)|(Baiduspider)|(GeoHasher)|(YandexBot)|(InfoSeek)|(Yahoo)|(Yammybot)|(FastCrawler)|(Openbot)|(Slurp)|(MSNBot)|(Ask Jeeves\/Teoma)|(ia_archiver)'
-);
+/* Get the Browser data */
 
-foreach ($browserArray as $k => $v) {
-    if (preg_match("/$v/", $agent)) {
-        break;
-    } else {
-        $k = "Other";
-    }
-}
-$browser = $k;
+if($result->isSpider) { $browser = 'Crawler'; }
+elseif ($result->browser == 'Firefox') { $browser = 'Firefox'; }
+elseif ($result->browser == 'Chrome') { $browser = 'Chrome'; }
+elseif ($result->browser == 'Mozilla') { $browser = 'Mozilla'; }
+elseif ($result->browser == 'IE') { $browser = 'IE'; }
+elseif ($result->browser == 'Opera') { $browser = 'Opera'; }
+elseif ($result->browser == 'Opera Mobile') { $browser = 'operamobile'; }
+elseif ($result->browser == 'Safari') { $browser = 'Safari'; }
+elseif ($result->browser == 'Android') { $browser = 'mobilesafari'; }
+elseif ($result->browser == 'PlayStation') { $browser = 'NetFront'; }
+elseif (empty($result->browser) && empty($result->isSpider)) { $browser = 'Other'; }
 
-// Get the users OS ^^
-// Create the Associative Array for the Operating Systems ^_^
-$osArray = array(
-    'Android' => 'Android',
-    'WIN' => '(Windows XP)|(Windows NT 5.1)|(Windows NT 5.2)|(Windows NT 6.0)|(Windows NT 6.1)|(Windows NT 7.0)',
-    'WINMOBILE' => 'IEMobile|Windows Phone|Windows CE.*(PPC|Smartphone)|MSIEMobile|Window Mobile|XBLWP7',
-    'iOS' => '(iphone|ipod|ipad)',
-    'Linux' => '(X11)|(Linux)',
-    'Mac' => '(Mac_PowerPC)|(Macintosh)|(Mac OS)',
-    'PlayStation' => 'PLAYSTATION 3',
-    'Bot' => '(nuhk)|(Ezooms)|(008)|(Google)|(Googlebot)|(IDBot)|(eStyle)|(Scrubby)|(Altavista)|(Scooter)|(MSRBOT)|(GeonaBot)|(FAST-WebCrawler)|(Dumbot)|(AcoiRobot)|(CrocCrawler)|(ASPSeek)|(Accoona)|(AbachoBOT)|(Rambler)|(Inktomi)|(Lycos)|(Gigabot)|(Spinn3r)|(Baiduspider)|(GeoHasher)|(YandexBot)|(InfoSeek)|(Yahoo)|(Yammybot)|(FastCrawler)|(Openbot)|(Slurp)|(MSNBot)|(Ask Jeeves\/Teoma)|(ia_archiver)'
-);
+/* Get the Operating System data */
 
-foreach ($osArray as $k => $v) {
-    if (preg_match("/$v/", $agent)) {
-        break;
-    } else {
-        $k = "Other";
-    }
-}
-$os = $k;
+if($result->os == 'Windows 8') { $os = 'windows8'; }
+elseif ($result->os == 'Windows 7') { $os = 'windows7'; }
+elseif ($result->os == 'Windows XP') { $os = 'windowsxp'; }
+elseif ($result->os == 'Windows Vista') { $os = 'windowsvista'; }
+elseif ($result->os == 'Windows Mobile') { $os = 'windowsmobile'; }
+elseif ($result->os == 'Android') { $os = 'Android'; }
+elseif ($result->os == 'iOS') { $os = 'iOS'; }
+elseif ($result->os == 'Mac OS X') { $os = 'macosx'; }
+elseif ($result->os == 'Linux') { $os = 'Linux'; }
+elseif ($result->browserFull == 'PlayStation 3') { $os = 'PlayStation'; }
+elseif (empty($result->os) && empty($result->isSpider)) { $os = 'Other'; }
 
 /* Save on the databases the obtained values */
 $db->sql_query("UPDATE ".$prefix."_counter SET count=count+1 WHERE (type='total' AND var='hits') OR (var='$browser' AND type='browser') OR (var='$os' AND type='os')");

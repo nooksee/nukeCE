@@ -105,15 +105,17 @@ if (!$file_mode) {
 
 // Include the required files
 @require_once(NUKE_DB_DIR.'db.php');
-// Include mobile detect class
-@require_once(NUKE_CLASSES_DIR.'class.detect.php');
-// Include Error Logger and identify class
-@require_once(NUKE_CLASSES_DIR.'class.identify.php');
-global $agent;
-$agent = identify::identify_agent();
+
+// parse the requesting user agent
+@require_once(NUKE_CLASSES_DIR.'class.UAParser.php');
+global $result;
+$result = UA::parse();
+
+// Include Error Logger and Security class
+@require_once(NUKE_CLASSES_DIR.'class.security.php');
 @require_once(NUKE_INCLUDE_DIR.'log.php');
 
-if (ini_get('output_buffering') && !isset($agent['bot'])) {
+if (ini_get('output_buffering') && !isset($result->isSpider)) {
     ob_end_clean();
     header('Content-Encoding: none');
 }
@@ -237,7 +239,6 @@ $capfile = $sysconfig['capfile'];
 $collapse = intval($sysconfig['collapse']);
 $nukeuserinfo_ec = intval($sysconfig['nukeuserinfo_ec']);
 $more_js = '';
-$more_styles = '';
 
 require_once(NUKE_INCLUDE_DIR.'functions_browser.php');
 require_once(NUKE_INCLUDE_DIR.'themes.php');

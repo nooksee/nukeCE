@@ -508,12 +508,13 @@ if(!function_exists('mime_content_type'))
     }
 }
 
-global $browser, $agent;
+global $browser, $result;
+$result = UA::parse();
 
-if($agent['engine'] == 'bot') {
-    $browser = 'Bot';
-} elseif(!empty($agent['ua'])) {
-    $browser = $agent['ua'];
+if($result->isSpider) {
+    $browser = 'Crawler';
+} elseif(!empty($result->browser)) {
+    $browser = $result->browser;
 } else {
     $browser = 'Other';
 }

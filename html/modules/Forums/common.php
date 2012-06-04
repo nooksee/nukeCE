@@ -166,7 +166,7 @@ unset($dbpasswd);
 // "clever" is doing harm rather than good ... karma is a great thing ... :)
 // Quake: sorry fella, we are using a better ip tracker :)
 //$client_ip = ( !empty($HTTP_SERVER_VARS['REMOTE_ADDR']) ) ? $HTTP_SERVER_VARS['REMOTE_ADDR'] : ( ( !empty($HTTP_ENV_VARS['REMOTE_ADDR']) ) ? $HTTP_ENV_VARS['REMOTE_ADDR'] : getenv('REMOTE_ADDR') );
-$client_ip = identify::get_ip();
+$client_ip = Security::get_ip();
 $user_ip = encode_ip($client_ip);
 
 //

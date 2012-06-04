@@ -897,7 +897,7 @@ function CreateTopic ($xanonpost, $subject, $comment, $pid, $pollID, $host_name,
     $url = "";
     $score = 0;
     }
-    $ip = identify::get_ip();
+    $ip = Security::get_ip();
     $pollID = intval($pollID);
     $result = $db->sql_query("SELECT count(*) FROM ".$prefix."_poll_desc WHERE pollID='$pollID'");
     $fake = $db->sql_numrows($result);

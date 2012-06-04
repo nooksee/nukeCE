@@ -11,6 +11,10 @@
 /* See CREDITS.txt, COPYRIGHT.txt and LICENSE.txt.                        */
 /**************************************************************************/
 
+if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
+    exit('Access Denied');
+}
+
 $now = explode('-', formatTimestamp(time(),'d-m-Y'));
 $nowdate = $now[0];
 $nowmonth = $now[1];
@@ -51,7 +55,7 @@ function Stats_Main() {
               </tr>
               <tr>
                   <td class="row1" align="center">
-                      <span class="gen"><br />'._WERECEIVED.'&nbsp;<strong>'.$totalbr.'</strong>&nbsp;'._PAGESVIEWS.' '.$startdate.'<br /><br />[ <a href="modules.php?name='.$module_name.'&amp;op=stats">'._VIEWDETAILED.'</a> ] [ <a href="modules.php?name=Forums&amp;file=statistics">'._VIEWFORUMSTATS.'</a> ]</span><br />&nbsp;
+                      <span class="gen"><br />'._WERECEIVED.'&nbsp;<strong>'.$totalbr.'</strong>&nbsp;'._PAGESVIEWS.' '.$startdate.'<br /><br />[ <a href="modules.php?name='.$module_name.'&amp;op=stats">'._VIEWDETAILED.'</a> ]&nbsp;&nbsp;[ <a href="modules.php?name=Forums&amp;file=statistics">'._VIEWFORUMSTATS.'</a> ]</span><br />&nbsp;
                   </td>
               </tr>
           </table>
@@ -79,10 +83,12 @@ function Stats_Main() {
                       <td class="row1">
                           <div class="gen"><img src="modules/'.$module_name.'/images/'.strtolower($var).'.png" alt="" />&nbsp;
                  ';
-            if  ($var == 'MSIE') { echo 'Internet Explorer'; }
+            if  ($var == 'IE') { echo 'Internet Explorer'; }
+            elseif ($var == 'operamobile') { echo 'Opera Mobile'; }
+            elseif ($var == 'mobilesafari') { echo 'Mobile Safari'; }
             else { echo ''.$var.'';}
             echo '
-                  </div>
+                          </div>
                       </td>
                       <td class="row2" align="center">
                           <div class="gen">'.$count.'</div>
@@ -121,11 +127,15 @@ function Stats_Main() {
                       <td class="row1">
                           <div class="gen"><img src="modules/'.$module_name.'/images/'.strtolower($var).'.png" alt="" />&nbsp;
                  ';
-            if ($var == 'WIN') { echo 'Windows'; }
-            elseif ($var == 'WINMOBILE') { echo 'Windows Mobile'; }
+            if ($var == 'windows8') { echo 'Windows 8'; }
+            elseif ($var == 'windows7') { echo 'Windows 7'; }
+            elseif ($var == 'windowsxp') { echo 'Windows XP'; }
+            elseif ($var == 'windowsvista') { echo 'Windows Vista'; }
+            elseif ($var == 'windowsmobile') { echo 'Windows Mobile'; }
+            elseif ($var == 'macosx') { echo 'Mac OS X'; }
             else { echo ''.$var.'';}
             echo '
-                  </div>
+                          </div>
                       </td>
                       <td class="row2" align="center">
                           <div class="gen">'.$count.'</div>

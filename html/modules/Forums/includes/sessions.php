@@ -947,8 +947,9 @@ function append_sid($url, $non_html_amp = false)
                     $url = "modules.php?name=Forums";
             }
     }
-    global $agent;
-    if ($agent['engine'] == 'bot') return $url;
+    global $result;
+    $result = UA::parse();
+    if ($result->isSpider) return $url;
 
     if (isset($userdata['user_level']) && $userdata['user_level'] > 1) {
         if ( !empty($SID) && !eregi('sid=', $url) )

@@ -321,7 +321,7 @@ function update_modules() {
 function UpdateCookie() {
     global $db, $prefix, $userinfo, $cache, $cookie;
 
-    $ip = identify::get_ip();
+    $ip = Security::get_ip();
     $uid = $userinfo['user_id'];
     $username = $userinfo['username'];
     $pass = $userinfo['user_password'];
@@ -1028,7 +1028,7 @@ function compare_ips($username) {
     }
     if(isset($userips[strtolower($username)])) {
         $ip_check = implode('|^',$userips[strtolower($username)]);
-        if (!preg_match("/^".$ip_check."/",identify::get_ip())) {
+        if (!preg_match("/^".$ip_check."/",Security::get_ip())) {
             return false;
         }
     }

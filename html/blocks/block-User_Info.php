@@ -40,7 +40,7 @@ while ($session = $db->sql_fetchrow($result, SQL_ASSOC)) {
 $db->sql_freeresult($result);
 
 if ($showip == 1) {
-    $ip = identify::get_ip();
+    $ip = Security::get_ip();
     $content .= "
                  <br />
                  <div align=\"center\">

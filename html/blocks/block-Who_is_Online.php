@@ -13,13 +13,13 @@
 
 if(!defined('NUKE_CE')) exit;
 
-global $user, $cookie, $prefix, $db, $user_prefix, $userinfo;
+global $user, $cookie, $prefix, $db, $user_prefix, $userinfo, $result;
 
-$ip = identify::get_ip();
+$result = UA::parse();
+$ip = Security::get_ip();
 $url = $_SERVER['REQUEST_URI'];
 $uname = $ip;
 $guest = 1;
-$user_agent = identify::identify_agent();
 if (is_user()) {
     $uname = $userinfo['username'];
     $guest = 0;
@@ -28,8 +28,8 @@ if (is_user()) {
 /*****[BEGIN]******************************************
  [ Base:    Advanced Security Extension        v1.0.0 ]
  ******************************************************/
-} elseif($user_agent['engine'] == 'bot') {
-    $uname = $user_agent['bot'];
+} elseif($result->isSpider) {
+    $uname = "Spider";
     $guest = 3;
 }
 /*****[END]********************************************

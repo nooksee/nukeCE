@@ -733,7 +733,7 @@ function CreateTopic ($xanonpost, $subject, $comment, $pid, $sid, $host_name, $m
         $name = ""; $email = ""; $url = "";
         $score = 0;
     }
-    $ip = identify::get_ip();
+    $ip = Security::get_ip();
     $fakeresult = $db->sql_query("SELECT acomm FROM ".$prefix."_stories WHERE sid='$sid'");
     $fake = $db->sql_numrows($fakeresult);
     $comment = trim($comment);

@@ -67,7 +67,7 @@ if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user()) || ($lidinfo[
                 if (!is_mod_admin($module_name)) {
                     $uinfo = $userinfo;
                     $username = $uinfo['username'];
-                    if (empty($username)) { $username = identify::get_ip(); }
+                    if (empty($username)) { $username = Security::get_ip(); }
                     $result = $db->sql_numrows($db->sql_query("SELECT * FROM ".$prefix."_downloads_accesses WHERE username='$username'"));
                     if ($result < 1) {
                         $db->sql_query("INSERT INTO ".$prefix."_downloads_accesses VALUES ('$username', 1, 0)");
@@ -165,7 +165,7 @@ if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user()) || ($lidinfo[
                 $username = $cookie[1];
                 if (empty($username)) { $username = "Guest"; }
                 $date = date("M d, Y g:i:a");
-                $sub_ip = identify::get_ip();
+                $sub_ip = Security::get_ip();
                 $db->sql_query("INSERT INTO ".$prefix."_downloads_mods VALUES (NULL, $lid, 0, 0, '', '', '', '"._DSCRIPT."<br />$date', '$sub_ip', 1, '$auth_name', '$email', '$filesize', '$version', '$homepage')");
                 DisplayErrorReturn(_DL_SORRY." $username, ".$lidinfo['title']." "._DL_NOTFOUND."</b></em></span><br /><br />"._DL_FNFREASON."<br />"._DL_FLAGGED, 1);
                 return;
