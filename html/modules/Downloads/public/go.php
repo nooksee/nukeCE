@@ -40,7 +40,7 @@ function remote_filesize($url, $timeout=2) {
     return ((int)$size == $size) ? ((int)$size) : false;
 }
 
-global $cookie, $userinfo;
+global $cookie, $userinfo, $do_gzip_compress, $client;
 $lid = intval($lid);
 $lidinfo = $db->sql_fetchrow($db->sql_query("SELECT * FROM ".$prefix."_downloads_downloads WHERE lid=$lid"));
 $pagetitle = _DOWNLOADPROFILE.": ".stripslashes($lidinfo['title']);
@@ -67,7 +67,8 @@ if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user()) || ($lidinfo[
                 if (!is_mod_admin($module_name)) {
                     $uinfo = $userinfo;
                     $username = $uinfo['username'];
-                    if (empty($username)) { $username = Security::get_ip(); }
+                    $client = new Client(); 
+                    if (empty($username)) { $username = $client->getIp(); }
                     $result = $db->sql_numrows($db->sql_query("SELECT * FROM ".$prefix."_downloads_accesses WHERE username='$username'"));
                     if ($result < 1) {
                         $db->sql_query("INSERT INTO ".$prefix."_downloads_accesses VALUES ('$username', 1, 0)");
@@ -86,7 +87,6 @@ if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user()) || ($lidinfo[
                 $url_folder = 'modules/'.basename(dirname(dirname(__FILE__))).'/files';
                 $local = (!ereg('/',$lidinfo['url'])) ? true : false;
                 if(substr($lidinfo['url'],0,strlen($url_folder)) == $url_folder || $local) {
-                    global $do_gzip_compress;
                     if ($do_gzip_compress = true){
                         while (ob_end_clean());
                         header('Content-Encoding: none');
@@ -165,7 +165,8 @@ if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user()) || ($lidinfo[
                 $username = $cookie[1];
                 if (empty($username)) { $username = "Guest"; }
                 $date = date("M d, Y g:i:a");
-                $sub_ip = Security::get_ip();
+                $client = new Client();
+                $sub_ip = $client->getIp();
                 $db->sql_query("INSERT INTO ".$prefix."_downloads_mods VALUES (NULL, $lid, 0, 0, '', '', '', '"._DSCRIPT."<br />$date', '$sub_ip', 1, '$auth_name', '$email', '$filesize', '$version', '$homepage')");
                 DisplayErrorReturn(_DL_SORRY." $username, ".$lidinfo['title']." "._DL_NOTFOUND."</b></em></span><br /><br />"._DL_FNFREASON."<br />"._DL_FLAGGED, 1);
                 return;

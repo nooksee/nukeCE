@@ -13,7 +13,7 @@
 
 if(!defined('NUKE_CE')) exit;
 
-global $prefix, $user_prefix, $db, $anonymous, $board_config, $userinfo;
+global $prefix, $user_prefix, $db, $anonymous, $board_config, $userinfo, $client;
 
 $useavatars = 1; //1 to Show Avatars - 0 is off
 $showip = 0; //1 to Show your current IP address - 0 is off
@@ -40,7 +40,8 @@ while ($session = $db->sql_fetchrow($result, SQL_ASSOC)) {
 $db->sql_freeresult($result);
 
 if ($showip == 1) {
-    $ip = Security::get_ip();
+    $client = new Client();
+    $ip = $client->getIp();
     $content .= "
                  <br />
                  <div align=\"center\">

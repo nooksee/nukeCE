@@ -22,13 +22,14 @@ if(isset($aid) && ($aid) && (!isset($admin) || empty($admin)) && $op!='login') {
 // Include functions
 require_once(dirname(__FILE__) . '/mainfile.php');
 require_once(NUKE_ADMIN_DIR.'functions.php');
-
-global $domain, $admin_file;
 include(NUKE_BASE_DIR.'ips.php');
 
+global $domain, $admin_file, $client;
+
 if(isset($ips) && is_array($ips)) {
+    $client = new Client();
     $ip_check = implode('|^',$ips);
-    if (!preg_match("/^".$ip_check."/",Security::get_ip())) {
+    if (!preg_match("/^".$ip_check."/",$client->getIp())) {
         unset($aid);
         unset($admin);
         global $cookie;

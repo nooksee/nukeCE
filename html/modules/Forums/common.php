@@ -160,13 +160,9 @@ unset($dbpasswd);
 //
 // Obtain and encode users IP
 //
-// I'm removing HTTP_X_FORWARDED_FOR ... this may well cause other problems such as
-// private range IP's appearing instead of the guilty routable IP, tough, don't
-// even bother complaining ... go scream and shout at the idiots out there who feel
-// "clever" is doing harm rather than good ... karma is a great thing ... :)
-// Quake: sorry fella, we are using a better ip tracker :)
-//$client_ip = ( !empty($HTTP_SERVER_VARS['REMOTE_ADDR']) ) ? $HTTP_SERVER_VARS['REMOTE_ADDR'] : ( ( !empty($HTTP_ENV_VARS['REMOTE_ADDR']) ) ? $HTTP_ENV_VARS['REMOTE_ADDR'] : getenv('REMOTE_ADDR') );
-$client_ip = Security::get_ip();
+global $client;
+$client = new Client();
+$client_ip = $client->getIp();
 $user_ip = encode_ip($client_ip);
 
 //

@@ -15,7 +15,7 @@ if (!defined('NUKE_CE')) {
     die('You can\'t access this file directly...');
 }
 
-global $prefix, $db, $content, $pollcomm, $user, $userinfo, $cookie, $multilingual, $currentlang, $sysconfig, $cache;
+global $prefix, $db, $content, $pollcomm, $user, $userinfo, $cookie, $multilingual, $currentlang, $sysconfig, $cache, $client;
 
 // Fetch random poll
 $make_random = intval($sysconfig['poll_random']);
@@ -58,8 +58,8 @@ if ($db->sql_numrows($result) < 1) {
                 <form action="modules.php?name=Surveys" method="post">
                     <table border="0" cellpadding="2" cellspacing="0" width="100%">
                ';
-
-    $ip = Security::get_ip();
+    $client = new Client();
+    $ip = $client->getIp();
     $past = time()-86400*$number_of_days;
     $result = $db->sql_query("SELECT ip FROM ".$prefix."_poll_check WHERE ip='$ip' AND pollID='$pollID'");
     $result2 = $db->sql_query("SELECT optionText, voteID, optionCount FROM ".$prefix."_poll_data WHERE pollID='$pollID' AND optionText!='' ORDER BY voteID");

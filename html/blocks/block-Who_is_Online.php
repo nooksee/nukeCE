@@ -13,13 +13,14 @@
 
 if(!defined('NUKE_CE')) exit;
 
-global $user, $cookie, $prefix, $db, $user_prefix, $userinfo, $result;
-
-$result = UA::parse();
-$ip = Security::get_ip();
+global $user, $cookie, $prefix, $db, $user_prefix, $userinfo, $client, $result;
+$client = new Client();
+$ip = $client->getIp();
 $url = $_SERVER['REQUEST_URI'];
 $uname = $ip;
 $guest = 1;
+$result = UA::parse();
+
 if (is_user()) {
     $uname = $userinfo['username'];
     $guest = 0;

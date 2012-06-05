@@ -18,7 +18,7 @@
 /* CNB Your Account it the official successor of NSN Your Account by Bob Marion */
 /********************************************************************************/
 
-global $admin_file;
+global $admin_file, $client;
 if(!defined('ADMIN_FILE')) {
     redirect("../../".$admin_file.".php");
     exit;
@@ -27,8 +27,9 @@ if(!defined('ADMIN_FILE')) {
 include(NUKE_BASE_DIR.'ips.php');
 
 if(isset($ips) && is_array($ips)) {
+    $client = new Client();  
     $ip_check = implode('|^',$ips);
-    if (!preg_match("/^".$ip_check."/",Security::get_ip())) {
+    if (!preg_match("/^".$ip_check."/",$client->getIp())) {
         unset($aid);
         unset($admin);
         

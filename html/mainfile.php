@@ -106,14 +106,14 @@ if (!$file_mode) {
 // Include the required files
 @require_once(NUKE_DB_DIR.'db.php');
 
+// Include Error Logger and Client classes
+@require_once(NUKE_INCLUDE_DIR.'log.php');
+@require_once(NUKE_CLASSES_DIR.'class.client.php');
+
 // parse the requesting user agent
 @require_once(NUKE_CLASSES_DIR.'class.UAParser.php');
 global $result;
 $result = UA::parse();
-
-// Include Error Logger and Security class
-@require_once(NUKE_CLASSES_DIR.'class.security.php');
-@require_once(NUKE_INCLUDE_DIR.'log.php');
 
 if (ini_get('output_buffering') && !isset($result->isSpider)) {
     ob_end_clean();

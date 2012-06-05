@@ -852,7 +852,7 @@ function replyPreview ($pid, $pollID, $subject, $comment, $xanonpost, $mode, $or
 }
 
 function CreateTopic ($xanonpost, $subject, $comment, $pid, $pollID, $host_name, $mode, $order, $thold, $posttype) {
-    global $userinfo, $user, $userinfo, $EditedMessage, $cookie, $prefix, $pollcomm, $anonpost, $db, $module_name;
+    global $userinfo, $user, $userinfo, $EditedMessage, $cookie, $prefix, $pollcomm, $anonpost, $db, $module_name, $client;
 
                   if (!isset($mode) OR empty($mode)) {
                     if(isset($userinfo['umode'])) {
@@ -897,7 +897,8 @@ function CreateTopic ($xanonpost, $subject, $comment, $pid, $pollID, $host_name,
     $url = "";
     $score = 0;
     }
-    $ip = Security::get_ip();
+    $client = new Client();
+    $ip = $client->getIp();
     $pollID = intval($pollID);
     $result = $db->sql_query("SELECT count(*) FROM ".$prefix."_poll_desc WHERE pollID='$pollID'");
     $fake = $db->sql_numrows($result);

@@ -22,7 +22,7 @@ if(!defined('IN_DOWNLOADS')) {
     exit('Access Denied');
 }
 
-global $file_mode;
+global $file_mode, $client;
 
 switch($op) {
     default:
@@ -322,7 +322,8 @@ switch($op) {
             $filesize = str_replace(',', '', $filesize);
             $filesize = intval($filesize);
             $cat = intval($cat);
-            $sub_ip = Security::get_ip();
+            $client = new Client();
+            $sub_ip = $client->getIp();
 
             $db->sql_query("INSERT INTO ".$prefix."_downloads_new VALUES (NULL, $cat, 0, '$title', '$url', '$description', now(), '$auth_name', '$email', '$submitter', '$sub_ip', $filesize, '$version', '$homepage')");
             

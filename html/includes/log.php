@@ -16,7 +16,7 @@ if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
 }
 
 function log_write($file, $output, $title = 'General Error') {
-    global $cookie;
+    global $cookie, $client;
     if(isset($cookie) && is_array($cookie)) {
         $username = $cookie[1];
     } else {
@@ -29,7 +29,8 @@ function log_write($file, $output, $title = 'General Error') {
             $username = _ANONYMOUS;
         }
     }
-    $ip = GetHostByName(Security::get_ip());
+    $client = new Client();    
+    $ip = GetHostByName($client->getIp());
     $date = date("d M Y - H:i:s");
     if($file == 'admin') {
         $string = '';

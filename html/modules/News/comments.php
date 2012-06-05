@@ -713,7 +713,7 @@ function replyPreview ($pid, $sid, $subject, $comment, $xanonpost, $mode, $order
 }
 
 function CreateTopic ($xanonpost, $subject, $comment, $pid, $sid, $host_name, $mode, $order, $thold, $posttype) {
-    global $module_name, $user, $userinfo, $EditedMessage, $cookie, $AllowableHTML, $ultramode, $prefix, $anonpost, $articlecomm, $db;
+    global $module_name, $user, $userinfo, $EditedMessage, $cookie, $AllowableHTML, $ultramode, $prefix, $anonpost, $articlecomm, $db, $client;
     $author = Fix_Quotes($author);
     $subject = Fix_Quotes(filter_text($subject, "nohtml"));
     $comment = format_url($comment);
@@ -733,7 +733,8 @@ function CreateTopic ($xanonpost, $subject, $comment, $pid, $sid, $host_name, $m
         $name = ""; $email = ""; $url = "";
         $score = 0;
     }
-    $ip = Security::get_ip();
+    $client = new Client();
+    $ip = $client->getIp(); 
     $fakeresult = $db->sql_query("SELECT acomm FROM ".$prefix."_stories WHERE sid='$sid'");
     $fake = $db->sql_numrows($fakeresult);
     $comment = trim($comment);

@@ -25,7 +25,7 @@ define('REGEX_UNION','#\w?\s?union\s\w*?\s?(select|all|distinct|insert|update|dr
 @require_once(NUKE_DB_DIR.'db.php');
 
 // Load required configs
-global $remote, $nsnst_const, $admin_file, $userinfo, $currentlang, $cache, $nukeurl, $name;
+global $remote, $nsnst_const, $admin_file, $userinfo, $currentlang, $cache, $nukeurl, $name, $client;
 
 $nuke_config = load_nukeconfig();
 foreach($nuke_config as $var => $value) {
@@ -34,13 +34,13 @@ foreach($nuke_config as $var => $value) {
 }
 
 if(!isset($nsnst_const)) $nsnst_const = array();
-
 $ab_config = abget_configs();
+$client = new Client();
 $nsnst_const['server_ip'] = get_server_ip();
 $nsnst_const['client_ip'] = get_client_ip();
 $nsnst_const['forward_ip'] = get_x_forwarded();
 $nsnst_const['remote_addr'] = get_remote_addr();
-$nsnst_const['remote_ip'] = Security::get_ip();
+$nsnst_const['remote_ip'] = $client->getIp();
 $nsnst_const['remote_long'] = sprintf("%u", ip2long($nsnst_const['remote_ip']));
 $nsnst_const['remote_port'] = get_remote_port();
 $nsnst_const['request_method'] = get_request_method();

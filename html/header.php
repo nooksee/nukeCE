@@ -113,8 +113,9 @@ function head() {
 }
 
 function online() {
-    global $prefix, $db, $name, $board_config, $userinfo, $result;
-    $ip = Security::get_ip();
+    global $prefix, $db, $name, $board_config, $userinfo, $result, $client;
+    $client = new Client();
+    $ip = $client->getIp(); 
     $url = (defined('ADMIN_FILE')) ? 'index.php' : Fix_Quotes($_SERVER['REQUEST_URI']);
     $uname = $ip;
     $guest = 1;

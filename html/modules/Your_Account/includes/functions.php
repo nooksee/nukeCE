@@ -131,8 +131,9 @@ function ya_get_configs(){
 }
 
 function yacookie($setuid, $setusername, $setpass, $setstorynum, $setumode, $setuorder, $setthold, $setnoscore, $setublockon, $settheme, $setcommentmax) {
-    global $ya_config, $db, $prefix;
-    $ip = Security::get_ip();
+    global $ya_config, $db, $prefix, $client;
+    $client = new Client();
+    $ip = $client->getIp();
     $result = $db->sql_query("SELECT time FROM ".$prefix."_session WHERE uname='$setusername'");
     $ctime = time();
     if (!empty($setusername)) {

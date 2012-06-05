@@ -1928,7 +1928,7 @@ function rateinfo($lid) {
 }
 
 function addrating($ratinglid, $ratinguser, $rating, $ratinghost_name, $ratingcomments) {
-    global $prefix, $db, $cookie, $user, $module_name, $anonymous;
+    global $prefix, $db, $cookie, $user, $module_name, $anonymous, $client;
     $passtest = "yes";
     include_once(NUKE_BASE_DIR.'header.php');
     include(NUKE_MODULES_DIR.$module_name.'/l_config.php');
@@ -1945,8 +1945,9 @@ function addrating($ratinglid, $ratinguser, $rating, $ratinghost_name, $ratingco
     while ($row = $db->sql_fetchrow($result)) {
     $title = stripslashes(check_html($row['title'], "nohtml"));
     $ttitle = $title;
+    $client = new Client();    
     /* Make sure only 1 anonymous from an IP in a single day. */
-    $ip = Security::get_ip();
+    $ip = $client->getIp();
     /* Check if Rating is Null */
     if ($rating=="--") {
     $error = "nullerror";
@@ -2067,7 +2068,7 @@ function completevote($error) {
 }
 
 function ratelink($lid, $user, $ttitle) {
-    global $prefix, $cookie, $datetime, $module_name;
+    global $prefix, $cookie, $datetime, $module_name, $client;
     include_once(NUKE_BASE_DIR.'header.php');
     menu(1);
     echo "<br />";
@@ -2075,7 +2076,8 @@ function ratelink($lid, $user, $ttitle) {
     $ttitle = htmlentities($ttitle);
     $transfertitle = ereg_replace ("_", " ", $ttitle);
     $displaytitle = $transfertitle;
-    $ip = Security::get_ip();
+    $client = new Client();
+    $ip = $client->getIp();
     echo "<strong>".htmlentities($displaytitle)."</strong>"
     ."<ul><span class=\"content\">"
     ."<li>"._RATENOTE1.""

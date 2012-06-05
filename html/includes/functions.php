@@ -319,9 +319,9 @@ function update_modules() {
 
 // UpdateCookie function by JeFFb68CAM
 function UpdateCookie() {
-    global $db, $prefix, $userinfo, $cache, $cookie;
-
-    $ip = Security::get_ip();
+    global $db, $prefix, $userinfo, $cache, $cookie, $client;
+    $client = new Client();
+    $ip = $client->getIp();
     $uid = $userinfo['user_id'];
     $username = $userinfo['username'];
     $pass = $userinfo['user_password'];
@@ -1022,13 +1022,15 @@ function user_ips() {
 
 // compare_ips function by Technocrat
 function compare_ips($username) {
+    global $client;
+    $client = new Client();
     $userips = user_ips();
     if(!is_array($userips)) {
         return true;
     }
     if(isset($userips[strtolower($username)])) {
         $ip_check = implode('|^',$userips[strtolower($username)]);
-        if (!preg_match("/^".$ip_check."/",Security::get_ip())) {
+        if (!preg_match("/^".$ip_check."/",$client->getIp())) {
             return false;
         }
     }
