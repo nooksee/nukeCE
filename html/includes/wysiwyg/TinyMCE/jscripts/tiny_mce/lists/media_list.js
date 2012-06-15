@@ -4,6 +4,7 @@
 
 var tinyMCEMediaList = [
 	// Name, URL
-	["Small Screenshot", "includes/wysiwyg/TinyMCE/jscripts/tiny_mce/media/sm_images"],
-	["Large Screenshot", "includes/wysiwyg/TinyMCE/jscripts/tiny_mce/media/lg_images.gif"]
+	["Santa Monica Pier", "includes/wysiwyg/TinyMCE/jscripts/tiny_mce/media/smpier.png"],
+	["Book", "includes/wysiwyg/TinyMCE/jscripts/tiny_mce/media/book.png"],
+	["Screenshot", "includes/wysiwyg/TinyMCE/jscripts/tiny_mce/media/screenshot.png"]
 ];
