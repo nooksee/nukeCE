@@ -2529,7 +2529,9 @@ INSERT INTO `nuke_headlines` (`hid`, `sitename`, `headlinesurl`) VALUES
 (36, 'nukeCE Downloads', 'http://nukece.com/rss.php?feed=downloads'),
 (37, 'nukeCE Web Links', 'http://nukece.com/rss.php?feed=weblinks'),
 (38, 'nukeCE Recent Pics', 'http://www.nukece.com/rss.php?feed=pics'),
-(39, 'nukeCE Journal', 'http://www.nukece.com/rss.php?feed=journal');
+(39, 'nukeCE Journal', 'http://www.nukece.com/rss.php?feed=journal'),
+(40, 'nukeCE on Twitter', 'http://api.twitter.com/1/statuses/user_timeline.rss?screen_name=nukeCE'),
+(41, 'nukeCE on GitHub', 'https://github.com/nooksee.atom');
 
 -- --------------------------------------------------------
 
