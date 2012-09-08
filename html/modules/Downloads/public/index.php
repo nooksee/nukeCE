@@ -53,7 +53,7 @@ echo "<center><font class=\"option\"><b>"._CATEGORY.": $title</b></font></center
 $result2 = $db->sql_query("SELECT * FROM ".$prefix."_downloads_categories WHERE parentid=$cid ORDER BY title");
 $numrows2 = $db->sql_numrows($result2);
 if ($numrows2 > 0) {
-    echo "<table border=\"0\" cellspacing=\"8\" cellpadding=\"0\" align=\"center\"><tr>";
+    echo "<table border=\"0\" cellspacing=\"10\" cellpadding=\"0\" align=\"center\"><tr>";
     $count = 0;
     while($cidinfo2 = $db->sql_fetchrow($result2)) {
         if ($count == 0) { echo "<tr>\n"; }
@@ -64,10 +64,10 @@ if ($numrows2 > 0) {
         } else {
             $cnumm = "";
         }
-        echo "<td valign=\"top\"><font class=\"option\"><strong><big>&middot;</big></strong> <a href='modules.php?name=$module_name&amp;cid=".$cidinfo2['cid']."'><b>".$cidinfo2['title']."</b></a></font> $cnumm";
+        echo "<td valign=\"top\" style=\"word-wrap: break-word;\" width=\"50%\"><span class=\"option\"><strong><big>&middot;</big></strong> <a href='modules.php?name=$module_name&amp;cid=".$cidinfo2['cid']."'><strong>".$cidinfo2['title']."</strong></a></span> $cnumm";
         newcategorygraphic($cidinfo2['cid']);
         if ($cidinfo2['cdescription']) {
-            echo "<font class=\"content\">".$cidinfo2['cdescription']."</font><br>";
+            echo "<br /><font class=\"content\">".$cidinfo2['cdescription']."</font><br>";
         } else {
             echo "<br />";
         }
@@ -81,23 +81,24 @@ if ($numrows2 > 0) {
             } else {
                 $cnum = "";
             }
-            echo "<font class=\"content\"><a href='modules.php?name=$module_name&amp;cid=".$cidinfo3['cid']."'>".$cidinfo3['title']."</a>$cnum</font>";
+            echo "&nbsp;&nbsp;<span style=\"color: rgb(153, 153, 153);\" class=\"content\"><strong><big>&middot;</big></strong> <a href='modules.php?name=$module_name&amp;cid=".$cidinfo3['cid']."'><strong>".$cidinfo3['title']."</strong></a></span> $cnum";
             newcategorygraphic($cidinfo3['cid']);
+            echo "<br />";
             $space++;
         }
-        if ($count < 2) { echo "</td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>"; $dum = 1; }
+        if ($count < 1) { echo "</td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>"; $dum = 1; }
         $count++;
-        if ($count == 3) { echo "</td></tr><tr>"; $count = 0; $dum = 0; }
+        if ($count == 2) { echo "</td></tr><tr>"; $count = 0; $dum = 0; }
     }
     if ($dum == 1 && $count == 2) {
         echo "</tr></table>";
     } elseif ($dum == 1 && $count == 1) {
         echo "<td>&nbsp;</td>\n<td>&nbsp;</td>\n</tr>\n</table>\n";
     } elseif ($dum == 0) {
-        echo "<td></td></tr></table>";
+        echo "<td>&nbsp;</td></tr></table>";
     }
 }
-echo "<hr noshade size=\"1\">";
+echo "<div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>";
 $listrows = $db->sql_numrows($db->sql_query("SELECT * FROM ".$prefix."_downloads_downloads WHERE active>'0' AND cid='$cid'"));
 if ($listrows > 0) {
     $op = $query = "";

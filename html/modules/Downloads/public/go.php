@@ -117,16 +117,16 @@ if (($lidinfo['sid'] == 0) || ($lidinfo['sid'] == 1 AND is_user()) || ($lidinfo[
                             $content = get_mime_content_type($file);
                         }
                     }
-
-                    header("Pragma: public");
-                    header("Content-type: $content; name=$name");
-                    header("Expires: 0");
-                    header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-                    header("Cache-Control: private", false);
-                    header("Content-length: $size");
-                    header("Content-Disposition: inline; filename=\"$name\"");
-
-                    @readfile($file);
+                    
+                    if(ini_get('zlib.output_compression'))
+                    ini_set('zlib.output_compression', 'Off');
+                    if (file_exists($file)) {
+                        header("Content-type: $content; name=$name");
+                        header("Content-Type: application/force-download");
+                        header('Content-Description: File Transfer');
+                        header("Content-Disposition: inline; filename=\"$name\"");
+                        @readfile($file);
+                    }
                     exit;
                 } else {
                     if ($do_gzip_compress = true){

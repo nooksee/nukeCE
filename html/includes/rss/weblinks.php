@@ -56,7 +56,7 @@ while(list($lid, $title, $description, $date, $submitter) = $db->sql_fetchrow($r
     $title2 = ereg_replace(" ", "_", $title);
     $description = stripslashes($description);
     $description = BBCode2Html($description);
-    $description = scaleImages($description, '250px');
+    $description = scaleImages($description, '130px');
     if (empty($submitter)) {
         $submitter = $sitename;
     }

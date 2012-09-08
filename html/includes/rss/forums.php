@@ -47,7 +47,7 @@ while(list($topic_id, $topic_title, $topic_last_post_id) = $db->sql_fetchrow($re
     $desc = entity_to_hex_value($desc);
     $desc = decode_bbcode(stripslashes($desc), 1, true);
     $desc = decode_rss_rest($desc);
-    $desc = scaleImages($desc, '250px');
+    $desc = scaleImages($desc, '130px');
     $result3 = $db->sql_query("SELECT poster_id, post_time FROM ".$prefix."_bbposts WHERE post_id='$topic_last_post_id'");
     list($poster_id, $post_time) = $db->sql_fetchrow($result3);
     $result4 = $db->sql_query("SELECT username FROM ".$user_prefix."_users WHERE user_id='$poster_id'");

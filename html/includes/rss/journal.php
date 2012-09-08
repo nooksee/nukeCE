@@ -54,7 +54,7 @@ while ($row = $db->sql_fetchrow($result)) {
     $date = $ndate . ' ' . $ntime;    
     $bodytext = $row['bodytext'];
     $bodytext = BBCode2Html($bodytext);
-    $bodytext = scaleImages($bodytext, '250px');
+    $bodytext = scaleImages($bodytext, '130px');
 
     //add item elements to the feed eg elements inside <item> -Elementshere- </item>
     $Feed->feeditem->setItemTitle($title);

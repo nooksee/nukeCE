@@ -406,7 +406,7 @@ function themearticle($aid, $informant, $datetime, $title, $thetext, $topic, $to
                                                       <td bgcolor='.$bgcolor4.'>
                                                           <table width="100%" border="0" cellspacing="0" cellpadding="4">
                                                               <tr>
-                                                                  <td><a href="modules.php?name=News&amp;new_topic='.$topic.'"><img src="'.$topic_img.'" alt="'.$topictext.'" border="0" align="right" /></a>
+                                                                  <td><a href="modules.php?name=News&amp;new_topic='.$topic.'"><img src="'.$topic_img.'" border="0" alt="'.$topictext.'" title="'.$topictext.'" align="right" hspace="10" vspace="10"></a>
          ';
     FormatStory($thetext, $notes, $aid, $informant);
     echo '

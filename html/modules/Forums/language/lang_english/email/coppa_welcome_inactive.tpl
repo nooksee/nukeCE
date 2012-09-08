@@ -22,7 +22,7 @@ Email: {EMAIL_ADDRESS}
 
 ICQ Number: {ICQ}
 AIM Address: {AIM}
-MSN Messenger: {MSN}
+Windows Live: {MSN}
 Yahoo Messenger: {YIM}
 Web Site: {WEB_SITE}
 From: {FROM}

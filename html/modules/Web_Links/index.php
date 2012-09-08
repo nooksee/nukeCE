@@ -117,7 +117,8 @@ function linkinfomenu($lid, $ttitle) {
     global $module_name, $user;
     echo "<br /><span class=\"content\">[ "
     ."<a href=\"modules.php?name=$module_name&amp;l_op=viewlinkcomments&amp;lid=$lid&amp;ttitle=$ttitle\">"._LINKCOMMENTS."</a>"
-    ." | <a href=\"modules.php?name=$module_name&amp;l_op=viewlinkdetails&amp;lid=$lid&amp;ttitle=$ttitle\">"._ADDITIONALDET."</a>"
+    ." | <a href=\"modules.php?name=$module_name&amp;l_op=visit&amp;lid=$lid\" target=\"_blank\">"._VISITTHISSITE."</a>"
+    ." | <a href=\"modules.php?name=$module_name&amp;l_op=ratelink&amp;lid=$lid&amp;ttitle=$ttitle\">"._RATETHISSITE."</a>"
     ." | <a href=\"modules.php?name=$module_name&amp;l_op=viewlinkeditorial&amp;lid=$lid&amp;ttitle=$ttitle\">"._EDITORREVIEW."</a>"
     ." | <a href=\"modules.php?name=$module_name&amp;l_op=modifylinkrequest&amp;lid=$lid\">"._MODIFY."</a>";
     if (is_user()) {
@@ -777,18 +778,18 @@ function viewlink($cid, $min, $orderby, $show) {
         $totalvotes = intval($row4['totalvotes']);
         $totalcomments = intval($row4['totalcomments']);
     $linkratingsummary = number_format($linkratingsummary, $mainvotedecimal);
-        echo "<a href=\"modules.php?name=$module_name&amp;l_op=visit&amp;lid=$lid\" target=\"new\"><strong>$title</strong></a>";
+        $transfertitle = str_replace (" ", "_", $title);
+        echo "<a href=\"modules.php?name=$module_name&amp;l_op=viewlinkdetails&amp;lid=$lid&amp;ttitle=$transfertitle\"><strong>$title</strong></a>";
     newlinkgraphic($datetime, $time);
     popgraphic($hits);
     /* INSERT code for *editor review* here */
     echo "<br />";
-    echo ""._DESCRIPTION.": $description<br />";
+    echo ""._DESCRIPTION.": ".truncate(html2text($description), 256)."<br />";
     setlocale (LC_TIME, $locale);
     ereg ("([0-9]{4})-([0-9]{1,2})-([0-9]{1,2}) ([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2})", $time, $datetime);
     $datetime = strftime(""._LINKSDATESTRING."", mktime($datetime[4],$datetime[5],$datetime[6],$datetime[2],$datetime[3],$datetime[1]));
     $datetime = ucfirst($datetime);
     echo ""._ADDEDON.": $datetime "._HITS.": $hits";
-        $transfertitle = str_replace (" ", "_", $title);
         /* voting & comments stats */
         if ($totalvotes == 1) {
         $votestring = _VOTE;
@@ -806,10 +807,8 @@ function viewlink($cid, $min, $orderby, $show) {
         if (is_user()) {
         echo " | <a href=\"modules.php?name=$module_name&amp;l_op=brokenlink&amp;lid=$lid\">"._REPORTBROKEN."</a>";
     }
-    if ($totalvotes != 0) {
-        echo " | <a href=\"modules.php?name=$module_name&amp;l_op=viewlinkdetails&amp;lid=$lid&amp;ttitle=$transfertitle\">"._DETAILS."</a>";
-    }
-        if ($totalcomments != 0) {
+    echo " | <a href=\"modules.php?name=$module_name&amp;l_op=viewlinkdetails&amp;lid=$lid&amp;ttitle=$transfertitle\">"._ADDITIONALDET."</a>";
+    if ($totalcomments != 0) {
         echo " | <a href=\"modules.php?name=$module_name&amp;l_op=viewlinkcomments&amp;lid=$lid&amp;ttitle=$transfertitle\">"._SCOMMENTS." ($totalcomments)</a>";
     }
         detecteditorial($lid, $transfertitle);
@@ -1290,6 +1289,8 @@ function viewlinkdetails($lid, $ttitle) {
     include(NUKE_MODULES_DIR.$module_name.'/l_config.php');
     menu(1);
     $lid = intval($lid);
+    $result = $db->sql_query("SELECT * FROM ".$prefix."_links_links WHERE lid=$lid");
+    $lidinfo = $db->sql_fetchrow($result);    
     $voteresult = $db->sql_query("SELECT rating, ratinguser, ratingcomments FROM ".$prefix."_links_votedata WHERE ratinglid = '$lid'");
     $totalvotesDB = $db->sql_numrows($voteresult);
     $anonvotes = 0;
@@ -1472,7 +1473,19 @@ function viewlinkdetails($lid, $ttitle) {
     OpenTable();
     echo "<center><span class=\"option\"><strong>"._LINKPROFILE.": ".htmlentities($displaytitle)."</strong></span><br /><br />";
     linkinfomenu($lid, $ttitle);
-    echo "<br /><br />"._LINKRATINGDET."<br />"
+    /*****[BEGIN]******************************************
+    [ Mod:     News BBCodes                       v1.0.0 ]
+    ******************************************************/
+    $lidinfo['description'] = BBCode2Html(stripslashes($lidinfo['description']));
+    $lidinfo['description'] = nuke_img_tag_to_resize($lidinfo['description']);
+    /*****[END]********************************************
+    [ Mod:     News BBCodes                       v1.0.0 ]       
+    ******************************************************/
+   echo "
+         <div style=\"height: 12px; line-height: 12px;\">&nbsp;</div>
+         <div align=\"left\" style=\"max-width:640px;\" class=\"content\">".$lidinfo['description']."</div>
+         <div style=\"height: 1px; line-height: 1px;\">&nbsp;</div>
+         <br /><br />"._LINKRATINGDET."<br />"
         .""._TOTALVOTES." $totalvotesDB<br />"
         .""._OVERALLRATING.": $finalrating</center><br /><br />"
     ."<table align=\"center\" border=\"0\" cellspacing=\"0\" cellpadding=\"2\" width=\"455\">"

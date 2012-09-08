@@ -444,7 +444,7 @@ if ($total_pics > 0)
 			}
 
 			$template->assign_block_vars('picrow.pic_detail', array(
-				'TITLE' => $picrow[$j]['pic_title'],
+				'TITLE' => truncate($picrow[$j]['pic_title'], 12),
 				'POSTER' => $pic_poster,
 				'TIME' => create_date($board_config['default_dateformat'], $picrow[$j]['pic_time'], $board_config['board_timezone']),
 

@@ -60,7 +60,7 @@ if($exist) {
         $row_class = ( !($i % 2) ) ? $theme['td_class1'] : $theme['td_class2']; 
 
         $msn = ($row1['user_msnm']) ? '<a href="mailto: '. $row1['user_msnm'] .'"><img src="'. $images['icon_msnm'] .'" alt="'. $lang['MSNM'] .'" title="'. $lang['MSNM'] .'" border="0" /></a>' : '';
-        $yim = ($row1['user_yim']) ? '<a href="http://edit.yahoo.com/config/send_webmesg?.target='. $row1['user_yim'] .'&amp;.src=pg"><img src="'. $images['icon_yim'] .'" alt="'. $lang['YIM'] .'" title="'. $lang['YIM'] .'" border="0" /></a>' : '';
+        $yim = ($row1['user_yim']) ? '<a href="ymsgr:sendIM?'. $row1['user_yim'] .'&amp;.src=pg"><img src="'. $images['icon_yim'] .'" alt="'. $lang['YIM'] .'" title="'. $lang['YIM'] .'" border="0" /></a>' : '';
         $aim = ($row1['user_aim']) ? '<a href="aim:goim?screenname='. $row1['user_aim'] .'&amp;message=Hello+Are+you+there?"><img src="' . $images['icon_aim'] .'" alt="' . $lang['AIM'] . '" title="' . $lang['AIM'] . '" border="0" /></a>' : '';
         $icq = ($row1['user_icq']) ? '<a href="http://wwp.icq.com/scripts/contact.dll?msgto='. $row1['user_icq'] .'"><img src="' . $images['icon_icq'] .'" alt="'. $lang['ICQ'] .'" title="' . $lang['ICQ'] .'" border="0" /></a>' : '';       
         $www = ($row1['user_website']) ? '<a href="'. $row1['user_website'] .'" target="_userwww"><img src="'. $images['icon_www'] . '" alt="'. $lang['Visit_website'] .'" title="'. $lang['Visit_website'] .'" border="0" /></a>' : '';
@@ -121,7 +121,7 @@ if($exist) {
             $row_class = ( !($i % 2) ) ? $theme['td_class1'] : $theme['td_class2']; 
 
             $msn = ($row1[$a]['user_msnm']) ? '<a href="mailto: '. $row1[$a]['user_msnm'] .'"><img src="'. $images['icon_msnm'] .'" alt="'. $lang['MSNM'] .'" title="'. $lang['MSNM'] .'" border="0" /></a>' : '';
-            $yim = ($row1[$a]['user_yim']) ? '<a href="http://edit.yahoo.com/config/send_webmesg?.target='. $row1[$a]['user_yim'] .'&amp;.src=pg"><img src="'. $images['icon_yim'] .'" alt="'. $lang['YIM'] .'" title="'. $lang['YIM'] .'" border="0" /></a>' : '';
+            $yim = ($row1[$a]['user_yim']) ? '<a href="ymsgr:sendIM?'. $row1[$a]['user_yim'] .'&amp;.src=pg"><img src="'. $images['icon_yim'] .'" alt="'. $lang['YIM'] .'" title="'. $lang['YIM'] .'" border="0" /></a>' : '';
             $aim = ($row1[$a]['user_aim']) ? '<a href="aim:goim?screenname='. $row1[$a]['user_aim'] .'&amp;message=Hello+Are+you+there?"><img src="' . $images['icon_aim'] .'" alt="' . $lang['AIM'] . '" title="' . $lang['AIM'] . '" border="0" /></a>' : '';
             $icq = ($row1[$a]['user_icq']) ? '<a href="http://wwp.icq.com/scripts/contact.dll?msgto='. $row1[$a]['user_icq'] .'"><img src="' . $images['icon_icq'] .'" alt="'. $lang['ICQ'] .'" title="' . $lang['ICQ'] .'" border="0" /></a>' : '';       
             $www = ($row1[$a]['user_website']) ? '<a href="'. $row1[$a]['user_website'] .'" target="_userwww"><img src="'. $images['icon_www'] . '" alt="'. $lang['Visit_website'] .'" title="'. $lang['Visit_website'] .'" border="0" /></a>' : '';

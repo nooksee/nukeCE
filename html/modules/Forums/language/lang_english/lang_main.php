@@ -148,7 +148,7 @@ $lang['Page_of'] = 'Page <strong>%d</strong> of <strong>%d</strong>'; // Replace
 
 $lang['ICQ'] = 'ICQ Number';
 $lang['AIM'] = 'AIM Address';
-$lang['MSNM'] = 'MSN Messenger';
+$lang['MSNM'] = 'Windows Live';
 $lang['YIM'] = 'Yahoo Messenger';
 
 $lang['Forum_Index'] = '%s Forum Index';  // eg. sitename Forum Index, %s can be removed if you prefer

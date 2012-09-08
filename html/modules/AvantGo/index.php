@@ -287,7 +287,7 @@ function DisplayPic($pic_id) {
                                                   <td>
                                                       <center>
                                                           <img src=\"images/$site_logo\" border=\"0\" alt=\"\"><br /><br />
-                                                          <span class=\"content\"><strong>$pic_title</strong></span><br />
+                                                          <span class=\"content\"><strong>".truncate($pic_title, 30)."</strong></span><br />
                                                           <span class=tiny>
                                                               <strong>"._PPOSTED."</strong> $datetime<br />
                                                               <strong>"._PALBUM."</strong> $cat_title</span><br /><br />
